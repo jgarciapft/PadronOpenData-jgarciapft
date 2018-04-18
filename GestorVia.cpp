@@ -24,4 +24,20 @@ GestorVia::~GestorVia() {
 	delete lVias;
 }
 
+void GestorVia::insertarViaOrden(Via* v) { //@PREGUNTA: prima más la legibilidad que el rendimiento?
+	bool enc = false;
+	Via* vAux;
+
+	lVias->moverInicio();
+	while(!lVias->finLista() && !enc){
+		lVias->consultar(vAux);
+		if(*v > *vAux)
+			enc = true;
+		else
+			lVias->avanzar();				//Solo avanzo si no he encontrado el hueco dónde insertar porque quiero insertar delante del pI
+	}
+	lVias->insertar(v);						//Quedan manejados los casos: 1.Primer elemento de la lista, 2. Último elemento de la lista
 }
+
+}
+

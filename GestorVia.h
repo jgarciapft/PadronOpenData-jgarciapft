@@ -17,6 +17,8 @@ private:
 public:
 	GestorVia();
 	~GestorVia();
+
+	void insertarViaOrden(Via* v);
 };
 
 }
