@@ -24,4 +24,22 @@ GestorBarrio::~GestorBarrio() {
 	delete lBarrios;
 }
 
+void GestorBarrio::insertar(Barrio* b) {
+	lBarrios->insertar(b);
+	lBarrios->avanzar();
 }
+
+void GestorBarrio::mostrar() {
+	Barrio* bAux;
+
+	lBarrios->moverInicio();
+	while(!lBarrios->enFin()){
+		lBarrios->consultar(bAux);
+		lBarrios->avanzar();
+		cout << "Barrio : " << bAux->getNombreBarrio() << " | Distrito : " << bAux->getNombreDistrito() << endl;
+	}
+}
+
+}
+
+

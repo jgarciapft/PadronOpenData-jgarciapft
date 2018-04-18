@@ -17,6 +17,9 @@ private:
 public:
 	GestorBarrio();
 	~GestorBarrio();
+
+	void insertar(Barrio* b);
+	void mostrar();
 };
 
 }

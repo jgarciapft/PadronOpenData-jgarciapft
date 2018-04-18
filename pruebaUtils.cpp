@@ -7,6 +7,9 @@
 //============================================================================
 #include "Utils.h"
 
+//@TEST includes para testeo
+#include "Padron.h"
+
 // EJEMPLO DE USO DE LA LIBRERIA UTILS PARA TROCEAR UNA CADENA
 void pruebaTrocearCadenaAnioNacimiento(string text){
     char delim = ';';
@@ -62,5 +65,8 @@ void pruebaTrocearCadenas(){
 }
 
 int main(){
-	pruebaTrocearCadenas();
+	Padron p;
+
+	//pruebaTrocearCadenas();
+	p.cargarBarrios();
 }

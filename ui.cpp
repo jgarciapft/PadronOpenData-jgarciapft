@@ -16,7 +16,7 @@ using namespace std;
 
 UI::UI() {
 	// TODO
-	ejecutar();
+	//ejecutar();
 }
 
 void UI::ejecutar() {
@@ -169,13 +169,10 @@ UI::~UI() {
 	cout << "Finalizado....";
 }
 
-
-/*
 	// TODO  quitar el comentario para ejecutar el proyecto
-int main() {
+/*int main() {
 	UI ui;
-	return 0;
-}
 
-*/
+	return 0;
+}*/
 

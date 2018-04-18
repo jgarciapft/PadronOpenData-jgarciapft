@@ -8,10 +8,12 @@
 #define PADRON_H_
 
 #include "GestorBarrio.h"
+#include <fstream>
 
 namespace std {
 
 class Padron {
+
 private:
 	GestorBarrio* gBarrio;
 	ListaPI<DatosDemograficos*>* lDatDemograficos;
@@ -19,6 +21,8 @@ private:
 public:
 	Padron();
 	~Padron();
+
+	void cargarBarrios();
 };
 
 }
