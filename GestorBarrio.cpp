@@ -29,6 +29,18 @@ void GestorBarrio::insertar(Barrio* b) {
 	lBarrios->avanzar();
 }
 
+void GestorBarrio::insertarVia(Via* v) {
+	Barrio* bAux;
+
+	lBarrios->moverInicio();
+	while(!lBarrios->finLista()){
+		lBarrios->consultar(bAux);
+		lBarrios->avanzar();
+		if(bAux->getNombreBarrio() == v->getBarrioVia())
+			bAux->insertarVia(v);
+	}
+}
+
 void GestorBarrio::mostrar() {
 	Barrio* bAux;
 

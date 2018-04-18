@@ -19,6 +19,7 @@ public:
 	~GestorBarrio();
 
 	void insertar(Barrio* b);
+	void insertarVia(Via* v);
 	void mostrar();
 };
 
