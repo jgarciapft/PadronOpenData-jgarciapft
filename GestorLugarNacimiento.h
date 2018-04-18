@@ -20,6 +20,8 @@ public:
 	GestorLugarNacimiento();
 	GestorLugarNacimiento(string lugaresNacimiento);
 	~GestorLugarNacimiento();
+
+	void mostrar();
 };
 
 }

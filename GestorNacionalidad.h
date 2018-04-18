@@ -20,6 +20,8 @@ public:
 	GestorNacionalidad();
 	GestorNacionalidad(string nacionalidades);
 	~GestorNacionalidad();
+
+	void mostrar();
 };
 
 }

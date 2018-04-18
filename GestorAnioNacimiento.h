@@ -20,6 +20,8 @@ public:
 	GestorAnioNacimiento();
 	GestorAnioNacimiento(string aniosNacimiento);
 	~GestorAnioNacimiento();
+
+	void mostrar();
 };
 
 }

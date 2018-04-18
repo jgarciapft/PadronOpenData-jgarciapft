@@ -34,4 +34,17 @@ GestorAnioNacimiento::~GestorAnioNacimiento() {
 	delete lAnioNacimiento;
 }
 
+void GestorAnioNacimiento::mostrar() {
+	AnioNacimiento* anNacAux;
+
+	lAnioNacimiento->moverInicio();
+	while(!lAnioNacimiento->finLista()){
+		lAnioNacimiento->consultar(anNacAux);
+		lAnioNacimiento->avanzar();
+		cout << "Año : " << anNacAux->getAnio() << " | Personas : " << anNacAux->getNPersonas() << endl;
+	}
 }
+
+}
+
+

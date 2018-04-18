@@ -20,6 +20,8 @@ public:
 	GestorEstudios();
 	GestorEstudios(string estudios);
 	~GestorEstudios();
+
+	void mostrar();
 };
 
 }

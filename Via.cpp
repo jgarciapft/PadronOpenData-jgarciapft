@@ -54,6 +54,10 @@ void Via::setDatosDemograficos(DatosDemograficos* dD) {
 	datDemograficos = dD;
 }
 
+void Via::mostrar() {
+	datDemograficos->mostrar();
+}
+
 bool Via::operator >(const Via& v) {	//@PREGUNTA: Es esta la mejor manera?
 	bool res = false;					//Supongo que se producen más resultados falsos que verdaderos para optimizar el código
 

@@ -35,3 +35,5 @@ int LugarNacimiento::getNPersonas() {
 }
 
 }
+
+

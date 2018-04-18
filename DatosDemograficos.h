@@ -32,6 +32,7 @@ public:
 	int getCodVia();
 	int getNMujeres();
 	int getNHombres();
+	void mostrar();
 };
 
 }

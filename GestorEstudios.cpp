@@ -34,3 +34,14 @@ GestorEstudios::~GestorEstudios() {
 }
 
 }
+
+void std::GestorEstudios::mostrar() {
+	Estudios* estAux;
+
+	lEstudios->moverInicio();
+	while(!lEstudios->finLista()){
+		lEstudios->consultar(estAux);
+		lEstudios->avanzar();
+		cout << "Nivel de estudios : " << estAux->getNivEstudios() << " | Personas : " << estAux->getNPersonas() << endl;
+	}
+}

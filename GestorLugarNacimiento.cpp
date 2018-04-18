@@ -37,4 +37,17 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {
 	delete lLugarNacimiento;
 }
 
+void GestorLugarNacimiento::mostrar() {
+	LugarNacimiento* lNacAux;
+
+	lLugarNacimiento->moverInicio();
+	while(!lLugarNacimiento->finLista()){
+		lLugarNacimiento->consultar(lNacAux);
+		lLugarNacimiento->avanzar();
+		cout << "Población : " << lNacAux->getPoblacion() << " Provincia : " << lNacAux->getProvinciaPais() << " | Personas : " << lNacAux->getNPersonas() << endl;
+	}
 }
+
+}
+
+

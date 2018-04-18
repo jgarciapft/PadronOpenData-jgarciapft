@@ -30,6 +30,7 @@ public:
 	string getTipoVia();
 	int getCodVia();
 	void setDatosDemograficos(DatosDemograficos* dD);
+	void mostrar();
 
 	bool operator >(const Via& v);
 };
