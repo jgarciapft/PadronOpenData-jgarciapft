@@ -33,11 +33,22 @@ void GestorBarrio::insertarVia(Via* v) {
 	Barrio* bAux;
 
 	lBarrios->moverInicio();
-	while(!lBarrios->finLista()){
+	while(!lBarrios->finLista()){				//Puede existir la misma vía en dos barrios. Hay que recorrer la lista de barrios entera
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
 		if(bAux->getNombreBarrio() == v->getBarrioVia())
 			bAux->insertarVia(v);
+	}
+}
+
+void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {
+	Barrio* bAux;
+
+	lBarrios->moverInicio();
+	while(!lBarrios->finLista()){				//Al poder haber duplicidad de vías hay que recorrer la lista de barrios entera y pasarles el dato
+		lBarrios->consultar(bAux);
+		lBarrios->avanzar();
+		bAux->insertarDatosDemograficos(dD);
 	}
 }
 
@@ -50,11 +61,9 @@ void GestorBarrio::mostrar() {
 		lBarrios->avanzar();
 		cout << "Barrio : " << bAux->getNombreBarrio() << " | Distrito : " << bAux->getNombreDistrito() << endl << endl;
 		cout << "***********************************************************************************************" << endl;
-		bAux->mostrar();				//Muestra todas las de cada barrio, que deben de estar en orden alfabético por el nombre de la vía
+		bAux->mostrar();					//Muestra todas las de cada barrio, que deben de estar en orden alfabético por el nombre de la vía
 		cout << "***********************************************************************************************" << endl << endl;
 	}
 }
 
 }
-
-
