@@ -40,6 +40,21 @@ void GestorVia::insertarViaOrden(Via* v) { //@PREGUNTA: prima más la legibilida
 	lVias->avanzar();
 }
 
+void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {
+	bool enc = false;
+	Via* vAux;
+
+	lVias->moverInicio();
+	while(!lVias->finLista() && !enc){		//Cada vía es única en su barrio, y cada código de vía es único en cada vía. Paramos cuando coincidan los codigos o se acabe la lista
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		if(vAux->getCodVia() == dD->getCodVia()){
+			vAux->setDatosDemograficos(dD);
+			enc = true;
+		}
+	}
+}
+
 void GestorVia::mostrar() {
 	Via* vAux;
 
@@ -53,5 +68,3 @@ void GestorVia::mostrar() {
 }
 
 }
-
-
