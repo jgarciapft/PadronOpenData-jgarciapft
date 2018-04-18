@@ -6,6 +6,7 @@
 // Description : Pruebas para trocear cadenas
 //============================================================================
 #include "Utils.h"
+#include "timer.h"
 
 //@TEST includes para testeo
 #include "Padron.h"
@@ -66,9 +67,14 @@ void pruebaTrocearCadenas(){
 
 int main(){
 	Padron p;
+	double tStart, tEnd;
 
 	//pruebaTrocearCadenas();
+
+	tStart = Time::getTime();
 	p.cargarBarrios();
 	p.cargarVias();
 	p.cargarDatosDemograficos();
+	tEnd = Time::getTime();
+	cout << "Tiempo : " << tEnd-tStart << " seg."<< endl;
 }
