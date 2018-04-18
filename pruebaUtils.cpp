@@ -65,7 +65,7 @@ void pruebaTrocearCadenas(){
 	pruebaTrocearCadenaNacionalidad(cadena);
 }
 
-int main(){
+int main(){					//@TEST: main de pruebas
 	Padron p;
 	double tStart, tEnd;
 
