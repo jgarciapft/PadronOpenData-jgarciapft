@@ -44,7 +44,7 @@ void GestorLugarNacimiento::mostrar() {
 	while(!lLugarNacimiento->finLista()){
 		lLugarNacimiento->consultar(lNacAux);
 		lLugarNacimiento->avanzar();
-		cout << "Población : " << lNacAux->getPoblacion() << " Provincia : " << lNacAux->getProvinciaPais() << " | Personas : " << lNacAux->getNPersonas() << endl;
+		cout << "Población : " << lNacAux->getPoblacion() << " | Provincia/Pais : " << lNacAux->getProvinciaPais() << " | Personas : " << lNacAux->getNPersonas() << endl;
 	}
 }
 
