@@ -68,6 +68,8 @@ void Padron::cargarVias() {
 			}
 		}
 	}
+	gBarrio->mostrar();										//@TEST: Muestra todas las vias de todos los barrios
+	fEnt.close();
 }
 
 }
