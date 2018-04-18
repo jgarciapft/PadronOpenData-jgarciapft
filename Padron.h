@@ -23,6 +23,7 @@ public:
 	~Padron();
 
 	void cargarBarrios();
+	void cargarVias();
 };
 
 }
