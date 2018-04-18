@@ -42,7 +42,9 @@ void Padron::cargarBarrios() {
 		}
 	}
 	gBarrio->insertar(new Barrio(DEF_BARRIO, ""));			//Barrio que contendrá las vías que no tengan ningún barrio asignado
-	gBarrio->mostrar();										//@TEST: Muestra los barrios en el orden de inserción
+	//gBarrio->mostrar();									//@TEST: Muestra los barrios en el orden de inserción
+	fEnt.close();
 }
+
 
 }
