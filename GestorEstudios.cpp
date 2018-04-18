@@ -19,6 +19,7 @@ GestorEstudios::GestorEstudios(string estudios) {
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);
 		lEstudios->insertar(new Estudios(vString[0], atoi(vString[1].c_str())));
+		lEstudios->avanzar();
 	}
 }
 

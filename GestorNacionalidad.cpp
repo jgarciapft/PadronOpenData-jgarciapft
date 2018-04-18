@@ -19,6 +19,7 @@ GestorNacionalidad::GestorNacionalidad(string nacionalidades) {
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);
 		lNacionalidad->insertar(new Nacionalidad(vString[0], atoi(vString[1].c_str())));
+		lNacionalidad->avanzar();
 	}
 }
 

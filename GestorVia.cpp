@@ -62,8 +62,8 @@ void GestorVia::mostrar() {
 	while(!lVias->finLista()){
 		lVias->consultar(vAux);
 		lVias->avanzar();
-		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " Longitud : " <<
-				vAux->getLongitudVia() << " (m) Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
+		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " | Longitud : " <<
+				vAux->getLongitudVia() << " | (m) Tipo : " << vAux->getTipoVia() << " | Codigo : " << vAux->getCodVia() << endl;
 		cout << "-----------------------------------------------------------------------------------------------" << endl;
 		vAux->mostrar();					//Muestra todos los datos demograficos de cada vía
 		cout << "-----------------------------------------------------------------------------------------------" << endl << endl;

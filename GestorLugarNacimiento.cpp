@@ -18,10 +18,13 @@ GestorLugarNacimiento::GestorLugarNacimiento(string lugaresNacimiento) {
 	vector<string> vText = splitStringToVector(lugaresNacimiento, DELIM);
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);
-		if ( vString.size()== 2)
+		if ( vString.size()== 2){
 			lLugarNacimiento->insertar(new LugarNacimiento("", vString[0], atoi(vString[1].c_str())));
-		else
+			lLugarNacimiento->avanzar();
+		}else{
 			lLugarNacimiento->insertar(new LugarNacimiento(vString[0], vString[1], atoi(vString[2].c_str())));
+			lLugarNacimiento->avanzar();
+		}
 	}
 }
 

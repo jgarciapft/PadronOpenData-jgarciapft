@@ -19,6 +19,7 @@ GestorAnioNacimiento::GestorAnioNacimiento(string aniosNacimiento) {
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);
 		lAnioNacimiento->insertar(new AnioNacimiento(atoi(vString[0].c_str()), atoi(vString[1].c_str())));
+		lAnioNacimiento->avanzar();
 	}
 }
 
