@@ -16,7 +16,7 @@ const int N_CAMPOS_BARRIO = 2; 									//Número de campos del fichero de datos
 const int N_CAMPOS_VIA = 5;										//Número de campos del fichero de datos de vías
 const int N_CAMPOS_DATOS_DEMOGRAFICOS = 7;						//Número de campos del fichero de datos de datos demográficos
 const char SEP = '#'; 											//Carácter separador de campos en los ficheros de datos
-const string DEF_BARRIO = "BARRIO CONTENEDOR";					//Nombre del barrio que incluirá las vías que no tienen ningún barrio asignado
+const string DEF_BARRIO = "BARRIO CONTENEDOR";					//Nombre del distrito del objeto barrio que incluirá las vías que no tienen ningún barrio asignado
 
 Padron::Padron() {
 	gBarrio = new GestorBarrio();
@@ -43,7 +43,7 @@ void Padron::cargarBarrios() {
 				gBarrio->insertar(new Barrio(campos[0], campos[1]));
 		}
 	}
-	gBarrio->insertar(new Barrio(DEF_BARRIO, ""));			//Barrio que contendrá las vías que no tengan ningún barrio asignado
+	gBarrio->insertar(new Barrio("", DEF_BARRIO));			//Barrio que contendrá las vías que no tengan ningún barrio asignado
 	//gBarrio->mostrar();									//@TEST: Muestra los barrios en el orden de inserción
 	fEnt.close();
 }
