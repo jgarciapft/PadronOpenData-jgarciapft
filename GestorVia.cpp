@@ -39,5 +39,17 @@ void GestorVia::insertarViaOrden(Via* v) { //@PREGUNTA: prima más la legibilida
 	lVias->insertar(v);						//Quedan manejados los casos: 1.Primer elemento de la lista, 2. Último elemento de la lista
 }
 
+void GestorVia::mostrar() {
+	Via* vAux;
+
+	lVias->moverInicio();
+	while(!lVias->finLista()){
+		lVias->consultar(vAux);
+		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " Longitud : " <<
+				vAux->getLongitudVia() << " Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
+	}
 }
+
+}
+
 

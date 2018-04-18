@@ -36,7 +36,10 @@ void GestorBarrio::mostrar() {
 	while(!lBarrios->finLista()){
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
-		cout << "Barrio : " << bAux->getNombreBarrio() << " | Distrito : " << bAux->getNombreDistrito() << endl;
+		cout << "Barrio : " << bAux->getNombreBarrio() << " | Distrito : " << bAux->getNombreDistrito() << endl << endl;
+		cout << "***********************************************************************************************" << endl;
+		bAux->mostrar();				//Muestra todas las de cada barrio, que deben de estar en orden alfabético por el nombre de la vía
+		cout << "***********************************************************************************************" << endl << endl;
 	}
 }
 

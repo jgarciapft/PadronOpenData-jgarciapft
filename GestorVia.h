@@ -19,6 +19,7 @@ public:
 	~GestorVia();
 
 	void insertarViaOrden(Via* v);
+	void mostrar();
 };
 
 }
