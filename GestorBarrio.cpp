@@ -33,7 +33,7 @@ void GestorBarrio::mostrar() {
 	Barrio* bAux;
 
 	lBarrios->moverInicio();
-	while(!lBarrios->enFin()){
+	while(!lBarrios->finLista()){
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
 		cout << "Barrio : " << bAux->getNombreBarrio() << " | Distrito : " << bAux->getNombreDistrito() << endl;

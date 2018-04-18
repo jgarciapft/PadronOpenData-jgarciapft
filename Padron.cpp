@@ -37,11 +37,12 @@ void Padron::cargarBarrios() {
 		while(!fEnt.eof()){
 			getline(fEnt, cad[0], SEP); 					//Lee el nombre del barrio
 			getline(fEnt, cad[1]);							//Lee el nombre del distrito
-			gBarrio->insertar(new Barrio(cad[0], cad[1]));
+			if(!fEnt.eof())									//Doble comprobación del FINAL DE FICHERO
+				gBarrio->insertar(new Barrio(cad[0], cad[1]));
 		}
 	}
-	gBarrio->insertar(new Barrio(DEF_BARRIO.c_str(), ""));	//Barrio que contendrá las vías que no tengan ningún barrio asignado
-	//gBarrio->mostrar();									//@TEST: Muestra los barrios en el orden de inserción
+	gBarrio->insertar(new Barrio(DEF_BARRIO, ""));			//Barrio que contendrá las vías que no tengan ningún barrio asignado
+	gBarrio->mostrar();										//@TEST: Muestra los barrios en el orden de inserción
 }
 
 }
