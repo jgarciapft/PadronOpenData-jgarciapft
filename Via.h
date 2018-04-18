@@ -29,6 +29,8 @@ public:
 	float getLongitudVia();
 	string getTipoVia();
 	int getCodVia();
+
+	bool operator >(const Via& v);
 };
 
 }
