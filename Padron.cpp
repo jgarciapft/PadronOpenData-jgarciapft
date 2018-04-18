@@ -14,6 +14,7 @@ const string RUTA_VIAS = "Via.csv"; 							//Ruta relativa del fichero que conti
 const string RUTA_DATOS_DEMOGRAFICOS = "InformacionPadron.csv"; //Ruta relativa del fichero que contiene la informacion del padrón (Año 2016)
 const int N_CAMPOS_BARRIO = 2; 									//Número de campos del fichero de datos de barrios
 const char SEP = '#'; 											//Carácter separador de campos en los ficheros de datos
+const string DEF_BARRIO = "BARRIO CONTENEDOR";					//Nombre del barrio que incluirá las vías que no tienen ningún barrio asignado
 
 Padron::Padron() {
 	gBarrio = new GestorBarrio();
@@ -39,7 +40,8 @@ void Padron::cargarBarrios() {
 			gBarrio->insertar(new Barrio(cad[0], cad[1]));
 		}
 	}
-	gBarrio->mostrar();										//@TEST: Muestra los barrios en el orden de inserción
+	gBarrio->insertar(new Barrio(DEF_BARRIO.c_str(), ""));	//Barrio que contendrá las vías que no tengan ningún barrio asignado
+	//gBarrio->mostrar();									//@TEST: Muestra los barrios en el orden de inserción
 }
 
 }
