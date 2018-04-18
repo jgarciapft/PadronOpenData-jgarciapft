@@ -36,4 +36,8 @@ void Barrio::insertarVia(Via* v) {
 	gVias->insertarViaOrden(v);
 }
 
+void Barrio::mostrar() {
+	gVias->mostrar();
+}
+
 }
