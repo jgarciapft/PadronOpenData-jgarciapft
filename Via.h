@@ -29,6 +29,7 @@ public:
 	float getLongitudVia();
 	string getTipoVia();
 	int getCodVia();
+	void setDatosDemograficos(DatosDemograficos* dD);
 
 	bool operator >(const Via& v);
 };

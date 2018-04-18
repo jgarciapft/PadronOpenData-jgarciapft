@@ -50,6 +50,10 @@ int Via::getCodVia() {
 	return codVia;
 }
 
+void Via::setDatosDemograficos(DatosDemograficos* dD) {
+	datDemograficos = dD;
+}
+
 bool Via::operator >(const Via& v) {	//@PREGUNTA: Es esta la mejor manera?
 	bool res = false;					//Supongo que se producen más resultados falsos que verdaderos para optimizar el código
 
@@ -60,5 +64,3 @@ bool Via::operator >(const Via& v) {	//@PREGUNTA: Es esta la mejor manera?
 }
 
 }
-
-
