@@ -69,4 +69,5 @@ int main(){
 
 	//pruebaTrocearCadenas();
 	p.cargarBarrios();
+	p.cargarVias();
 }

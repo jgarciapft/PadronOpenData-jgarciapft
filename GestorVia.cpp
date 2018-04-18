@@ -37,6 +37,7 @@ void GestorVia::insertarViaOrden(Via* v) { //@PREGUNTA: prima más la legibilida
 			lVias->avanzar();				//Solo avanzo si no he encontrado el hueco dónde insertar porque quiero insertar delante del pI
 	}
 	lVias->insertar(v);						//Quedan manejados los casos: 1.Primer elemento de la lista, 2. Último elemento de la lista
+	lVias->avanzar();
 }
 
 void GestorVia::mostrar() {

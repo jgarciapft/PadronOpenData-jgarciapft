@@ -64,6 +64,7 @@ void Padron::cargarVias() {
 			if(!fEnt.eof()){								//Doble comprobación del FINAL DE FICHERO
 				vAux = new Via(campos[0], campos[1], atof(campos[2].c_str()), campos[3], atoi(campos[4].c_str()));
 				lVias->insertar(vAux);						//Insertar la via recien creada en la lista auxiliar de todas las vías
+				lVias->avanzar();
 				gBarrio->insertarVia(vAux);
 			}
 		}
