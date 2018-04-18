@@ -51,7 +51,7 @@ void Padron::cargarBarrios() {
 void Padron::cargarVias() {
 	fstream fEnt;
 	string campos[N_CAMPOS_VIA];
-	Via* vAux;												//Puntero a objeto 'Via' auxiliar para almacenar la vía recién creada en la lista auxiliar y su(s) barrio(s) correspondientes
+	Via* vAux;												//Puntero a objeto 'Via' auxiliar para almacenar la vía recién creada en la lista auxiliar y en su(s) barrio(s) correspondientes
 
 	fEnt.open(RUTA_VIAS.c_str());
 	if(fEnt.is_open()){
@@ -70,7 +70,43 @@ void Padron::cargarVias() {
 		}
 	}
 	gBarrio->mostrar();										//@TEST: Muestra todas las vias de todos los barrios
+
+	cout << "LISTA DE VÍAS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todas las vías
+	cout << "***********************************************************************************************" << endl;
+	lVias->moverInicio();
+	while(!lVias->finLista()){
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " Longitud : " <<
+					vAux->getLongitudVia() << " Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
+	}
+	cout << "***********************************************************************************************" << endl;
+
 	fEnt.close();
+}
+
+void Padron::cargarDatosDemograficos() {
+	fstream fEnt;
+	string campos[N_CAMPOS_DATOS_DEMOGRAFICOS];
+	DatosDemograficos* dD;										//Puntero a objeto 'DatosDemograficos' auxiliar para almacenar el dato recién creado en la lista auxiliar y en su vía correspondiente
+
+	fEnt.open(RUTA_DATOS_DEMOGRAFICOS.c_str(), ios::in);
+	if(fEnt.is_open()){
+		getline(fEnt, campos[0]); 								//Salta la cabecera
+		while(!fEnt.eof()){
+			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){	//Lee todos los campos de cada dato menos el último
+				getline(fEnt, campos[i], SEP);
+			}
+			getline(fEnt, campos[6]);							//Lee el último campo
+			if(!fEnt.eof()){									//Doble comprobación del FINAL DE FICHERO
+				dD = new DatosDemograficos(atoi(campos[0].c_str()), campos[1], campos[2], campos[3], atoi(campos[4].c_str()),
+							atoi(campos[5].c_str()), campos[6]);
+				lDatDemograficos->insertar(dD);
+				lDatDemograficos->avanzar();
+				gBarrio->insertarDatosDemograficos(dD);
+			}
+		}
+	}
 }
 
 }

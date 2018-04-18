@@ -24,6 +24,7 @@ public:
 
 	void cargarBarrios();
 	void cargarVias();
+	void cargarDatosDemograficos();
 };
 
 }

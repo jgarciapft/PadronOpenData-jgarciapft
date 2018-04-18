@@ -48,7 +48,7 @@ void GestorVia::mostrar() {
 		lVias->consultar(vAux);
 		lVias->avanzar();
 		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " Longitud : " <<
-				vAux->getLongitudVia() << " Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
+				vAux->getLongitudVia() << " (m) Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
 	}
 }
 
