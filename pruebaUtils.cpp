@@ -70,4 +70,5 @@ int main(){
 	//pruebaTrocearCadenas();
 	p.cargarBarrios();
 	p.cargarVias();
+	p.cargarDatosDemograficos();
 }

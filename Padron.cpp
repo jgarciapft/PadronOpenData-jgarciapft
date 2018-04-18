@@ -111,7 +111,7 @@ void Padron::cargarDatosDemograficos() {
 
 	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
 	cout << "***********************************************************************************************" << endl;
-	lVias->moverInicio();
+	lDatDemograficos->moverInicio();
 	while(!lDatDemograficos->finLista()){
 		lDatDemograficos->consultar(dD);
 		lDatDemograficos->avanzar();
