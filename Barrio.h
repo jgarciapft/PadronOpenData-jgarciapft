@@ -24,6 +24,7 @@ public:
 	string getNombreBarrio();
 	string getNombreDistrito();
 	void insertarVia(Via* v);
+	void insertarDatosDemograficos(DatosDemograficos* dD);
 	void mostrar();
 };
 

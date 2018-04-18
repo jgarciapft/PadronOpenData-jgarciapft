@@ -36,6 +36,10 @@ void Barrio::insertarVia(Via* v) {
 	gVias->insertarViaOrden(v);
 }
 
+void Barrio::insertarDatosDemograficos(DatosDemograficos* dD) {
+	gVias->insertarDatosDemograficos(dD);
+}
+
 void Barrio::mostrar() {
 	gVias->mostrar();
 }
