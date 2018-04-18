@@ -32,4 +32,8 @@ string Barrio::getNombreDistrito() {
 	return nombreDistrito;
 }
 
+void Barrio::insertarVia(Via* v) {
+	gVias->insertarViaOrden(v);
+}
+
 }

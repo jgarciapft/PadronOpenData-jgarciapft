@@ -23,6 +23,7 @@ public:
 
 	string getNombreBarrio();
 	string getNombreDistrito();
+	void insertarVia(Via* v);
 };
 
 }
