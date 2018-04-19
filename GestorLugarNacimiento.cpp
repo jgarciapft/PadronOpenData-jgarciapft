@@ -20,11 +20,10 @@ GestorLugarNacimiento::GestorLugarNacimiento(string lugaresNacimiento) {
 		vector<string> vString = splitString(vText[i]);
 		if ( vString.size()== 2){
 			lLugarNacimiento->insertar(new LugarNacimiento("", vString[0], atoi(vString[1].c_str())));
-			lLugarNacimiento->avanzar();
 		}else{
 			lLugarNacimiento->insertar(new LugarNacimiento(vString[0], vString[1], atoi(vString[2].c_str())));
-			lLugarNacimiento->avanzar();
 		}
+		lLugarNacimiento->avanzar();
 	}
 }
 
@@ -38,6 +37,21 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {
 		lLugarNacimiento->borrar();
 	}
 	delete lLugarNacimiento;
+}
+
+void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lNac) {
+	bool enc = false;
+	LugarNacimiento* lNacAux;
+
+	lLugarNacimiento->moverInicio();
+	while(!lLugarNacimiento->finLista() && !enc){
+		lLugarNacimiento->consultar(lNacAux);
+		if(*lNac > *lNacAux)
+			enc = true;
+		else
+			lLugarNacimiento->avanzar();
+	}
+	lLugarNacimiento->insertar(lNac);
 }
 
 void GestorLugarNacimiento::mostrar() {

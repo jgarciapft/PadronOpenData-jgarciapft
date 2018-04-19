@@ -34,7 +34,7 @@ int LugarNacimiento::getNPersonas() {
 	return nPersonas;
 }
 
-bool LugarNacimiento::operator >(const LugarNacimiento& lNac) {
+bool LugarNacimiento::operator >(const LugarNacimiento& lNac) { 		//@PREGUNTA: Es necesario tener en cuenta la población?
 	bool res = false;
 
 	if(provinciaPais.compare(lNac.provinciaPais) == -1){				//Primer criterio de comparación: orden alfabético de 'provinciaPais'

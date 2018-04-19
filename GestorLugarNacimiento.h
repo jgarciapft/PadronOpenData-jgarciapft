@@ -16,6 +16,8 @@ namespace std {
 class GestorLugarNacimiento {
 private:
 	ListaPI<LugarNacimiento*>* lLugarNacimiento;
+
+	void insertarOrden(LugarNacimiento* lNac);
 public:
 	GestorLugarNacimiento();
 	GestorLugarNacimiento(string lugaresNacimiento);
