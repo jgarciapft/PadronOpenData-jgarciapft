@@ -8,7 +8,7 @@
 
 namespace std {
 
-/*** DEFINCIÓN DE CONSTANTES ***/ //@NOTA: Pensar declaracion/inicializacion de constantes
+/*** DEFINCIÓN DE CONSTANTES *** @NOTA: Pensar declaracion/inicializacion de constantes */
 const string RUTA_BARRIO = "Barrio.csv"; 						//Ruta relativa del fichero que contiene la información de los barrios
 const string RUTA_VIAS = "Via.csv"; 							//Ruta relativa del fichero que contiene la información de las vías
 const string RUTA_DATOS_DEMOGRAFICOS = "InformacionPadron.csv"; //Ruta relativa del fichero que contiene la informacion del padrón (Año 2016)
@@ -107,17 +107,17 @@ void Padron::cargarDatosDemograficos() {
 			}
 		}
 	}
-	gBarrio->mostrar();														//@TEST: Muestra todos los datos demograficos de todas las vias de todos los barrios
-
-	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
-	cout << "***********************************************************************************************" << endl;
-	lDatDemograficos->moverInicio();
-	while(!lDatDemograficos->finLista()){
-		lDatDemograficos->consultar(dD);
-		lDatDemograficos->avanzar();
-		dD->mostrar();
-	}
-	cout << "***********************************************************************************************" << endl;
+//	gBarrio->mostrar();														//@TEST: Muestra todos los datos demograficos de todas las vias de todos los barrios
+//
+//	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
+//	cout << "***********************************************************************************************" << endl;
+//	lDatDemograficos->moverInicio();
+//	while(!lDatDemograficos->finLista()){
+//		lDatDemograficos->consultar(dD);
+//		lDatDemograficos->avanzar();
+//		dD->mostrar();
+//	}
+//	cout << "***********************************************************************************************" << endl;
 
 	fEnt.close();
 }
@@ -133,6 +133,8 @@ void Padron::alg6() {														//@NOTA: Nombre provisional
 		dD->alg6(gLugNacimiento);
 	}
 	gLugNacimiento->mostrar();
+
+	delete gLugNacimiento;
 }
 
 }

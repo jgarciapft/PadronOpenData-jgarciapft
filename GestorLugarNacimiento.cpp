@@ -8,6 +8,9 @@
 
 namespace std {
 
+/*** DEFINCIÓN DE CONSTANTES ***/
+const string POBLACION_TEXTO_RELLENO = "";				//Texto de relleno para 'poblacion' al crear nuevos objetos 'LugarNacimiento' aplicado al algoritmo 6
+
 GestorLugarNacimiento::GestorLugarNacimiento() {
 	lLugarNacimiento = new ListaPI<LugarNacimiento*>();
 }
@@ -19,7 +22,7 @@ GestorLugarNacimiento::GestorLugarNacimiento(string lugaresNacimiento) {
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);
 		if ( vString.size()== 2){
-			lLugarNacimiento->insertar(new LugarNacimiento("", vString[0], atoi(vString[1].c_str())));
+			lLugarNacimiento->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, vString[0], atoi(vString[1].c_str())));
 		}else{
 			lLugarNacimiento->insertar(new LugarNacimiento(vString[0], vString[1], atoi(vString[2].c_str())));
 		}

@@ -48,7 +48,12 @@ bool LugarNacimiento::operator >=(const LugarNacimiento& lNac) { 		//@NOTA: Adec
 }
 
 bool LugarNacimiento::operator ==(const LugarNacimiento& lNac) {		//@NOTA: Adecuado si solo se le da uso para el algoritmo 6
-	return !bool(provinciaPais.compare(lNac.provinciaPais));			//Criterio de comparación: coincidencia de cadenas carácter a carácter
+	bool res = false;													//Supongo que se producen más resultados falsos que verdaderos para optimizar el código
+
+	if(provinciaPais.compare(lNac.provinciaPais) == 0)
+		res = true;
+
+	return res;															//Criterio de comparación: coincidencia de cadenas carácter a carácter
 }
 
 }
