@@ -49,6 +49,10 @@ int DatosDemograficos::getNHombres() {
 	return nHombres;
 }
 
+void DatosDemograficos::alg6(GestorLugarNacimiento*& gLugNacimiento) {				//@NOTA: Nombre provisional
+	gLugarNacimiento->alg6(gLugNacimiento);
+}
+
 void DatosDemograficos::mostrar() {
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	gAnioNacimiento->mostrar();

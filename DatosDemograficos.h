@@ -32,6 +32,7 @@ public:
 	int getCodVia();
 	int getNMujeres();
 	int getNHombres();
+	void alg6(GestorLugarNacimiento*& gLugNacimiento);
 	void mostrar();
 };
 

@@ -57,6 +57,17 @@ void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lNac) {												//
 		lLugarNacimiento->insertar(new LugarNacimiento("", lNac->getProvinciaPais(), lNac->getNPersonas()));	//Si no existe, se inserta un nuevo objeto. Si modificasemos los objetos ya introducimos en memoria cambiaríamos los datos del padrón. Maneja el caso de la lista vacía inicialmente
 }
 
+void GestorLugarNacimiento::alg6(GestorLugarNacimiento*& gLugNacimiento) {										//@NOTA: Nombre provisional
+	LugarNacimiento* lNacAux;
+
+	lLugarNacimiento->moverInicio();
+	while(!lLugarNacimiento->finLista()){
+		lLugarNacimiento->consultar(lNacAux);
+		lLugarNacimiento->avanzar();
+		gLugNacimiento->insertarOrden(lNacAux);
+	}
+}
+
 void GestorLugarNacimiento::mostrar() {
 	LugarNacimiento* lNacAux;
 

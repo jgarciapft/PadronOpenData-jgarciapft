@@ -23,6 +23,7 @@ public:
 	GestorLugarNacimiento(string lugaresNacimiento);
 	~GestorLugarNacimiento();
 
+	void alg6(GestorLugarNacimiento*& gLugNacimiento);
 	void mostrar();
 };
 
