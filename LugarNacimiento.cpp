@@ -34,6 +34,20 @@ int LugarNacimiento::getNPersonas() {
 	return nPersonas;
 }
 
+bool LugarNacimiento::operator >(const LugarNacimiento& lNac) {
+	bool res = false;
+
+	if(provinciaPais.compare(lNac.provinciaPais) == -1){				//Primer criterio de comparación: orden alfabético de 'provinciaPais'
+		res = true;
+	}else if(provinciaPais.compare(lNac.provinciaPais) == 0){
+		if(poblacion.compare(lNac.poblacion) == -1){					//Segundo criterio de comparación: orden alfabético de 'poblacion'
+			res = true;
+		}
+	}
+
+	return res;
+}
+
 }
 
 

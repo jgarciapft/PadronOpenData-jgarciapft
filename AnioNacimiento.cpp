@@ -1,7 +1,6 @@
 /*
  * AnioNacimiento.cpp
  *
- *  Created on: 14 abr. 2018
  *      Autor: jgarciapft
  */
 

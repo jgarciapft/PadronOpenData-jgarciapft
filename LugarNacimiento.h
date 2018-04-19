@@ -24,6 +24,7 @@ public:
 	string getPoblacion();
 	string getProvinciaPais();
 	int getNPersonas();
+	bool operator >(const LugarNacimiento& lNac);
 };
 
 }
