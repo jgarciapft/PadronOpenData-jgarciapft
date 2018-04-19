@@ -24,8 +24,10 @@ public:
 	string getPoblacion();
 	string getProvinciaPais();
 	int getNPersonas();
+	void incNPersonas(int nP);
 
-	bool operator >(const LugarNacimiento& lNac);
+	bool operator >=(const LugarNacimiento& lNac);
+	bool operator ==(const LugarNacimiento& lNac);
 };
 
 }

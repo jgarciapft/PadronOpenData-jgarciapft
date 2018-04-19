@@ -34,18 +34,21 @@ int LugarNacimiento::getNPersonas() {
 	return nPersonas;
 }
 
-bool LugarNacimiento::operator >(const LugarNacimiento& lNac) { 		//@PREGUNTA: Es necesario tener en cuenta la población?
+void LugarNacimiento::incNPersonas(int nP) {
+	nPersonas += nP;
+}
+
+bool LugarNacimiento::operator >=(const LugarNacimiento& lNac) { 		//@NOTA: Adecuado si solo se le da uso para el algoritmo 6
 	bool res = false;
 
-	if(provinciaPais.compare(lNac.provinciaPais) == -1){				//Primer criterio de comparación: orden alfabético de 'provinciaPais'
+	if(provinciaPais.compare(lNac.provinciaPais) <= 0)					//Criterio de comparación: orden alfabético de 'provinciaPais'
 		res = true;
-	}else if(provinciaPais.compare(lNac.provinciaPais) == 0){
-		if(poblacion.compare(lNac.poblacion) == -1){					//Segundo criterio de comparación: orden alfabético de 'poblacion'
-			res = true;
-		}
-	}
 
 	return res;
+}
+
+bool LugarNacimiento::operator ==(const LugarNacimiento& lNac) {		//@NOTA: Adecuado si solo se le da uso para el algoritmo 6
+	return !bool(provinciaPais.compare(lNac.provinciaPais));			//Criterio de comparación: coincidencia de cadenas carácter a carácter
 }
 
 }

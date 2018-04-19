@@ -122,4 +122,9 @@ void Padron::cargarDatosDemograficos() {
 	fEnt.close();
 }
 
+void Padron::alg6() {														//@NOTA: Nombre provisional
+	GestorLugarNacimiento* gLugNacimiento = new GestorLugarNacimiento();	//Gestor auxiliar para manejar la lista ordenada de provincias
+	LugarNacimiento* lNacAux;
+}
+
 }
