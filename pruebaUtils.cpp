@@ -77,6 +77,5 @@ int main(){					//@TEST: main de pruebas
 	p.cargarDatosDemograficos();
 	tEnd = Time::getTime();
 	cout << "Tiempo de carga de datos : " << tEnd-tStart << " seg."<< endl;
-
-	//p.alg6();
+	p.alg6();
 }

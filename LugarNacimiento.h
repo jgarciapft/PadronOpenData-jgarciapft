@@ -26,8 +26,8 @@ public:
 	int getNPersonas();
 	void incNPersonas(int nP);
 
-	bool operator >=(const LugarNacimiento& lNac);
-	bool operator ==(const LugarNacimiento& lNac);
+	bool operator >=(const LugarNacimiento& lugNac);
+	bool operator ==(const LugarNacimiento& lugNac);
 };
 
 }

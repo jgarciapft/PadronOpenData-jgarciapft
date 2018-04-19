@@ -31,54 +31,59 @@ GestorLugarNacimiento::GestorLugarNacimiento(string lugaresNacimiento) {
 }
 
 GestorLugarNacimiento::~GestorLugarNacimiento() {
-	LugarNacimiento* lNacAux;
+	LugarNacimiento* lugNacAux;
 
 	lLugarNacimiento->moverInicio();
 	while(!lLugarNacimiento->enFin()){
-		lLugarNacimiento->consultar(lNacAux);
-		delete lNacAux;
+		lLugarNacimiento->consultar(lugNacAux);
+		delete lugNacAux;
 		lLugarNacimiento->borrar();
 	}
 	delete lLugarNacimiento;
 }
 
-void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lNac) {												//@NOTA: Adecuado solo para el algoritmo 6
+void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lugNac) {										//@NOTA: Adecuado solo para el algoritmo 6
 	bool enc = false;
-	LugarNacimiento* lNacAux;
+	LugarNacimiento* lugNacAux;
 
-	lLugarNacimiento->moverInicio();
-	while(!lLugarNacimiento->finLista() && !enc){
-		lLugarNacimiento->consultar(lNacAux);
-		if(*lNac >= *lNacAux)
-			enc = true;
+	if(!lLugarNacimiento->estaVacia()){
+		lLugarNacimiento->moverInicio();
+		while(!lLugarNacimiento->finLista() && !enc){
+			lLugarNacimiento->consultar(lugNacAux);
+			if(*lugNac >= *lugNacAux)
+				enc = true;
+			else
+				lLugarNacimiento->avanzar();																								//Se avanza solo si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
+		}
+		if(*lugNac == *lugNacAux)																											//Se comprueba que el dato no se duplique. La condición de duplicidad es que haya 2 datos con el mismo valor para 'provinciaPais'
+			lugNacAux->incNPersonas(lugNac->getNPersonas());																				//Si existe se actualiza el atributo 'nPersonas' a modo de acumulador
 		else
-			lLugarNacimiento->avanzar();																		//Se avanza solo si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
+			lLugarNacimiento->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNac->getProvinciaPais(), lugNac->getNPersonas()));	//Si no existe, se inserta un nuevo objeto. Si modificasemos los objetos ya introducimos en memoria cambiaríamos los datos del padrón
+	}else{
+		lLugarNacimiento->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNac->getProvinciaPais(), lugNac->getNPersonas()));		//Controla el caso de que la lista esté vacía inicialmente
 	}
-	if(*lNac == *lNacAux)																						//Se comprueba que el dato no se duplique. La condición de duplicidad es que haya 2 datos con el mismo valor para 'provinciaPais'
-		lNacAux->incNPersonas(lNac->getNPersonas());															//Si existe se actualiza el atributo 'nPersonas' a modo de acumulador
-	else
-		lLugarNacimiento->insertar(new LugarNacimiento("", lNac->getProvinciaPais(), lNac->getNPersonas()));	//Si no existe, se inserta un nuevo objeto. Si modificasemos los objetos ya introducimos en memoria cambiaríamos los datos del padrón. Maneja el caso de la lista vacía inicialmente
 }
 
-void GestorLugarNacimiento::alg6(GestorLugarNacimiento*& gLugNacimiento) {										//@NOTA: Nombre provisional
-	LugarNacimiento* lNacAux;
+void GestorLugarNacimiento::alg6(GestorLugarNacimiento*& gLugNacimiento) {									//@NOTA: Nombre provisional
+	LugarNacimiento* lugNacAux;
 
 	lLugarNacimiento->moverInicio();
 	while(!lLugarNacimiento->finLista()){
-		lLugarNacimiento->consultar(lNacAux);
+		lLugarNacimiento->consultar(lugNacAux);
 		lLugarNacimiento->avanzar();
-		gLugNacimiento->insertarOrden(lNacAux);
+		if(lugNacAux->getPoblacion() != "")																	//Comprueba que el lugar de nacimiento no sea extranjero
+			gLugNacimiento->insertarOrden(lugNacAux);
 	}
 }
 
 void GestorLugarNacimiento::mostrar() {
-	LugarNacimiento* lNacAux;
+	LugarNacimiento* lugNacAux;
 
 	lLugarNacimiento->moverInicio();
 	while(!lLugarNacimiento->finLista()){
-		lLugarNacimiento->consultar(lNacAux);
+		lLugarNacimiento->consultar(lugNacAux);
 		lLugarNacimiento->avanzar();
-		cout << "Población : " << lNacAux->getPoblacion() << " | Provincia/Pais : " << lNacAux->getProvinciaPais() << " | Personas : " << lNacAux->getNPersonas() << endl;
+		cout << "Población : " << lugNacAux->getPoblacion() << " | Provincia/Pais : " << lugNacAux->getProvinciaPais() << " | Personas : " << lugNacAux->getNPersonas() << endl;
 	}
 }
 
