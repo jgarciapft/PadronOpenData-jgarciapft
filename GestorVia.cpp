@@ -55,6 +55,18 @@ void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {
 	}
 }
 
+void GestorVia::mostrarVias() {
+	Via* vAux;
+
+	lVias->moverInicio();
+	while(!lVias->finLista()){
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " | Longitud : " <<
+				vAux->getLongitudVia() << " | (m) Tipo : " << vAux->getTipoVia() << " | Codigo : " << vAux->getCodVia() << endl;
+	}
+}
+
 void GestorVia::mostrar() {
 	Via* vAux;
 
@@ -71,3 +83,4 @@ void GestorVia::mostrar() {
 }
 
 }
+

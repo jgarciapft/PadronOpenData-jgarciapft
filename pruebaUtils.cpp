@@ -71,6 +71,7 @@ int main(){					//@TEST: main de pruebas
 
 	//pruebaTrocearCadenas();
 
+	//@TEST: Carga de datos
 	tStart = Time::getTime();
 	p.cargarBarrios();
 	p.cargarVias();
@@ -78,8 +79,15 @@ int main(){					//@TEST: main de pruebas
 	tEnd = Time::getTime();
 	cout << "Tiempo de carga de datos : " << tEnd-tStart << " seg."<< endl;
 
+	//@TEST: Algoritmo 6
 //	tStart = Time::getTime();
 //	p.alg6();
 //	tEnd = Time::getTime();
 //	cout << "Tiempo alg6 : " << tEnd-tStart << " seg."<< endl;
+
+	//@TEST: Algoritmo 2
+	tStart = Time::getTime();
+	p.alg2("Moctezuma");
+	tEnd = Time::getTime();
+	cout << "Tiempo alg2 : " << tEnd-tStart << " seg."<< endl;
 }
