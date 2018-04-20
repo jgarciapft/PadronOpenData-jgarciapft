@@ -40,8 +40,13 @@ void Barrio::insertarDatosDemograficos(DatosDemograficos* dD) {
 	gVias->insertarDatosDemograficos(dD);
 }
 
+void Barrio::mostrarVias() {
+	gVias->mostrarVias();
+}
+
 void Barrio::mostrar() {
 	gVias->mostrar();
 }
 
 }
+
