@@ -6,7 +6,7 @@
 // Description : Pruebas para trocear cadenas
 //============================================================================
 #include "Utils.h"
-#include "timer.h"
+#include <ctime>				//@TEST: Cambiado el include "timer.h" a su versión en C++
 
 //@TEST includes para testeo
 #include "Padron.h"
@@ -67,27 +67,28 @@ void pruebaTrocearCadenas(){
 
 int main(){					//@TEST: main de pruebas
 	Padron p;
-	double tStart, tEnd;
+	string nombreBarrio;	//Nombre del barrio a buscar por el algoritmo 2
+	clock_t t;				//Contador que representa la diferencia de timepo entre dos llamadas a la función std::clock()
 
 	//pruebaTrocearCadenas();
 
 	//@TEST: Carga de datos
-	tStart = Time::getTime();
+	t = clock();
 	p.cargarBarrios();
 	p.cargarVias();
 	p.cargarDatosDemograficos();
-	tEnd = Time::getTime();
-	cout << "Tiempo de carga de datos : " << tEnd-tStart << " seg."<< endl;
+	t -= clock();
+	cout << "Tiempo de carga de datos : " << double(-t)/CLOCKS_PER_SEC << " seg."<< endl;
 
 	//@TEST: Algoritmo 6
-//	tStart = Time::getTime();
-//	p.alg6();
-//	tEnd = Time::getTime();
-//	cout << "Tiempo alg6 : " << tEnd-tStart << " seg."<< endl;
+	t = clock();
+	p.alg6();
+	t -= clock();
+	cout << "Tiempo alg6 : " << double(-t)/CLOCKS_PER_SEC << " seg."<< endl;
 
 	//@TEST: Algoritmo 2
-	tStart = Time::getTime();
-	p.alg2("Moctezuma");
-	tEnd = Time::getTime();
-	cout << "Tiempo alg2 : " << tEnd-tStart << " seg."<< endl;
+	t = clock();
+	p.alg2(nombreBarrio);
+	t -= clock();
+	cout << "Tiempo alg2 : " << double(-t)/CLOCKS_PER_SEC << " seg."<< endl;
 }
