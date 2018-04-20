@@ -52,7 +52,7 @@ void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {
 	}
 }
 
-void GestorBarrio::alg6(string nB) {			//@NOTA: Nombre provisional
+void GestorBarrio::alg2(string nB) {			//@NOTA: Nombre provisional
 	bool enc  = false;
 	Barrio* bAux;
 
