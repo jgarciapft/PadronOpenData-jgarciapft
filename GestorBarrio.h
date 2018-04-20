@@ -21,6 +21,7 @@ public:
 	void insertar(Barrio* b);
 	void insertarVia(Via* v);
 	void insertarDatosDemograficos(DatosDemograficos* dD);
+	void alg6(string nB);
 	void mostrar();
 };
 

@@ -52,6 +52,21 @@ void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {
 	}
 }
 
+void GestorBarrio::alg6(string nB) {
+	bool enc  = false;
+	Barrio* bAux;
+
+	lBarrios->moverInicio();
+	while(!lBarrios->finLista() && !enc){
+		lBarrios->consultar(bAux);
+		lBarrios->avanzar();
+		if(nB == bAux->getNombreBarrio()){
+			bAux->mostrarVias();
+			enc = true;
+		}
+	}
+}
+
 void GestorBarrio::mostrar() {
 	Barrio* bAux;
 

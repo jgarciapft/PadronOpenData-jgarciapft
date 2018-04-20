@@ -122,7 +122,7 @@ void Padron::cargarDatosDemograficos() {
 	fEnt.close();
 }
 
-void Padron::alg2(string nB) {
+void Padron::alg2(string nB) {												//@NOTA: Nombre provisional
 	gBarrios->alg2(nB);
 }
 
