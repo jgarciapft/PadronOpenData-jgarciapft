@@ -25,6 +25,7 @@ public:
 	void cargarBarrios();
 	void cargarVias();
 	void cargarDatosDemograficos();
+	void alg2(string nB);
 	void alg6();
 };
 
