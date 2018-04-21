@@ -78,17 +78,17 @@ int main(){					//@TEST: main de pruebas
 	p.cargarVias();
 	p.cargarDatosDemograficos();
 	t -= clock();
-	cout << "Tiempo de carga de datos : " << double(-t)/CLOCKS_PER_SEC << " seg."<< endl;
+	cout << "Tiempo de carga de datos : " << float(-t)/CLOCKS_PER_SEC << " seg."<< endl;
 
 	//@TEST: Algoritmo 6
-	t = clock();
-	p.alg6();
-	t -= clock();
-	cout << "Tiempo alg6 : " << double(-t)/CLOCKS_PER_SEC << " seg."<< endl;
+//	t = clock();
+//	p.alg6();
+//	t -= clock();
+//	cout << "Tiempo alg6 : " << double(-t)/CLOCKS_PER_SEC << " seg."<< endl;
 
 	//@TEST: Algoritmo 2
-	t = clock();
-	p.alg2(nombreBarrio);
-	t -= clock();
-	cout << "Tiempo alg2 : " << double(-t)/CLOCKS_PER_SEC << " seg."<< endl;
+//	t = clock();
+//	p.alg2(nombreBarrio);
+//	t -= clock();
+//	cout << "Tiempo alg2 : " << double(-t)/CLOCKS_PER_SEC << " seg."<< endl;
 }

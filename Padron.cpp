@@ -69,18 +69,18 @@ void Padron::cargarVias() {
 			}
 		}
 	}
-//	gBarrio->mostrar();										//@TEST: Muestra todas las vias de todos los barrios
-//
-//	cout << "LISTA DE VÍAS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todas las vías
-//	cout << "***********************************************************************************************" << endl;
-//	lVias->moverInicio();
-//	while(!lVias->finLista()){
-//		lVias->consultar(vAux);
-//		lVias->avanzar();
-//		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " Longitud : " <<
-//					vAux->getLongitudVia() << " Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
-//	}
-//	cout << "***********************************************************************************************" << endl;
+	gBarrio->mostrar();										//@TEST: Muestra todas las vias de todos los barrios
+
+	cout << "LISTA DE VÍAS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todas las vías
+	cout << "***********************************************************************************************" << endl;
+	lVias->moverInicio();
+	while(!lVias->finLista()){
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " Longitud : " <<
+					vAux->getLongitudVia() << " Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
+	}
+	cout << "***********************************************************************************************" << endl;
 
 	fEnt.close();
 }
