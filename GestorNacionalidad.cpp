@@ -36,13 +36,13 @@ GestorNacionalidad::~GestorNacionalidad() {
 
 }
 
-void std::GestorNacionalidad::mostrar() {
+void GestorNacionalidad::mostrar() {
 	Nacionalidad* nacAux;
 
 	lNacionalidad->moverInicio();
 	while(!lNacionalidad->finLista()){
 		lNacionalidad->consultar(nacAux);
 		lNacionalidad->avanzar();
-		cout << "Nacionalidad : " << nacAux->getNacionalidad() << " | Personas : " << nacAux->getNPersonas() << endl;
+		nacAux->mostrar();
 	}
 }

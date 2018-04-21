@@ -45,6 +45,7 @@ void Barrio::mostrarVias() {
 }
 
 void Barrio::mostrar() {
+	cout << "Barrio : " << nombreBarrio << " | Distrito : " << nombreDistrito << endl;
 	gVias->mostrar();
 }
 

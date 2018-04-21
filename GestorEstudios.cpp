@@ -43,6 +43,6 @@ void std::GestorEstudios::mostrar() {
 	while(!lEstudios->finLista()){
 		lEstudios->consultar(estAux);
 		lEstudios->avanzar();
-		cout << "Nivel de estudios : " << estAux->getNivEstudios() << " | Personas : " << estAux->getNPersonas() << endl;
+		estAux->mostrar();
 	}
 }

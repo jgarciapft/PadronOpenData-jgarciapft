@@ -7,7 +7,7 @@
 #ifndef ESTUDIOS_H_
 #define ESTUDIOS_H_
 
-#include <string>
+#include <iostream>
 
 namespace std {
 
@@ -22,6 +22,7 @@ public:
 
 	string getNivEstudios();
 	int getNPersonas();
+	void mostrar();
 };
 
 }

@@ -7,6 +7,8 @@
 #ifndef ANIONACIMIENTO_H_
 #define ANIONACIMIENTO_H_
 
+#include <iostream>
+
 namespace std {
 
 class AnioNacimiento {
@@ -20,6 +22,7 @@ public:
 
 	int getAnio();
 	int getNPersonas();
+	void mostrar();
 };
 
 }

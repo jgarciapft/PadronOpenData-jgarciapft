@@ -28,4 +28,9 @@ int Estudios::getNPersonas() {
 	return nPersonas;
 }
 
+void Estudios::mostrar() {
+	cout << "Nivel de estudios : " << nivEstudios << " | Personas : " << nPersonas << endl;
 }
+
+}
+

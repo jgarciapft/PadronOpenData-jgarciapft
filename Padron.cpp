@@ -130,8 +130,7 @@ void Padron::mostrarEstructura() {											//@TEST: Muestra toda la estructura
 	while(!lVias->finLista()){
 		lVias->consultar(vAux);
 		lVias->avanzar();
-		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " Longitud : " <<
-					vAux->getLongitudVia() << " Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
+		vAux->mostrar();
 	}
 	cout << "***********************************************************************************************" << endl;
 

@@ -7,7 +7,7 @@
 #ifndef NACIONALIDAD_H_
 #define NACIONALIDAD_H_
 
-#include <string>
+#include <iostream>
 
 namespace std {
 
@@ -22,6 +22,7 @@ public:
 
 	string getNacionalidad();
 	int getNPersonas();
+	void mostrar();
 };
 
 }

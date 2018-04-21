@@ -28,4 +28,8 @@ int AnioNacimiento::getNPersonas() {
 	return nPersonas;
 }
 
+void AnioNacimiento::mostrar() {
+	cout << "Año : " << anio << " | Personas : " << nPersonas << endl;
+}
+
 }

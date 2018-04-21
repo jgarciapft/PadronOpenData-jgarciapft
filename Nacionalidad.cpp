@@ -28,4 +28,9 @@ int Nacionalidad::getNPersonas() {
 	return nPersonas;
 }
 
+void Nacionalidad::mostrar() {
+	cout << "Nacionalidad : " << nacionalidad << " | Personas : " << nPersonas << endl;
 }
+
+}
+

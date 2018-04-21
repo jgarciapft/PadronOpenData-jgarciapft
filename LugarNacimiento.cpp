@@ -38,6 +38,10 @@ void LugarNacimiento::incNPersonas(int nP) {
 	nPersonas += nP;
 }
 
+void LugarNacimiento::mostrar() {
+	cout << "Población : " << poblacion << " | Provincia/Pais : " << provinciaPais << " | Personas : " << nPersonas << endl;
+}
+
 bool LugarNacimiento::operator >=(const LugarNacimiento& lugNac) { 		//@NOTA: Adecuado si solo se le da uso para el algoritmo 6
 	return provinciaPais.compare(lugNac.provinciaPais) <= 0;			//Criterio de comparación: orden alfabético de 'provinciaPais'
 }
@@ -47,5 +51,4 @@ bool LugarNacimiento::operator ==(const LugarNacimiento& lugNac) {		//@NOTA: Ade
 }
 
 }
-
 

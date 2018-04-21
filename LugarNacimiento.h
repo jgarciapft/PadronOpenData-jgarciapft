@@ -7,7 +7,7 @@
 #ifndef LUGARNACIMIENTO_H_
 #define LUGARNACIMIENTO_H_
 
-#include <string>
+#include <iostream>
 
 namespace std {
 
@@ -25,6 +25,7 @@ public:
 	string getProvinciaPais();
 	int getNPersonas();
 	void incNPersonas(int nP);
+	void mostrar();
 
 	bool operator >=(const LugarNacimiento& lugNac);
 	bool operator ==(const LugarNacimiento& lugNac);
