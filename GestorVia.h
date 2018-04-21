@@ -23,8 +23,9 @@ public:
 	void insertarDatosDemograficos(DatosDemograficos* dD);
 	void alg3();
 	void mostrarVias();
-	void mostrarAlg3();
 	void mostrar();
+
+	//TODO Sobrecargar el operador !=
 };
 
 }

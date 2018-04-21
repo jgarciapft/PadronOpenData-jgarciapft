@@ -70,6 +70,33 @@ void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {
 }
 
 void GestorVia::alg3() {
+	bool primerRes = true;
+	Via* vAux1;
+	Via* vAux2;								//@PREGUNTA: Por qué no puedo declarar las dos vías auxiliares en la misma línea?
+
+	while(!lVias->finLista()){
+		lVias->consultar(vAux1);
+		lVias->avanzar();
+		while(!lVias->finLista()){
+			lVias->consultar(vAux2);
+			if(vAux1->getNombreVia() == vAux2->getNombreVia()){
+				if(primerRes){
+					primerRes = false;
+					cout << "Vía : " << vAux1->getNombreVia() << endl;
+					cout << "***********************************************************************************************" << endl;
+					cout << "Barrios que atraviesa :" << endl << endl;
+					cout << vAux1->getBarrioVia() << endl;
+				}
+				cout << vAux2->getBarrioVia() << endl;
+				lVias->borrar();
+				delete vAux2;
+			}
+			lVias->avanzar();
+		}
+		while(vAux1 != vAux2){
+			//TODO Recolocar el PI en vAux1
+		}
+	}
 }
 
 void GestorVia::mostrarVias() {
@@ -82,9 +109,6 @@ void GestorVia::mostrarVias() {
 		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " | Longitud : " <<
 				vAux->getLongitudVia() << " | (m) Tipo : " << vAux->getTipoVia() << " | Codigo : " << vAux->getCodVia() << endl;
 	}
-}
-
-void GestorVia::mostrarAlg3() {
 }
 
 void GestorVia::mostrar() {

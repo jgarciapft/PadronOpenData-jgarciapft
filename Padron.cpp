@@ -107,7 +107,6 @@ void Padron::alg3() {														//@NOTA: Nombre provisional
 	GestorVia* gVia = new GestorVia(lVias);
 
 	gVia->alg3();
-	gVia->mostrarAlg3();
 
 	delete gVia;
 }
