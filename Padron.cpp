@@ -113,7 +113,7 @@ void Padron::alg6() {														//@NOTA: Nombre provisional
 		lDatDemograficos->avanzar();
 		dD->alg6(gLugNacimiento);
 	}
-	gLugNacimiento->mostrar();
+	gLugNacimiento->mostrarAlg6();
 
 	delete gLugNacimiento;
 }

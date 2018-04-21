@@ -24,6 +24,7 @@ public:
 	~GestorLugarNacimiento();
 
 	void alg6(GestorLugarNacimiento*& gLugNacimiento);
+	void mostrarAlg6();
 	void mostrar();
 };
 

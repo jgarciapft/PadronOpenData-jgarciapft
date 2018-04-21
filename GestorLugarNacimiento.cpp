@@ -76,6 +76,17 @@ void GestorLugarNacimiento::alg6(GestorLugarNacimiento*& gLugNacimiento) {						
 	}
 }
 
+void GestorLugarNacimiento::mostrarAlg6() {
+	LugarNacimiento* lugNacAux;
+
+	lLugarNacimiento->moverInicio();
+	while(!lLugarNacimiento->finLista()){
+		lLugarNacimiento->consultar(lugNacAux);
+		lLugarNacimiento->avanzar();
+		cout << lugNacAux->getProvinciaPais() << " (" << lugNacAux->getNPersonas() << ")" << endl;
+	}
+}
+
 void GestorLugarNacimiento::mostrar() {
 	LugarNacimiento* lugNacAux;
 
@@ -88,5 +99,4 @@ void GestorLugarNacimiento::mostrar() {
 }
 
 }
-
 
