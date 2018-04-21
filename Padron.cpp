@@ -44,7 +44,7 @@ void Padron::cargarBarrios() {
 		}
 	}
 	gBarrio->insertar(new Barrio("", DEF_BARRIO));			//Barrio que contendrá las vías que no tengan ningún barrio asignado
-	//gBarrio->mostrar();									//@TEST: Muestra los barrios en el orden de inserción
+
 	fEnt.close();
 }
 
@@ -69,18 +69,6 @@ void Padron::cargarVias() {
 			}
 		}
 	}
-	gBarrio->mostrar();										//@TEST: Muestra todas las vias de todos los barrios
-
-	cout << "LISTA DE VÍAS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todas las vías
-	cout << "***********************************************************************************************" << endl;
-	lVias->moverInicio();
-	while(!lVias->finLista()){
-		lVias->consultar(vAux);
-		lVias->avanzar();
-		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " Longitud : " <<
-					vAux->getLongitudVia() << " Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
-	}
-	cout << "***********************************************************************************************" << endl;
 
 	fEnt.close();
 }
@@ -107,17 +95,6 @@ void Padron::cargarDatosDemograficos() {
 			}
 		}
 	}
-//	gBarrio->mostrar();														//@TEST: Muestra todos los datos demograficos de todas las vias de todos los barrios
-//
-//	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
-//	cout << "***********************************************************************************************" << endl;
-//	lDatDemograficos->moverInicio();
-//	while(!lDatDemograficos->finLista()){
-//		lDatDemograficos->consultar(dD);
-//		lDatDemograficos->avanzar();
-//		dD->mostrar();
-//	}
-//	cout << "***********************************************************************************************" << endl;
 
 	fEnt.close();
 }
@@ -139,6 +116,35 @@ void Padron::alg6() {														//@NOTA: Nombre provisional
 	gLugNacimiento->mostrar();
 
 	delete gLugNacimiento;
+}
+
+void Padron::mostrarEstructura() {											//@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
+	Via* vAux;
+	DatosDemograficos* dD;
+
+	gBarrio->mostrar();														//@TEST: Muestra toda la estructura de datos cargada
+
+	cout << "LISTA DE VÍAS AUXILIARES" << endl << endl;						//@TEST: Muestra la lista auxiliar de todas las vías
+	cout << "***********************************************************************************************" << endl;
+	lVias->moverInicio();
+	while(!lVias->finLista()){
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " Longitud : " <<
+					vAux->getLongitudVia() << " Tipo : " << vAux->getTipoVia() << " Codigo : " << vAux->getCodVia() << endl;
+	}
+	cout << "***********************************************************************************************" << endl;
+
+	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
+	cout << "***********************************************************************************************" << endl;
+	lDatDemograficos->moverInicio();
+	while(!lDatDemograficos->finLista()){
+		lDatDemograficos->consultar(dD);
+		lDatDemograficos->avanzar();
+		dD->mostrar();
+	}
+	cout << "***********************************************************************************************" << endl;
+
 }
 
 }
