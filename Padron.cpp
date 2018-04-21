@@ -103,6 +103,15 @@ void Padron::alg2(string nB) {												//@NOTA: Nombre provisional
 	gBarrio->alg2(nB);
 }
 
+void Padron::alg3() {														//@NOTA: Nombre provisional
+	GestorVia* gVia = new GestorVia(lVias);
+
+	gVia->alg3();
+	gVia->mostrarAlg3();
+
+	delete gVia;
+}
+
 void Padron::alg6() {														//@NOTA: Nombre provisional
 	GestorLugarNacimiento* gLugNacimiento = new GestorLugarNacimiento();	//Gestor auxiliar para manejar la lista ordenada de provincias
 	DatosDemograficos* dD;
@@ -124,7 +133,7 @@ void Padron::mostrarEstructura() {											//@TEST: Muestra toda la estructura
 
 	gBarrio->mostrar();														//@TEST: Muestra toda la estructura de datos cargada
 
-	cout << "LISTA DE VÍAS AUXILIAR" << endl << endl;						//@TEST: Muestra la lista auxiliar de todas las vías
+	cout << "LISTA DE VÍAS AUXILIAR" << endl;								//@TEST: Muestra la lista auxiliar de todas las vías
 	cout << "***********************************************************************************************" << endl;
 	lVias->moverInicio();
 	while(!lVias->finLista()){
@@ -135,7 +144,7 @@ void Padron::mostrarEstructura() {											//@TEST: Muestra toda la estructura
 	}
 	cout << "***********************************************************************************************" << endl;
 
-	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIAR" << endl << endl;		//@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
+	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIAR" << endl;					//@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
 	cout << "***********************************************************************************************" << endl;
 	lDatDemograficos->moverInicio();
 	while(!lDatDemograficos->finLista()){
@@ -144,7 +153,7 @@ void Padron::mostrarEstructura() {											//@TEST: Muestra toda la estructura
 		dD->mostrar();
 	}
 	cout << "***********************************************************************************************" << endl;
-
 }
 
 }
+

@@ -16,11 +16,14 @@ private:
 	ListaPI<Via*>* lVias;
 public:
 	GestorVia();
+	GestorVia(ListaPI<Via*>* lV);
 	~GestorVia();
 
 	void insertarViaOrden(Via* v);
 	void insertarDatosDemograficos(DatosDemograficos* dD);
+	void alg3();
 	void mostrarVias();
+	void mostrarAlg3();
 	void mostrar();
 };
 

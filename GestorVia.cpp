@@ -12,6 +12,20 @@ GestorVia::GestorVia() {
 	lVias = new ListaPI<Via*>();
 }
 
+GestorVia::GestorVia(ListaPI<Via*>* lV) {						//@NOTA: No se avanza 'lVias' para que al usarla en 'alg3' ya esté en el inicio
+	lVias = new ListaPI<Via*>();
+
+	Via* vAux;
+
+	lV->moverInicio();
+	while(!lV->finLista()){
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		lVias->insertar(new Via(vAux->getLongitudVia(),vAux->getNombreVia(), vAux->getLongitudVia(),
+				vAux->getTipoVia(), vAux->getCodVia()));
+	}
+}
+
 GestorVia::~GestorVia() {
 	Via* vAux;
 
@@ -24,7 +38,7 @@ GestorVia::~GestorVia() {
 	delete lVias;
 }
 
-void GestorVia::insertarViaOrden(Via* v) { //@PREGUNTA: prima más la legibilidad que el rendimiento?
+void GestorVia::insertarViaOrden(Via* v) { 							//@PREGUNTA: prima más la legibilidad que el rendimiento?
 	bool enc = false;
 	Via* vAux;
 
@@ -55,6 +69,9 @@ void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {
 	}
 }
 
+void GestorVia::alg3() {
+}
+
 void GestorVia::mostrarVias() {
 	Via* vAux;
 
@@ -65,6 +82,9 @@ void GestorVia::mostrarVias() {
 		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " | Longitud : " <<
 				vAux->getLongitudVia() << " | (m) Tipo : " << vAux->getTipoVia() << " | Codigo : " << vAux->getCodVia() << endl;
 	}
+}
+
+void GestorVia::mostrarAlg3() {
 }
 
 void GestorVia::mostrar() {
@@ -81,4 +101,6 @@ void GestorVia::mostrar() {
 }
 
 }
+
+
 
