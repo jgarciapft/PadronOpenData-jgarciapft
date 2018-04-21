@@ -124,17 +124,18 @@ void Padron::mostrarEstructura() {											//@TEST: Muestra toda la estructura
 
 	gBarrio->mostrar();														//@TEST: Muestra toda la estructura de datos cargada
 
-	cout << "LISTA DE VÍAS AUXILIARES" << endl << endl;						//@TEST: Muestra la lista auxiliar de todas las vías
+	cout << "LISTA DE VÍAS AUXILIAR" << endl << endl;						//@TEST: Muestra la lista auxiliar de todas las vías
 	cout << "***********************************************************************************************" << endl;
 	lVias->moverInicio();
 	while(!lVias->finLista()){
 		lVias->consultar(vAux);
 		lVias->avanzar();
-		vAux->mostrar();
+		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " | Longitud : " <<
+					vAux->getLongitudVia() << " | (m) Tipo : " << vAux->getTipoVia() << " | Codigo : " << vAux->getCodVia() << endl;	//@NOTA: No muestra los datos demográficos
 	}
 	cout << "***********************************************************************************************" << endl;
 
-	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIARES" << endl << endl;		//@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
+	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIAR" << endl << endl;		//@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
 	cout << "***********************************************************************************************" << endl;
 	lDatDemograficos->moverInicio();
 	while(!lDatDemograficos->finLista()){
