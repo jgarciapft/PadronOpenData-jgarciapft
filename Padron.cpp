@@ -76,17 +76,17 @@ void Padron::cargarVias() {
 void Padron::cargarDatosDemograficos() {
 	fstream fEnt;
 	string campos[N_CAMPOS_DATOS_DEMOGRAFICOS];
-	DatosDemograficos* dD;										//Puntero a objeto 'DatosDemograficos' auxiliar para almacenar el dato recién creado en la lista auxiliar y en su vía correspondiente
+	DatosDemograficos* dD;													//Puntero a objeto 'DatosDemograficos' auxiliar para almacenar el dato recién creado en la lista auxiliar y en su vía correspondiente
 
 	fEnt.open(RUTA_DATOS_DEMOGRAFICOS.c_str(), ios::in);
 	if(fEnt.is_open()){
-		getline(fEnt, campos[0]); 								//Salta la cabecera
+		getline(fEnt, campos[0]); 											//Salta la cabecera
 		while(!fEnt.eof()){
-			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){	//Lee todos los campos de cada dato menos el último
+			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){				//Lee todos los campos de cada dato menos el último
 				getline(fEnt, campos[i], SEP);
 			}
-			getline(fEnt, campos[6]);							//Lee el último campo
-			if(!fEnt.eof()){									//Doble comprobación del FINAL DE FICHERO
+			getline(fEnt, campos[6]);										//Lee el último campo
+			if(!fEnt.eof()){												//Doble comprobación del FINAL DE FICHERO
 				dD = new DatosDemograficos(atoi(campos[0].c_str()), campos[1], campos[2], campos[3], atoi(campos[4].c_str()),
 							atoi(campos[5].c_str()), campos[6]);
 				lDatDemograficos->insertar(dD);
