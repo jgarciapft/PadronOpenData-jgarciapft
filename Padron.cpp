@@ -118,6 +118,9 @@ void Padron::alg6() {														//@NOTA: Nombre provisional
 	delete gLugNacimiento;
 }
 
+void Padron::alg3() {
+}
+
 void Padron::mostrarEstructura() {											//@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;
 	DatosDemograficos* dD;
