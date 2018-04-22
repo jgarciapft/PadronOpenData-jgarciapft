@@ -119,6 +119,51 @@ void Padron::alg6() {														//@NOTA: Nombre provisional
 }
 
 void Padron::alg3() {
+	bool primerRes = true;
+	bool coincidencia = false;
+	Via* vAux1;
+	Via* vAux2;
+	string test;
+	ListaPI<string> lCoincidencias;
+
+	lVias->moverInicio();
+	while(!lVias->finLista()){
+		lVias->consultar(vAux1);
+		lVias->avanzar();
+		lCoincidencias.moverInicio();
+		while(!lCoincidencias.finLista() && !coincidencia){
+			lCoincidencias.consultar(test);
+			lCoincidencias.avanzar();
+			if(vAux1->getNombreVia() == test)
+				coincidencia = true;
+		}
+		if(!coincidencia){
+			while(!lVias->finLista()){
+				lVias->consultar(vAux2);
+				lVias->avanzar();
+				if(vAux1->getNombreVia() == vAux2->getNombreVia()){
+					if(primerRes){
+						cout << "Vía : " << vAux1->getNombreVia() << endl;
+						cout << "***********************************************************************************************" << endl;
+						cout << "Barrios que atraviesa : " << endl << endl;
+						cout << vAux1->getBarrioVia() << endl;
+						lCoincidencias.insertar(vAux1->getNombreVia());
+						primerRes = false;
+					}
+					cout << vAux2->getBarrioVia() << endl;
+				}
+			}
+			if(!primerRes)
+				cout << "***********************************************************************************************" << endl;
+			lVias->moverInicio();
+			do{
+				lVias->consultar(vAux2);
+				lVias->avanzar();
+			}while(vAux1 != vAux2);
+			primerRes = true;
+		}
+		coincidencia = false;
+	}
 }
 
 void Padron::mostrarEstructura() {											//@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
