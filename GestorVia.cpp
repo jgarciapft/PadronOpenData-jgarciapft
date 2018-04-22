@@ -12,7 +12,7 @@ GestorVia::GestorVia() {
 	lVias = new ListaPI<Via*>();
 }
 
-GestorVia::GestorVia(ListaPI<Via*>* lV) {						//@NOTA: No se avanza 'lVias' para que al usarla en 'alg3' ya esté en el inicio
+GestorVia::GestorVia(ListaPI<Via*>* lV) {	//@NOTA: No se avanza 'lVias' para optimizar el constructor. En 'alg3' se mueve el pI al inicio
 	lVias = new ListaPI<Via*>();
 
 	Via* vAux;
@@ -38,7 +38,7 @@ GestorVia::~GestorVia() {
 	delete lVias;
 }
 
-void GestorVia::insertarViaOrden(Via* v) { 							//@PREGUNTA: prima más la legibilidad que el rendimiento?
+void GestorVia::insertarViaOrden(Via* v) { 	//@PREGUNTA: prima más la legibilidad que el rendimiento?
 	bool enc = false;
 	Via* vAux;
 
@@ -69,33 +69,44 @@ void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {
 	}
 }
 
-void GestorVia::alg3() {
+void GestorVia::alg3() {					//@NOTA: Nombre provisional
 	bool primerRes = true;
 	Via* vAux1;
 	Via* vAux2;								//@PREGUNTA: Por qué no puedo declarar las dos vías auxiliares en la misma línea?
 
-	while(!lVias->finLista()){
+	lVias->moverInicio();
+	while(!lVias->finLista()){				//Bucle externo : avance secuencial de cada vía de la lista
 		lVias->consultar(vAux1);
 		lVias->avanzar();
-		while(!lVias->finLista()){
+		while(!lVias->finLista()){			//Bucle interno: por cada vía seleccionada en el bucle exterior, se comprueban todas las vías siguientes secuencialmente
 			lVias->consultar(vAux2);
 			if(vAux1->getNombreVia() == vAux2->getNombreVia()){
-				if(primerRes){
-					primerRes = false;
+				if(primerRes){				//Bandera que controla cuándo se ha producido la primera coincidencia para controlar las líneas de '*' que indican los barrios por los que pasa cada vía repetida
 					cout << "Vía : " << vAux1->getNombreVia() << endl;
 					cout << "***********************************************************************************************" << endl;
 					cout << "Barrios que atraviesa :" << endl << endl;
 					cout << vAux1->getBarrioVia() << endl;
+					primerRes = false;
 				}
 				cout << vAux2->getBarrioVia() << endl;
-				lVias->borrar();
-				delete vAux2;
+				lVias->borrar();			//Para evitar volver a tratar la misma vía se elimina de la lista auxiliar. @NOTA: Solo se libera la memoria asociada al nodo de la lista
+				delete vAux2;				//Se libera la memoria asociada con la vía a eliminar de la lista
+			}else{
+					lVias->avanzar();		//Como al borrar un nodo se avanza automáticamente el pI solo si no hay coincidencia se avanza
 			}
+		}
+		if(!primerRes)						//La bandera también indica si ha habido coincidencia de vías, así controla la línea de control
+			cout << "***********************************************************************************************" << endl << endl;
+		lVias->moverInicio();
+		/*El uso de la estructura 'do while' se justifica porque al final de cada ejecución del bucle interno el pI siempre apuntará a NULL
+		 *		porque hay que recorrer el resto de la lista entera, no podemos suponer el número de barrios por los que pasará una vía.
+		 *		Moviendo el pI al inicio y consultándolo antes de hacer la comprobación nos libra de comprobar la certeza de que 'vAux1' nunca será NULL
+		 */
+		do{									//Reposiciona el pI dónde apuntaba previamente 'vAux1' para no volver a procesar desde el inicio de la lista y nunca acabar
+			lVias->consultar(vAux2);
 			lVias->avanzar();
-		}
-		while(vAux1 != vAux2){
-			//TODO Recolocar el PI en vAux1
-		}
+		}while(vAux1 != vAux2);				//Solo es necesario comparar cuando los punteros apuntan al mismo sitio, no es necesario explorar la información de las vías
+		primerRes = true;					//Hay que reiniciar la bandera por cada vía procesada, si no ha habido ninguna no tendrá efecto.
 	}
 }
 

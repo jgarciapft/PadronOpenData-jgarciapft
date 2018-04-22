@@ -24,8 +24,6 @@ public:
 	void alg3();
 	void mostrarVias();
 	void mostrar();
-
-	//TODO Sobrecargar el operador !=
 };
 
 }
