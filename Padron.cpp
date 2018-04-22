@@ -119,60 +119,60 @@ void Padron::alg6() {														//@NOTA: Nombre provisional
 }
 
 void Padron::alg3() {
-	bool primerRes = true;
-	bool coincidencia = false;
+	bool primerRes = true;												//Bandera que controla la impresión de la cabecera de para una vía que atraviese varios barrios
+	bool coincidencia = false;											//Bandera que verifica que no se haya procesado previamente la vía actual
 	Via* vAux1;
 	Via* vAux2;
 	string test;
-	ListaPI<string> lCoincidencias;
+	ListaPI<string> lCoincidencias;										//Lista de vías que ya han sido procesadas
 
 	lVias->moverInicio();
-	while(!lVias->finLista()){
+	while(!lVias->finLista()){											//Bucle externo: Lee secuencialmente todas las vías
 		lVias->consultar(vAux1);
 		lVias->avanzar();
 		lCoincidencias.moverInicio();
-		while(!lCoincidencias.finLista() && !coincidencia){
+		while(!lCoincidencias.finLista() && !coincidencia){				//Antes de entrar al bucle interno hay que comprobar que no hayamos procesado ya la vía
 			lCoincidencias.consultar(test);
 			lCoincidencias.avanzar();
 			if(vAux1->getNombreVia() == test)
 				coincidencia = true;
 		}
 		if(!coincidencia){
-			while(!lVias->finLista()){
+			while(!lVias->finLista()){									//Bucle interno: Para cada vía seleccionada por el bucle externo procesa todas las siguientes, ya que no podemos asumir el número máximo de ocurrencias
 				lVias->consultar(vAux2);
 				lVias->avanzar();
 				if(vAux1->getNombreVia() == vAux2->getNombreVia()){
-					if(primerRes){
+					if(primerRes){										//Imprime la cabecera de una vía que atraviesa barios barrios
 						cout << "Vía : " << vAux1->getNombreVia() << endl;
 						cout << "***********************************************************************************************" << endl;
 						cout << "Barrios que atraviesa : " << endl << endl;
 						cout << vAux1->getBarrioVia() << endl;
-						lCoincidencias.insertar(vAux1->getNombreVia());
+						lCoincidencias.insertar(vAux1->getNombreVia());	//Añade la vía a la lista de vías procesadas una sola vez, la primera vez que encuentre un duplicado
 						primerRes = false;
 					}
-					cout << vAux2->getBarrioVia() << endl;
+					cout << vAux2->getBarrioVia() << endl;				//Para el resto de vías simplemente imprime el nombre de su barrio
 				}
 			}
-			if(!primerRes)
+			if(!primerRes)												//Solo imprime el footer si ha habido alguna coincidencia
 				cout << "***********************************************************************************************" << endl;
 			lVias->moverInicio();
 			do{
 				lVias->consultar(vAux2);
 				lVias->avanzar();
 			}while(vAux1 != vAux2);
-			primerRes = true;
+			primerRes = true; 											//Solo tiene efecto si hubo alguna coincidencia de vías
 		}
-		coincidencia = false;
+		coincidencia = false;											//Solo tiene efecto si hubo alguna coincidencia con alguna vía ya tratada, y pueda volver a tratar otra vía
 	}
 }
 
-void Padron::mostrarEstructura() {											//@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
+void Padron::mostrarEstructura() {										//@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;
 	DatosDemograficos* dD;
 
-	gBarrio->mostrar();														//@TEST: Muestra toda la estructura de datos cargada
+	gBarrio->mostrar();													//@TEST: Muestra toda la estructura de datos cargada
 
-	cout << "LISTA DE VÍAS AUXILIAR" << endl << endl;						//@TEST: Muestra la lista auxiliar de todas las vías
+	cout << "LISTA DE VÍAS AUXILIAR" << endl << endl;					//@TEST: Muestra la lista auxiliar de todas las vías
 	cout << "***********************************************************************************************" << endl;
 	lVias->moverInicio();
 	while(!lVias->finLista()){
