@@ -108,7 +108,7 @@ void Padron::alg3() {														//@NOTA: Nombre provisional
 
 	gVia->alg3();
 
-	delete gVia;
+	delete gVia;															//Libera el espacio reservado para los nodos que no fueron eliminados
 }
 
 void Padron::alg6() {														//@NOTA: Nombre provisional
