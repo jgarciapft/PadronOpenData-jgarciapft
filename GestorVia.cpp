@@ -21,7 +21,7 @@ GestorVia::GestorVia(ListaPI<Via*>* lV) {						//@NOTA: No se avanza 'lVias' par
 	while(!lV->finLista()){
 		lVias->consultar(vAux);
 		lVias->avanzar();
-		lVias->insertar(new Via(vAux->getLongitudVia(),vAux->getNombreVia(), vAux->getLongitudVia(),
+		lVias->insertar(new Via(vAux->getBarrioVia(),vAux->getNombreVia(), vAux->getLongitudVia(),
 				vAux->getTipoVia(), vAux->getCodVia()));
 	}
 }
