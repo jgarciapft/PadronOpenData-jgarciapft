@@ -25,8 +25,9 @@ Padron::Padron() {
 }
 
 Padron::~Padron() {
-	delete lDatDemograficos;
-	delete lVias;
+	delete lDatDemograficos;									//Libera los nodos de la lista de datos demográficos auxiliar, pero no los los datos demográficos
+	delete lVias;												//Libera los nodos de la lista de vías auxiliar, pero no las vías
+	delete gBarrio;												//Desencadena los destructores de toda la estructura de datos, liberando el espacio reservado para todos los datos
 }
 
 void Padron::cargarBarrios() {
@@ -35,11 +36,11 @@ void Padron::cargarBarrios() {
 
 	fEnt.open(RUTA_BARRIO.c_str(), ios::in);
 	if(fEnt.is_open()){
-		getline(fEnt, campos[0]); 							//Salta la cabecera
+		getline(fEnt, campos[0]); 								//Salta la cabecera
 		while(!fEnt.eof()){
-			getline(fEnt, campos[0], SEP); 					//Lee el nombre del barrio
-			getline(fEnt, campos[1]);						//Lee el nombre del distrito
-			if(!fEnt.eof())									//Doble comprobación del FINAL DE FICHERO
+			getline(fEnt, campos[0], SEP); 						//Lee el nombre del barrio
+			getline(fEnt, campos[1]);							//Lee el nombre del distrito
+			if(!fEnt.eof())										//Doble comprobación del FINAL DE FICHERO
 				gBarrio->insertar(new Barrio(campos[0], campos[1]));
 		}
 	}
