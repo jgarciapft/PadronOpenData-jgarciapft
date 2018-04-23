@@ -8,7 +8,7 @@
 
 namespace std {
 
-/*** DEFINCIÓN DE CONSTANTES *** @NOTA: Pensar declaracion/inicializacion de constantes */
+/*** DEFINCIÓN DE CONSTANTES *** 								@NOTA: Pensar declaracion/inicializacion de constantes */
 const string RUTA_BARRIO = "Barrio.csv"; 						//Ruta relativa del fichero que contiene la información de los barrios
 const string RUTA_VIAS = "Via.csv"; 							//Ruta relativa del fichero que contiene la información de las vías
 const string RUTA_DATOS_DEMOGRAFICOS = "InformacionPadron.csv"; //Ruta relativa del fichero que contiene la informacion del padrón (Año 2016)
