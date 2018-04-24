@@ -60,13 +60,6 @@ void Via::mostrar() {
 	datDemograficos->mostrar();
 }
 
-bool Via::operator >(const Via& v) {	//@PREGUNTA: Es esta la mejor manera?
-	bool res = false;					//Supongo que se producen más resultados falsos que verdaderos para optimizar el código
-
-	if(nombreVia.compare(v.nombreVia) < 0)
-		res = true;
-
-	return res;
-}
-
+bool Via::operator >(const Via& v) {
+	return nombreVia.compare(v.nombreVia) < 0;
 }

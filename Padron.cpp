@@ -8,15 +8,15 @@
 
 namespace std {
 
-/*** DEFINCIÓN DE CONSTANTES *** 								@NOTA: Pensar declaracion/inicializacion de constantes */
-const string RUTA_BARRIO = "Barrio.csv"; 						//Ruta relativa del fichero que contiene la información de los barrios
-const string RUTA_VIAS = "Via.csv"; 							//Ruta relativa del fichero que contiene la información de las vías
-const string RUTA_DATOS_DEMOGRAFICOS = "InformacionPadron.csv"; //Ruta relativa del fichero que contiene la informacion del padrón (Año 2016)
-const int N_CAMPOS_BARRIO = 2; 									//Número de campos del fichero de datos de barrios
-const int N_CAMPOS_VIA = 5;										//Número de campos del fichero de datos de vías
-const int N_CAMPOS_DATOS_DEMOGRAFICOS = 7;						//Número de campos del fichero de datos de datos demográficos
-const char SEP = '#'; 											//Carácter separador de campos en los ficheros de datos
-const string DEF_BARRIO = "BARRIO CONTENEDOR";					//Nombre del distrito del objeto barrio que incluirá las vías que no tienen ningún barrio asignado
+/*** DEFINCIÓN DE CONSTANTES *** 										@NOTA: Pensar declaracion/inicializacion de constantes */
+const string RUTA_BARRIO = "Barrio.csv"; 								//Ruta relativa del fichero que contiene la información de los barrios
+const string RUTA_VIAS = "Via.csv"; 									//Ruta relativa del fichero que contiene la información de las vías
+const string RUTA_DATOS_DEMOGRAFICOS = "InformacionPadron.csv";	 		//Ruta relativa del fichero que contiene la informacion del padrón (Año 2016)
+const int N_CAMPOS_BARRIO = 2; 											//Número de campos del fichero de datos de barrios
+const int N_CAMPOS_VIA = 5;												//Número de campos del fichero de datos de vías
+const int N_CAMPOS_DATOS_DEMOGRAFICOS = 7;								//Número de campos del fichero de datos de datos demográficos
+const char SEP = '#'; 													//Carácter separador de campos en los ficheros de datos
+const string DEF_BARRIO = "BARRIO CONTENEDOR";							//Nombre del distrito del objeto barrio que incluirá las vías que no tienen ningún barrio asignado
 
 Padron::Padron() {
 	gBarrio = new GestorBarrio();
@@ -25,9 +25,9 @@ Padron::Padron() {
 }
 
 Padron::~Padron() {
-	delete lDatDemograficos;									//Libera los nodos de la lista de datos demográficos auxiliar, pero no los los datos demográficos
-	delete lVias;												//Libera los nodos de la lista de vías auxiliar, pero no las vías
-	delete gBarrio;												//Desencadena los destructores de toda la estructura de datos, liberando el espacio reservado para todos los datos
+	delete lDatDemograficos;											//Libera los nodos de la lista de datos demográficos auxiliar, pero no los los datos demográficos
+	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
+	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos, liberando el espacio reservado para todos los datos
 }
 
 void Padron::cargarBarrios() {
@@ -36,15 +36,15 @@ void Padron::cargarBarrios() {
 
 	fEnt.open(RUTA_BARRIO.c_str(), ios::in);
 	if(fEnt.is_open()){
-		getline(fEnt, campos[0]); 								//Salta la cabecera
+		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
-			getline(fEnt, campos[0], SEP); 						//Lee el nombre del barrio
-			getline(fEnt, campos[1]);							//Lee el nombre del distrito
-			if(!fEnt.eof())										//Doble comprobación del FINAL DE FICHERO
+			getline(fEnt, campos[0], SEP); 								//Lee el nombre del barrio
+			getline(fEnt, campos[1]);									//Lee el nombre del distrito
+			if(!fEnt.eof())												//Doble comprobación del FINAL DE FICHERO
 				gBarrio->insertar(new Barrio(campos[0], campos[1]));
 		}
 	}
-	gBarrio->insertar(new Barrio("", DEF_BARRIO));			//Barrio que contendrá las vías que no tengan ningún barrio asignado
+	gBarrio->insertar(new Barrio("", DEF_BARRIO));						//Barrio que contendrá las vías que no tengan ningún barrio asignado
 
 	fEnt.close();
 }
@@ -52,19 +52,19 @@ void Padron::cargarBarrios() {
 void Padron::cargarVias() {
 	fstream fEnt;
 	string campos[N_CAMPOS_VIA];
-	Via* vAux;												//Puntero a objeto 'Via' auxiliar para almacenar la vía recién creada en la lista auxiliar y en su(s) barrio(s) correspondientes
+	Via* vAux;															//Puntero a objeto 'Via' auxiliar para almacenar la vía recién creada en la lista auxiliar y en su(s) barrio(s) correspondientes
 
 	fEnt.open(RUTA_VIAS.c_str());
 	if(fEnt.is_open()){
-		getline(fEnt, campos[0]); 							//Salta la cabecera
+		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
-			for(int i=0; i<N_CAMPOS_VIA-1; i++){			//Lee todos los campos de cada vía menos el último
+			for(int i=0; i<N_CAMPOS_VIA-1; i++){						//Lee todos los campos de cada vía menos el último
 				getline(fEnt, campos[i], SEP);
 			}
-			getline(fEnt, campos[4]);						//Lee el último campo
-			if(!fEnt.eof()){								//Doble comprobación del FINAL DE FICHERO
+			getline(fEnt, campos[4]);									//Lee el último campo
+			if(!fEnt.eof()){											//Doble comprobación del FINAL DE FICHERO
 				vAux = new Via(campos[0], campos[1], atof(campos[2].c_str()), campos[3], atoi(campos[4].c_str()));
-				lVias->insertar(vAux);						//Insertar la via recien creada en la lista auxiliar de todas las vías
+				lVias->insertar(vAux);									//Insertar la via recien creada en la lista auxiliar de todas las vías
 				lVias->avanzar();
 				gBarrio->insertarVia(vAux);
 			}
@@ -77,17 +77,17 @@ void Padron::cargarVias() {
 void Padron::cargarDatosDemograficos() {
 	fstream fEnt;
 	string campos[N_CAMPOS_DATOS_DEMOGRAFICOS];
-	DatosDemograficos* dD;										//Puntero a objeto 'DatosDemograficos' auxiliar para almacenar el dato recién creado en la lista auxiliar y en su vía correspondiente
+	DatosDemograficos* dD;												//Puntero a objeto 'DatosDemograficos' auxiliar para almacenar el dato recién creado en la lista auxiliar y en su vía correspondiente
 
 	fEnt.open(RUTA_DATOS_DEMOGRAFICOS.c_str(), ios::in);
 	if(fEnt.is_open()){
-		getline(fEnt, campos[0]); 								//Salta la cabecera
+		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
-			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){	//Lee todos los campos de cada dato menos el último
+			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){			//Lee todos los campos de cada dato menos el último
 				getline(fEnt, campos[i], SEP);
 			}
-			getline(fEnt, campos[6]);							//Lee el último campo
-			if(!fEnt.eof()){									//Doble comprobación del FINAL DE FICHERO
+			getline(fEnt, campos[6]);									//Lee el último campo
+			if(!fEnt.eof()){											//Doble comprobación del FINAL DE FICHERO
 				dD = new DatosDemograficos(atoi(campos[0].c_str()), campos[1], campos[2], campos[3], atoi(campos[4].c_str()),
 							atoi(campos[5].c_str()), campos[6]);
 				lDatDemograficos->insertar(dD);
@@ -100,12 +100,12 @@ void Padron::cargarDatosDemograficos() {
 	fEnt.close();
 }
 
-void Padron::alg2(string nB) {												//@NOTA: Nombre provisional
+void Padron::alg2(string nB) {											//@NOTA: Nombre provisional
 	gBarrio->alg2(nB);
 }
 
-void Padron::alg6() {														//@NOTA: Nombre provisional
-	GestorLugarNacimiento* gLugNacimiento = new GestorLugarNacimiento();	//Gestor auxiliar para manejar la lista ordenada de provincias
+void Padron::alg6() {													//@NOTA: Nombre provisional
+	GestorLugarNacimiento* gLugNacimiento = new GestorLugarNacimiento();//Gestor auxiliar para manejar la lista ordenada de provincias
 	DatosDemograficos* dD;
 
 	lDatDemograficos->moverInicio();
@@ -177,7 +177,7 @@ void Padron::mostrarEstructura() {										//@TEST: Muestra toda la estructura 
 
 	gBarrio->mostrar();													//@TEST: Muestra toda la estructura de datos cargada
 
-	cout << "LISTA DE VÍAS AUXILIAR" << endl << endl;					//@TEST: Muestra la lista auxiliar de todas las vías
+	cout << "LISTA DE VÍAS AUXILIAR" << endl;							//@TEST: Muestra la lista auxiliar de todas las vías
 	cout << "***********************************************************************************************" << endl;
 	lVias->moverInicio();
 	while(!lVias->finLista()){
