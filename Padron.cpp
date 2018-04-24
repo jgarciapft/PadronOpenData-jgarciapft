@@ -156,6 +156,10 @@ void Padron::alg3() {
 			if(!primerRes)												//Solo imprime el footer si ha habido alguna coincidencia
 				cout << "***********************************************************************************************" << endl;
 			lVias->moverInicio();
+			/*El uso de la estructura 'do while' se justifica porque al final de cada ejecución del bucle interno el pI siempre apuntará a NULL
+			 *		porque hay que recorrer el resto de la lista entera, no podemos suponer el número de barrios por los que pasará una vía.
+			 *		Moviendo el pI al inicio y consultándolo antes de hacer la comprobación nos libra de comprobar la certeza de que 'vAux1' nunca será NULL
+			 */
 			do{
 				lVias->consultar(vAux2);
 				lVias->avanzar();
