@@ -56,7 +56,7 @@ void Via::setDatosDemograficos(DatosDemograficos* dD) {
 
 void Via::mostrar() {
 	cout << "Via : " << nombreVia << " | Barrio : " << barrioVia << " | Longitud : " <<
-			longitudVia << " | (m) Tipo : " << tipoVia << " | Codigo : " << codVia << endl;
+			longitudVia << " (m) | Tipo : " << tipoVia << " | Codigo : " << codVia << endl;
 	datDemograficos->mostrar();
 }
 
