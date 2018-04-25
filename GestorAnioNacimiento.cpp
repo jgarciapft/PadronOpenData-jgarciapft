@@ -27,10 +27,10 @@ GestorAnioNacimiento::~GestorAnioNacimiento() {
 	AnioNacimiento* anNacAux;
 
 	lAnioNacimiento->moverInicio();
-	while(!lAnioNacimiento->enFin()){
+	while(!lAnioNacimiento->finLista()){
 		lAnioNacimiento->consultar(anNacAux);
+		lAnioNacimiento->avanzar();
 		delete anNacAux;
-		lAnioNacimiento->borrar();
 	}
 	delete lAnioNacimiento;
 }

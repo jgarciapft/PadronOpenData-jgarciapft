@@ -34,10 +34,10 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {
 	LugarNacimiento* lugNacAux;
 
 	lLugarNacimiento->moverInicio();
-	while(!lLugarNacimiento->enFin()){
+	while(!lLugarNacimiento->finLista()){
 		lLugarNacimiento->consultar(lugNacAux);
+		lLugarNacimiento->avanzar();
 		delete lugNacAux;
-		lLugarNacimiento->borrar();
 	}
 	delete lLugarNacimiento;
 }

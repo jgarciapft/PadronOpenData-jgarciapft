@@ -26,10 +26,10 @@ GestorNacionalidad::GestorNacionalidad(string nacionalidades) {
 GestorNacionalidad::~GestorNacionalidad() {
 	Nacionalidad* nacAux;
 
-	while(!lNacionalidad->enFin()){
+	while(!lNacionalidad->finLista()){
 		lNacionalidad->consultar(nacAux);
+		lNacionalidad->avanzar();
 		delete nacAux;
-		lNacionalidad->borrar();
 	}
 	delete lNacionalidad;
 }

@@ -63,3 +63,5 @@ void Via::mostrar() {
 bool Via::operator >(const Via& v) {
 	return nombreVia.compare(v.nombreVia) < 0;
 }
+
+}

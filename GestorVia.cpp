@@ -16,10 +16,10 @@ GestorVia::~GestorVia() {
 	Via* vAux;
 
 	lVias->moverInicio();
-	while(!lVias->enFin()){
+	while(!lVias->finLista()){
 		lVias->consultar(vAux);
+		lVias->avanzar();
 		delete vAux;
-		lVias->borrar();
 	}
 	delete lVias;
 }
