@@ -26,9 +26,7 @@ Via::Via(string barV, string nomV, float lonV, string tipV, int codV) {
 	datDemograficos = new DatosDemograficos();
 }
 
-Via::~Via() {
-	delete datDemograficos;
-}
+Via::~Via() {}
 
 string Via::getBarrioVia() {
 	return barrioVia;
@@ -62,4 +60,6 @@ void Via::mostrar() {
 
 bool Via::operator >(const Via& v) {
 	return nombreVia.compare(v.nombreVia) < 0;
+}
+
 }

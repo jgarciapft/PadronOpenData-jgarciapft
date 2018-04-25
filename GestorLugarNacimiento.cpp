@@ -9,7 +9,7 @@
 namespace std {
 
 /*** DEFINCIÓN DE CONSTANTES ***/
-const string POBLACION_TEXTO_RELLENO = "";				//Texto de relleno para 'poblacion' al crear nuevos objetos 'LugarNacimiento' aplicado al algoritmo 6
+const string POBLACION_TEXTO_RELLENO = "";																									//Texto de relleno para 'poblacion' al crear nuevos objetos 'LugarNacimiento' aplicado al algoritmo 6
 
 GestorLugarNacimiento::GestorLugarNacimiento() {
 	lLugarNacimiento = new ListaPI<LugarNacimiento*>();
@@ -34,15 +34,15 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {
 	LugarNacimiento* lugNacAux;
 
 	lLugarNacimiento->moverInicio();
-	while(!lLugarNacimiento->enFin()){
+	while(!lLugarNacimiento->finLista()){
 		lLugarNacimiento->consultar(lugNacAux);
+		lLugarNacimiento->avanzar();
 		delete lugNacAux;
-		lLugarNacimiento->borrar();
 	}
 	delete lLugarNacimiento;
 }
 
-void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lugNac) {										//@NOTA: Adecuado solo para el algoritmo 6
+void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lugNac) {																		//@NOTA: Adecuado solo para el algoritmo 6
 	bool enc = false;
 	LugarNacimiento* lugNacAux;
 
@@ -64,14 +64,14 @@ void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lugNac) {										//
 	}
 }
 
-void GestorLugarNacimiento::alg6(GestorLugarNacimiento*& gLugNacimiento) {									//@NOTA: Nombre provisional
+void GestorLugarNacimiento::alg6(GestorLugarNacimiento*& gLugNacimiento) {																	//@NOTA: Nombre provisional
 	LugarNacimiento* lugNacAux;
 
 	lLugarNacimiento->moverInicio();
 	while(!lLugarNacimiento->finLista()){
 		lLugarNacimiento->consultar(lugNacAux);
 		lLugarNacimiento->avanzar();
-		if(lugNacAux->getPoblacion() != "")																	//Comprueba que el lugar de nacimiento no sea extranjero
+		if(lugNacAux->getPoblacion() != "")																									//Comprueba que el lugar de nacimiento no sea extranjero
 			gLugNacimiento->insertarOrden(lugNacAux);
 	}
 }

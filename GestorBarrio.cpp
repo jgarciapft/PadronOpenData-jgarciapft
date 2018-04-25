@@ -16,10 +16,10 @@ GestorBarrio::~GestorBarrio() {
 	Barrio* bAux;
 
 	lBarrios->moverInicio();
-	while(!lBarrios->enFin()){
+	while(!lBarrios->finLista()){
 		lBarrios->consultar(bAux);
+		lBarrios->avanzar();
 		delete bAux;
-		lBarrios->borrar();
 	}
 	delete lBarrios;
 }

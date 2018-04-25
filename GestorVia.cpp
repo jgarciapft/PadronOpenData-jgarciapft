@@ -13,18 +13,10 @@ GestorVia::GestorVia() {
 }
 
 GestorVia::~GestorVia() {
-	Via* vAux;
-
-	lVias->moverInicio();
-	while(!lVias->enFin()){
-		lVias->consultar(vAux);
-		delete vAux;
-		lVias->borrar();
-	}
 	delete lVias;
 }
 
-void GestorVia::insertarViaOrden(Via* v) { //@PREGUNTA: prima más la legibilidad que el rendimiento?
+void GestorVia::insertarViaOrden(Via* v) { 	//@PREGUNTA: prima más la legibilidad que el rendimiento?
 	bool enc = false;
 	Via* vAux;
 

@@ -25,9 +25,26 @@ Padron::Padron() {
 }
 
 Padron::~Padron() {
-	delete lDatDemograficos;											//Libera los nodos de la lista de datos demográficos auxiliar, pero no los los datos demográficos
-	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
-	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos, liberando el espacio reservado para todos los datos
+	Via* vAux;
+	DatosDemograficos* dD;
+
+	lVias->moverInicio();
+	while(!lVias->finLista()){											//Libera la memoria asociada a cada vía creada y a la lista auxilizar 'lVias'. Así evitamos la múltiple liberación de punteros
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		delete vAux;
+	}
+	delete lVias;
+
+	lDatDemograficos->moverInicio();
+	while(!lDatDemograficos->finLista()){								//Libera la memoria asociada a cada dato demográfico creado y a la lista auxiliar 'lDatDemograficos'. Así evitamos la múltiple liberación de punteros
+		lDatDemograficos->consultar(dD);
+		lDatDemograficos->avanzar();
+		delete dD;
+	}
+	delete lDatDemograficos;
+
+	delete gBarrio;														//Desencadena la liberación de los barrios y de todas las estructuras de datos utilizadas para contener los punteros a objetos
 }
 
 void Padron::cargarBarrios() {
