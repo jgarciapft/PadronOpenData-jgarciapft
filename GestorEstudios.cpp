@@ -26,6 +26,7 @@ GestorEstudios::GestorEstudios(string estudios) {
 GestorEstudios::~GestorEstudios() {
 	Estudios* estAux;
 
+	lEstudios->moverInicio();
 	while(!lEstudios->finLista()){
 		lEstudios->consultar(estAux);
 		lEstudios->avanzar();

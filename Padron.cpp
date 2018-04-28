@@ -25,9 +25,9 @@ Padron::Padron() {
 }
 
 Padron::~Padron() {
+	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos, liberando el espacio reservado para todos los datos
 	delete lDatDemograficos;											//Libera los nodos de la lista de datos demográficos auxiliar, pero no los los datos demográficos
 	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
-	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos, liberando el espacio reservado para todos los datos
 }
 
 void Padron::cargarBarrios() {

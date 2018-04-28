@@ -26,6 +26,7 @@ GestorNacionalidad::GestorNacionalidad(string nacionalidades) {
 GestorNacionalidad::~GestorNacionalidad() {
 	Nacionalidad* nacAux;
 
+	lNacionalidad->moverInicio();
 	while(!lNacionalidad->finLista()){
 		lNacionalidad->consultar(nacAux);
 		lNacionalidad->avanzar();
