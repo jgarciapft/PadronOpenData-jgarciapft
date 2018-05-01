@@ -78,7 +78,7 @@ void GestorBarrio::mostrar() {
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
 		cout << "***********************************************************************************************" << endl;
-		bAux->mostrar();						//Muestra todas las de cada barrio, que deben de estar en orden alfabético por el nombre de la vía
+		bAux->mostrar();													//Muestra todas las de cada barrio, que deben de estar en orden alfabético por el nombre de la vía
 		cout << "***********************************************************************************************" << endl << endl;
 	}
 }
