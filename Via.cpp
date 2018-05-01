@@ -14,7 +14,7 @@ Via::Via() {
 	longitudVia = 0.0;
 	tipoVia = "";
 	codVia = 0;
-	datDemograficos = new DatosDemograficos();
+	datDemograficos = NULL;
 }
 
 Via::Via(string barV, string nomV, float lonV, string tipV, int codV) {
@@ -23,11 +23,11 @@ Via::Via(string barV, string nomV, float lonV, string tipV, int codV) {
 	longitudVia = lonV;
 	tipoVia = tipV;
 	codVia = codV;
-	datDemograficos = new DatosDemograficos();
+	datDemograficos = NULL;
 }
 
 Via::~Via() {
-	delete datDemograficos;
+//	delete datDemograficos;
 }
 
 string Via::getBarrioVia() {

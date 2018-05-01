@@ -20,14 +20,23 @@ const string DEF_BARRIO = "BARRIO CONTENEDOR";							//Nombre del distrito del o
 
 Padron::Padron() {
 	gBarrio = new GestorBarrio();
-	lDatDemograficos = new ListaPI<DatosDemograficos*>();
 	lVias = new ListaPI<Via*>();
+	lDatDemograficos = new ListaPI<DatosDemograficos*>();
 }
 
 Padron::~Padron() {
+	DatosDemograficos* dD;
+
 	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos, liberando el espacio reservado para todos los datos
-	delete lDatDemograficos;											//Libera los nodos de la lista de datos demográficos auxiliar, pero no los los datos demográficos
 	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
+
+	lDatDemograficos->moverInicio();
+	while(!lDatDemograficos->finLista()){
+		lDatDemograficos->consultar(dD);
+		lDatDemograficos->avanzar();
+		delete dD;
+	}
+	delete lDatDemograficos;											//Libera los nodos de la lista de datos demográficos auxiliar, pero no los los datos demográficos
 }
 
 void Padron::cargarBarrios() {

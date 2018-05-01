@@ -30,14 +30,17 @@ void GestorBarrio::insertar(Barrio* b) {
 }
 
 void GestorBarrio::insertarVia(Via* v) {
+	bool enc = false;
 	Barrio* bAux;
 
 	lBarrios->moverInicio();
-	while(!lBarrios->finLista()){				//Puede existir la misma vía en dos barrios. Hay que recorrer la lista de barrios entera
+	while(!lBarrios->finLista() && !enc){									//Puede existir la misma vía en dos barrios, pero cada tramo de vía es un objeto en sí. Por lo que solo corresponderá a un barrio cada tramo
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
-		if(bAux->getNombreBarrio() == v->getBarrioVia())
+		if(bAux->getNombreBarrio() == v->getBarrioVia()){
 			bAux->insertarVia(v);
+			enc = true;
+		}
 	}
 }
 
@@ -45,14 +48,14 @@ void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {
 	Barrio* bAux;
 
 	lBarrios->moverInicio();
-	while(!lBarrios->finLista()){				//Al poder haber duplicidad de vías hay que recorrer la lista de barrios entera y pasarles el dato
+	while(!lBarrios->finLista()){											//Al poder haber duplicidad de vías hay que recorrer la lista de barrios entera
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
 		bAux->insertarDatosDemograficos(dD);
 	}
 }
 
-void GestorBarrio::alg2(string nB) {			//@NOTA: Nombre provisional
+void GestorBarrio::alg2(string nB) {										//@NOTA: Nombre provisional
 	bool enc  = false;
 	Barrio* bAux;
 
