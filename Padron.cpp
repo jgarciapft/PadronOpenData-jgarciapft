@@ -25,7 +25,7 @@ Padron::Padron() {
 }
 
 Padron::~Padron() {
-	DatosDemograficos* dD;
+	DatosDemograficos* dD;												//Puntero auxiliar para recorrer la lista auxiliar de datos demográficos
 
 	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos liberando el espacio reservado para todos los datos, menos los datos demográficos
 	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
@@ -167,7 +167,7 @@ void Padron::alg3() {
 				}
 			}
 			if(!primerRes)												//Solo imprime el footer si ha habido alguna coincidencia
-				cout << "***********************************************************************************************" << endl;
+				cout << "***********************************************************************************************" << endl << endl;
 			lVias->moverInicio();
 			/*El uso de la estructura 'do while' se justifica porque al final de cada ejecución del bucle interno el pI siempre apuntará a NULL
 			 *		porque hay que recorrer el resto de la lista entera. No podemos suponer el número de barrios por los que pasará una vía.

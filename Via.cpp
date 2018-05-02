@@ -14,7 +14,7 @@ Via::Via() {
 	longitudVia = 0.0;
 	tipoVia = "";
 	codVia = 0;
-	datDemograficos = NULL;
+	datDemograficos = NULL;						//No se reserva memoria para los datos demograficos porque se asignan mediante el método 'setDatosDemograficos'
 }
 
 Via::Via(string barV, string nomV, float lonV, string tipV, int codV) {
@@ -23,12 +23,10 @@ Via::Via(string barV, string nomV, float lonV, string tipV, int codV) {
 	longitudVia = lonV;
 	tipoVia = tipV;
 	codVia = codV;
-	datDemograficos = NULL;
+	datDemograficos = NULL;						//No se reserva memoria para los datos demograficos porque se asignan mediante el método 'setDatosDemograficos'
 }
 
-Via::~Via() {
-//	delete datDemograficos;
-}
+Via::~Via() {}									//No libera la memoria de los datos demográficos porque se liberan el la clase 'Padron' para evitar liberar dos veces el mismo puntero
 
 string Via::getBarrioVia() {
 	return barrioVia;
