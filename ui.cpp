@@ -9,8 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include "ui.h"
-//#include "timer.h"				@TEST: Anulado el include hasta que se prueben los módulos en esta clase
-
+///#include "timer.h"				@TEST: Anulado el include hasta que se prueben los módulos en esta clase
 
 using namespace std;
 
@@ -20,8 +19,6 @@ UI::UI() {
 }
 
 void UI::ejecutar() {
-
-
 //	double t_start, t_end;
 	int opcion;
 
@@ -30,18 +27,15 @@ void UI::ejecutar() {
 		opcion = menu();
 		switch (opcion) {
 		case 1:
-
-
-//			//t_start = Time::getTime();
+			//t_start = Time::getTime();
 			cout << "Cargando datos ... " << endl;
 			// TODO por hacer alg. 1
 
 			cout << "Carga finalizada ... " << endl;
-//			//t_end= Time::getTime();
-//			//cout << "Time: " << t_end - t_start << "  " << endl;
+			//t_end= Time::getTime();
+			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 2:
-
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 2
 			//t_end= Time::getTime();
@@ -49,14 +43,12 @@ void UI::ejecutar() {
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 3:
-
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 3
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 4:
-
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 4
 			//t_end= Time::getTime();
@@ -67,59 +59,48 @@ void UI::ejecutar() {
 			// TODO por hacer alg. 5
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
-
 			break;
 		case 6:
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 6
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
-
 			break;
 		case 7:
-
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 7
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
-
 			break;
 		case 8:
-
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 8
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
-
 			break;
 		case 9:
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 9
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
-
 			break;
 		case 10:
-
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 10
 			//t_end= Time::getTime();
-//			//cout << "Time: " << t_end - t_start << "  " << endl;
-
+			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 11:
-
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 11
 			//t_end= Time::getTime();
-//			//cout << "Time: " << t_end - t_start << "  " << endl;
-
+			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 12:
 			//t_start = Time::getTime();
 			// TODO por hacer alg. 12
 			//t_end= Time::getTime();
-//			//cout << "Time: " << t_end - t_start << "  " << endl;
+			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 0:
 			salir = true;
@@ -128,12 +109,10 @@ void UI::ejecutar() {
 			cout << "ERROR en la opcion de menu" << endl;
 			break;
 		}
-
 	} while (!salir);
 }
 
 int UI::menu() {
-
 	int opcion;
 
 	do {

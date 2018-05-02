@@ -28,7 +28,7 @@ int Nacionalidad::getNPersonas() {
 	return nPersonas;
 }
 
-void Nacionalidad::mostrar() {
+void Nacionalidad::mostrar() {				//Muestra toda la información del objeto 'Nacionalidad'
 	cout << "Nacionalidad : " << nacionalidad << " | Personas : " << nPersonas << endl;
 }
 

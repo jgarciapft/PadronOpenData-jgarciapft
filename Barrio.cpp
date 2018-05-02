@@ -11,17 +11,17 @@ namespace std {
 Barrio::Barrio() {
 	nombreBarrio = "";
 	nombreDistrito = "";
-	gVias = new GestorVia();
+	gVias = new GestorVia();					//Reserva memoria el gestor que maneja la lista de vías
 }
 
 Barrio::Barrio(string nB, string nD) {
 	nombreBarrio = nB;
 	nombreDistrito = nD;
-	gVias = new GestorVia();
+	gVias = new GestorVia();					//Reserva memoria el gestor que maneja la lista de vías
 }
 
 Barrio::~Barrio() {
-	delete gVias;
+	delete gVias;								//Libera la memoria reservada para el gestor que maneja la lista de vías
 }
 
 string Barrio::getNombreBarrio() {

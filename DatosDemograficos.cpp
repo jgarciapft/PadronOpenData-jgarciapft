@@ -8,7 +8,7 @@
 
 namespace std {
 
-DatosDemograficos::DatosDemograficos() {
+DatosDemograficos::DatosDemograficos() {											//Reserva memoria para cada gestor
 	codVia = 0;
 	gAnioNacimiento = new GestorAnioNacimiento();
 	gLugarNacimiento = new GestorLugarNacimiento();
@@ -18,7 +18,7 @@ DatosDemograficos::DatosDemograficos() {
 	gNacionalidad = new GestorNacionalidad();
 }
 
-DatosDemograficos::DatosDemograficos(int _codVia, string aniosNacimiento,
+DatosDemograficos::DatosDemograficos(int _codVia, string aniosNacimiento,			//Reserva memoria para cada gestor
 		string lugaresNacimiento, string estudios, int _nMujeres, int _nHombres,
 		string nacionalidades) {
 	codVia = _codVia;
@@ -30,7 +30,7 @@ DatosDemograficos::DatosDemograficos(int _codVia, string aniosNacimiento,
 	gNacionalidad = new GestorNacionalidad(nacionalidades);
 }
 
-DatosDemograficos::~DatosDemograficos() {
+DatosDemograficos::~DatosDemograficos() {											//Libera la memoria asociada a cada gestor
 	delete gAnioNacimiento;
 	delete gLugarNacimiento;
 	delete gEstudios;
@@ -49,11 +49,11 @@ int DatosDemograficos::getNHombres() {
 	return nHombres;
 }
 
-void DatosDemograficos::alg6(GestorLugarNacimiento*& gLugNacimiento) {				//@NOTA: Nombre provisional
+void DatosDemograficos::alg6(GestorLugarNacimiento*& gLugNacimiento) {				///@NOTA: Nombre provisional
 	gLugarNacimiento->alg6(gLugNacimiento);
 }
 
-void DatosDemograficos::mostrar() {
+void DatosDemograficos::mostrar() {													//Llama a mostrar la información de cada gestor contenido
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	gAnioNacimiento->mostrar();
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;

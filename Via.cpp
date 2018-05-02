@@ -54,14 +54,14 @@ void Via::setDatosDemograficos(DatosDemograficos* dD) {
 	datDemograficos = dD;
 }
 
-void Via::mostrar() {
+void Via::mostrar() {							//Muestra la información de cada vía
 	cout << "Via : " << nombreVia << " | Barrio : " << barrioVia << " | Longitud : " <<
 			longitudVia << " (m) | Tipo : " << tipoVia << " | Codigo : " << codVia << endl;
 	if(datDemograficos != NULL)
-		datDemograficos->mostrar();
+		datDemograficos->mostrar();				//Llama a mostrar toda la información de los datos demográficos
 }
 
-bool Via::operator >(const Via& v) {
+bool Via::operator >(const Via& v) {			//Compara alfabéticamente las vías por su nombre
 	return nombreVia.compare(v.nombreVia) < 0;
 }
 

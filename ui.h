@@ -18,10 +18,7 @@ private:
 	// TODO instanciar la clase principal
 	int  menu     ();
 	void ejecutar ();
-
-
 public:
-
 	 UI();
 	~UI();
 };

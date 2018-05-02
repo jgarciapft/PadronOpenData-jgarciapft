@@ -28,7 +28,7 @@ int AnioNacimiento::getNPersonas() {
 	return nPersonas;
 }
 
-void AnioNacimiento::mostrar() {
+void AnioNacimiento::mostrar() {				//Muestra toda la información del objeto 'AnioNacimiento'
 	cout << "Año : " << anio << " | Personas : " << nPersonas << endl;
 }
 
