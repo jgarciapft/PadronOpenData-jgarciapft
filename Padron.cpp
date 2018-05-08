@@ -18,6 +18,7 @@ const int N_CAMPOS_DATOS_DEMOGRAFICOS = 7;								//Número de campos del ficher
 const char SEP = '#'; 													//Carácter separador de campos en los ficheros de datos
 const string DEF_BARRIO = "BARRIO CONTENEDOR";							//Nombre del distrito del objeto barrio que incluirá las vías que no tienen ningún barrio asignado
 
+
 Padron::Padron() {
 	gBarrio = new GestorBarrio();
 	lVias = new ListaPI<Via*>();										//Lista de nuevas vías creadas auxiliar
@@ -38,6 +39,8 @@ Padron::~Padron() {
 	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
 	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos liberando el espacio reservado para todos los datos, menos los datos demográficos
 }
+
+
 
 void Padron::cargarBarrios() {
 	ifstream fEnt;

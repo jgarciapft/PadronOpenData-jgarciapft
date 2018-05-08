@@ -25,6 +25,8 @@ GestorBarrio::~GestorBarrio() {												//Libera la memoria asociada a cada b
 	delete lBarrios;														//Libera la lista de barrios
 }
 
+
+
 void GestorBarrio::insertar(Barrio* b) {									//Inserta el barrio 'b' en la lista con avance del pI sin ningún criterio
 	lBarrios->insertar(b);
 	lBarrios->avanzar();
@@ -46,7 +48,7 @@ void GestorBarrio::insertarVia(Via* v) {									//Inserta la vía 'v' en el bar
 	}
 }
 
-void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {		///Inserta el dato demográfico 'dD' en su(s) vía(s) correspondiente(s)	/@NOTA: Hay multiplicidad de vías para las que corresponde un dato demográfico
+void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {		///Inserta el dato demográfico 'dD' en su(s) vía(s) correspondiente(s)	@NOTA: Hay multiplicidad de vías para las que corresponde un dato demográfico
 	Barrio* bAux;
 
 	//Recorre secuencialmente de inicio a fin la lista de barrios

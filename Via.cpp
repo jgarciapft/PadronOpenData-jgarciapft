@@ -28,6 +28,8 @@ Via::Via(string barV, string nomV, float lonV, string tipV, int codV) {
 
 Via::~Via() {}									//No libera la memoria de los datos demográficos porque se liberan el la clase 'Padron' para evitar liberar dos veces el mismo puntero
 
+
+
 string Via::getBarrioVia() {
 	return barrioVia;
 }
@@ -58,6 +60,8 @@ void Via::mostrar() {							//Muestra la información de cada vía
 	if(datDemograficos != NULL)
 		datDemograficos->mostrar();				//Llama a mostrar toda la información de los datos demográficos
 }
+
+
 
 bool Via::operator >(const Via& v) {			//Compara alfabéticamente las vías por su nombre
 	return nombreVia.compare(v.nombreVia) < 0;

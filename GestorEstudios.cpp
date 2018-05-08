@@ -36,9 +36,9 @@ GestorEstudios::~GestorEstudios() {													//Libera la memoria asociada a c
 	delete lEstudios;																//Libera la lista de estudios
 }
 
-}
 
-void std::GestorEstudios::mostrar() {												//Muestra la información de los estudios de la lista
+
+void GestorEstudios::mostrar() {													//Muestra la información de los estudios de la lista
 	Estudios* estAux;																//Puntero auxiliar para consultar la lista de estudios
 
 	//Recorre secuencialmente la lista de estudios de inicio a fin
@@ -49,3 +49,7 @@ void std::GestorEstudios::mostrar() {												//Muestra la información de lo
 		estAux->mostrar();															//LLama a mostrar la información de cada estudio de la lista de estudios
 	}
 }
+
+}
+
+

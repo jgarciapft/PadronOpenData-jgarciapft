@@ -46,6 +46,10 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {								//Libera la memoria aso
 	delete lLugarNacimiento;													//Libera la lista de lugares de nacimiento
 }
 
+/*
+ * ***********************************************************		MÉTODOS PRIVADOS	*********************************************************************
+ */
+
 void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lugNac) {			///@NOTA: Adecuado solo para el algoritmo 6
 	bool enc = false;															//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse o actualizarse el lugar de nacimiento
 	LugarNacimiento* lugNacAux;													//Puntero auxiliar para consultar la lista de lugares de nacimiento
@@ -67,6 +71,10 @@ void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lugNac) {			///@NOTA:
 		lLugarNacimiento->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNac->getProvinciaPais(), lugNac->getNPersonas()));		//Controla el caso de que la lista esté vacía inicialmente
 	}
 }
+
+/*
+ * ***********************************************************		MÉTODOS PÚBLICOS	*********************************************************************
+ */
 
 void GestorLugarNacimiento::alg6(GestorLugarNacimiento*& gLugNacimiento) {		///@NOTA: Nombre provisional
 	LugarNacimiento* lugNacAux;													//Puntero auxiliar para consultar la lista de lugares de nacimiento

@@ -36,6 +36,8 @@ GestorAnioNacimiento::~GestorAnioNacimiento() {																//Libera la memor
 	delete lAnioNacimiento;																					//Libera la lista de años de nacimiento
 }
 
+
+
 void GestorAnioNacimiento::mostrar() {																		//Muestra la información de todos los años de nacimiento de la lista
 	AnioNacimiento* anNacAux;																				//Puntero auxiliar para recorrer la lista de años de de nacimiento
 

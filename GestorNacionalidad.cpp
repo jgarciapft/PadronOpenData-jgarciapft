@@ -36,7 +36,7 @@ GestorNacionalidad::~GestorNacionalidad() {													//Libera la memoria asoc
 	delete lNacionalidad;																	//Libera la lista de nacionalidades
 }
 
-}
+
 
 void GestorNacionalidad::mostrar() {														//Muestra la información las nacionalidades de la lista
 	Nacionalidad* nacAux;																	//Puntero auxiliar para consultar la lista de nacionalidades
@@ -49,3 +49,6 @@ void GestorNacionalidad::mostrar() {														//Muestra la información las 
 		nacAux->mostrar();																	//Llama a mostrar la información de cada nacionalidad en la lista
 	}
 }
+
+}
+

@@ -24,6 +24,8 @@ Barrio::~Barrio() {
 	delete gVias;								//Libera la memoria reservada para el gestor que maneja la lista de vías
 }
 
+
+
 string Barrio::getNombreBarrio() {
 	return nombreBarrio;
 }

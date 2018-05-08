@@ -37,6 +37,8 @@ DatosDemograficos::~DatosDemograficos() {											//Libera la memoria asociada
 	delete gNacionalidad;
 }
 
+
+
 int DatosDemograficos::getCodVia() {
 	return codVia;
 }
