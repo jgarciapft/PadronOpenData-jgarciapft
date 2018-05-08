@@ -20,6 +20,8 @@ Estudios::Estudios(string nEst, int nP) {
 
 Estudios::~Estudios() {}
 
+
+
 string Estudios::getNivEstudios() {
 	return nivEstudios;
 }

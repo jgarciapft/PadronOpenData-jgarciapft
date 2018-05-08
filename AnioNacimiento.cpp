@@ -20,6 +20,8 @@ AnioNacimiento::AnioNacimiento(int aN, int nP) {
 
 AnioNacimiento::~AnioNacimiento() {}
 
+
+
 int AnioNacimiento::getAnio() {
 	return anio;
 }

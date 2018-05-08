@@ -20,6 +20,8 @@ Nacionalidad::Nacionalidad(string nac, int nP) {
 
 Nacionalidad::~Nacionalidad() {}
 
+
+
 string Nacionalidad::getNacionalidad() {
 	return nacionalidad;
 }
