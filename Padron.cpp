@@ -121,22 +121,22 @@ void Padron::alg3() {
 	bool coincidencia = false;											//Bandera que verifica que no se haya procesado previamente la vía actual
 	Via* vAux1;															//Puntero auxilar que recorre secuencialmente el bucle externo
 	Via* vAux2;															//Puntero auxiliar que recorre secuencialmente el resto de vías por detrás de 'vAux1' para compararlas con ésta
-	string test;														//Cadena auxiliar para consultar los nombres de vías anteriormente procesadas por el algoritmo
+	string nombreVia;													//Cadena auxiliar para consultar los nombres de vías anteriormente procesadas por el algoritmo
 	ListaPI<string> lCoincidencias;										//Lista de vías que ya han sido procesadas. Evita volver a procesar casos ya tratados
 
 	lVias->moverInicio();
-	while(!lVias->finLista()){											//Bucle externo: Lee secuencialmente todas las vías de arriba a abajo
+	while(!lVias->finLista()){											//BUCLE EXTERNO: Lee secuencialmente todas las vías de arriba a abajo
 		lVias->consultar(vAux1);
 		lVias->avanzar();
 		lCoincidencias.moverInicio();
 		while(!lCoincidencias.finLista() && !coincidencia){				//Antes de entrar al bucle interno hay que comprobar que no hayamos procesado ya la vía apuntada actualmente
-			lCoincidencias.consultar(test);
+			lCoincidencias.consultar(nombreVia);
 			lCoincidencias.avanzar();
-			if(vAux1->getNombreVia() == test)
+			if(vAux1->getNombreVia() == nombreVia)
 				coincidencia = true;
 		}
 		if(!coincidencia){												//Si no ha habido ninguna coincidencia se procede a procesar el resto de vías en la lista
-			while(!lVias->finLista()){									//Bucle interno: Para cada vía apuntada por el bucle externo procesa todas las siguientes. No podemos asumir el número máximo de coincidencias
+			while(!lVias->finLista()){									//BUCLE INTERNO: Para cada vía apuntada por el bucle externo procesa todas las siguientes. No podemos asumir el número máximo de coincidencias
 				lVias->consultar(vAux2);
 				lVias->avanzar();
 				if(vAux1->getNombreVia() == vAux2->getNombreVia()){
