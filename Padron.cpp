@@ -27,9 +27,6 @@ Padron::Padron() {
 Padron::~Padron() {
 	DatosDemograficos* dD;												//Puntero auxiliar para recorrer la lista auxiliar de datos demográficos
 
-	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos liberando el espacio reservado para todos los datos, menos los datos demográficos
-	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
-
 	//Libera todos los datos demográficos creados, que están almacenados en la lista auxiliar 'lDatDemograficos', y la misma lista
 	lDatDemograficos->moverInicio();
 	while(!lDatDemograficos->finLista()){
@@ -38,13 +35,15 @@ Padron::~Padron() {
 		delete dD;														//Libera cada dato demográfico
 	}
 	delete lDatDemograficos;											//Libera la lista auxiliar
+	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
+	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos liberando el espacio reservado para todos los datos, menos los datos demográficos
 }
 
 void Padron::cargarBarrios() {
-	fstream fEnt;
+	ifstream fEnt;
 	string campos[N_CAMPOS_BARRIO];										//Almacena los campos que definen cada objeto Barrio
 
-	fEnt.open(RUTA_BARRIO.c_str(), ios::in);
+	fEnt.open(RUTA_BARRIO.c_str());
 	if(fEnt.is_open()){													//Comprueba que exista el fichero de datos comprobando si el flujo se abrió correctamente
 		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
@@ -60,7 +59,7 @@ void Padron::cargarBarrios() {
 }
 
 void Padron::cargarVias() {
-	fstream fEnt;
+	ifstream fEnt;
 	string campos[N_CAMPOS_VIA];										//Almacena los campos que definen cada objeto Via
 	Via* vAux;															//Puntero a objeto Via auxiliar para almacenar la vía recién creada en la lista auxiliar y en su barrio correspondiente
 
@@ -85,11 +84,11 @@ void Padron::cargarVias() {
 }
 
 void Padron::cargarDatosDemograficos() {
-	fstream fEnt;
+	ifstream fEnt;
 	string campos[N_CAMPOS_DATOS_DEMOGRAFICOS];							//Almacena los campos que definen cada objeto
 	DatosDemograficos* dD;												//Puntero a objeto 'DatosDemograficos' auxiliar para almacenar el dato recién creado en la lista auxiliar y en su vía correspondiente
 
-	fEnt.open(RUTA_DATOS_DEMOGRAFICOS.c_str(), ios::in);
+	fEnt.open(RUTA_DATOS_DEMOGRAFICOS.c_str());
 	if(fEnt.is_open()){
 		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
@@ -112,22 +111,6 @@ void Padron::cargarDatosDemograficos() {
 
 void Padron::alg2(string nB) {											///@NOTA: Nombre provisional
 	gBarrio->alg2(nB);
-}
-
-void Padron::alg6() {													///@NOTA: Nombre provisional
-	GestorLugarNacimiento* gLugNacimiento = new GestorLugarNacimiento();//Gestor auxiliar para manejar la lista ordenada de provincias	/@NOTA: Considerar si es correcto
-	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista auxiliar de datos demográficos
-
-	//Recorre secuencialmente de inicio a fin la lista auxiliar de datos demográficos para recoger toda la información de cada dato
-	lDatDemograficos->moverInicio();
-	while(!lDatDemograficos->finLista()){
-		lDatDemograficos->consultar(dD);
-		lDatDemograficos->avanzar();
-		dD->alg6(gLugNacimiento);
-	}
-	gLugNacimiento->mostrarAlg6();
-
-	delete gLugNacimiento;												//Libera los nuevos objetos creados y el gestor auxiliar
 }
 
 void Padron::alg3() {
@@ -183,6 +166,22 @@ void Padron::alg3() {
 	}
 }
 
+void Padron::alg6() {													///@NOTA: Nombre provisional
+	GestorLugarNacimiento* gLugNacimiento = new GestorLugarNacimiento();//Gestor auxiliar para manejar la lista ordenada de provincias	/@NOTA: Considerar si es correcto
+	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista auxiliar de datos demográficos
+
+	//Recorre secuencialmente de inicio a fin la lista auxiliar de datos demográficos para recoger toda la información de cada dato
+	lDatDemograficos->moverInicio();
+	while(!lDatDemograficos->finLista()){
+		lDatDemograficos->consultar(dD);
+		lDatDemograficos->avanzar();
+		dD->alg6(gLugNacimiento);
+	}
+	gLugNacimiento->mostrarAlg6();
+
+	delete gLugNacimiento;												//Libera los nuevos objetos creados y el gestor auxiliar
+}
+
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;															//Puntero auxiliar para mostrar las vías almacenadas en la lista auxiliar de vías 'lVias'
 	DatosDemograficos* dD;												//Puntero auxiliar para mostrar los datos demográficos en la lista auxiliar de datos demográficos 'lDatDemograficos'
@@ -209,7 +208,6 @@ void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura
 		dD->mostrar();
 	}
 	cout << "***********************************************************************************************" << endl;
-
 }
 
 }
