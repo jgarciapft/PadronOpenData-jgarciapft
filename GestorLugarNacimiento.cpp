@@ -77,16 +77,6 @@ void GestorLugarNacimiento::insertarOrden(LugarNacimiento* lugNac) {			///@NOTA:
  */
 
 void GestorLugarNacimiento::alg6(GestorLugarNacimiento*& gLugNacimiento) {		///@NOTA: Nombre provisional
-	LugarNacimiento* lugNacAux;													//Puntero auxiliar para consultar la lista de lugares de nacimiento
-
-	//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
-	lLugarNacimiento->moverInicio();
-	while(!lLugarNacimiento->finLista()){
-		lLugarNacimiento->consultar(lugNacAux);
-		lLugarNacimiento->avanzar();
-		if(lugNacAux->getPoblacion() != "")										//Comprueba que el lugar de nacimiento no sea extranjero
-			gLugNacimiento->insertarOrden(lugNacAux);
-	}
 }
 
 void GestorLugarNacimiento::mostrarAlg6() {										//Muestra la lista procesada por el algoritmo 6 como resultado

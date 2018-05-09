@@ -170,19 +170,6 @@ void Padron::alg3() {
 }
 
 void Padron::alg6() {													///@NOTA: Nombre provisional
-	GestorLugarNacimiento* gLugNacimiento = new GestorLugarNacimiento();//Gestor auxiliar para manejar la lista ordenada de provincias	/@NOTA: Considerar si es correcto
-	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista auxiliar de datos demográficos
-
-	//Recorre secuencialmente de inicio a fin la lista auxiliar de datos demográficos para recoger toda la información de cada dato
-	lDatDemograficos->moverInicio();
-	while(!lDatDemograficos->finLista()){
-		lDatDemograficos->consultar(dD);
-		lDatDemograficos->avanzar();
-		dD->alg6(gLugNacimiento);
-	}
-	gLugNacimiento->mostrarAlg6();
-
-	delete gLugNacimiento;												//Libera los nuevos objetos creados y el gestor auxiliar
 }
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
