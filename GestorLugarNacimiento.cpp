@@ -50,6 +50,7 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {								//Libera la memoria aso
 
 void GestorLugarNacimiento::insertarOrden(ListaPI<LugarNacimiento*>*& lLugNac) {
 	bool enc = false;															//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse o actualizarse el lugar de nacimiento
+	bool noNacional;															//Bandera para indicar que la lista que encapsula el gestor solo contiene nacionalidades extranjeras
 	LugarNacimiento* lugNacAux1;												//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 	LugarNacimiento* lugNacAux2;												//Puntero auxiliar para consultar la lista de lugares de nacimiento pasada por parámetro
 
@@ -59,14 +60,17 @@ void GestorLugarNacimiento::insertarOrden(ListaPI<LugarNacimiento*>*& lLugNac) {
 			do{																	//Comprueba que el primer LUGAR DE NACIMIENTO a insertar NO SEA EXTRANJERO y busca uno que sea nacional
 				lLugarNacimiento->consultar(lugNacAux1);
 				lLugarNacimiento->avanzar();
-			}while(lugNacAux1->getPoblacion() == POBLACION_TEXTO_RELLENO);
-			lLugNac->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNacAux1->getProvinciaPais(), lugNacAux1->getNPersonas()));
+				noNacional = lLugarNacimiento->finLista();						//Si se recorre toda la lista sin encontrar una nacionalidad española no hay que insertar ningún lugar de nacimiento
+			}while(lugNacAux1->getPoblacion() == POBLACION_TEXTO_RELLENO && !noNacional);
+			if(!noNacional){
+				lLugNac->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNacAux1->getProvinciaPais(), lugNacAux1->getNPersonas()));
+			}
 		}
 		while (!lLugarNacimiento->finLista()) {                            		//Recorre secuencialmente la lista de lugares de nacimiento del gestor de inicio a fin
 			do{
 				lLugarNacimiento->consultar(lugNacAux1);
 				lLugarNacimiento->avanzar();
-			}while(lugNacAux1->getPoblacion() == POBLACION_TEXTO_RELLENO);		//Comprueba si el lugar de nacimiento es extranjero
+			}while(lugNacAux1->getPoblacion() == POBLACION_TEXTO_RELLENO && !lLugarNacimiento->finLista());		//Comprueba si el lugar de nacimiento es extranjero
 			lLugNac->moverInicio();
 			while (!lLugNac->finLista() && !enc) {								//Busca el lugar en el que insertar/actualizar la lista pasada por parámtetro (con el lugar de nacimiento actual de la lista que encapsula el gestor)
 				lLugNac->consultar(lugNacAux2);
