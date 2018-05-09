@@ -32,7 +32,7 @@ public:
 	int getCodVia();
 	int getNMujeres();
 	int getNHombres();
-	void alg6(GestorLugarNacimiento*& gLugNacimiento);
+	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
 	void mostrar();
 };
 

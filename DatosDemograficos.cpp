@@ -51,7 +51,8 @@ int DatosDemograficos::getNHombres() {
 	return nHombres;
 }
 
-void DatosDemograficos::alg6(GestorLugarNacimiento*& gLugNacimiento) {				///@NOTA: Nombre provisional
+void DatosDemograficos::alg6(ListaPI<LugarNacimiento*>*& lLugNac) {					///@NOTA: Nombre provisional
+	gLugarNacimiento->insertarOrden(lLugNac);
 }
 
 void DatosDemograficos::mostrar() {													//Llama a mostrar la información de cada gestor contenido
