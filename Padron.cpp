@@ -170,6 +170,35 @@ void Padron::alg3() {
 }
 
 void Padron::alg6() {													///@NOTA: Nombre provisional
+	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada provincia con el numero total de habitantes representada por un objeto 'LugarNacimiento'
+																		  *	El nombre de la provincia se almacena en el atributo 'provinciaPais' y el número de habitantes en 'nPersonas' */
+ 	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
+	LugarNacimiento* lugNacAux;											//Puntero auxiliar para consultar la lista local 'lLugNac'
+
+	//Recorre la lista de datos demográficos auxiliar secuencialmente de inicio a fin
+	lDatDemograficos->moverInicio();
+	while(!lDatDemograficos->finLista()){
+		lDatDemograficos->consultar(dD);
+		lDatDemograficos->avanzar();
+		dD->alg6(lLugNac);
+	}
+
+	//Muestra la lista con los resultados del algoritmo una vez completado
+	lLugNac->moverInicio();												//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
+	while(!lLugNac->finLista()){
+		lLugNac->consultar(lugNacAux);
+		lLugNac->avanzar();
+		cout << lugNacAux->getProvinciaPais() << " (" << lugNacAux->getNPersonas() << ")" << endl;
+	}
+
+	//Libera la memoria asociada a los nuevos lugares de nacimiento creados por el algoritmo 6
+	lLugNac->moverInicio();
+	while(!lLugNac->finLista()){
+		lLugNac->consultar(lugNacAux);
+		lLugNac->avanzar();
+		delete lugNacAux;												//Libera cada lugar de nacimiento de la lista
+	}
+	delete lLugNac;														//Libera la lista
 }
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
