@@ -16,15 +16,12 @@ namespace std {
 class GestorLugarNacimiento {
 private:
 	ListaPI<LugarNacimiento*>* lLugarNacimiento;
-
-	void insertarOrden(LugarNacimiento* lNac);
 public:
 	GestorLugarNacimiento();
 	GestorLugarNacimiento(string lugaresNacimiento);
 	~GestorLugarNacimiento();
 
-	void alg6(GestorLugarNacimiento*& gLugNacimiento);
-	void mostrarAlg6();
+	void insertarOrden(ListaPI<LugarNacimiento*>*& lLugNac);
 	void mostrar();
 };
 
