@@ -6,6 +6,7 @@
 
 #include "Padron.h"
 
+
 namespace std {
 
 /*** DEFINCIÓN DE CONSTANTES *** 										@NOTA: Pensar declaracion/inicializacion de constantes */
@@ -17,6 +18,7 @@ const int N_CAMPOS_VIA = 5;												//Número de campos del fichero de datos 
 const int N_CAMPOS_DATOS_DEMOGRAFICOS = 7;								//Número de campos del fichero de datos de datos demográficos
 const char SEP = '#'; 													//Carácter separador de campos en los ficheros de datos
 const string DEF_BARRIO = "BARRIO CONTENEDOR";							//Nombre del distrito del objeto barrio que incluirá las vías que no tienen ningún barrio asignado
+const int RANGO_EDAD_ALG_4 = 10;										//Amplitud del intervalo de edad que usa el algorimto 4 para agrupar los años de nacimiento de los habitantes
 
 
 Padron::Padron() {
@@ -169,8 +171,46 @@ void Padron::alg3() {
 	}
 }
 
+void Padron::alg4() {
+	ListaPI<AnioNacimiento*>* lAnioNac = new ListaPI<AnioNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada intervalo con el numero total de habitantes es representada por un objeto 'AnioNacimiento'
+																		 * La marca de clase del intervalo, siempre el límite inferior,  se almacena en el atributo 'anio' y el número de habitantes en 'nPersonas' */
+	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista de datos demográficos auxiliar
+	AnioNacimiento* anNacAux;											//Puntero auxiliar para consultar la lista local 'lAnioNac'
+	int nPersonas;														//Guarda el número de personas pertenecientes al rango de edad del dato actual de la lista 'lAnioNac'. Se utiliza para mostrar por pantalla dicho número de personas
+
+	//Recorre la lista de datos demográficos auxiliar secuencialmente de inicio a fin
+	lDatDemograficos->moverInicio();
+	while (!lDatDemograficos->finLista()){
+		lDatDemograficos->consultar(dD);
+		lDatDemograficos->avanzar();
+		dD->alg4(lAnioNac);
+	}
+
+	//Muestra la lista con los resultados del algoritmo una vez completado
+	lAnioNac->moverInicio();
+	for (int i = 0; !lAnioNac->finLista(); ++i) {						//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
+		lAnioNac->consultar(anNacAux);
+		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()*RANGO_EDAD_ALG_4){ //Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
+			nPersonas = anNacAux->getNPersonas();
+			lAnioNac->avanzar();										//SOLO se avanza la lista si el intervalo actual coincide con el intervalo a mostrar. Sino hay que esperar a que coincidan para seguir
+		}else{															//Sino avanza las iteraciones necesarias hasta que alcanza el intervalo correspondiente a dicho dato y se muestran 0 personas
+			nPersonas = 0;
+		}
+		cout << i*RANGO_EDAD_ALG_4 << " a " << (i++)*RANGO_EDAD_ALG_4 -1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
+	}
+
+	//Libera la memoria asociada a los nuevos años de nacimiento creados por el algoritmo 4
+	lAnioNac->moverInicio();
+	while (!lAnioNac->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
+		lAnioNac->consultar(anNacAux);
+		lAnioNac->avanzar();
+		delete anNacAux;												//Libera cada año de nacimiento de la lista
+	}
+	delete lAnioNac;													//Libera la lista
+}
+
 void Padron::alg6() {													///@NOTA: Nombre provisional
-	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada provincia con el numero total de habitantes representada por un objeto 'LugarNacimiento'
+	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada provincia con el numero total de habitantes es representada por un objeto 'LugarNacimiento'
 																		  *	El nombre de la provincia se almacena en el atributo 'provinciaPais' y el número de habitantes en 'nPersonas' */
  	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
 	LugarNacimiento* lugNacAux;											//Puntero auxiliar para consultar la lista local 'lLugNac'
@@ -184,8 +224,8 @@ void Padron::alg6() {													///@NOTA: Nombre provisional
 	}
 
 	//Muestra la lista con los resultados del algoritmo una vez completado
-	lLugNac->moverInicio();												//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
-	while(!lLugNac->finLista()){
+	lLugNac->moverInicio();
+	while(!lLugNac->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
 		lLugNac->consultar(lugNacAux);
 		lLugNac->avanzar();
 		cout << lugNacAux->getProvinciaPais() << " (" << lugNacAux->getNPersonas() << ")" << endl;
@@ -193,7 +233,7 @@ void Padron::alg6() {													///@NOTA: Nombre provisional
 
 	//Libera la memoria asociada a los nuevos lugares de nacimiento creados por el algoritmo 6
 	lLugNac->moverInicio();
-	while(!lLugNac->finLista()){
+	while(!lLugNac->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
 		lLugNac->consultar(lugNacAux);
 		lLugNac->avanzar();
 		delete lugNacAux;												//Libera cada lugar de nacimiento de la lista

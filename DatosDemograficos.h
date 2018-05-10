@@ -32,6 +32,7 @@ public:
 	int getCodVia();
 	int getNMujeres();
 	int getNHombres();
+	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
 	void mostrar();
 };

@@ -21,6 +21,8 @@ public:
 	GestorAnioNacimiento(string aniosNacimiento);
 	~GestorAnioNacimiento();
 
+	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
+
 	void mostrar();
 };
 

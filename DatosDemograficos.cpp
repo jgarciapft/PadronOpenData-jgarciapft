@@ -51,6 +51,10 @@ int DatosDemograficos::getNHombres() {
 	return nHombres;
 }
 
+void DatosDemograficos::alg4(ListaPI<AnioNacimiento *>*& lAnioNac) {
+	gAnioNacimiento->alg4(lAnioNac);
+}
+
 void DatosDemograficos::alg6(ListaPI<LugarNacimiento*>*& lLugNac) {					///@NOTA: Nombre provisional
 	gLugarNacimiento->insertarOrden(lLugNac);
 }

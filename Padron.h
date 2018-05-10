@@ -27,6 +27,7 @@ public:
 	void cargarDatosDemograficos();
 	void alg2(string nB);
 	void alg3();
+	void alg4();
 	void alg6();
 	void mostrarEstructura();
 };

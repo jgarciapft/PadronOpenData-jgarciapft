@@ -36,6 +36,9 @@ GestorAnioNacimiento::~GestorAnioNacimiento() {																//Libera la memor
 	delete lAnioNacimiento;																					//Libera la lista de años de nacimiento
 }
 
+void GestorAnioNacimiento::alg4(ListaPI<AnioNacimiento*>*& lAnio) {
+}
+
 
 
 void GestorAnioNacimiento::mostrar() {																		//Muestra la información de todos los años de nacimiento de la lista
