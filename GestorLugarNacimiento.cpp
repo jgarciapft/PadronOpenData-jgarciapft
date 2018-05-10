@@ -50,7 +50,6 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {								//Libera la memoria aso
 
 void GestorLugarNacimiento::insertarOrden(ListaPI<LugarNacimiento*>*& lLugNac) {
 	bool enc = false;															//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse o actualizarse el lugar de nacimiento
-	bool noNacional;															//Bandera para indicar que la lista que encapsula el gestor solo contiene nacionalidades extranjeras
 	LugarNacimiento* lugNacAux1;												//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 	LugarNacimiento* lugNacAux2;												//Puntero auxiliar para consultar la lista de lugares de nacimiento pasada por parámetro
 
@@ -60,30 +59,30 @@ void GestorLugarNacimiento::insertarOrden(ListaPI<LugarNacimiento*>*& lLugNac) {
 			do{																	//Comprueba que el primer LUGAR DE NACIMIENTO a insertar NO SEA EXTRANJERO y busca uno que sea nacional
 				lLugarNacimiento->consultar(lugNacAux1);
 				lLugarNacimiento->avanzar();
-				noNacional = lLugarNacimiento->finLista();						//Si se recorre toda la lista sin encontrar una nacionalidad española no hay que insertar ningún lugar de nacimiento
-			}while(lugNacAux1->getPoblacion() == POBLACION_TEXTO_RELLENO && !noNacional);
-			if(!noNacional){
+			}while(lugNacAux1->getPoblacion() == POBLACION_TEXTO_RELLENO && !lLugarNacimiento->finLista());
+			if(!lLugarNacimiento->finLista()){									//Comprueba si la lista solo contenía nacionalidades extranjeras y no hay ninguna más que insertar
 				lLugNac->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNacAux1->getProvinciaPais(), lugNacAux1->getNPersonas()));
 			}
 		}
+
 		while (!lLugarNacimiento->finLista()) {                            		//Recorre secuencialmente la lista de lugares de nacimiento del gestor de inicio a fin
-			do{
-				lLugarNacimiento->consultar(lugNacAux1);
-				lLugarNacimiento->avanzar();
-			}while(lugNacAux1->getPoblacion() == POBLACION_TEXTO_RELLENO && !lLugarNacimiento->finLista());		//Comprueba si el lugar de nacimiento es extranjero
-			lLugNac->moverInicio();
-			while (!lLugNac->finLista() && !enc) {								//Busca el lugar en el que insertar/actualizar la lista pasada por parámtetro (con el lugar de nacimiento actual de la lista que encapsula el gestor)
-				lLugNac->consultar(lugNacAux2);
-				if (*lugNacAux1 >= *lugNacAux2)                                 //Comparación alfabética por la provincia/país
-					enc = true;                                                 //Actualiza la bandera que permite salir del bucle cuando se ha encontrado la posición del dato a procesar
-				else
-					lLugNac->avanzar();                               			//Se avanza solo si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
+			lLugarNacimiento->consultar(lugNacAux1);
+			lLugarNacimiento->avanzar();
+			if(lugNacAux1->getPoblacion() != POBLACION_TEXTO_RELLENO){			//Comprueba que la nacionalidad no sea extranjera
+				lLugNac->moverInicio();
+				while (!lLugNac->finLista() && !enc) {							//Busca el lugar en el que insertar/actualizar la lista pasada por parámtetro (con el lugar de nacimiento actual de la lista que encapsula el gestor)
+					lLugNac->consultar(lugNacAux2);
+					if (*lugNacAux1 >= *lugNacAux2)                             //Comparación alfabética por la provincia/país
+						enc = true;                                             //Actualiza la bandera que permite salir del bucle cuando se ha encontrado la posición del dato a procesar
+					else
+						lLugNac->avanzar();                               		//Se avanza solo si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
+				}
+				if (*lugNacAux1 == *lugNacAux2)                                 //Se comprueba que el dato no se duplique. La condición de duplicidad es que haya 2 datos con el mismo valor para 'provinciaPais'
+					lugNacAux2->incNPersonas(lugNacAux1->getNPersonas());       //Si existe se actualiza el atributo 'nPersonas' a modo de acumulador
+				else															//Si no existe, se inserta un nuevo objeto. Si modificasemos los objetos ya introducimos en memoria cambiaríamos los datos del padrón
+					lLugNac->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNacAux1->getProvinciaPais(), lugNacAux1->getNPersonas()));
+				enc = false;													//Reinicia la bandera de posición
 			}
-			if (*lugNacAux1 == *lugNacAux2)                                     //Se comprueba que el dato no se duplique. La condición de duplicidad es que haya 2 datos con el mismo valor para 'provinciaPais'
-				lugNacAux2->incNPersonas(lugNacAux1->getNPersonas());           //Si existe se actualiza el atributo 'nPersonas' a modo de acumulador
-			else																//Si no existe, se inserta un nuevo objeto. Si modificasemos los objetos ya introducimos en memoria cambiaríamos los datos del padrón
-				lLugNac->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNacAux1->getProvinciaPais(), lugNacAux1->getNPersonas()));
-			enc = false;														//Reinicia la bandera de posición
 		}
 	}
 }
