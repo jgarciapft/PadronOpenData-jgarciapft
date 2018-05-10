@@ -197,8 +197,9 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 	//Muestra la lista con los resultados del algoritmo una vez completado
 	lAnioNac->moverInicio();
 	lAnioNac->consultar(mayorMarca);
-	mayorMarca = new AnioNacimiento(mayorMarca->getAnio(), mayorMarca->getNPersonas());	//Es necesario crear un puntero distinto a los de la lista para no modificarlos en el proceso
-	for (int i = 0; !lAnioNac->finLista(); i++) {						//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
+	if(mayorMarca != NULL)
+		mayorMarca = new AnioNacimiento(mayorMarca->getAnio(), mayorMarca->getNPersonas());	//Es necesario crear un puntero distinto a los de la lista para no modificarlos en el proceso
+	for (int i=0; !lAnioNac->finLista(); i++) {						//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
 		lAnioNac->consultar(anNacAux);
 		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					//Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
 			nPersonas = anNacAux->getNPersonas();
@@ -218,7 +219,7 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 	//Muestra la representación gráfica de los intervalos obtenidos
 	cout << endl <<"REPRESENTACIÓN GRÁFICA - APROXIMACIÓN A UN HISTOGRAMA DE FRECUENCIAS\t" << "· = " << nPersPorDiv << " personas (aprox.)" << endl << endl;
 	lAnioNac->moverInicio();
-	for (int i = 0; !lAnioNac->finLista(); i++) {						//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
+	for (int i=0; !lAnioNac->finLista(); i++) {							//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
 		lAnioNac->consultar(anNacAux);
 		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					//Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
 			nDivisiones = anNacAux->getNPersonas() / nPersPorDiv;
@@ -227,8 +228,10 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 		}else{															//Sino avanza las iteraciones necesarias hasta que alcanza el intervalo correspondiente a dicho dato y se muestran 0 personas
 			nDivisiones = 0;
 		}
-		for(int j=0; j<nDivisiones; j++){ cadDivisiones.append(carDivision); }	//Construye la cadena que representará la columna para el intervalo actual
+		for(int j=0; j<nDivisiones; j++){ cadDivisiones.append(carDivision); }											//Construye la cadena que representará la columna para el intervalo actual
 		for(int j=0; j<(cadMayorMarca.length() - to_string(i*RANGO_EDAD_ALG_4).length()); j++){ cadSep.append("  "); }	//Construye la cadena de separación entre la etiqueta y la columna de la gráfica restando los dígitos de la mayor marca con los de la marca actual
+		if(to_string(i*RANGO_EDAD_ALG_4).length() != to_string(i*RANGO_EDAD_ALG_4 + RANGO_EDAD_ALG_4-1).length())		//Rectificación de la separación cuando los límites del intervalo difieren en número de dígitos
+			cadSep.erase(cadSep.length()-1, 1);
 		cout << "(" << i*RANGO_EDAD_ALG_4 << " , " << (i+1)*RANGO_EDAD_ALG_4 - 1 << ")  " << cadSep << "|"  << cadDivisiones << endl;
 
 		cadSep.clear();													//Bora la cadena se separación entre etiqueta y columna para el siguiente intervalo
