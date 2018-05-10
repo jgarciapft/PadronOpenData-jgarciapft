@@ -18,7 +18,7 @@ const int N_CAMPOS_VIA = 5;												//Número de campos del fichero de datos 
 const int N_CAMPOS_DATOS_DEMOGRAFICOS = 7;								//Número de campos del fichero de datos de datos demográficos
 const char SEP = '#'; 													//Carácter separador de campos en los ficheros de datos
 const string DEF_BARRIO = "BARRIO CONTENEDOR";							//Nombre del distrito del objeto barrio que incluirá las vías que no tienen ningún barrio asignado
-const int RANGO_EDAD_ALG_4 = 10;										//Amplitud del intervalo de edad que usa el algorimto 4 para agrupar los años de nacimiento de los habitantes
+extern const int RANGO_EDAD_ALG_4 = 10;									//Amplitud del intervalo de edad que usa el algorimto 4 para agrupar los años de nacimiento de los habitantes
 
 
 Padron::Padron() {

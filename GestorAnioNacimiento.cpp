@@ -10,7 +10,7 @@
 namespace std {
 
 /*** DEFINCIÓN DE CONSTANTES *** 																			TODO: Pensar declaracion/inicializacion de constantes */
-const int RANGO_EDAD_ALG_4 = 10;																			//Amplitud del intervalo de edad que usa el algorimto 4 para agrupar los años de nacimiento de los habitantes
+extern const int RANGO_EDAD_ALG_4;																			//Amplitud del intervalo de edad que usa el algorimto 4 para agrupar los años de nacimiento de los habitantes
 
 
 GestorAnioNacimiento::GestorAnioNacimiento() {
