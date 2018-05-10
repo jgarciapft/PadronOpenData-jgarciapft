@@ -188,15 +188,15 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 
 	//Muestra la lista con los resultados del algoritmo una vez completado
 	lAnioNac->moverInicio();
-	for (int i = 0; !lAnioNac->finLista(); ++i) {						//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
+	for (int i = 0; !lAnioNac->finLista(); i++) {						//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
 		lAnioNac->consultar(anNacAux);
-		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()*RANGO_EDAD_ALG_4){ //Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
+		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					//Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
 			nPersonas = anNacAux->getNPersonas();
 			lAnioNac->avanzar();										//SOLO se avanza la lista si el intervalo actual coincide con el intervalo a mostrar. Sino hay que esperar a que coincidan para seguir
 		}else{															//Sino avanza las iteraciones necesarias hasta que alcanza el intervalo correspondiente a dicho dato y se muestran 0 personas
 			nPersonas = 0;
 		}
-		cout << i*RANGO_EDAD_ALG_4 << " a " << (i++)*RANGO_EDAD_ALG_4 -1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
+		cout << i*RANGO_EDAD_ALG_4 << " a " << (i+1)*RANGO_EDAD_ALG_4 - 1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
 	}
 
 	//Libera la memoria asociada a los nuevos años de nacimiento creados por el algoritmo 4

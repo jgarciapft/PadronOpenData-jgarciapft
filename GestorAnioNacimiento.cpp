@@ -68,7 +68,7 @@ void GestorAnioNacimiento::alg4(ListaPI<AnioNacimiento*>*& lAnioNac) {										
 			lAnioNac->moverInicio();
 			while (!lAnioNac->finLista() && !enc){															//Busca el lugar en el que insertar/actualizar la lista pasada por parámtetro (con el año de nacimiento actual de la lista que encapsula el gestor)
 				lAnioNac->consultar(anNacAux2);
-				if(anioActual >= anNacAux2->getAnio())														//Comprobación de pertenencia al intervalo
+				if(anioActual <= anNacAux2->getAnio())														//Comprobación de posición a insertar
 					enc = true;																				//Actualiza la bandera que permite salir del bucle cuando se ha encontrado la posición del dato a procesar
 				else
 					lAnioNac->avanzar();																	//Se avanza solo si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
