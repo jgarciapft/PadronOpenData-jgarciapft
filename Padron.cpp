@@ -171,7 +171,7 @@ void Padron::alg3() {
 	}
 }
 
-void Padron::alg4() {
+void Padron::alg4() {													///@NOTA: Nombre provisional
 	ListaPI<AnioNacimiento*>* lAnioNac = new ListaPI<AnioNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada intervalo con el numero total de habitantes es representada por un objeto 'AnioNacimiento'
 																		 * La marca de clase del intervalo, siempre el límite inferior,  se almacena en el atributo 'anio' y el número de habitantes en 'nPersonas' */
 	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista de datos demográficos auxiliar

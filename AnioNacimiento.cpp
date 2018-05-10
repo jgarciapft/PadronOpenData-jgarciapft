@@ -30,6 +30,12 @@ int AnioNacimiento::getNPersonas() {
 	return nPersonas;
 }
 
+void AnioNacimiento::incNPersonas(int nP) {
+	nPersonas += nP;
+}
+
+
+
 void AnioNacimiento::mostrar() {				//Muestra toda la información del objeto 'AnioNacimiento'
 	cout << "Año : " << anio << " | Personas : " << nPersonas << endl;
 }

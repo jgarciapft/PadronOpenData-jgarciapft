@@ -22,6 +22,7 @@ public:
 
 	string getNivEstudios();
 	int getNPersonas();
+
 	void mostrar();
 };
 

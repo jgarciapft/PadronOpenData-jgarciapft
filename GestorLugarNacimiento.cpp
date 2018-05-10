@@ -47,7 +47,7 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {								//Libera la memoria aso
 }
 
 
-
+//TODO: Renombrar a 'alg6'
 void GestorLugarNacimiento::insertarOrden(ListaPI<LugarNacimiento*>*& lLugNac) {
 	bool enc = false;															//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse o actualizarse el lugar de nacimiento
 	LugarNacimiento* lugNacAux1;												//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
@@ -79,13 +79,15 @@ void GestorLugarNacimiento::insertarOrden(ListaPI<LugarNacimiento*>*& lLugNac) {
 				}
 				if (*lugNacAux1 == *lugNacAux2)                                 //Se comprueba que el dato no se duplique. La condición de duplicidad es que haya 2 datos con el mismo valor para 'provinciaPais'
 					lugNacAux2->incNPersonas(lugNacAux1->getNPersonas());       //Si existe se actualiza el atributo 'nPersonas' a modo de acumulador
-				else															//Si no existe, se inserta un nuevo objeto. Si modificasemos los objetos ya introducimos en memoria cambiaríamos los datos del padrón
+				else															//Si no existe se inserta un nuevo objeto. Si modificasemos los objetos ya introducidos en memoria cambiaríamos los datos del padrón
 					lLugNac->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNacAux1->getProvinciaPais(), lugNacAux1->getNPersonas()));
 				enc = false;													//Reinicia la bandera de posición
 			}
 		}
 	}
 }
+
+
 
 void GestorLugarNacimiento::mostrar() {											//Muestra la información de cada lugar de nacimiento
 	LugarNacimiento* lugNacAux;													//Puntero auxiliar para consultar la lista de lugares de nacimiento

@@ -51,7 +51,7 @@ int DatosDemograficos::getNHombres() {
 	return nHombres;
 }
 
-void DatosDemograficos::alg4(ListaPI<AnioNacimiento *>*& lAnioNac) {
+void DatosDemograficos::alg4(ListaPI<AnioNacimiento *>*& lAnioNac) {				///@NOTA: Nombre provisional
 	gAnioNacimiento->alg4(lAnioNac);
 }
 

@@ -22,6 +22,7 @@ public:
 
 	string getNacionalidad();
 	int getNPersonas();
+
 	void mostrar();
 };
 
