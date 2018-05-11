@@ -33,6 +33,7 @@ public:
 	int getNMujeres();
 	int getNHombres();
 	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
+	void alg5(ListaPI<Nacionalidad*>*& lNacionalidad);
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
 	void mostrar();
 };
