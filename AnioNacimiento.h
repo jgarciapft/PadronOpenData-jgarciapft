@@ -22,8 +22,6 @@ public:
 
 	int getAnio();
 	int getNPersonas();
-	void setAnio(int _anio);
-	void setNPersonas(int nP);
 	void incNPersonas(int nP);
 
 	void mostrar();
