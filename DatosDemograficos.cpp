@@ -56,7 +56,7 @@ void DatosDemograficos::alg4(ListaPI<AnioNacimiento *>*& lAnioNac) {				///@NOTA
 }
 
 void DatosDemograficos::alg6(ListaPI<LugarNacimiento*>*& lLugNac) {					///@NOTA: Nombre provisional
-	gLugarNacimiento->insertarOrden(lLugNac);
+	gLugarNacimiento->alg6(lLugNac);
 }
 
 void DatosDemograficos::mostrar() {													//Llama a mostrar la información de cada gestor contenido

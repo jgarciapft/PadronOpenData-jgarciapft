@@ -21,7 +21,7 @@ public:
 	GestorLugarNacimiento(string lugaresNacimiento);
 	~GestorLugarNacimiento();
 
-	void insertarOrden(ListaPI<LugarNacimiento*>*& lLugNac);
+	void alg6(ListaPI<LugarNacimiento *> *&lLugNac);
 
 	void mostrar();
 };

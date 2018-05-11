@@ -47,8 +47,8 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {								//Libera la memoria aso
 }
 
 
-//TODO: Renombrar a 'alg6'
-void GestorLugarNacimiento::insertarOrden(ListaPI<LugarNacimiento*>*& lLugNac) {
+
+void GestorLugarNacimiento::alg6(ListaPI<LugarNacimiento *> *&lLugNac) {
 	bool enc = false;															//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse o actualizarse el lugar de nacimiento
 	LugarNacimiento* lugNacAux1;												//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 	LugarNacimiento* lugNacAux2;												//Puntero auxiliar para consultar la lista de lugares de nacimiento pasada por parámetro
