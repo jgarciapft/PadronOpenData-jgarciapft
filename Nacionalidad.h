@@ -26,7 +26,7 @@ public:
 
 	void mostrar();
 
-	bool operator >=(const Nacionalidad& nacion);
+	bool operator >(const Nacionalidad& nacion);
 	bool operator ==(const Nacionalidad& nacion);
 };
 

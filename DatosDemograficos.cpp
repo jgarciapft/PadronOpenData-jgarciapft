@@ -55,7 +55,7 @@ void DatosDemograficos::alg4(ListaPI<AnioNacimiento *>*& lAnioNac) {				///@NOTA
 	gAnioNacimiento->alg4(lAnioNac);
 }
 
-void DatosDemograficos::alg5(ListaPI<Nacionalidad *> *&lNacion) {
+void DatosDemograficos::alg5(ListaPI<Nacionalidad*>*& lNacion) {					///@NOTA: Nombre provisional
 	gNacionalidad->alg5(lNacion);
 }
 

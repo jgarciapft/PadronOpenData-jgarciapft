@@ -36,7 +36,7 @@ int LugarNacimiento::getNPersonas() {
 	return nPersonas;
 }
 
-void LugarNacimiento::incNPersonas(int nP) {							//Incrementa en uno (1) el atributo 'nPersonas'. Utilizado por el algoritmo 6
+void LugarNacimiento::incNPersonas(int nP) {							//Incrementa el atributo 'nPersonas'. Utilizado por el algoritmo 6
 	nPersonas += nP;
 }
 

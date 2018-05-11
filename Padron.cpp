@@ -244,7 +244,7 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 	delete lAnioNac;													//Libera la lista
 }
 
-void Padron::alg5() {
+void Padron::alg5() {													///@NOTA: Nombre provisional
 	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada nacionalidad con el numero total de habitantes es representada por un objeto 'Nacionalidad'
 																		  *	El nombre de la nacionalidad se almacena en el atributo 'nacionalidad' y el número de personas en 'nPersonas' */
  	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
