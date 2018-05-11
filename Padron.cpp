@@ -176,7 +176,7 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista de datos demográficos auxiliar
 	AnioNacimiento* anNacAux;											//Puntero auxiliar para consultar la lista local 'lAnioNac'
 	int nPersonas;														//Guarda el número de personas pertenecientes al rango de edad del dato actual de la lista 'lAnioNac'. Se utiliza para mostrar por pantalla dicho número de personas
-	int nPersPorDiv;													//Número de personas que representan cada carácter que forma una columna en la representación gráfica. Se determina con el resultado de NPersonas(modaNPersonas) % 200 para que quede un rango adecuado dependiendo de la muestra
+	int nPersPorDiv;													//Número de personas que representan cada carácter que forma una columna en la representación gráfica. Se determina con el resultado de NPersonas(modaNPersonas) % 275 para que quede un rango adecuado dependiendo de la muestra
 	int nDivisiones;													//Número de divisiones calculadas para cada intervalo
 	int mayorMarca = 0;													//Mayor marca hasta ahora. Se utiliza para el espaciado de la etiqueta y la columna en la representación gráfica
 	int modaNPersonas = 0;												//Moda estadística del número de personas para cada intervalo de edad
@@ -209,7 +209,7 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 		}
 		cout << i*RANGO_EDAD_ALG_4 << " a " << (i+1)*RANGO_EDAD_ALG_4 - 1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
 	}
-	nPersPorDiv = modaNPersonas % 200;									//Crea divisiones de tamaño dependiente de la muestra. SOLO es válida para muestras con una varianza pequeña
+	nPersPorDiv = modaNPersonas % 275;									//Crea divisiones de tamaño dependiente de la muestra. SOLO es válida para muestras con una varianza pequeña
 	cadMayorMarca = int_to_string(mayorMarca);							//Convierte la mayor marca a cadena para contar sus dígitos como caracteres
 
 	//Muestra la representación gráfica de los intervalos obtenidos
