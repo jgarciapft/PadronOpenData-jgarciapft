@@ -21,6 +21,8 @@ public:
 	GestorNacionalidad(string nacionalidades);
 	~GestorNacionalidad();
 
+	void alg5(ListaPI<Nacionalidad*>*& lNacion);
+
 	void mostrar();
 };
 

@@ -245,35 +245,35 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 }
 
 void Padron::alg5() {
-	ListaPI<Nacionalidad*>* lNacionalidad = new ListaPI<Nacionalidad*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada nacionalidad con el numero total de habitantes es representada por un objeto 'Nacionalidad'
+	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada nacionalidad con el numero total de habitantes es representada por un objeto 'Nacionalidad'
 																		  *	El nombre de la nacionalidad se almacena en el atributo 'nacionalidad' y el número de personas en 'nPersonas' */
  	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
-	Nacionalidad* nacionAux;											//Puntero auxiliar para consultar la lista local 'lNacionalidad'
+	Nacionalidad* nacionAux;											//Puntero auxiliar para consultar la lista local 'lNacion'
 
 	//Recorre la lista de datos demográficos auxiliar secuencialmente de inicio a fin
 	lDatDemograficos->moverInicio();
 	while(!lDatDemograficos->finLista()){
 		lDatDemograficos->consultar(dD);
 		lDatDemograficos->avanzar();
-		dD->alg5(lNacionalidad);
+		dD->alg5(lNacion);
 	}
 
 	//Muestra la lista con los resultados del algoritmo una vez completado
-	lNacionalidad->moverInicio();
-	while(!lNacionalidad->finLista()){									//Recorre secuencialmente la lista de nacionalidades de inicio a fin
-		lNacionalidad->consultar(nacionAux);
-		lNacionalidad->avanzar();
+	lNacion->moverInicio();
+	while(!lNacion->finLista()){									//Recorre secuencialmente la lista de nacionalidades de inicio a fin
+		lNacion->consultar(nacionAux);
+		lNacion->avanzar();
 		cout << nacionAux->getNacionalidad() << " (" << nacionAux->getNPersonas() << ")" << endl;
 	}
 
 	//Libera la memoria asociada a las nuevas nacionalidades creadas por el algoritmo 5
-	lNacionalidad->moverInicio();
-	while(!lNacionalidad->finLista()){									//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
-		lNacionalidad->consultar(nacionAux);
-		lNacionalidad->avanzar();
+	lNacion->moverInicio();
+	while(!lNacion->finLista()){									//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
+		lNacion->consultar(nacionAux);
+		lNacion->avanzar();
 		delete nacionAux;												//Libera cada nacionalidad de la lista
 	}
-	delete lNacionalidad;												//Libera la lista
+	delete lNacion;												//Libera la lista
 }
 
 void Padron::alg6() {													///@NOTA: Nombre provisional
