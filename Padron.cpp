@@ -5,8 +5,6 @@
  */
 
 #include "Padron.h"
-#include <string>
-#include <cstdlib>
 
 namespace std {
 
@@ -214,7 +212,7 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 		cout << i*RANGO_EDAD_ALG_4 << " a " << (i+1)*RANGO_EDAD_ALG_4 - 1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
 	}
 	nPersPorDiv = mayorMarca->getNPersonas() % 500;						//Crea divisiones de tamaño dependiente de la muestra. SOLO es válida para muestras con una varianza pequeña
-	cadMayorMarca = to_string(mayorMarca->getAnio());					//Convierte la mayor marca a cadena para contar sus dígitos como caracteres
+	cadMayorMarca = int_to_string(mayorMarca->getAnio());					//Convierte la mayor marca a cadena para contar sus dígitos como caracteres
 
 	//Muestra la representación gráfica de los intervalos obtenidos
 	cout << endl <<"REPRESENTACIÓN GRÁFICA - APROXIMACIÓN A UN HISTOGRAMA DE FRECUENCIAS\t" << "· = " << nPersPorDiv << " personas (aprox.)" << endl << endl;
@@ -229,8 +227,8 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 			nDivisiones = 0;
 		}
 		for(int j=0; j<nDivisiones; j++){ cadDivisiones.append(carDivision); }											//Construye la cadena que representará la columna para el intervalo actual
-		for(int j=0; j<(cadMayorMarca.length() - to_string(i*RANGO_EDAD_ALG_4).length()); j++){ cadSep.append("  "); }	//Construye la cadena de separación entre la etiqueta y la columna de la gráfica restando los dígitos de la mayor marca con los de la marca actual
-		if(to_string(i*RANGO_EDAD_ALG_4).length() != to_string(i*RANGO_EDAD_ALG_4 + RANGO_EDAD_ALG_4-1).length())		//Rectificación de la separación cuando los límites del intervalo difieren en número de dígitos
+		for(int j=0; j<(cadMayorMarca.length() - int_to_string(i*RANGO_EDAD_ALG_4).length()); j++){ cadSep.append("  "); }	//Construye la cadena de separación entre la etiqueta y la columna de la gráfica restando los dígitos de la mayor marca con los de la marca actual
+		if(int_to_string(i*RANGO_EDAD_ALG_4).length() != int_to_string(i*RANGO_EDAD_ALG_4 + RANGO_EDAD_ALG_4-1).length())		//Rectificación de la separación cuando los límites del intervalo difieren en número de dígitos
 			cadSep.erase(cadSep.length()-1, 1);
 		cout << "(" << i*RANGO_EDAD_ALG_4 << " , " << (i+1)*RANGO_EDAD_ALG_4 - 1 << ")  " << cadSep << "|"  << cadDivisiones << endl;
 
