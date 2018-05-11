@@ -244,6 +244,38 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 	delete lAnioNac;													//Libera la lista
 }
 
+void Padron::alg5() {
+	ListaPI<Nacionalidad*>* lNacionalidad = new ListaPI<Nacionalidad*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada nacionalidad con el numero total de habitantes es representada por un objeto 'Nacionalidad'
+																		  *	El nombre de la nacionalidad se almacena en el atributo 'nacionalidad' y el número de personas en 'nPersonas' */
+ 	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
+	Nacionalidad* nacionAux;											//Puntero auxiliar para consultar la lista local 'lNacionalidad'
+
+	//Recorre la lista de datos demográficos auxiliar secuencialmente de inicio a fin
+	lDatDemograficos->moverInicio();
+	while(!lDatDemograficos->finLista()){
+		lDatDemograficos->consultar(dD);
+		lDatDemograficos->avanzar();
+		dD->alg5(lNacionalidad);
+	}
+
+	//Muestra la lista con los resultados del algoritmo una vez completado
+	lNacionalidad->moverInicio();
+	while(!lNacionalidad->finLista()){									//Recorre secuencialmente la lista de nacionalidades de inicio a fin
+		lNacionalidad->consultar(nacionAux);
+		lNacionalidad->avanzar();
+		cout << nacionAux->getNacionalidad() << " (" << nacionAux->getNPersonas() << ")" << endl;
+	}
+
+	//Libera la memoria asociada a las nuevas nacionalidades creadas por el algoritmo 5
+	lNacionalidad->moverInicio();
+	while(!lNacionalidad->finLista()){									//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
+		lNacionalidad->consultar(nacionAux);
+		lNacionalidad->avanzar();
+		delete nacionAux;												//Libera cada nacionalidad de la lista
+	}
+	delete lNacionalidad;												//Libera la lista
+}
+
 void Padron::alg6() {													///@NOTA: Nombre provisional
 	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada provincia con el numero total de habitantes es representada por un objeto 'LugarNacimiento'
 																		  *	El nombre de la provincia se almacena en el atributo 'provinciaPais' y el número de habitantes en 'nPersonas' */
