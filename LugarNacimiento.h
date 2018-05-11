@@ -25,6 +25,7 @@ public:
 	string getProvinciaPais();
 	int getNPersonas();
 	void incNPersonas(int nP);
+
 	void mostrar();
 
 	bool operator >=(const LugarNacimiento& lugNac);

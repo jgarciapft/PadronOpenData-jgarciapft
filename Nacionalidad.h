@@ -22,8 +22,12 @@ public:
 
 	string getNacionalidad();
 	int getNPersonas();
+	void incNPersonas(int nP);
 
 	void mostrar();
+
+	bool operator >=(const Nacionalidad& nacion);
+	bool operator ==(const Nacionalidad& nacion);
 };
 
 }

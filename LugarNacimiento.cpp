@@ -40,6 +40,8 @@ void LugarNacimiento::incNPersonas(int nP) {							//Incrementa en uno (1) el at
 	nPersonas += nP;
 }
 
+
+
 void LugarNacimiento::mostrar() {										//Muestra toda la información del objeto 'LugarNacimiento'
 	cout << "Población : " << poblacion << " | Provincia/Pais : " << provinciaPais << " | Personas : " << nPersonas << endl;
 }

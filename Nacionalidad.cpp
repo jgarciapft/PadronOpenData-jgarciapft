@@ -30,10 +30,22 @@ int Nacionalidad::getNPersonas() {
 	return nPersonas;
 }
 
+void Nacionalidad::incNPersonas(int nP) {						//Incrementa en uno (1) el atributo 'nPersonas'. Utilizado por el algoritmo 5
+	nPersonas += nP;
+}
 
 
-void Nacionalidad::mostrar() {				//Muestra toda la información del objeto 'Nacionalidad'
+
+void Nacionalidad::mostrar() {									//Muestra toda la información del objeto 'Nacionalidad'
 	cout << "Nacionalidad : " << nacionalidad << " | Personas : " << nPersonas << endl;
+}
+
+bool Nacionalidad::operator>=(const Nacionalidad &nacion) {		///@NOTA: Adecuado si solo se le da uso para el algoritmo 5
+	return nPersonas >= nacion.nPersonas;						//Criterio de comparación: orden matemático de 'nPersonas'
+}
+
+bool Nacionalidad::operator==(const Nacionalidad &nacion) {		///@NOTA: Adecuado si solo se le da uso para el algoritmo 5
+	return nPersonas == nacion.nPersonas;						//Criterio de comparación: orden matemático de 'nPersonas'
 }
 
 }
