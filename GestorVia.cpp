@@ -27,7 +27,7 @@ GestorVia::~GestorVia() {											//Libera la memoria asociada a cada vía y a
 
 
 
-void GestorVia::insertarViaOrden(Via* v) { 							///@PREGUNTA: prima más la legibilidad que el rendimiento?
+void GestorVia::insertarViaOrden(Via* v) {
 	bool enc = false;												//Bandera para indicar cuándo se ha encontrado la posición de la lista en la que insertar la vía
 	Via* vAux;														//Puntero auxiliar para consultar la lista de vías
 
