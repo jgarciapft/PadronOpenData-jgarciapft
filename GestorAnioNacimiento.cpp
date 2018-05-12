@@ -49,6 +49,7 @@ void GestorAnioNacimiento::alg4(ListaPI<AnioNacimiento*>*& lAnioNac) {										
 	time_t tiempoActual = time(NULL);
 	tm* tiempoSis = localtime(&tiempoActual);																//Estructura para almacenar el tiempo del sistema en horas, minutos y segundos
 
+	//Recorre secuencialmente la lista de años de nacimiento de inicio a fin1
 	if(!lAnioNacimiento->estaVacia()){																		//Comprueba si el gestor contiene algún año de nacimiento
 		lAnioNacimiento->moverInicio();
 		if(lAnioNac->estaVacia()){																			//Maneja el caso inicial: Comprueba si la lista pasada por parámtro está vacía e inserta el primer elemento
@@ -62,7 +63,7 @@ void GestorAnioNacimiento::alg4(ListaPI<AnioNacimiento*>*& lAnioNac) {										
 		while (!lAnioNacimiento->finLista()){																//Recorre secuencialmente la lista de años de nacimiento del gestor de inicio a fin
 			lAnioNacimiento->consultar(anNacAux1);
 			lAnioNacimiento->avanzar();
-			anioActual = tiempoSis->tm_year + 1900 - anNacAux1->getAnio();
+			anioActual = tiempoSis->tm_year + 1900 - anNacAux1->getAnio();									//Calcula la edad actual. @NOTA: tm_year comienza a contar desde 1900, por lo que hay que sumárselos
 			anioActual -= anioActual % RANGO_EDAD_ALG_4;													//Calculo del intervalo del año de nacimiento actual apuntado por la lista que encapsula el gestor
 
 			lAnioNac->moverInicio();
@@ -80,6 +81,26 @@ void GestorAnioNacimiento::alg4(ListaPI<AnioNacimiento*>*& lAnioNac) {										
 			enc = false;																					//Reinicia la bandera de posición
 		}
 	}
+}
+
+int GestorAnioNacimiento::alg7(int limInf, int limSup) {
+	AnioNacimiento* anNacAux;																				//Puntero auxiliar para consultar la lista de años de nacimiento
+	int anioActual = 0;																						//Almacena la conversión de año de nacimiento a edad. Inicialmente es 0 por si se buscan recién nacidos y asegurarse de que el bucle se ejecuta una vez
+	int cont = 0;																							//Acumulador para el número de personas pertenecientes al rango de edad dado
+	time_t tiempoActual = time(NULL);
+	tm* tiempoSis = localtime(&tiempoActual);																//Estructura para almacenar el tiempo del sistema en horas, minutos y segundos
+
+	//Recorre secuencialmente la lista de años de nacimiento de inicio a fin
+	lAnioNacimiento->moverInicio();
+	while (!lAnioNacimiento->finLista() && anioActual <= limSup){											//Como los años de nacimiento están ordenados ascendentemente, en el momento en el que la edad supere el rango se deja de buscar
+		lAnioNacimiento->consultar(anNacAux);
+		lAnioNacimiento->avanzar();
+		anioActual = tiempoSis->tm_year + 1900 - anNacAux->getAnio();										//Calcula la edad actual. @NOTA: tm_year comienza a contar desde 1900, por lo que hay que sumárselos
+		if(anioActual >= limInf && anioActual <= limSup)													//Comprueba si la edad pertenece al rango dado
+			cont += anNacAux->getNPersonas();
+	}
+
+	return cont;
 }
 
 
