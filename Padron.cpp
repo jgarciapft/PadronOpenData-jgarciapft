@@ -113,8 +113,8 @@ void Padron::cargarDatosDemograficos() {
 	fEnt.close();
 }
 
-void Padron::alg2(string nB) {											///@NOTA: Nombre provisional	@NOTA: Método invocativo
-	gBarrio->alg2(nB);
+void Padron::alg2(string nombreBarrio) {								///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	gBarrio->alg2(nombreBarrio);
 }
 
 void Padron::alg3() {
@@ -314,6 +314,12 @@ void Padron::alg7(int limInf, int limSup) {								///@NOTA: Nombre provisional	
 	else
 		cout << "ERROR : El límite inferior (" << limInf << ") debe ser inferior al límite superior (" << limSup << ")" << endl;
 }
+
+void Padron::alg8(string nombreBarrio) {								///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	gBarrio->alg8(nombreBarrio);
+}
+
+
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;															//Puntero auxiliar para mostrar las vías almacenadas en la lista auxiliar de vías 'lVias'

@@ -60,8 +60,8 @@ void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {		///Insert
 	}
 }
 
-void GestorBarrio::alg2(string nB) {										///@NOTA: Nombre provisional
-	bool enc  = false;														//Bandera utilizada para terminas la búsqueda del barrio que corresponde con el parámetro 'nB'
+void GestorBarrio::alg2(string nombreBarrio) {								///@NOTA: Nombre provisional
+	bool enc  = false;														//Bandera utilizada para terminas la búsqueda del barrio que corresponde con el parámetro 'nombreBarrio'
 	Barrio* bAux;															//Puntero auxiliar para recorrer la lista de barrios
 
 	//Recorre secuencialmente de inicio a fin la lista de barrios
@@ -69,8 +69,8 @@ void GestorBarrio::alg2(string nB) {										///@NOTA: Nombre provisional
 	while(!lBarrios->finLista() && !enc){
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
-		if(nB == bAux->getNombreBarrio()){
-			bAux->mostrarVias();											//Muestra todas las vías del barrio que coincide con el parámetro 'nB'
+		if(nombreBarrio == bAux->getNombreBarrio()){
+			bAux->mostrarVias();											//Muestra todas las vías del barrio que coincide con el parámetro 'nombreBarrio'
 			enc = true;														//Actualiza la bandera para salir del bucle
 		}
 	}
@@ -101,8 +101,27 @@ void GestorBarrio::alg7(int limInf, int limSup) {							///@NOTA: Nombre provisi
 		cout << "Barrio : " << mayorBarrio->getNombreBarrio() << " | Distrito : " << mayorBarrio->getNombreDistrito() <<
 		 	" | Habitantes entre " << limInf << " y " << limSup << " años : " << mayorNPersonas << endl;
 	else
-		cout << "NO SE HA ENCONTRADO NINGÚN HABITANTES COMPRENDIDO ENTRE " << limInf << " y " << limSup << " años" << endl;
+		cout << "NO SE HA ENCONTRADO NINGÚN HABITANTE COMPRENDIDO ENTRE " << limInf << " y " << limSup << " años" << endl;
 }
+
+void GestorBarrio::alg8(string nombreBarrio) {
+	bool enc = false;
+	Barrio* bAux;
+
+	lBarrios->moverInicio();
+	while (!lBarrios->finLista() && !enc){
+		lBarrios->consultar(bAux);
+		lBarrios->avanzar();
+		if(bAux->getNombreBarrio() == nombreBarrio)
+			enc = true;
+	}
+	if(enc)
+		bAux->alg8();
+	else
+		cout << "NO SE HA ENCONTRADO EL BARRIO " << nombreBarrio << endl;
+}
+
+
 
 void GestorBarrio::mostrar() {												//Pasa la llamada a cada barrio para que muestre su contenido
 	Barrio* bAux;															//Puntero auxiliar para consultar cada barrio de la lista de barrios
