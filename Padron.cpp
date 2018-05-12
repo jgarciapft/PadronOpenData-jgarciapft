@@ -260,7 +260,7 @@ void Padron::alg5() {													///@NOTA: Nombre provisional
 
 	//Muestra la lista con los resultados del algoritmo una vez completado
 	lNacion->moverInicio();
-	while(!lNacion->finLista()){									//Recorre secuencialmente la lista de nacionalidades de inicio a fin
+	while(!lNacion->finLista()){										//Recorre secuencialmente la lista de nacionalidades de inicio a fin
 		lNacion->consultar(nacionAux);
 		lNacion->avanzar();
 		cout << nacionAux->getNacionalidad() << " (" << nacionAux->getNPersonas() << ")" << endl;
@@ -268,12 +268,12 @@ void Padron::alg5() {													///@NOTA: Nombre provisional
 
 	//Libera la memoria asociada a las nuevas nacionalidades creadas por el algoritmo 5
 	lNacion->moverInicio();
-	while(!lNacion->finLista()){									//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
+	while(!lNacion->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
 		lNacion->consultar(nacionAux);
 		lNacion->avanzar();
 		delete nacionAux;												//Libera cada nacionalidad de la lista
 	}
-	delete lNacion;												//Libera la lista
+	delete lNacion;														//Libera la lista
 }
 
 void Padron::alg6() {													///@NOTA: Nombre provisional
@@ -306,6 +306,10 @@ void Padron::alg6() {													///@NOTA: Nombre provisional
 		delete lugNacAux;												//Libera cada lugar de nacimiento de la lista
 	}
 	delete lLugNac;														//Libera la lista
+}
+
+void Padron::alg7(int limInf, int limSup) {								///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	gBarrio->alg7(limInf, limSup);
 }
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
