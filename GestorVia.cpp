@@ -98,7 +98,7 @@ void GestorVia::alg8() {											///@NOTA: Nombre provisional
 		while (!lEstud->finLista()){
 			lEstud->consultar(estudAux);
 			lEstud->avanzar();
-			estudAux->mostrar();									//Muestra la información correspondiente a cada nivel de estudios
+			cout << estudAux->getNivEstudios() << " (" << estudAux->getNPersonas() << ")" << endl;
 		}
 	}else{
 		cout << "EL BARRIO ESTÁ VACÍO" << endl;						//Si está vacía lo indica por consola al usuario
