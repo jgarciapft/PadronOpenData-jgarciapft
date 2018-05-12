@@ -76,6 +76,24 @@ void GestorBarrio::alg2(string nB) {										///@NOTA: Nombre provisional
 	}
 }
 
+void GestorBarrio::alg7(int limInf, int limSup) {							///@NOTA: Nombre provisional
+	Barrio* bAux;
+	Barrio* mayorBarrio;
+	int barrioActual;
+	int mayorNPersonas = 0;
+
+	lBarrios->moverInicio();
+	while(!lBarrios->finLista()){
+		lBarrios->consultar(bAux);
+		lBarrios->avanzar();
+		barrioActual = bAux->alg7(limInf, limSup);
+		if(barrioActual > mayorNPersonas){
+			mayorNPersonas = barrioActual;
+			mayorBarrio = bAux;
+		}
+	}
+}
+
 void GestorBarrio::mostrar() {												//Pasa la llamada a cada barrio para que muestre su contenido
 	Barrio* bAux;															//Puntero auxiliar para consultar cada barrio de la lista de barrios
 

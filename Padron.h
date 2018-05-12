@@ -30,6 +30,7 @@ public:
 	void alg4();
 	void alg5();
 	void alg6();
+	void alg7(int limInf, int limSup);
 	void mostrarEstructura();
 };
 

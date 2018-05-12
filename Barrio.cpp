@@ -34,15 +34,15 @@ string Barrio::getNombreDistrito() {
 	return nombreDistrito;
 }
 
-void Barrio::insertarVia(Via* v) {								///NOTA: Método invocativo
+void Barrio::insertarVia(Via* v) {								///@NOTA: Método invocativo
 	gVias->insertarViaOrden(v);
 }
 
-void Barrio::insertarDatosDemograficos(DatosDemograficos* dD) {	///NOTA: Método invocativo
+void Barrio::insertarDatosDemograficos(DatosDemograficos* dD) {	///@NOTA: Método invocativo
 	gVias->insertarDatosDemograficos(dD);
 }
 
-void Barrio::mostrarVias() {									///NOTA: Método invocativo
+void Barrio::mostrarVias() {									///@NOTA: Método invocativo
 	gVias->mostrarVias();
 }
 

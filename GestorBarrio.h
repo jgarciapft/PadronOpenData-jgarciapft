@@ -22,6 +22,7 @@ public:
 	void insertarVia(Via* v);
 	void insertarDatosDemograficos(DatosDemograficos* dD);
 	void alg2(string nB);
+	void alg7(int limInf, int limSup);
 	void mostrar();
 };
 
