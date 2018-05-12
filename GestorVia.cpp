@@ -111,8 +111,16 @@ void GestorVia::alg8() {											///@NOTA: Nombre provisional
 	}else{
 		cout << "ERROR AL CREAR EL FICHERO PARA VOLCAR LOS RESULTADOS" << endl;
 	}
-
 	ofs.close();													//Cierra el flujo
+
+	//Libera la memoria asociada a los nuevos estudios creados por el algoritmo 8
+	lEstud->moverInicio();
+	while(!lEstud->finLista()){										//Recorre secuencialmente la lista de estudios de inicio a fin
+		lEstud->consultar(estudAux);
+		lEstud->avanzar();
+		delete estudAux;											//Libera cada estudio de la lista
+	}
+	delete lEstud;													//Libera la lista
 }
 
 
