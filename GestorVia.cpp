@@ -66,13 +66,43 @@ int GestorVia::alg7(int limInf, int limSup) {						///@NOTA: Nombre provisional
 
 	//Recorre secuencialmente de inicio a fin la lista de vías
 	lVias->moverInicio();
-	while (!lVias->finLista()){
+	while (!lVias->finLista()){										//Comprueba que la lista contenga alguna vía
 		lVias->consultar(vAux);
 		lVias->avanzar();
 		cont += vAux->alg7(limInf, limSup);							//Suma los habitantes que pertenecen al rango dado por cada vía a los que ya habían antes
 	}
 
 	return cont;
+}
+
+void GestorVia::alg8() {											///@NOTA: Nombre provisional
+	ListaPI<Estudios*> *lEstud = new ListaPI<Estudios*>();			/* Lista en la que se almacenan los resultados del algoritmo. Cada nivel de estudios con el numero total de habitantes
+ 																	 * es representada por un objeto 'Estudios'
+																	 *		El nivel se almacena en el atributo 'nivEstudios' y el número de personas en 'nPersonas' */
+	Via* vAux;														//Puntero auxiliar para consultar la lista de vías
+	Estudios* estudAux;												//Puntero auxiliar para consultar la lista de 'lEstud'
+
+	//Recorre secuencialmente de inicio a fin la lista de vías
+	lVias->moverInicio();
+	while (!lVias->finLista()){										//Comprueba que la lista contenga alguna vía
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		vAux->alg8(lEstud);											//Rellena la lista 'lEstud' con los datos de cada vía
+	}
+
+	//Muestra los resultados del algoritmo una vez completado
+	if(!lEstud->estaVacia()){										//Comprueba si está vacía porque no se haya encontrado ningún dato que insertar
+		cout << "Nivel de estudios de los habitantes del barrio - " << vAux->getBarrioVia() << endl;
+		cout << "-----------------------------------------------------------------------------------------------" << endl;
+		lEstud->moverInicio();
+		while (!lEstud->finLista()){
+			lEstud->consultar(estudAux);
+			lEstud->avanzar();
+			estudAux->mostrar();									//Muestra la información correspondiente a cada nivel de estudios
+		}
+	}else{
+		cout << "EL BARRIO ESTÁ VACÍO" << endl;						//Si está vacía lo indica por consola al usuario
+	}
 }
 
 
