@@ -84,6 +84,7 @@ void GestorAnioNacimiento::alg4(ListaPI<AnioNacimiento*>*& lAnioNac) {										
 }
 
 int GestorAnioNacimiento::alg7(int limInf, int limSup) {
+	bool fin = false;
 	AnioNacimiento* anNacAux;																				//Puntero auxiliar para consultar la lista de años de nacimiento
 	int anioActual = 0;																						//Almacena la conversión de año de nacimiento a edad. Inicialmente es 0 por si se buscan recién nacidos y asegurarse de que el bucle se ejecuta una vez
 	int cont = 0;																							//Acumulador para el número de personas pertenecientes al rango de edad dado
@@ -92,12 +93,16 @@ int GestorAnioNacimiento::alg7(int limInf, int limSup) {
 
 	//Recorre secuencialmente la lista de años de nacimiento de inicio a fin
 	lAnioNacimiento->moverInicio();
-	while (!lAnioNacimiento->finLista() && anioActual <= limSup){											//Como los años de nacimiento están ordenados ascendentemente, en el momento en el que la edad supere el rango se deja de buscar
+	while (!lAnioNacimiento->finLista() && !fin){															//Como los años de nacimiento están ordenados ascendentemente, en el momento en el que la edad sea inferior al límite inferior se deja de buscar
 		lAnioNacimiento->consultar(anNacAux);
 		lAnioNacimiento->avanzar();
 		anioActual = tiempoSis->tm_year + 1900 - anNacAux->getAnio();										//Calcula la edad actual. @NOTA: tm_year comienza a contar desde 1900, por lo que hay que sumárselos
-		if(anioActual >= limInf && anioActual <= limSup)													//Comprueba si la edad pertenece al rango dado
-			cont += anNacAux->getNPersonas();
+		if(anioActual >= limInf){																			//Comprueba si la edad pertenece al rango dado. Si es menor que el límite inferior se deja de buscar
+			if(anioActual <= limSup)
+				cont += anNacAux->getNPersonas();															//Pertenece al rango indicado
+		}else{
+			fin = true;																						//Actualización de la bandera para dejar de buscar
+		}
 	}
 
 	return cont;

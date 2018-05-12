@@ -78,7 +78,7 @@ void GestorBarrio::alg2(string nB) {										///@NOTA: Nombre provisional
 
 void GestorBarrio::alg7(int limInf, int limSup) {							///@NOTA: Nombre provisional
 	Barrio* bAux;															//Puntero auxiliar para consular la lista de barrios
-	Barrio* mayorBarrio;													//Puntero al barrio con mayor número de habitantes para el rango dado hasta ahora
+	Barrio* mayorBarrio = NULL;												//Puntero al barrio con mayor número de habitantes para el rango dado hasta ahora
 	int nPersonasActual;													//Número de habitantes para el rango dado del barrio actual
 	int mayorNPersonas = 0;													//Mayor número de habitantes para el rango dado hasta ahora
 
@@ -95,10 +95,13 @@ void GestorBarrio::alg7(int limInf, int limSup) {							///@NOTA: Nombre provisi
 	}
 
 	//Muestra la el nombre y el distrito del barrio con mayor número de habitantes para el rango dado y dicho número
-	cout << "Rango de edad (" << limInf << " , " << limSup << ")" << endl;
+	cout << "Barrio con el mayor número de habitantes para - Rango de edad (" << limInf << " , " << limSup << ")" << endl;
 	cout << "-----------------------------------------------------------------------------------------------" << endl;
-	cout << "Barrio : " << mayorBarrio->getNombreBarrio() << " | Distrito : " << mayorBarrio->getNombreDistrito() <<
-		 " | Habitantes entre " << limInf << "y " << limSup << " años : " << mayorNPersonas << endl;
+	if(mayorBarrio != NULL)													//Comprueba que se haya encontro alguna persona para el rango dado
+		cout << "Barrio : " << mayorBarrio->getNombreBarrio() << " | Distrito : " << mayorBarrio->getNombreDistrito() <<
+		 	" | Habitantes entre " << limInf << " y " << limSup << " años : " << mayorNPersonas << endl;
+	else
+		cout << "NO SE HA ENCONTRADO NINGÚN HABITANTES COMPRENDIDO ENTRE " << limInf << " y " << limSup << " años" << endl;
 }
 
 void GestorBarrio::mostrar() {												//Pasa la llamada a cada barrio para que muestre su contenido
