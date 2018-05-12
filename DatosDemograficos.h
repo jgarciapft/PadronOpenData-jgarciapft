@@ -36,6 +36,8 @@ public:
 	void alg5(ListaPI<Nacionalidad*>*& lNacion);
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
 	int alg7(int limInf, int limSup);
+	void alg8(ListaPI<Estudios*>*& lEstud);
+
 	void mostrar();
 };
 

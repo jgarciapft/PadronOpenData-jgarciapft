@@ -59,10 +59,7 @@ void GestorNacionalidad::ordenarLista(ListaPI<Nacionalidad*>*& lNacion) {
 		do{
 			lNacion->retroceder();
 			lNacion->consultar(nacion);
-			if(*nacionPI > *nacion)															//Permite comparar los dos datos antes de comprobra si el PI está en el inicio
-				siguiente = true;															//El dato insertado/modificado es mayor, hay que seguir retrocediendo
-			else
-				siguiente = false;															//El dato insertado/modificado es menor, hay que insertarlo detrás de éste
+			siguiente = *nacionPI > *nacion;                                                //Indica si el dato insertado/modificado es menor/mayor
 		}while(siguiente && !lNacion->enInicio());
 		if(!siguiente)																		//Comprueba si el dato insertado/modificado es mayor que todos los de la lista
 			lNacion->avanzar();																//No lo es. Hay que insertarlo detrás del PI
@@ -78,7 +75,7 @@ void GestorNacionalidad::alg5(ListaPI<Nacionalidad*>*& lNacion) {							///@NOTA
 	Nacionalidad* nacionAux1;																//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 	Nacionalidad* nacionAux2;																//Puntero auxiliar para consultar la lista de lugares de nacimiento pasada por parámetro
 
-	if(!lNacionalidad->estaVacia()) {                                 	      				//Comprueba si el gestor contiene alguna nacionalida
+	if(!lNacionalidad->estaVacia()) {                                 	      				//Comprueba si el gestor contiene alguna nacionalidad
 		lNacionalidad->moverInicio();
 		if (lNacion->estaVacia()) {                                            				//Maneja el caso inicial: Comprueba si la lista pasada por parámtro está vacía e inserta el primer elemento
 			lNacionalidad->consultar(nacionAux1);
@@ -92,7 +89,7 @@ void GestorNacionalidad::alg5(ListaPI<Nacionalidad*>*& lNacion) {							///@NOTA
 			lNacion->moverInicio();
 			while (!lNacion->finLista() && !enc) {											//Busca el lugar en el que insertar/actualizar la lista pasada por parámtetro (con la nacionalidad actual de la lista que encapsula el gestor)
 				lNacion->consultar(nacionAux2);
-				if (*nacionAux1 == *nacionAux2)				                        	    //Comparación numérica por el número de personas
+				if (*nacionAux1 == *nacionAux2)				                        	    //Comparación lexicográfica por la nacionalidad. Comprueba si la nacionalidad ya existe en 'lNacion'
 					enc = true;                             			                	//Actualiza la bandera que permite salir del bucle cuando se ha encontrado la posición del dato a procesar
 				else
 					lNacion->avanzar();                               						//Se avanza solo si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado

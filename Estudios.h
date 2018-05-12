@@ -22,8 +22,12 @@ public:
 
 	string getNivEstudios();
 	int getNPersonas();
+	void incNPersonas(int nP);
 
 	void mostrar();
+
+	bool operator >(const Estudios& estudio);
+	bool operator ==(const Estudios& estudio);
 };
 
 }

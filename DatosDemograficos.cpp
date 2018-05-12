@@ -67,6 +67,10 @@ int DatosDemograficos::alg7(int limInf, int limSup) {								///@NOTA: Nombre pr
 	return gAnioNacimiento->alg7(limInf, limSup);
 }
 
+void DatosDemograficos::alg8(ListaPI<Estudios*>*& lEstud) {							///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	gEstudios->alg8(lEstud);
+}
+
 
 
 void DatosDemograficos::mostrar() {													//Llama a mostrar la información de cada gestor contenido

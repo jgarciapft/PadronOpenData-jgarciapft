@@ -45,7 +45,7 @@ bool Nacionalidad::operator >(const Nacionalidad& nacion) {		///@NOTA: Adecuado 
 }
 
 bool Nacionalidad::operator ==(const Nacionalidad& nacion) {	///@NOTA: Adecuado si solo se le da uso para el algoritmo 5
-	return nacionalidad == nacion.nacionalidad;					//Criterio de comparación: orden alfabético de 'nacionalidad'
+	return nacionalidad == nacion.nacionalidad;					//Criterio de comparación: comparación lexicográfica de 'nacionalidad'
 }
 
 }
