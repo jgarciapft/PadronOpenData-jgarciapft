@@ -124,8 +124,8 @@ void GestorBarrio::alg8(string nombreBarrio) {								///@NOTA: Nombre provision
 
 void GestorBarrio::alg9() {													///@NOTA: Nombre provisional
 	Barrio* bAux;															//Puntero auxiliar para consultar la lista de barrios que encapulsa el gestor
-	Barrio* barrioPHombres;													//Puntero al barrio que contiene el mayor porcentaje de hombres hasta ahora
-	Barrio* barrioPMujeres;													//Puntero al barrio que contiene el mayor porentaje de mujeres hasta ahora
+	Barrio* barrioPHombres = NULL;											//Puntero al barrio que contiene el mayor porcentaje de hombres hasta ahora
+	Barrio* barrioPMujeres = NULL;											//Puntero al barrio que contiene el mayor porentaje de mujeres hasta ahora
 	float pHombres;															//Porcentaje de hombres de cada barrio
 	float pMujeres;															//Porcentaje de mujeres de cada barrio
 	float mayorPHombres = 0;												//Mayor porcentaje de hombres hasta ahora
@@ -137,11 +137,11 @@ void GestorBarrio::alg9() {													///@NOTA: Nombre provisional
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
 		bAux->alg9(pHombres, pMujeres);										//Calcula los porcentajes de hombres y mujeres del barrio actual
-		if(mayorPHombres > pHombres){										//Compara el mejor porcentaje de hombres hasta ahora con el barrio actual y actualiza las variables si procede
+		if(pHombres > mayorPHombres){										//Compara el mejor porcentaje de hombres hasta ahora con el barrio actual y actualiza las variables si procede
 			mayorPHombres = pHombres;
 			barrioPHombres = bAux;
 		}
-		if(mayorPMujeres > pMujeres){										//Compara el mejor porcentaje de mujeres hasta ahora con el barrio actual y actualiza las variables si procede
+		if(pMujeres > mayorPMujeres){										//Compara el mejor porcentaje de mujeres hasta ahora con el barrio actual y actualiza las variables si procede
 			mayorPMujeres = pMujeres;
 			barrioPMujeres = bAux;
 		}
@@ -156,7 +156,7 @@ void GestorBarrio::alg9() {													///@NOTA: Nombre provisional
 		cout << "-----------------------------------------------------------------------------------------------" << endl;
 		cout << "Barrio : " << barrioPMujeres->getNombreBarrio() << " | Distrito : " << barrioPMujeres->getNombreDistrito() << " -> PORCENTAJE : " << mayorPMujeres << "%" << endl;
 	}else{
-		cout << "NO NHAY NINGÚN BARRIO DISPONIBLE" << endl;					//Si la lista de barrios está vacía lo indica al usuario por consola
+		cout << "NO HAY NINGÚN BARRIO DISPONIBLE" << endl;					//Si la lista de barrios está vacía lo indica al usuario por consola
 	}
 }
 
