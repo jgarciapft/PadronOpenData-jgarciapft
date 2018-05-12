@@ -76,8 +76,10 @@ int GestorVia::alg7(int limInf, int limSup) {						///@NOTA: Nombre provisional
 }
 
 void GestorVia::alg8() {											///@NOTA: Nombre provisional
+	ofstream ofs;													//Flujo de salida para volcar en un fichero los resultados del algoritmo
+	string ruta = "NivelDeEstudios-";								//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	ListaPI<Estudios*> *lEstud = new ListaPI<Estudios*>();			/* Lista en la que se almacenan los resultados del algoritmo. Cada nivel de estudios con el numero total de habitantes
- 																	 * es representada por un objeto 'Estudios'
+ 																	 * es representada por un objeto 'Estudios':
 																	 *		El nivel se almacena en el atributo 'nivEstudios' y el número de personas en 'nPersonas' */
 	Via* vAux;														//Puntero auxiliar para consultar la lista de vías
 	Estudios* estudAux;												//Puntero auxiliar para consultar la lista de 'lEstud'
@@ -90,19 +92,27 @@ void GestorVia::alg8() {											///@NOTA: Nombre provisional
 		vAux->alg8(lEstud);											//Rellena la lista 'lEstud' con los datos de cada vía
 	}
 
-	//Muestra los resultados del algoritmo una vez completado
-	if(!lEstud->estaVacia()){										//Comprueba si está vacía porque no se haya encontrado ningún dato que insertar
-		cout << "Nivel de estudios de los habitantes del barrio - " << vAux->getBarrioVia() << endl;
-		cout << "-----------------------------------------------------------------------------------------------" << endl;
-		lEstud->moverInicio();
-		while (!lEstud->finLista()){
-			lEstud->consultar(estudAux);
-			lEstud->avanzar();
-			cout << estudAux->getNivEstudios() << " (" << estudAux->getNPersonas() << ")" << endl;
+	//Vuelca a un fichero los resultados del algoritmo una vez completado
+	ruta += vAux->getBarrioVia() + ".txt";							//Conforma la ruta del fichero
+	ofs.open(ruta.c_str());
+	if(ofs.is_open()){												//Comprueba si se ha abierto el fichero correctamente
+		if(!lEstud->estaVacia()){									//Comprueba si está vacía porque no se haya encontrado ningún dato que insertar
+			ofs << "Nivel de estudios de los habitantes del barrio - " << vAux->getBarrioVia() << endl;
+			ofs << "-----------------------------------------------------------------------------------------------" << endl;
+			lEstud->moverInicio();
+			while (!lEstud->finLista()){
+				lEstud->consultar(estudAux);
+				lEstud->avanzar();
+				ofs << estudAux->getNivEstudios() << " (" << estudAux->getNPersonas() << ")" << endl;
+			}
+		}else{
+			cout << "EL BARRIO ESTÁ VACÍO" << endl;					//Si está vacía lo indica por consola al usuario
 		}
 	}else{
-		cout << "EL BARRIO ESTÁ VACÍO" << endl;						//Si está vacía lo indica por consola al usuario
+		cout << "ERROR AL CREAR EL FICHERO PARA VOLCAR LOS RESULTADOS" << endl;
 	}
+
+	ofs.close();													//Cierra el flujo
 }
 
 

@@ -8,7 +8,6 @@
 #define PADRON_H_
 
 #include "GestorBarrio.h"
-#include <fstream>
 
 namespace std {
 
