@@ -127,8 +127,6 @@ void GestorVia::alg9(float& pHombres, float& pMujeres) {			///@NOTA: Nombre prov
 	Via* vAux;														//Puntero auxiliar para consultar la lista de vías que encapsula el gestor
 	int nHombres = 0;												//Acumulador del número de hombres para el barrio que contiene este gestor de vías
 	int nMujeres = 0;												//Acumulador del número de mujeres para el barrio que contiene este gestor de vías
-	pHombres = 0;													//Asigna el vaalor de 0 por si la lista de vías está vacía. Así se producirá un error al mostrar los resultados que es manejado por la clase 'GestorBarrio'
-	pMujeres = 0;													//Asigna el vaalor de 0 por si la lista de vías está vacía. Así se producirá un error al mostrar los resultados que es manejado por la clase 'GestorBarrio'
 
 	//Recorre secuencialmente de inicio a fin la lista de vías
 	lVias->moverInicio();

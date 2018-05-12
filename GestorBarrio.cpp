@@ -148,15 +148,19 @@ void GestorBarrio::alg9() {													///@NOTA: Nombre provisional
 	}
 
 	//Muetra los resultados del algoritmo
-	if(barrioPHombres != NULL){												//Comprueba que se haya podido calcular algún porcentaje. Si se ha podido 'barrioPMujeres' no es nulo tampoco
-		cout << "Barrio con el mayor porcentaje de HOMBRES" << endl;
+	if(barrioPHombres != NULL){												//Comprueba si hay algún hombre en la población
+		cout << "Barrio con el mayor porcentaje de HOMBRES - PORCENTAJE (%) : " << mayorPHombres << "%" << endl;
 		cout << "-----------------------------------------------------------------------------------------------" << endl;
-		cout << "Barrio : " << barrioPHombres->getNombreBarrio() << " | Distrito : " << barrioPHombres->getNombreDistrito() << " -> PORCENTAJE : " << mayorPHombres << "%" << endl << endl;
-		cout << "Barrio con el mayor porcentaje de MUJERES" << endl;
-		cout << "-----------------------------------------------------------------------------------------------" << endl;
-		cout << "Barrio : " << barrioPMujeres->getNombreBarrio() << " | Distrito : " << barrioPMujeres->getNombreDistrito() << " -> PORCENTAJE : " << mayorPMujeres << "%" << endl;
+		cout << "Barrio : " << barrioPHombres->getNombreBarrio() << " | Distrito : " << barrioPHombres->getNombreDistrito() << endl << endl;
 	}else{
-		cout << "NO HAY NINGÚN BARRIO DISPONIBLE" << endl;					//Si la lista de barrios está vacía lo indica al usuario por consola
+		cout << "NO HAY NINGÚN HOMBRE ENTRE LA POBLACIÓN" << endl;			//Si no hay ningún hombre lo indica al usuario por consola
+	}
+	if(barrioPMujeres != NULL){												//Comprueba si hay alguna mujer en la población
+		cout << "Barrio con el mayor porcentaje de MUJERES - PORCENTAJE (%) : " << mayorPMujeres << "%" << endl;
+		cout << "-----------------------------------------------------------------------------------------------" << endl;
+		cout << "Barrio : " << barrioPMujeres->getNombreBarrio() << " | Distrito : " << barrioPMujeres->getNombreDistrito() << endl;
+	}else{
+		cout << "NO HAY NINGÚN HOMBRE ENTRE LA POBLACIÓN" << endl;			//Si no hay ninguna mujer lo indica al usuario por consola
 	}
 }
 
