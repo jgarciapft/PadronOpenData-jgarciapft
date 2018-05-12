@@ -68,7 +68,7 @@ void Via::alg8(ListaPI<Estudios*>*& lEstud) {	///@NOTA: Nombre provisional	@NOTA
 		datDemograficos->alg8(lEstud);
 }
 
-void Via::alg9(int& nHombres, int& nMujeres) {	///@NOTA: Nombre provisional
+void Via::alg9(float& nHombres, float& nMujeres) {	///@NOTA: Nombre provisional
 	if(datDemograficos != NULL){				//Comprueba que exista un set de datos demográficos y actualiza los acumuladores
 		nHombres += datDemograficos->getNHombres();
 		nMujeres += datDemograficos->getNMujeres();

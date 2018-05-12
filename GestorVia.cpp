@@ -125,8 +125,8 @@ void GestorVia::alg8() {											///@NOTA: Nombre provisional
 
 void GestorVia::alg9(float& pHombres, float& pMujeres) {			///@NOTA: Nombre provisional
 	Via* vAux;														//Puntero auxiliar para consultar la lista de vías que encapsula el gestor
-	int nHombres = 0;												//Acumulador del número de hombres para el barrio que contiene este gestor de vías
-	int nMujeres = 0;												//Acumulador del número de mujeres para el barrio que contiene este gestor de vías
+	float nHombres = 0;												//Acumulador del número de hombres para el barrio que contiene este gestor de vías
+	float nMujeres = 0;												//Acumulador del número de mujeres para el barrio que contiene este gestor de vías
 
 	//Recorre secuencialmente de inicio a fin la lista de vías
 	lVias->moverInicio();
