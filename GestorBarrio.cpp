@@ -77,21 +77,27 @@ void GestorBarrio::alg2(string nB) {										///@NOTA: Nombre provisional
 }
 
 void GestorBarrio::alg7(int limInf, int limSup) {							///@NOTA: Nombre provisional
-	Barrio* bAux;
-	Barrio* mayorBarrio;
-	int barrioActual;
-	int mayorNPersonas = 0;
+	Barrio* bAux;															//Puntero auxiliar para consular la lista de barrios
+	Barrio* mayorBarrio;													//Puntero al barrio con mayor número de habitantes para el rango dado hasta ahora
+	int nPersonasActual;													//Número de habitantes para el rango dado del barrio actual
+	int mayorNPersonas = 0;													//Mayor número de habitantes para el rango dado hasta ahora
 
+	//Recorre secuencialmente de inicio a fin la lista de barrios
 	lBarrios->moverInicio();
 	while(!lBarrios->finLista()){
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
-		barrioActual = bAux->alg7(limInf, limSup);
-		if(barrioActual > mayorNPersonas){
-			mayorNPersonas = barrioActual;
+		nPersonasActual = bAux->alg7(limInf, limSup);						//Calcula el número de habitantes para el rango dado del barrio actual
+		if(nPersonasActual > mayorNPersonas){								//Comprobación del barrio mayor hasta ahora
+			mayorNPersonas = nPersonasActual;
 			mayorBarrio = bAux;
 		}
 	}
+
+	//Muestra la el nombre y el distrito del barrio con mayor número de habitantes para el rango dado
+	cout << "Rango de edad (" << limInf << " , " << limSup << ")" << endl;
+	cout << "-----------------------------------------------------------------------------------------------" << endl;
+	cout << "Barrio : " << mayorBarrio->getNombreBarrio() << " | Distrito : " << mayorBarrio->getNombreDistrito() << endl;
 }
 
 void GestorBarrio::mostrar() {												//Pasa la llamada a cada barrio para que muestre su contenido
