@@ -319,6 +319,10 @@ void Padron::alg8(string nombreBarrio) {								///@NOTA: Nombre provisional	@NO
 	gBarrio->alg8(nombreBarrio);
 }
 
+void Padron::alg9() {													///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	gBarrio->alg9();
+}
+
 
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
