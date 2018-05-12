@@ -24,6 +24,8 @@ public:
 	void alg2(string nombreBarrio);
 	void alg7(int limInf, int limSup);
 	void alg8(string nombreBarrio);
+	void alg9();
+
 	void mostrar();
 };
 

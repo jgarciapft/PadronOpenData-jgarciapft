@@ -122,6 +122,42 @@ void GestorBarrio::alg8(string nombreBarrio) {								///@NOTA: Nombre provision
 		cout << "NO SE HA ENCONTRADO EL BARRIO " << nombreBarrio << endl;	//Si no se ha encontrado se indica por consola al usuario
 }
 
+void GestorBarrio::alg9() {													///@NOTA: Nombre provisional
+	Barrio* bAux;															//Puntero auxiliar para consultar la lista de barrios que encapulsa el gestor
+	Barrio* barrioPHombres;													//Puntero al barrio que contiene el mayor porcentaje de hombres hasta ahora
+	Barrio* barrioPMujeres;													//Puntero al barrio que contiene el mayor porentaje de mujeres hasta ahora
+	float pHombres;															//Porcentaje de hombres de cada barrio
+	float pMujeres;															//Porcentaje de mujeres de cada barrio
+	float mayorPHombres = 0;												//Mayor porcentaje de hombres hasta ahora
+	float mayorPMujeres = 0;												//Mayor porcentaje de mujeres hasta ahora
+
+	//Recorre secuencialmente de inicio a fin la lista de barrios
+	lBarrios->moverInicio();
+	while (!lBarrios->finLista()){
+		lBarrios->consultar(bAux);
+		lBarrios->avanzar();
+//		bAux->alg9(pHombres, pMujeres);										//Calcula los porcentajes de hombres y mujeres del barrio actual
+		if(mayorPHombres > pHombres){										//Compara el mejor porcentaje de hombres hasta ahora con el barrio actual y actualiza las variables si procede
+			mayorPHombres = pHombres;
+			barrioPHombres = bAux;
+		}
+		if(mayorPMujeres > pMujeres){										//Compara el mejor porcentaje de mujeres hasta ahora con el barrio actual y actualiza las variables si procede
+			mayorPMujeres = pMujeres;
+			barrioPMujeres = bAux;
+		}
+	}
+
+	//Muetra los resultados del algoritmo
+	if(barrioPHombres != NULL){												//Comprueba que se haya podido calcular algún porcentaje. Si se ha podido 'barrioPMujeres' no es nulo tampoco
+		cout << "Barrio con el mayor porcentaje de HOMBRES" << endl;
+		cout << "-----------------------------------------------------------------------------------------------" << endl;
+		cout << "Barrio : " << barrioPHombres->getNombreBarrio() << " | Distrito : " << barrioPHombres->getNombreDistrito() << " -> PORCENTAJE : " << mayorPHombres << "%" << endl << endl;
+		cout << "Barrio con el mayor porcentaje de MUJERES" << endl;
+		cout << "-----------------------------------------------------------------------------------------------" << endl;
+		cout << "Barrio : " << barrioPMujeres->getNombreBarrio() << " | Distrito : " << barrioPMujeres->getNombreDistrito() << " -> PORCENTAJE : " << mayorPMujeres << "%" << endl;
+	}
+}
+
 
 
 void GestorBarrio::mostrar() {												//Pasa la llamada a cada barrio para que muestre su contenido
