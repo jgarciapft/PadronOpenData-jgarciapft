@@ -104,21 +104,22 @@ void GestorBarrio::alg7(int limInf, int limSup) {							///@NOTA: Nombre provisi
 		cout << "NO SE HA ENCONTRADO NINGÚN HABITANTE COMPRENDIDO ENTRE " << limInf << " y " << limSup << " años" << endl;
 }
 
-void GestorBarrio::alg8(string nombreBarrio) {
-	bool enc = false;
-	Barrio* bAux;
+void GestorBarrio::alg8(string nombreBarrio) {								///@NOTA: Nombre provisional
+	bool enc = false;														//Bandera para salir del bucle una vez encontrado el barrio buscado (si existe)
+	Barrio* bAux;															//Puntero auxiliar para consultar la lista de barrios
 
+	//Recorre secuencialmente de inicio a fin la lista de barrios
 	lBarrios->moverInicio();
-	while (!lBarrios->finLista() && !enc){
+	while (!lBarrios->finLista() && !enc){									//Cada barrio es único en la lista. En el momento en el que se encuentre se para de buscar
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
-		if(bAux->getNombreBarrio() == nombreBarrio)
-			enc = true;
+		if(bAux->getNombreBarrio() == nombreBarrio)							//Comprueba si es el barrio buscado
+			enc = true;														//Actualiza la bandera
 	}
-	if(enc)
-		bAux->alg8();
+	if(enc)																	//Comprueba si se ha encontrado el barrio en la lista de barrios
+		bAux->alg8();														//Una vez encontrado el barrio al algoritmo no le hace falta el nombre de éste
 	else
-		cout << "NO SE HA ENCONTRADO EL BARRIO " << nombreBarrio << endl;
+		cout << "NO SE HA ENCONTRADO EL BARRIO " << nombreBarrio << endl;	//Si no se ha encontrado se indica por consola al usuario
 }
 
 

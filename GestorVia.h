@@ -21,6 +21,7 @@ public:
 	void insertarViaOrden(Via* v);
 	void insertarDatosDemograficos(DatosDemograficos* dD);
 	int alg7(int limInf, int limSup);
+	void alg8();
 
 	void mostrarVias();
 	void mostrar();

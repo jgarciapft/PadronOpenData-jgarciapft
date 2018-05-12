@@ -46,6 +46,10 @@ int Barrio::alg7(int limInf, int limSup) {						///@NOTA: Nombre provisional	@NO
 	return gVias->alg7(limInf, limSup);
 }
 
+void Barrio::alg8() {											///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	gVias->alg8();
+}
+
 
 
 void Barrio::mostrarVias() {									///@NOTA: Método invocativo
