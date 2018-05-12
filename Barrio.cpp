@@ -11,17 +11,17 @@ namespace std {
 Barrio::Barrio() {
 	nombreBarrio = "";
 	nombreDistrito = "";
-	gVias = new GestorVia();					//Reserva memoria el gestor que maneja la lista de vías
+	gVias = new GestorVia();									//Reserva memoria el gestor que maneja la lista de vías
 }
 
 Barrio::Barrio(string nB, string nD) {
 	nombreBarrio = nB;
 	nombreDistrito = nD;
-	gVias = new GestorVia();					//Reserva memoria el gestor que maneja la lista de vías
+	gVias = new GestorVia();									//Reserva memoria el gestor que maneja la lista de vías
 }
 
 Barrio::~Barrio() {
-	delete gVias;								//Libera la memoria reservada para el gestor que maneja la lista de vías
+	delete gVias;												//Libera la memoria reservada para el gestor que maneja la lista de vías
 }
 
 
@@ -34,15 +34,15 @@ string Barrio::getNombreDistrito() {
 	return nombreDistrito;
 }
 
-void Barrio::insertarVia(Via* v) {
+void Barrio::insertarVia(Via* v) {								///NOTA: Método invocativo
 	gVias->insertarViaOrden(v);
 }
 
-void Barrio::insertarDatosDemograficos(DatosDemograficos* dD) {
+void Barrio::insertarDatosDemograficos(DatosDemograficos* dD) {	///NOTA: Método invocativo
 	gVias->insertarDatosDemograficos(dD);
 }
 
-void Barrio::mostrarVias() {
+void Barrio::mostrarVias() {									///NOTA: Método invocativo
 	gVias->mostrarVias();
 }
 

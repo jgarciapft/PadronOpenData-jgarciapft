@@ -46,8 +46,8 @@ void GestorAnioNacimiento::alg4(ListaPI<AnioNacimiento*>*& lAnioNac) {										
 	AnioNacimiento* anNacAux1;																				//Puntero auxiliar para consular la lista que encapsula el gestor
 	AnioNacimiento* anNacAux2;																				//Puntero auxiliar para consultar la lista pasada por parámetro 'lAnioNac'
 	int anioActual;																							//Marca de clase (límite inferior) para crear cada objeto 'AnioNacimiento' y que representa al intervalo sobre el que almacena el número de personas
-	time_t horaActual = time(NULL);
-	tm* tiempoSis = localtime(&horaActual);																	//Estructura para almacenar el tiempo del sistema en horas, minutos y segundos
+	time_t tiempoActual = time(NULL);
+	tm* tiempoSis = localtime(&tiempoActual);																//Estructura para almacenar el tiempo del sistema en horas, minutos y segundos
 
 	if(!lAnioNacimiento->estaVacia()){																		//Comprueba si el gestor contiene algún año de nacimiento
 		lAnioNacimiento->moverInicio();

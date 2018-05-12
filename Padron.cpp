@@ -113,7 +113,7 @@ void Padron::cargarDatosDemograficos() {
 	fEnt.close();
 }
 
-void Padron::alg2(string nB) {											///@NOTA: Nombre provisional
+void Padron::alg2(string nB) {											///@NOTA: Nombre provisional	@NOTA: Método invocativo
 	gBarrio->alg2(nB);
 }
 
