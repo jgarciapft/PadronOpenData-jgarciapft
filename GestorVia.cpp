@@ -60,6 +60,23 @@ void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {	//Busca si el
 	}
 }
 
+int GestorVia::alg7(int limInf, int limSup) {						///@NOTA: Nombre provisional
+	Via* vAux;														//Puntero auxiliar para consultar la lista de vías
+	int cont = 0;													//Acumulador para la suma del número de habitantes pertenecientes al rango dado por vía
+
+	//Recorre secuencialmente de inicio a fin la lista de vías
+	lVias->moverInicio();
+	while (!lVias->finLista()){
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		cont += vAux->alg7(limInf, limSup);							//Suma los habitantes que pertenecen al rango dado por cada vía a los que ya habían antes
+	}
+
+	return cont;
+}
+
+
+
 void GestorVia::mostrarVias() {										//Muestra todas las vías de la lista. Utilizado por el algorimto 2
 	Via* vAux;														//Puntero auxiliar para consultar la lista de vías
 

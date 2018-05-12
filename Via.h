@@ -30,6 +30,8 @@ public:
 	string getTipoVia();
 	int getCodVia();
 	void setDatosDemograficos(DatosDemograficos* dD);
+	int alg7(int limInf, int limSup);
+
 	void mostrar();
 
 	bool operator >(const Via& v);

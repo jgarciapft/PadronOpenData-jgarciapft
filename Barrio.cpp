@@ -42,6 +42,12 @@ void Barrio::insertarDatosDemograficos(DatosDemograficos* dD) {	///@NOTA: Métod
 	gVias->insertarDatosDemograficos(dD);
 }
 
+int Barrio::alg7(int limInf, int limSup) {						///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	return gVias->alg7(limInf, limSup);
+}
+
+
+
 void Barrio::mostrarVias() {									///@NOTA: Método invocativo
 	gVias->mostrarVias();
 }

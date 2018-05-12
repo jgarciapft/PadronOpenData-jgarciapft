@@ -54,6 +54,12 @@ void Via::setDatosDemograficos(DatosDemograficos* dD) {
 	datDemograficos = dD;
 }
 
+int Via::alg7(int limInf, int limSup) {			///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	return datDemograficos->alg7(limInf, limSup);
+}
+
+
+
 void Via::mostrar() {							//Muestra la información de cada vía
 	cout << "Via : " << nombreVia << " | Barrio : " << barrioVia << " | Longitud : " <<
 			longitudVia << " (m) | Tipo : " << tipoVia << " | Codigo : " << codVia << endl;

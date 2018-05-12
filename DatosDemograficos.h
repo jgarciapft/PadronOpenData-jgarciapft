@@ -35,6 +35,7 @@ public:
 	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
 	void alg5(ListaPI<Nacionalidad*>*& lNacion);
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
+	int alg7(int limInf, int limSup);
 	void mostrar();
 };
 

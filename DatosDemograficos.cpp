@@ -63,6 +63,12 @@ void DatosDemograficos::alg6(ListaPI<LugarNacimiento*>*& lLugNac) {					///@NOTA
 	gLugarNacimiento->alg6(lLugNac);
 }
 
+int DatosDemograficos::alg7(int limInf, int limSup) {								///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	return gAnioNacimiento->alg7(limInf, limSup);
+}
+
+
+
 void DatosDemograficos::mostrar() {													//Llama a mostrar la información de cada gestor contenido
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	gAnioNacimiento->mostrar();
