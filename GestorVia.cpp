@@ -123,6 +123,27 @@ void GestorVia::alg8() {											///@NOTA: Nombre provisional
 	delete lEstud;													//Libera la lista
 }
 
+void GestorVia::alg9(float& pHombres, float& pMujeres) {			///@NOTA: Nombre provisional
+	Via* vAux;														//Puntero auxiliar para consultar la lista de vías que encapsula el gestor
+	int nHombres = 0;												//Acumulador del número de hombres para el barrio que contiene este gestor de vías
+	int nMujeres = 0;												//Acumulador del número de mujeres para el barrio que contiene este gestor de vías
+	pHombres = 0;													//Asigna el vaalor de 0 por si la lista de vías está vacía. Así se producirá un error al mostrar los resultados que es manejado por la clase 'GestorBarrio'
+	pMujeres = 0;													//Asigna el vaalor de 0 por si la lista de vías está vacía. Así se producirá un error al mostrar los resultados que es manejado por la clase 'GestorBarrio'
+
+	//Recorre secuencialmente de inicio a fin la lista de vías
+	lVias->moverInicio();
+	while (!lVias->finLista()){
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		vAux->alg9(nHombres, nMujeres);								//Por cada vía suma el número de hombres y mujeres de la actual a los anteriores
+	}
+
+	if(nHombres != 0){												//Comprueba que se hayan actualizado los acumuladores. Si están a 0 es porque no había ninguna via en la lista y hay que evitar una división por 0
+		pHombres = nHombres / (nHombres + nMujeres);
+		pMujeres = 100 - pHombres;									//'pHombres' y 'pMujeres' son mutuamente excluyentes y representan al total de la población
+	}
+}
+
 
 
 void GestorVia::mostrarVias() {										//Muestra todas las vías de la lista. Utilizado por el algorimto 2

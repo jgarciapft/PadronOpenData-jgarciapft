@@ -155,6 +155,8 @@ void GestorBarrio::alg9() {													///@NOTA: Nombre provisional
 		cout << "Barrio con el mayor porcentaje de MUJERES" << endl;
 		cout << "-----------------------------------------------------------------------------------------------" << endl;
 		cout << "Barrio : " << barrioPMujeres->getNombreBarrio() << " | Distrito : " << barrioPMujeres->getNombreDistrito() << " -> PORCENTAJE : " << mayorPMujeres << "%" << endl;
+	}else{
+		cout << "NO NHAY NINGÚN BARRIO DISPONIBLE" << endl;					//Si la lista de barrios está vacía lo indica al usuario por consola
 	}
 }
 
