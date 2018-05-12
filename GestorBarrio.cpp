@@ -136,7 +136,7 @@ void GestorBarrio::alg9() {													///@NOTA: Nombre provisional
 	while (!lBarrios->finLista()){
 		lBarrios->consultar(bAux);
 		lBarrios->avanzar();
-//		bAux->alg9(pHombres, pMujeres);										//Calcula los porcentajes de hombres y mujeres del barrio actual
+		bAux->alg9(pHombres, pMujeres);										//Calcula los porcentajes de hombres y mujeres del barrio actual
 		if(mayorPHombres > pHombres){										//Compara el mejor porcentaje de hombres hasta ahora con el barrio actual y actualiza las variables si procede
 			mayorPHombres = pHombres;
 			barrioPHombres = bAux;

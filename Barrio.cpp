@@ -50,6 +50,10 @@ void Barrio::alg8() {											///@NOTA: Nombre provisional	@NOTA: Método invo
 	gVias->alg8();
 }
 
+void Barrio::alg9(float& pHombres, float& pMujeres) {			///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	gVias->alg9(pHombres, pMujeres);
+}
+
 
 
 void Barrio::mostrarVias() {									///@NOTA: Método invocativo
