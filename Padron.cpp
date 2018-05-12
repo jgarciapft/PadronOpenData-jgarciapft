@@ -309,7 +309,10 @@ void Padron::alg6() {													///@NOTA: Nombre provisional
 }
 
 void Padron::alg7(int limInf, int limSup) {								///@NOTA: Nombre provisional	@NOTA: Método invocativo
-	gBarrio->alg7(limInf, limSup);
+	if(limInf <= limSup)												//Comprueba que el rango sea correcto
+		gBarrio->alg7(limInf, limSup);
+	else
+		cout << "ERROR : El límite inferior (" << limInf << ") debe ser inferior al límite superior (" << limSup << ")" << endl;
 }
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares

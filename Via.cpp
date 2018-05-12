@@ -55,7 +55,12 @@ void Via::setDatosDemograficos(DatosDemograficos* dD) {
 }
 
 int Via::alg7(int limInf, int limSup) {			///@NOTA: Nombre provisional	@NOTA: Método invocativo
-	return datDemograficos->alg7(limInf, limSup);
+	int ret = 0;
+
+	if(datDemograficos != NULL)					//Comprueba que la vía contenga un set de datos demográficos
+		ret =  datDemograficos->alg7(limInf, limSup);
+
+	return ret;
 }
 
 

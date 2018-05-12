@@ -94,10 +94,11 @@ void GestorBarrio::alg7(int limInf, int limSup) {							///@NOTA: Nombre provisi
 		}
 	}
 
-	//Muestra la el nombre y el distrito del barrio con mayor número de habitantes para el rango dado
+	//Muestra la el nombre y el distrito del barrio con mayor número de habitantes para el rango dado y dicho número
 	cout << "Rango de edad (" << limInf << " , " << limSup << ")" << endl;
 	cout << "-----------------------------------------------------------------------------------------------" << endl;
-	cout << "Barrio : " << mayorBarrio->getNombreBarrio() << " | Distrito : " << mayorBarrio->getNombreDistrito() << endl;
+	cout << "Barrio : " << mayorBarrio->getNombreBarrio() << " | Distrito : " << mayorBarrio->getNombreDistrito() <<
+		 " | Habitantes entre " << limInf << "y " << limSup << " años : " << mayorNPersonas << endl;
 }
 
 void GestorBarrio::mostrar() {												//Pasa la llamada a cada barrio para que muestre su contenido
