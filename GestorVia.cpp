@@ -138,7 +138,7 @@ void GestorVia::alg9(float& pHombres, float& pMujeres) {			///@NOTA: Nombre prov
 
 	if(nHombres != 0){												//Comprueba que se hayan actualizado los acumuladores. Si están a 0 es porque no había ninguna via en la lista y hay que evitar una división por 0
 		pHombres = nHombres / (nHombres + nMujeres);
-		pMujeres = 100 - pHombres;									//'pHombres' y 'pMujeres' son mutuamente excluyentes y representan al total de la población
+		pMujeres = 1 - pHombres;									//'pHombres' y 'pMujeres' son mutuamente excluyentes y representan al total de la población
 	}
 }
 

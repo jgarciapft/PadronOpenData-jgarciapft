@@ -149,14 +149,14 @@ void GestorBarrio::alg9() {													///@NOTA: Nombre provisional
 
 	//Muetra los resultados del algoritmo
 	if(barrioPHombres != NULL){												//Comprueba si hay algún hombre en la población
-		cout << "Barrio con el mayor porcentaje de HOMBRES - PORCENTAJE (%) : " << mayorPHombres << "%" << endl;
+		cout << "Barrio con el mayor porcentaje de HOMBRES - PORCENTAJE (%) : " << mayorPHombres * 100 << "%" << endl;
 		cout << "-----------------------------------------------------------------------------------------------" << endl;
 		cout << "Barrio : " << barrioPHombres->getNombreBarrio() << " | Distrito : " << barrioPHombres->getNombreDistrito() << endl << endl;
 	}else{
 		cout << "NO HAY NINGÚN HOMBRE ENTRE LA POBLACIÓN" << endl;			//Si no hay ningún hombre lo indica al usuario por consola
 	}
 	if(barrioPMujeres != NULL){												//Comprueba si hay alguna mujer en la población
-		cout << "Barrio con el mayor porcentaje de MUJERES - PORCENTAJE (%) : " << mayorPMujeres << "%" << endl;
+		cout << "Barrio con el mayor porcentaje de MUJERES - PORCENTAJE (%) : " << mayorPMujeres * 100 << "%" << endl;
 		cout << "-----------------------------------------------------------------------------------------------" << endl;
 		cout << "Barrio : " << barrioPMujeres->getNombreBarrio() << " | Distrito : " << barrioPMujeres->getNombreDistrito() << endl;
 	}else{
