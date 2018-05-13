@@ -123,7 +123,7 @@ void GestorLugarNacimiento::alg11(ofstream& ofs) {								///@NOTA: Nombre provi
 	while (!lLugarNacimiento->finLista()){										//También comprueba si la lista está vacía inicialmente
 		lLugarNacimiento->consultar(lugNacAux);
 		lLugarNacimiento->avanzar();
-		ofs << lugNacAux->getPoblacion() << " (" << lugNacAux->getProvinciaPais() << ") " << lugNacAux->getNPersonas() << endl;	//Escribe cada lugar de nacimiento presente en la lista al ficehro de volcado
+		ofs << lugNacAux->getPoblacion() << ", " << lugNacAux->getProvinciaPais() << " (" << lugNacAux->getNPersonas() << ") " << endl;	//Escribe cada lugar de nacimiento presente en la lista al ficehro de volcado
 	}
 }
 
