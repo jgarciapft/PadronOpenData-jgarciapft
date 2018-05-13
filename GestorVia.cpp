@@ -98,7 +98,7 @@ void GestorVia::alg8() {											///@NOTA: Nombre provisional
 	ofs.open(ruta.c_str(), ios::app);								//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
 	if(ofs.is_open()){												//Comprueba si se ha abierto el fichero correctamente
 		if(!lEstud->estaVacia()){									//Comprueba si está vacía porque no se haya encontrado ningún dato que insertar
-			ofs << "Nivel de estudios de los habitantes del barrio - " << vAux->getBarrioVia() << endl;
+			ofs << << endl << endl << "Nivel de estudios de los habitantes del barrio - " << vAux->getBarrioVia() << endl;
 			ofs << "-----------------------------------------------------------------------------------------------" << endl;
 			lEstud->moverInicio();
 			while (!lEstud->finLista()){

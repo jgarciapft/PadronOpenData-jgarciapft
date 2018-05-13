@@ -346,7 +346,7 @@ void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
 	ofs.open(ruta.c_str());												//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
 	if(ofs.is_open(), ios::app){										//Comprueba que se haya abierto el flujo correctamente
 		if(!lLugNac->estaVacia()){										//Comprueba que se haya leído algún dato
-			ofs << "Poblaciones que pertenecen a la provincia - " << lugNacAux->getProvinciaPais() << endl;
+			ofs << endl << endl << "Poblaciones que pertenecen a la provincia - " << lugNacAux->getProvinciaPais() << endl;
 			ofs << "-----------------------------------------------------------------------------------------------" << endl;
 			lLugNac->moverInicio();
 			while (!lLugNac->finLista()){
