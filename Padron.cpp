@@ -380,6 +380,8 @@ void Padron::alg11_EDL(string nombreVia) {								///@NOTA: Nombre provisional
 	ruta += nombreVia + extension;										//Conforma la ruta relativa del archivo de volcado
 	ofs.open(ruta.c_str(), ios::app);									//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
 	if(ofs.is_open()){													//Comprueba que se haya abierto el flujo correctamente
+		ofs << endl << endl << "Lista de LUGARES de NACIMIENTO para la VIA - " << nombreVia << endl;
+		ofs << "-----------------------------------------------------------------------------------------------" << endl;
 		lVias->moverInicio();
 		while (!lVias->finLista()){										/*Recorre la lista de vías auxiliar secuencialmente de inicio a fin porque cada vía puede pasar por varios barrios (hay varios objetos 'Via' para una misma vía)
 																		 * También comprueba que contenga alguna vía inicialmente */
