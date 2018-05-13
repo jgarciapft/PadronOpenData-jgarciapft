@@ -75,6 +75,11 @@ void Via::alg9(float& nHombres, float& nMujeres) {	///@NOTA: Nombre provisional
 	}
 }
 
+void Via::alg11(ofstream& ofs) {				///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	if(datDemograficos != NULL)					//Comprueba que exista un set de datos demográficos
+		datDemograficos->alg11(ofs);
+}
+
 
 
 void Via::mostrar() {							//Muestra la información de cada vía
