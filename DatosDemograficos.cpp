@@ -71,7 +71,7 @@ void DatosDemograficos::alg8(ListaPI<Estudios*>*& lEstud) {							///@NOTA: Nomb
 	gEstudios->alg8(lEstud);
 }
 
-void DatosDemograficos::alg10(ListaPI<LugarNacimiento *> *&lLugNac, string nombreProvincia) {	///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void DatosDemograficos::alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia) {	///@NOTA: Nombre provisional	@NOTA: Método invocativo
 	gLugarNacimiento->alg10(lLugNac, nombreProvincia);
 }
 

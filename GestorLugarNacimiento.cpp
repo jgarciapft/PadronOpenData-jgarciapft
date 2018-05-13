@@ -10,6 +10,7 @@ namespace std {
 
 /*** DEFINCIÓN DE CONSTANTES ***/
 const string POBLACION_TEXTO_RELLENO = "";										//Texto de relleno para el atributo 'poblacion' al crear nuevos objetos 'LugarNacimiento' aplicado al algoritmo 6
+const string PROVINCIA_PAIS_TEXTO_RELLENO = "";									//Texto de relleno para el atributo 'provincia/pais' al crear nuevos objetos 'LugarNacimiento' aplicado al algoritmo 10
 
 GestorLugarNacimiento::GestorLugarNacimiento() {
 	lLugarNacimiento = new ListaPI<LugarNacimiento*>();							//Reserva memoria para la lista de lugares de nacimiento que encapsula
@@ -65,7 +66,7 @@ void GestorLugarNacimiento::alg6(ListaPI<LugarNacimiento *> *&lLugNac) {
 			}
 		}
 
-		while (!lLugarNacimiento->finLista()) {                            		//Recorre secuencialmente la lista de lugares de nacimiento del gestor de inicio a fin
+		while (!lLugarNacimiento->finLista()) {                            		//Recorre secuencialmente la lista de lugares de nacimiento del gestor de inicio a fin. También comprueba que quede algún elemento por procesar
 			lLugarNacimiento->consultar(lugNacAux1);
 			lLugarNacimiento->avanzar();
 			if(lugNacAux1->getPoblacion() != POBLACION_TEXTO_RELLENO){			//Comprueba que la nacionalidad no sea extranjera
@@ -83,6 +84,33 @@ void GestorLugarNacimiento::alg6(ListaPI<LugarNacimiento *> *&lLugNac) {
 					lLugNac->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNacAux1->getProvinciaPais(), lugNacAux1->getNPersonas()));
 				enc = false;													//Reinicia la bandera de posición
 			}
+		}
+	}
+}
+
+void GestorLugarNacimiento::alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia) {	///@NOTA: Nombre provisional
+	bool enc = false;															//Bandera para salir del bucle que compara si la población encontrada para la provincia dada está ya en la lista 'lLugNac'
+	LugarNacimiento* lugNacAux1;												//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
+	LugarNacimiento* lugNacAux2;												//Puntero auxiliar para consultar la lista de lugares de nacimiento pasada por parámetro 'lLugNac'
+
+	//Recorre secuencialmente la lista de lugares de nacimiento del gestor de inicio a fin
+	lLugarNacimiento->moverInicio();
+	while (!lLugarNacimiento->finLista()){
+		lLugarNacimiento->consultar(lugNacAux1);
+		lLugarNacimiento->avanzar();
+		if(lugNacAux1->getProvinciaPais() == nombreProvincia){					//Compara si la provincia del elemento actual coincide con la buscada
+			lLugNac->moverInicio();
+			while (!lLugNac->finLista() && !enc){								//Recorre secuencialmente la lista de lugares de nacimiento pasada por parámetro 'lLugNac' o hasta que encuentra una coincidencia de población ya incluida
+				lLugNac->consultar(lugNacAux2);
+				lLugNac->avanzar();
+				if(lugNacAux1->getPoblacion() == lugNacAux2->getPoblacion())	//Comprueba si ya existía la población actual
+					enc = true;
+			}
+			if(enc)																//Comprueba si ha habido coincidencia de población. Actualiza el dato ya existente con los nuevos habitantes
+				lugNacAux2->incNPersonas(lugNacAux1->getNPersonas());
+			else																//Sino inserta un nuevo lugar de nacimiento con los datos actuales
+				lLugNac->insertar(new LugarNacimiento(lugNacAux1->getPoblacion(), PROVINCIA_PAIS_TEXTO_RELLENO, lugNacAux1->getNPersonas()));
+			enc = false;														//Reinicia la bandera
 		}
 	}
 }
