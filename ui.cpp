@@ -14,79 +14,93 @@
 using namespace std;
 
 UI::UI() {
-	// TODO
-	//ejecutar();
+	ejecutar();
 }
 
 void UI::ejecutar() {
-//	double t_start, t_end;
-	int opcion;
+//	double t_start, t_end;				//Almacena la diferencia de tiempo entre dos intervalos. Mide los tiempos de ejecución de los algoritmos
+	int opcion;							//Opción del menú elegida por el usuario
+	string nombreBarrio;				//Nombre del barrio a utilizar por los algoritmos 2 y 8
+	string nombreProvincia;				//Nombre de la provincia a utilizar por el algoritmo 10
+	string nombreVia;					//Nombre de la vía a utilizar por el algoritmo 11
+	int limInf;							//Límite inferior del rango de edad a utilizar por el algoritmo 7
+	int limSup;							//Límite superior del rango de edad a utilizar por el algoritmo 7
 
-	bool salir = false;
+	bool salir = false;					//Bandera que indica que si el usuario ha decidido cerrar el programa
 	do {
-		opcion = menu();
-		switch (opcion) {
+		opcion = menu();				//Obtiene la opción indicada por el usuario
+		switch (opcion) {				//En base a la opción elegida pregunta datos adicionales y/o ejecuta el algoritmo seleccionado
 		case 1:
 			//t_start = Time::getTime();
 			cout << "Cargando datos ... " << endl;
-			// TODO por hacer alg. 1
-
+			p.cargarBarrios();
+			p.cargarVias();
+			p.cargarDatosDemograficos();
 			cout << "Carga finalizada ... " << endl;
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 2:
+			cout << "Introduzca el nombre del BARRIO :" << endl;
+			cin >> nombreBarrio;
 			//t_start = Time::getTime();
-			// TODO por hacer alg. 2
+			p.alg2(nombreBarrio);
 			//t_end= Time::getTime();
-
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 3:
 			//t_start = Time::getTime();
-			// TODO por hacer alg. 3
+			p.alg3();
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
-		case 4:
+		case 4:							///@PREGUNTA: Debería dar a elegir el rango de edad?
 			//t_start = Time::getTime();
-			// TODO por hacer alg. 4
+			p.alg4();
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 5:
 			//t_start = Time::getTime();
-			// TODO por hacer alg. 5
+			p.alg5();
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 6:
 			//t_start = Time::getTime();
-			// TODO por hacer alg. 6
+			p.alg6();
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 7:
+			cout << "Introduzca el LÍMITE INFERIOR del intervalo : " << endl;
+			cin >> limInf;
+			cout << "Introduzca el LÍMITE SUPERIOR del intervalo : " << endl;
+			cin >> limSup;
 			//t_start = Time::getTime();
-			// TODO por hacer alg. 7
+			p.alg7(limInf, limSup);
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 8:
+			cout << "Introduzca el nombre del BARRIO :" << endl;
+			cin >> nombreBarrio;
 			//t_start = Time::getTime();
-			// TODO por hacer alg. 8
+			p.alg8(nombreBarrio);
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 9:
 			//t_start = Time::getTime();
-			// TODO por hacer alg. 9
+			p.alg9();
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
 		case 10:
+			cout << "Introduzca el nombre la PROVINCIA :" << endl;
+			cin >> nombreProvincia;
 			//t_start = Time::getTime();
-			// TODO por hacer alg. 10
+			p.alg10(nombreProvincia);
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
@@ -102,10 +116,10 @@ void UI::ejecutar() {
 			//t_end= Time::getTime();
 			//cout << "Time: " << t_end - t_start << "  " << endl;
 			break;
-		case 0:
+		case 0:							//Se ha seleccionado terminar el programa
 			salir = true;
 			break;
-		default:
+		default:						//Si la opción no es válida vuelve a preguntar al usuario
 			cout << "ERROR en la opcion de menu" << endl;
 			break;
 		}
@@ -144,14 +158,12 @@ int UI::menu() {
 }
 
 UI::~UI() {
-	// TODO delete a la instancia creada;
 	cout << "Finalizado....";
 }
 
-	// TODO  quitar el comentario para ejecutar el proyecto
-/*int main() {
+int main() {
 	UI ui;
 
 	return 0;
-}*/
+}
 

@@ -15,7 +15,8 @@
 class UI {
 
 private:
-	// TODO instanciar la clase principal
+	Padron p;				//Instancia de la clase principal
+
 	int  menu     ();
 	void ejecutar ();
 public:
