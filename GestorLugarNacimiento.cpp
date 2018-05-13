@@ -115,6 +115,17 @@ void GestorLugarNacimiento::alg10(ListaPI<LugarNacimiento*>*& lLugNac, string no
 	}
 }
 
+void GestorLugarNacimiento::alg11(ofstream& ofs) {
+	LugarNacimiento* lugNacAux;
+
+	lLugarNacimiento->moverInicio();
+	while (!lLugarNacimiento->finLista()){
+		lLugarNacimiento->consultar(lugNacAux);
+		lLugarNacimiento->avanzar();
+		ofs << "Población : " << lugNacAux->getPoblacion() << " | Provincia/Pais : " << lugNacAux->getProvinciaPais() << " | Personas : " << lugNacAux->getNPersonas() << endl;
+	}
+}
+
 
 
 void GestorLugarNacimiento::mostrar() {											//Muestra la información de cada lugar de nacimiento

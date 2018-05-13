@@ -8,7 +8,6 @@
 #define GESTORVIA_H_
 
 #include "Via.h"
-#include <fstream>
 
 namespace std {
 
