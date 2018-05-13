@@ -206,7 +206,7 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 		}else{															//Sino avanza las iteraciones necesarias hasta que alcanza el intervalo correspondiente a dicho dato y se muestran 0 personas
 			nPersonas = 0;
 		}
-		cout << i*RANGO_EDAD_ALG_114 << " a " << (i+1)*RANGO_EDAD_ALG_4 - 1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
+		cout << i*RANGO_EDAD_ALG_4 << " a " << (i+1)*RANGO_EDAD_ALG_4 - 1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
 	}
 	nPersPorDiv = modaNPersonas % 275;									//Crea divisiones de tamaño dependiente de la muestra. SOLO es válida para muestras con una varianza pequeña
 	cadMayorMarca = int_to_string(mayorMarca);							//Convierte la mayor marca a cadena para contar sus dígitos como caracteres
@@ -318,7 +318,7 @@ void Padron::alg8(string nombreBarrio) {								///@NOTA: Nombre provisional	@NO
 	gBarrio->alg8(nombreBarrio);
 }
 
-void Padron::alg9() {			1										///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Padron::alg9() {													///@NOTA: Nombre provisional	@NOTA: Método invocativo
 	gBarrio->alg9();
 }
 
