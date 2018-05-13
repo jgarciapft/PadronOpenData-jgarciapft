@@ -30,23 +30,23 @@ Via::~Via() {}									//No libera la memoria de los datos demográficos porque 
 
 
 
-string Via::getBarrioVia() {
+string Via::getBarrioVia() const {
 	return barrioVia;
 }
 
-string Via::getNombreVia() {
+string Via::getNombreVia() const {
 	return nombreVia;
 }
 
-float Via::getLongitudVia() {
+float Via::getLongitudVia() const {
 	return longitudVia;
 }
 
-string Via::getTipoVia() {
+string Via::getTipoVia() const {
 	return tipoVia;
 }
 
-int Via::getCodVia() {
+int Via::getCodVia() const {
 	return codVia;
 }
 

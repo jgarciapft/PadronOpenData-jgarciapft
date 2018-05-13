@@ -8,6 +8,7 @@
 #define GESTORVIA_H_
 
 #include "Via.h"
+#include "arbol.h"
 #include <fstream>
 
 namespace std {
