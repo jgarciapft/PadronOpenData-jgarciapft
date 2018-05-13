@@ -75,6 +75,10 @@ void DatosDemograficos::alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombre
 	gLugarNacimiento->alg10(lLugNac, nombreProvincia);
 }
 
+void DatosDemograficos::alg11(ofstream &ofs) {										///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	gLugarNacimiento->alg11(ofs);
+}
+
 
 
 void DatosDemograficos::mostrar() {													//Llama a mostrar la información de cada gestor contenido
