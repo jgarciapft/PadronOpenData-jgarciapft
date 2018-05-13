@@ -19,7 +19,6 @@ const char SEP = '#'; 													//Carácter separador de campos en los ficher
 const string DEF_BARRIO = "BARRIO CONTENEDOR";							//Nombre del distrito del objeto barrio que incluirá las vías que no tienen ningún barrio asignado
 extern const int RANGO_EDAD_ALG_4 = 10;									//Amplitud del intervalo de edad que usa el algorimto 4 para agrupar los años de nacimiento de los habitantes
 
-
 Padron::Padron() {
 	gBarrio = new GestorBarrio();
 	lVias = new ListaPI<Via*>();										//Lista de nuevas vías creadas auxiliar
@@ -207,7 +206,7 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 		}else{															//Sino avanza las iteraciones necesarias hasta que alcanza el intervalo correspondiente a dicho dato y se muestran 0 personas
 			nPersonas = 0;
 		}
-		cout << i*RANGO_EDAD_ALG_4 << " a " << (i+1)*RANGO_EDAD_ALG_4 - 1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
+		cout << i*RANGO_EDAD_ALG_114 << " a " << (i+1)*RANGO_EDAD_ALG_4 - 1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
 	}
 	nPersPorDiv = modaNPersonas % 275;									//Crea divisiones de tamaño dependiente de la muestra. SOLO es válida para muestras con una varianza pequeña
 	cadMayorMarca = int_to_string(mayorMarca);							//Convierte la mayor marca a cadena para contar sus dígitos como caracteres
@@ -319,7 +318,7 @@ void Padron::alg8(string nombreBarrio) {								///@NOTA: Nombre provisional	@NO
 	gBarrio->alg8(nombreBarrio);
 }
 
-void Padron::alg9() {													///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Padron::alg9() {			1										///@NOTA: Nombre provisional	@NOTA: Método invocativo
 	gBarrio->alg9();
 }
 
@@ -370,6 +369,29 @@ void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
 		delete lugNacAux;												//Libera cada lugar de nacimiento de la lista
 	}
 	delete lLugNac;														//Libera la lista
+}
+
+void Padron::alg11_EDL(string nombreVia) {								///@NOTA: Nombre provisional
+	ofstream ofs;
+	string ruta = "LugaresNacimiento-";
+	string extension = ".txt";
+	Via* vAux;
+	LugarNacimiento* lugNacAux;
+
+	ruta += nombreVia + extension;
+	ofs.open(ruta.c_str(), ios::app);
+	if(ofs.is_open()){
+		lVias->moverInicio();
+		while (!lVias->finLista()){
+			lVias->consultar(vAux);
+			lVias->avanzar();
+			if(vAux->getNombreVia() == nombreVia)
+				vAux->alg11(ofs);
+		}
+	}else{
+		cout << "ERROR AL CREAR EL FICHERO PARA VOLCAR LOS RESULTADOS" << endl;
+	}
+	ofs.close();
 }
 
 
