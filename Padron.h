@@ -32,6 +32,7 @@ public:
 	void alg7(int limInf, int limSup);
 	void alg8(string nombreBarrio);
 	void alg9();
+	void alg10(string nombreProvincia);
 
 	void mostrarEstructura();
 };

@@ -76,11 +76,12 @@ int GestorVia::alg7(int limInf, int limSup) {						///@NOTA: Nombre provisional
 }
 
 void GestorVia::alg8() {											///@NOTA: Nombre provisional
-	ofstream ofs;													//Flujo de salida para volcar en un fichero los resultados del algoritmo
-	string ruta = "NivelDeEstudios-";								//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	ListaPI<Estudios*> *lEstud = new ListaPI<Estudios*>();			/* Lista en la que se almacenan los resultados del algoritmo. Cada nivel de estudios con el numero total de habitantes
  																	 * es representada por un objeto 'Estudios':
 																	 *		El nivel se almacena en el atributo 'nivEstudios' y el número de personas en 'nPersonas' */
+	ofstream ofs;													//Flujo de salida para volcar en un fichero los resultados del algoritmo
+	string ruta = "NivelDeEstudios-";								//Ruta del fichero en el que se almacenan los resultados del algoritmo
+	string extension  = ".txt";										//Extensión del fichero donde se vuelcan los resultados del algoritmo
 	Via* vAux;														//Puntero auxiliar para consultar la lista de vías
 	Estudios* estudAux;												//Puntero auxiliar para consultar la lista de 'lEstud'
 
@@ -93,8 +94,8 @@ void GestorVia::alg8() {											///@NOTA: Nombre provisional
 	}
 
 	//Vuelca a un fichero los resultados del algoritmo una vez completado
-	ruta += vAux->getBarrioVia() + ".txt";							//Conforma la ruta del fichero
-	ofs.open(ruta.c_str());
+	ruta += vAux->getBarrioVia() + extension;						//Conforma la ruta del fichero
+	ofs.open(ruta.c_str(), ios::app);								//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
 	if(ofs.is_open()){												//Comprueba si se ha abierto el fichero correctamente
 		if(!lEstud->estaVacia()){									//Comprueba si está vacía porque no se haya encontrado ningún dato que insertar
 			ofs << "Nivel de estudios de los habitantes del barrio - " << vAux->getBarrioVia() << endl;

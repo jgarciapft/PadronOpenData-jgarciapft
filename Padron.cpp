@@ -323,6 +323,55 @@ void Padron::alg9() {													///@NOTA: Nombre provisional	@NOTA: Método in
 	gBarrio->alg9();
 }
 
+void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
+	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada lugar de nacimiento con el numero total de habitantes
+ 																	      * es representada por un objeto 'LugarNacimiento':
+																	      *		La población se almacena en el atributo 'poblacion' y el número de personas en 'nPersonas' */
+	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
+	string ruta = "Poblaciones-";										//Ruta del fichero en el que se almacenan los resultados del algoritmo
+	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
+	DatosDemograficos* dD;												//Puntero auxiliar para consultar los datos demográficos de la lista auxiliar de datos demográficos
+	LugarNacimiento* lugNacAux;											//Puntero auxiliar para consultar la lista 'lLugNac'
+
+	//Recorre la lista de datos demográficos auxiliar secuencialmente de inicio a fin
+	lDatDemograficos->moverInicio();
+	while (!lDatDemograficos->finLista()){
+		lDatDemograficos->consultar(dD);
+		lDatDemograficos->avanzar();
+		dD->alg10(lLugNac, nombreProvincia);							//Actualiza la lista de poblaciones para la provincia dada con cada set de datos demográficos
+	}
+
+	//Muestra los resultados del algoritmo
+	ruta += nombreProvincia + extension;								//Conforma la ruta relativa del archivo de volcado
+	ofs.open(ruta.c_str());												//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
+	if(ofs.is_open(), ios::app){										//Comprueba que se haya abierto el flujo correctamente
+		if(!lLugNac->estaVacia()){										//Comprueba que se haya leído algún dato
+			ofs << "Poblaciones que pertenecen a la provincia - " << lugNacAux->getProvinciaPais() << endl;
+			ofs << "-----------------------------------------------------------------------------------------------" << endl;
+			lLugNac->moverInicio();
+			while (!lLugNac->finLista()){
+				lLugNac->consultar(lugNacAux);
+				lLugNac->avanzar();
+				ofs << lugNacAux->getPoblacion() << " (" << lugNacAux->getNPersonas() << ")" << endl;
+			}
+		}else{															//Si no se ha encontrado ninguna población para la provincia dada se indica al usuario por consola
+			cout << "NO SE HA ENCONTRADO NINGUNA POBLACIÓN PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
+		}
+	}else{																//Si no se han podido volcar los resultados del algoritmo se indica al usuario por consola
+		cout << "ERROR AL CREAR EL FICHERO PARA VOLCAR LOS RESULTADOS" << endl;
+	}
+	ofs.close();														//Cierra el flujo
+
+	//Libera la memoria asociada a los nuevos datos creados por el algoritmo 10
+	lLugNac->moverInicio();
+	while (!lLugNac->finLista()){										//Recorre secuencialmente la lista de estudios de inicio a fin
+		lLugNac->consultar(lugNacAux);
+		lLugNac->avanzar();
+		delete lugNacAux;												//Libera cada lugar de nacimiento de la lista
+	}
+	delete lLugNac;														//Libera la lista
+}
+
 
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
