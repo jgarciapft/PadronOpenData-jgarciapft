@@ -16,6 +16,7 @@ namespace std {
 class GestorVia {
 private:
 	ListaPI<Via*>* lVias;
+	Arbol<Via*, ComparadorPtrVia>* aVias;
 public:
 	GestorVia();
 	~GestorVia();
