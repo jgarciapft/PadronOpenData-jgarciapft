@@ -15,8 +15,9 @@ class Padron {
 
 private:
 	GestorBarrio* gBarrio;
-	ListaPI<DatosDemograficos*>* lDatDemograficos;
 	ListaPI<Via*>* lVias;
+	Arbol<Via*, ComparadorPtrVia>* aVias;
+	ListaPI<DatosDemograficos*>* lDatDemograficos;
 public:
 	Padron();
 	~Padron();

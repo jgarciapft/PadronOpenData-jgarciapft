@@ -23,6 +23,7 @@ extern const int RANGO_EDAD_ALG_4 = 10;									//Amplitud del intervalo de edad
 Padron::Padron() {
 	gBarrio = new GestorBarrio();
 	lVias = new ListaPI<Via*>();										//Lista de nuevas vías creadas auxiliar
+	aVias = new Arbol<Via*, ComparadorPtrVia>();						//ABB de nuevas vías vías creadas auxiliar
 	lDatDemograficos = new ListaPI<DatosDemograficos*>();				//Lista de nuevos datos demográfiocos creados auxiliar
 }
 
@@ -38,6 +39,7 @@ Padron::~Padron() {
 	}
 	delete lDatDemograficos;											//Libera la lista auxiliar
 	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
+	///	delete aVias;													///@PREGUNTA: Como se liberan los árboles? Interfiere con la liberación de la lista de vías y las vías por 'gBarrio'?
 	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos liberando el espacio reservado para todos los datos, menos los datos demográficos
 }
 
