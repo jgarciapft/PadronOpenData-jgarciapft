@@ -18,6 +18,8 @@ private:
 	ListaPI<Via*>* lVias;
 	Arbol<Via*, ComparadorPtrVia>* aVias;
 	ListaPI<DatosDemograficos*>* lDatDemograficos;
+private:
+	void alg11(Arbol<Via*, ComparadorPtrVia>*& aVias, string nombreVia, ofstream& ofs);
 public:
 	Padron();
 	~Padron();
@@ -34,6 +36,7 @@ public:
 	void alg8(string nombreBarrio);
 	void alg9();
 	void alg10(string nombreProvincia);
+	void alg11_EDNL(string nombreVia);
 
 	void mostrarEstructura();
 };

@@ -39,11 +39,17 @@ Padron::~Padron() {
 	}
 	delete lDatDemograficos;											//Libera la lista auxiliar
 	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
-	///	delete aVias;													///@PREGUNTA: Como se liberan los árboles? Interfiere con la liberación de la lista de vías y las vías por 'gBarrio'?
+	delete aVias;
 	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos liberando el espacio reservado para todos los datos, menos los datos demográficos
 }
 
+/****************************************************************************		INTERFAZ PRIVADA	****************************************************************************/
 
+void Padron::alg11(Arbol<Via*, ComparadorPtrVia>*& aVias, string nombreVia, ofstream &ofs) {
+
+}
+
+/****************************************************************************		INTERFAZ PÚBLICA	****************************************************************************/
 
 void Padron::cargarBarrios() {
 	ifstream fEnt;
@@ -375,6 +381,21 @@ void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
 }
 
 
+
+void Padron::alg11_EDNL(string nombreVia) {
+	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
+	string ruta = "LugaresNacimietno-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
+	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
+
+	ruta += nombreVia + extension;										//Conforma la ruta relativa del archivo de volcado
+	ofs.open(ruta.c_str(), ios::app);									//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
+	if(ofs.is_open()){													//Comprueba que se haya abierto el flujo correctamente
+		if(!aVias->vacio())												//Comprueba que el árbol no esté vacío
+			alg11(aVias, nombreVia, ofs);								//Imprime los resultados del algoritmo
+	}
+
+	ofs.close();														//Cierra el flujo
+}
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;															//Puntero auxiliar para mostrar las vías almacenadas en la lista auxiliar de vías 'lVias'
