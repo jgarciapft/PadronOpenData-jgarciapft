@@ -8,6 +8,7 @@
 #define PADRON_H_
 
 #include "GestorBarrio.h"
+#include "arbol.h"
 
 namespace std {
 
