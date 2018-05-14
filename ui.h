@@ -20,6 +20,8 @@ private:
 
 	int  menu     ();
 	void ejecutar ();
+	void pausa();
+
 public:
 	 UI();
 	~UI();
