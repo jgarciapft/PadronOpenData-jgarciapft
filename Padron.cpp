@@ -100,6 +100,7 @@ void Padron::cargarVias() {
 				vAux = new Via(campos[0], campos[1], atof(campos[2].c_str()), campos[3], atoi(campos[4].c_str()));
 				lVias->insertar(vAux);									//Insertar la vía creada en la lista auxiliar de vías
 				lVias->avanzar();
+				aVias->insertar(vAux);									//Inserta la vía recién creada en el ABB
 				gBarrio->insertarVia(vAux);								//Inserta la vía creada en la estructura de datos
 			}
 		}
@@ -427,8 +428,11 @@ void Padron::alg11_EDNL(string nombreVia) {
 	ruta += nombreVia + extension;										//Conforma la ruta relativa del archivo de volcado
 	ofs.open(ruta.c_str(), ios::app);									//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
 	if(ofs.is_open()){													//Comprueba que se haya abierto el flujo correctamente
-		if(!aVias->vacio())												//Comprueba que el árbol no esté vacío
+		if(!aVias->vacio()){											//Comprueba que el árbol no esté vacío
+			ofs << endl << endl << "Lista de LUGARES de NACIMIENTO para la VIA - " << nombreVia << endl;
+			ofs << "-----------------------------------------------------------------------------------------------" << endl;
 			alg11(aVias, nombreVia, ofs, enc);							//Imprime los resultados del algoritmo
+		}
 	}
 	ofs.close();														//Cierra el flujo
 

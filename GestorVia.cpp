@@ -10,7 +10,6 @@ namespace std {
 
 GestorVia::GestorVia() {
 	lVias = new ListaPI<Via*>();									//Reserva memoria para la lista de vías que encapsula
-	aVias = new Arbol<Via*, ComparadorPtrVia>();					//Reserva memoria para el ABB de vías que encapsula
 }
 
 GestorVia::~GestorVia() {											//Libera la memoria asociada a cada vía y a la lista de vías que encapsula
@@ -24,7 +23,6 @@ GestorVia::~GestorVia() {											//Libera la memoria asociada a cada vía y a
 		delete vAux;												//Libera cada vía
 	}
 	delete lVias;													//Libera la lista de vías
-	delete aVias;													//Libera el ABB
 }
 
 
