@@ -11,6 +11,7 @@
 
 using namespace std;
 
+/*** DEFINCIÓN DE CONSTANTES *** 										@NOTA: Pensar declaracion/inicializacion de constantes */
 const char TECLA_MENU = 'm';
 
 UI::UI() {
@@ -21,8 +22,9 @@ void UI::ejecutar() {
 	double t_start, t_end;				//Almacena la diferencia de tiempo entre dos intervalos. Mide los tiempos de ejecución de los algoritmos
 	int opcion;							//Opción del menú elegida por el usuario
 	string nombreBarrio;				//Nombre del barrio a utilizar por los algoritmos 2 y 8
-	string nombreProvincia;				//Nombre de la provincia a utilizar por el algoritmo 10
+	string nombreProvincia;				//Nombre de la provincia a utilizar por el algoritmo 10 y 12
 	string nombreVia;					//Nombre de la vía a utilizar por el algoritmo 11
+	string raizVia;						//Raíz de la vía a utilizar por el algoritmo 12
 	int limInf;							//Límite inferior del rango de edad a utilizar por el algoritmo 7
 	int limSup;							//Límite superior del rango de edad a utilizar por el algoritmo 7
 
@@ -159,8 +161,10 @@ void UI::ejecutar() {
 			break;
 		case 11:
 			if(datosCargados){
+				cout << "Introduzca el nombre de la VÍA :" << endl;
+				cin >> nombreVia;
 				t_start = Time::getTime();
-//			 TODO por hacer alg. 11
+			 	p.alg11_EDNL(nombreVia);
 				t_end= Time::getTime();
 				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
 			}else{
@@ -170,8 +174,12 @@ void UI::ejecutar() {
 			break;
 		case 12:
 			if(datosCargados){
+				cout << "Introduzca la RÁIZ de la VÍA :" << endl;
+				cin >> raizVia;
+				cout << "Introduzca la PROVINCIA :" << endl;
+				cin >> nombreProvincia;
 				t_start = Time::getTime();
-//			 TODO por hacer alg. 12
+				p.alg12_EDNL(raizVia, nombreProvincia);
 				t_end= Time::getTime();
 				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
 			}else{
