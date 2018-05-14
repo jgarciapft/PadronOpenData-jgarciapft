@@ -45,8 +45,21 @@ Padron::~Padron() {
 
 /****************************************************************************		INTERFAZ PRIVADA	****************************************************************************/
 
-void Padron::alg11(Arbol<Via*, ComparadorPtrVia>*& aVias, string nombreVia, ofstream &ofs) {
+void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstream& ofs, bool& enc) {
+	Via* vRaiz = aVias->raiz();											//Puntero auxiliar para almacenar la raíz. Evita múltiples llamadas a consultar la raíz del ABB actual
 
+	//RECORRIDO en PRE-ORDEN
+	if(vRaiz->getNombreVia() == nombreVia){								//Comprueba si coinciden los nombres de las vías
+		enc = true;														//Actualiza la badendera para que una vez consultadas todos los tramos de una vía no se siga recorriendo el árbol
+		vRaiz->alg11(ofs);
+		alg11(aVias->hijoIzq(), nombreVia, ofs, enc);					//Como una vía puede estar formada por tramos de vías (Objetos 'Via' también) y éstos siempre estarán en el árbol izquiero hay que comprobar todos los subárboles izquierdos hasta que no compartan el nombre de vías
+	}else if(vRaiz->getNombreVia() < nombreVia && !enc){				//Si el nombre de la ráiz es alfabéticamente menor que la vía a buscar se sigue buscando por el subárbol derecho (vías mayores)
+		if(aVias->hijoDer() != NULL )									//Comprobación de subárbol derecho
+			alg11(aVias->hijoDer(), nombreVia, ofs, enc);
+	}else if(!enc){														//Sino el nombre de la raíz es alfabéticamente superior que la vía a busca y se sigue buscando por el subárbol izquierdo (vías menores)
+		if(aVias->hijoIzq() != NULL)									//Comprobación de subárbol izquierdo
+			alg11(aVias->hijoIzq(), nombreVia, ofs, enc);
+	}
 }
 
 /****************************************************************************		INTERFAZ PÚBLICA	****************************************************************************/
@@ -380,22 +393,25 @@ void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
 	delete lLugNac;														//Libera la lista
 }
 
-
-
 void Padron::alg11_EDNL(string nombreVia) {
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
 	string ruta = "LugaresNacimietno-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
+	bool enc = false;													//Bandera que indica si se ha encontrado o no la vía buscada
 
 	ruta += nombreVia + extension;										//Conforma la ruta relativa del archivo de volcado
 	ofs.open(ruta.c_str(), ios::app);									//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
 	if(ofs.is_open()){													//Comprueba que se haya abierto el flujo correctamente
 		if(!aVias->vacio())												//Comprueba que el árbol no esté vacío
-			alg11(aVias, nombreVia, ofs);								//Imprime los resultados del algoritmo
+			alg11(aVias, nombreVia, ofs, enc);							//Imprime los resultados del algoritmo
 	}
-
 	ofs.close();														//Cierra el flujo
+
+	if(!enc)															//Si no se ha encontrado ninguna vía se indica al usuario por consola
+		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
 }
+
+
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;															//Puntero auxiliar para mostrar las vías almacenadas en la lista auxiliar de vías 'lVias'

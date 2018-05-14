@@ -19,7 +19,7 @@ private:
 	Arbol<Via*, ComparadorPtrVia>* aVias;
 	ListaPI<DatosDemograficos*>* lDatDemograficos;
 private:
-	void alg11(Arbol<Via*, ComparadorPtrVia>*& aVias, string nombreVia, ofstream& ofs);
+	void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstream& ofs, bool& enc);
 public:
 	Padron();
 	~Padron();
