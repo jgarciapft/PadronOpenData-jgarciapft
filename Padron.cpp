@@ -37,10 +37,10 @@ Padron::~Padron() {
 		lDatDemograficos->avanzar();
 		delete dD;														//Libera cada dato demográfico
 	}
-	delete lDatDemograficos;											//Libera la lista auxiliar
-	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
-	///	delete aVias;													///@PREGUNTA: Como se liberan los árboles? Interfiere con la liberación de la lista de vías y las vías por 'gBarrio'?
 	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos liberando el espacio reservado para todos los datos, menos los datos demográficos
+	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
+	delete aVias;
+	delete lDatDemograficos;											//Libera la lista auxiliar
 }
 
 
@@ -82,6 +82,7 @@ void Padron::cargarVias() {
 				lVias->insertar(vAux);									//Insertar la vía creada en la lista auxiliar de vías
 				lVias->avanzar();
 				gBarrio->insertarVia(vAux);								//Inserta la vía creada en la estructura de datos
+				aVias->insertar(vAux);									//Inserta la vía recién creada en el ABB
 			}
 		}
 	}
