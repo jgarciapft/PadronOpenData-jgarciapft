@@ -6,9 +6,12 @@
 // Description : Interfaz de usuario
 //============================================================================
 
+#include <limits>
 #include "ui.h"
 
 using namespace std;
+
+const char TECLA_MENU = 'm';
 
 UI::UI() {
 	ejecutar();
@@ -24,94 +27,157 @@ void UI::ejecutar() {
 	int limSup;							//Límite superior del rango de edad a utilizar por el algoritmo 7
 
 	bool salir = false;					//Bandera que indica que si el usuario ha decidido cerrar el programa
+	bool datosCargados = false;			//Bandera para prevenir la ejecución de algoritmo sin haber cargado los datos y para prevenir la múltiple carga de datos
+
 	do {
 		opcion = menu();				//Obtiene la opción indicada por el usuario
 		switch (opcion) {				//En base a la opción elegida pregunta datos adicionales y/o ejecuta el algoritmo seleccionado
 		case 1:
-			t_start = Time::getTime();
-			cout << "Cargando datos ... " << endl;
-			p.cargarBarrios();
-			p.cargarVias();
-			p.cargarDatosDemograficos();
-			cout << "Carga finalizada ... " << endl;
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+			if(!datosCargados){			//Maneja la múltiple carga de datos
+				t_start = Time::getTime();
+				cout << "Cargando datos ... " << endl;
+				p.cargarBarrios();
+				p.cargarVias();
+				p.cargarDatosDemograficos();
+				cout << "Carga finalizada ... " << endl;
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+				datosCargados = true;	//Actualización de la bandera para indicar que los datos ya están cargados
+			}else{						//Si los datos ya han sido cargados se indica al usuario por consola
+				cout << "YA HAN SIDO CARGADOS LOS DATOS DEL PADRÓN \n Puede ejecutar los algoritmos con norlmalidad" << endl;
+				pausa();
+			}
 			break;
 		case 2:
-			cout << "Introduzca el nombre del BARRIO :" << endl;
-			cin >> nombreBarrio;
-			t_start = Time::getTime();
-			p.alg2(nombreBarrio);
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+			if(datosCargados){			//Comprueba que los datos del padrón hayan sido cargados
+				cout << "Introduzca el nombre del BARRIO :" << endl;
+				cin >> nombreBarrio;
+				t_start = Time::getTime();
+				p.alg2(nombreBarrio);
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{						//Sino se indica al usuario por consola
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();					//Pausa la ejecución hasta que el usuario pulse una tecla para dar tiempo a visualizar los resultados de los algoritmos
 			break;
 		case 3:
-			t_start = Time::getTime();
-			p.alg3();
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+			if(datosCargados){			//Comprueba que los datos del padrón hayan sido cargados
+				t_start = Time::getTime();
+				p.alg3();
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{						//Sino se indica al usuario por consola
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
-		case 4:							///@PREGUNTA: Debería dar a elegir el rango de edad?
-			t_start = Time::getTime();
-			p.alg4();
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+		case 4:
+			if(datosCargados){
+				t_start = Time::getTime();
+				p.alg4();
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
 		case 5:
-			t_start = Time::getTime();
-			p.alg5();
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+			if(datosCargados){
+				t_start = Time::getTime();
+				p.alg5();
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
 		case 6:
-			t_start = Time::getTime();
-			p.alg6();
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+			if(datosCargados){
+				t_start = Time::getTime();
+				p.alg6();
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
 		case 7:
-			cout << "Introduzca el LÍMITE INFERIOR del intervalo : " << endl;
-			cin >> limInf;
-			cout << "Introduzca el LÍMITE SUPERIOR del intervalo : " << endl;
-			cin >> limSup;
-			t_start = Time::getTime();
-			p.alg7(limInf, limSup);
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+			if(datosCargados){
+				cout << "Introduzca el LÍMITE INFERIOR del intervalo : " << endl;
+				cin >> limInf;
+				cout << "Introduzca el LÍMITE SUPERIOR del intervalo : " << endl;
+				cin >> limSup;
+				t_start = Time::getTime();
+				p.alg7(limInf, limSup);
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
 		case 8:
-			cout << "Introduzca el nombre del BARRIO :" << endl;
-			cin >> nombreBarrio;
-			t_start = Time::getTime();
-			p.alg8(nombreBarrio);
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+			if(datosCargados){
+				cout << "Introduzca el nombre del BARRIO :" << endl;
+				cin >> nombreBarrio;
+				t_start = Time::getTime();
+				p.alg8(nombreBarrio);
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
 		case 9:
-			t_start = Time::getTime();
-			p.alg9();
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+			if(datosCargados){
+				t_start = Time::getTime();
+				p.alg9();
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
 		case 10:
-			cout << "Introduzca el nombre la PROVINCIA :" << endl;
-			cin >> nombreProvincia;
-			t_start = Time::getTime();
-			p.alg10(nombreProvincia);
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+			if(datosCargados){
+				cout << "Introduzca el nombre la PROVINCIA :" << endl;
+				cin >> nombreProvincia;
+				t_start = Time::getTime();
+				p.alg10(nombreProvincia);
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
 		case 11:
-			t_start = Time::getTime();
+			if(datosCargados){
+				t_start = Time::getTime();
 //			 TODO por hacer alg. 11
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
 		case 12:
-			t_start = Time::getTime();
+			if(datosCargados){
+				t_start = Time::getTime();
 //			 TODO por hacer alg. 12
-			t_end= Time::getTime();
-			cout << "Time: " << t_end - t_start << "  " << endl;
+				t_end= Time::getTime();
+				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
+			}else{
+				cout << "ERROR : No se han cargados los datos del Padrón\n Utilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
+			}
+			pausa();
 			break;
 		case 0:							//Se ha seleccionado terminar el programa
 			salir = true;
@@ -152,6 +218,15 @@ int UI::menu() {
 	} while ((opcion < 0) || (opcion > 13));
 
 	return opcion;
+}
+
+void UI::pausa() {
+	string tecla;						//Almacena la tecla pulsada (y cualquier tipo de cadena que el usuario haya podido meter descuidadamente. Se evita llenar el buffer de escritura)
+
+	do{									//Permite al usuario elegir cuando quiere volver al menú
+		cout << "\nPresione la tecla (" << TECLA_MENU << ") para volver al menú . . ." << endl;
+		cin >> tecla;
+	}while(tecla[0] != TECLA_MENU);
 }
 
 UI::~UI() {
