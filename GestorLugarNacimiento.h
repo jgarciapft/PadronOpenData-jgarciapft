@@ -10,6 +10,7 @@
 #include "Utils.h"
 #include "listapi.h"
 #include "LugarNacimiento.h"
+#include <fstream>
 
 namespace std {
 
@@ -23,6 +24,7 @@ public:
 
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);
+	void alg11(ofstream& ofs);
 
 	void mostrar();
 };

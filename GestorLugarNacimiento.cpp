@@ -95,7 +95,7 @@ void GestorLugarNacimiento::alg10(ListaPI<LugarNacimiento*>*& lLugNac, string no
 
 	//Recorre secuencialmente la lista de lugares de nacimiento del gestor de inicio a fin
 	lLugarNacimiento->moverInicio();
-	while (!lLugarNacimiento->finLista()){
+	while (!lLugarNacimiento->finLista()){										//También comprueba si la lista está vacía inicialmente
 		lLugarNacimiento->consultar(lugNacAux1);
 		lLugarNacimiento->avanzar();
 		if(lugNacAux1->getProvinciaPais() == nombreProvincia){					//Compara si la provincia del elemento actual coincide con la buscada
@@ -112,6 +112,18 @@ void GestorLugarNacimiento::alg10(ListaPI<LugarNacimiento*>*& lLugNac, string no
 				lLugNac->insertar(new LugarNacimiento(lugNacAux1->getPoblacion(), PROVINCIA_PAIS_TEXTO_RELLENO, lugNacAux1->getNPersonas()));
 			enc = false;														//Reinicia la bandera
 		}
+	}
+}
+
+void GestorLugarNacimiento::alg11(ofstream& ofs) {								///@NOTA: Nombre provisional
+	LugarNacimiento* lugNacAux;													//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
+
+	//Recorre secuencialmente la lista de lugares de nacimiento del gestor de inicio a fin
+	lLugarNacimiento->moverInicio();
+	while (!lLugarNacimiento->finLista()){										//También comprueba si la lista está vacía inicialmente
+		lLugarNacimiento->consultar(lugNacAux);
+		lLugarNacimiento->avanzar();
+		ofs << lugNacAux->getPoblacion() << ", " << lugNacAux->getProvinciaPais() << " (" << lugNacAux->getNPersonas() << ") " << endl;	//Escribe cada lugar de nacimiento presente en la lista al ficehro de volcado
 	}
 }
 

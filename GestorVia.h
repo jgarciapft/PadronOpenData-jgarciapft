@@ -8,7 +8,6 @@
 #define GESTORVIA_H_
 
 #include "Via.h"
-#include "arbol.h"
 #include <fstream>
 
 namespace std {
@@ -16,7 +15,6 @@ namespace std {
 class GestorVia {
 private:
 	ListaPI<Via*>* lVias;
-	Arbol<Via*, ComparadorPtrVia>* aVias;
 public:
 	GestorVia();
 	~GestorVia();

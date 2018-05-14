@@ -393,6 +393,31 @@ void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
 	delete lLugNac;														//Libera la lista
 }
 
+void Padron::alg11_EDL(string nombreVia) {								///@NOTA: Nombre provisional
+	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
+	string ruta = "LugaresNacimiento-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
+	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
+	Via* vAux;															//Puntero auxiliar para consultar la lista de vías auxiliar
+
+	ruta += nombreVia + extension;										//Conforma la ruta relativa del archivo de volcado
+	ofs.open(ruta.c_str(), ios::app);									//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
+	if(ofs.is_open()){													//Comprueba que se haya abierto el flujo correctamente
+		ofs << endl << endl << "Lista de LUGARES de NACIMIENTO para la VIA - " << nombreVia << endl;
+		ofs << "-----------------------------------------------------------------------------------------------" << endl;
+		lVias->moverInicio();
+		while (!lVias->finLista()){										/*Recorre la lista de vías auxiliar secuencialmente de inicio a fin porque cada vía puede pasar por varios barrios (hay varios objetos 'Via' para una misma vía)
+																		 * También comprueba que contenga alguna vía inicialmente */
+			lVias->consultar(vAux);
+			lVias->avanzar();
+			if(vAux->getNombreVia() == nombreVia)						//Comprueba si el nombre de la vía actual coincide con el buscado
+				vAux->alg11(ofs);										//Imprime todos los lugares de nacimiento asociados a la vía que ha ooincidio. El flujo se abre y se cierra en este método
+		}
+	}else{																//Si no se ha podido abrir el flujo se indica al usuario por consola
+		cout << "ERROR AL CREAR EL FICHERO PARA VOLCAR LOS RESULTADOS" << endl;
+	}
+	ofs.close();														//Cierra el flujo
+}
+
 void Padron::alg11_EDNL(string nombreVia) {
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
 	string ruta = "LugaresNacimietno-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo

@@ -33,6 +33,7 @@ public:
 	int alg7(int limInf, int limSup);
 	void alg8(ListaPI<Estudios*>*& lEstud);
 	void alg9(float& nHombres, float& nMujeres);
+	void alg11(ofstream& ofs);
 
 	void mostrar();
 

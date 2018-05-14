@@ -36,6 +36,7 @@ public:
 	void alg8(string nombreBarrio);
 	void alg9();
 	void alg10(string nombreProvincia);
+	void alg11_EDL(string nombreVia);
 	void alg11_EDNL(string nombreVia);
 
 	void mostrarEstructura();
