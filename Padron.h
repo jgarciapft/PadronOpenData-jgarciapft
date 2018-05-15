@@ -21,6 +21,9 @@ private:
 	ListaPI<DatosDemograficos*>* lDatDemograficos;
 private:
 	void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstream& ofs, bool& enc);
+	void alg12(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia, bool& enc, int& nP);
+	Arbol<Via*, ComparadorPtrVia>* ArbolComienzaPor(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz);
+	bool empiezaPor(string str, string substr);
 public:
 	Padron();
 	~Padron();

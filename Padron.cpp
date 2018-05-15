@@ -62,6 +62,18 @@ void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstr
 	}
 }
 
+void Padron::alg12(Arbol<Via *, ComparadorPtrVia> *aVias, string raiz, string nombreProvincia, bool &enc, int &nP) {
+
+}
+
+Arbol<Via*, ComparadorPtrVia>* Padron::ArbolComienzaPor(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz) {
+	return NULL;
+}
+
+bool Padron::empiezaPor(string str, string substr) {
+	return false;
+}
+
 /****************************************************************************		INTERFAZ PÚBLICA	****************************************************************************/
 
 void Padron::cargarBarrios() {
@@ -394,6 +406,8 @@ void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
 	delete lLugNac;														//Libera la lista
 }
 
+
+
 void Padron::alg11_EDL(string nombreVia) {								///@NOTA: Nombre provisional
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
 	string ruta = "LugaresNacimiento-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
@@ -449,15 +463,13 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 	if(!aVias->vacio())
 		alg12(aVias, raiz, nombreProvincia, enc, nPersonas);			//Imprime por consola el número de habitantes de cada vía comenzando por la raíz 'raiz' y que hayan nacido en la provincia 'nombreProvincia'. También calcula el nº total de habitantes entre todas las vías
 
-	if(enc){
-		cout << "\n\nTOTAL : " << nPersonas << " habitantes" << endl;
+	if(enc){															//Comprueba que se haya encontrado alguna vía que comience por la raíz indicada o exista algún habitante entre todas las vías que pertenezca a la provincia dada
+		cout << "\n\nTOTAL : " << nPersonas << " habitantes" << endl;	//Muestra el total de habitantes nacidos en la provincia dada entre todas las vías coincidentes
 		cout << "-----------------------------------------------------------------------------------------------" << endl;
-	}else{
+	}else{																//Si no se encuentran resultados se indica al usuario por consola
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA QUE COMIENCE POR LA RAÍZ (" << raiz << ")" << endl;
 	}
 }
-
-
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;															//Puntero auxiliar para mostrar las vías almacenadas en la lista auxiliar de vías 'lVias'
