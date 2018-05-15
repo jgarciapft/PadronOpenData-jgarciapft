@@ -199,7 +199,7 @@ void Padron::alg3() {
 			 															 *		No se puede asumir el número de barrios por los que pasará una vía. Moviendo el pI al inicio y consultándolo antes de hacer la comprobación elimina la comprobación trivial de que 'vAux1' nunca será 'vAux2' */
 				lVias->consultar(vAux2);
 				lVias->avanzar();
-			} while(vAux1 != vAux2);									//Coloca el PI en la posición siguiente en relación a la que tenía al abandonar el bucle externo
+			} while(vAux1 != vAux2);									//Coloca el PI en la posición siguiente en relación a la que tenía al abandonar el bucle externo. No se comprueba el final de lista porque nunca puede alcanzarlo
 			primerRes = true; 											//Reinicia la banera de primer resultado. Solo tiene efecto si hubo alguna coincidencia de vías
 		}
 		coincidencia = false;											//Reinicia la bandera de coincidencias. Solo tiene efecto si hubo alguna coincidencia con alguna vía ya tratada
@@ -207,23 +207,23 @@ void Padron::alg3() {
 }
 
 void Padron::alg4() {													
-	ListaPI<AnioNacimiento*>* lAnioNac = new ListaPI<AnioNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada intervalo con el numero total de habitantes es representada por un objeto 'AnioNacimiento'
-																		 * La marca de clase del intervalo, siempre el límite inferior,  se almacena en el atributo 'anio' y el número de habitantes en 'nPersonas' */
+	ListaPI<AnioNacimiento*>* lAnioNac = new ListaPI<AnioNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo: Cada intervalo con el numero total de habitantes es representada por un objeto 'AnioNacimiento'
+																		 * 		La marca de clase del intervalo, siempre el límite inferior, se almacena en el atributo 'anio' y el número de habitantes en 'nPersonas' */
 	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista de datos demográficos auxiliar
 	AnioNacimiento* anNacAux;											//Puntero auxiliar para consultar la lista local 'lAnioNac'
 	int nPersonas;														//Guarda el número de personas pertenecientes al rango de edad del dato actual de la lista 'lAnioNac'. Se utiliza para mostrar por pantalla dicho número de personas
 	int nPersPorDiv;													//Número de personas que representan cada carácter que forma una columna en la representación gráfica. Se determina con el resultado de NPersonas(modaNPersonas) % 275 para que quede un rango adecuado dependiendo de la muestra
 	int nDivisiones;													//Número de divisiones calculadas para cada intervalo
-	int mayorMarca = 0;													//Mayor marca hasta ahora. Se utiliza para el espaciado de la etiqueta y la columna en la representación gráfica
+	int mayorMarca = 0;													//Mayor marca hasta ahora. Se utiliza para el espaciado entre la etiqueta y la columna en la representación gráfica
 	int modaNPersonas = 0;												//Moda estadística del número de personas para cada intervalo de edad
-	string carDivision = "·";											//Carácter que representa una división el la representación gráfica
+	string carDivision = "·";											//Carácter que representa una división en la representación gráfica
 	string cadDivisiones;												//Cadena para contruir la columna de cada intervalo
 	string cadSep;														//Cadena para construir la separación entre la etiqueta y la columna
-	string cadMayorMarca;												//Cadena para almacenar la conversión de la mayor marca
+	string cadMayorMarca;												//Cadena para almacenar la conversión a entero de la mayor marca
 
 	//Recorre la lista de datos demográficos auxiliar secuencialmente de inicio a fin
 	lDatDemograficos->moverInicio();
-	while (!lDatDemograficos->finLista()){
+	while(!lDatDemograficos->finLista()){								//También comprueba si la lista está vacía inicialmente
 		lDatDemograficos->consultar(dD);
 		lDatDemograficos->avanzar();
 		dD->alg4(lAnioNac);
@@ -231,27 +231,27 @@ void Padron::alg4() {
 
 	//Muestra la lista con los resultados del algoritmo una vez completado
 	lAnioNac->moverInicio();
-	for (int i=0; !lAnioNac->finLista(); i++) {							//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
+	for(int i=0; !lAnioNac->finLista(); i++){							//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar. También comprueba si hay algún dato inicialmente
 		lAnioNac->consultar(anNacAux);
 		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					//Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
 			nPersonas = anNacAux->getNPersonas();
-			lAnioNac->avanzar();										//SOLO se avanza la lista si el intervalo actual coincide con el intervalo a mostrar. Sino hay que esperar a que coincidan para seguir
+			lAnioNac->avanzar();										//SOLO se avanza la lista si el intervalo actual coincide con el intervalo a mostrar. Sino espera más iteraciones a que coincidan
 			if(anNacAux->getAnio() > mayorMarca) 			            //Actualiza la mayor marca de clase
 				mayorMarca = (anNacAux->getAnio());
 			if(anNacAux->getNPersonas() > modaNPersonas)				//Actualiza la moda
 				modaNPersonas = anNacAux->getNPersonas();
-		}else{															//Sino avanza las iteraciones necesarias hasta que alcanza el intervalo correspondiente a dicho dato y se muestran 0 personas
+		}else{															//Sino avanza las iteraciones necesarias hasta que alcanza el intervalo correspondiente a dicho dato y se muestran 0 personas para el intervalo actual
 			nPersonas = 0;
 		}
 		cout << i*RANGO_EDAD_ALG_4 << " a " << (i+1)*RANGO_EDAD_ALG_4 - 1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
 	}
 	nPersPorDiv = modaNPersonas % 275;									//Crea divisiones de tamaño dependiente de la muestra. SOLO es válida para muestras con una varianza pequeña
-	cadMayorMarca = int_to_string(mayorMarca);							//Convierte la mayor marca a cadena para contar sus dígitos como caracteres
+	cadMayorMarca = int_to_string(mayorMarca);							//Convierte la mayor marca a entero para contar sus dígitos como caracteres
 
-	//Muestra la representación gráfica de los intervalos obtenidos
-	cout << endl <<"REPRESENTACIÓN GRÁFICA - APROXIMACIÓN A UN HISTOGRAMA DE FRECUENCIAS\t" << "· = " << nPersPorDiv << " personas (aprox.)" << endl << endl;
+	//Muestra la representación gráfica de los intervalos
+	cout << "\nREPRESENTACIÓN GRÁFICA - APROXIMACIÓN A UN HISTOGRAMA DE FRECUENCIAS\t" << "· = " << nPersPorDiv << " personas (aprox.)" << endl << endl;
 	lAnioNac->moverInicio();
-	for (int i=0; !lAnioNac->finLista(); i++) {							//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
+	for(int i=0; !lAnioNac->finLista(); i++){							//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
 		lAnioNac->consultar(anNacAux);
 		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					//Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
 			nDivisiones = anNacAux->getNPersonas() / nPersPorDiv;
@@ -263,16 +263,16 @@ void Padron::alg4() {
 		for(int j=0; j<nDivisiones; j++){ cadDivisiones.append(carDivision); }												//Construye la cadena que representará la columna para el intervalo actual
 		for(int j=0; j<(cadMayorMarca.length() - int_to_string(i*RANGO_EDAD_ALG_4).length()); j++){ cadSep.append("  "); }	//Construye la cadena de separación entre la etiqueta y la columna de la gráfica restando los dígitos de la mayor marca con los de la marca actual
 		if(int_to_string(i*RANGO_EDAD_ALG_4).length() != int_to_string(i*RANGO_EDAD_ALG_4 + RANGO_EDAD_ALG_4-1).length())	//Rectificación de la separación cuando los límites del intervalo difieren en número de dígitos
-			cadSep.erase(cadSep.length()-1, 1);
-		cout << "(" << i*RANGO_EDAD_ALG_4 << " , " << (i+1)*RANGO_EDAD_ALG_4 - 1 << ")  " << cadSep << "|"  << cadDivisiones << endl;
+			cadSep.erase(cadSep.length()-1, 1);																				//Lo más común y lógico es que exista una separación máxima de 1 entre el número de dígitos de los límites
+		cout << "(" << i*RANGO_EDAD_ALG_4 << " , " << (i+1)*RANGO_EDAD_ALG_4 - 1 << ")  " << cadSep << "|" << cadDivisiones << endl;
 
-		cadSep.clear();													//Bora la cadena se separación entre etiqueta y columna para el siguiente intervalo
+		cadSep.clear();													//Borra la cadena de separación entre etiqueta y columna para el siguiente intervalo
 		cadDivisiones.clear();											//Borra la columna para el siguiente intervalo
 	}
 
-	//Libera la memoria asociada a los nuevos años de nacimiento creados por el algoritmo 4
+	//Libera la memoria asociada a los nuevos años de nacimiento creados
 	lAnioNac->moverInicio();
-	while (!lAnioNac->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
+	while(!lAnioNac->finLista()){										//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. También maneja que no haya ningún elemento en la lista
 		lAnioNac->consultar(anNacAux);
 		lAnioNac->avanzar();
 		delete anNacAux;												//Libera cada año de nacimiento de la lista
@@ -281,30 +281,30 @@ void Padron::alg4() {
 }
 
 void Padron::alg5() {													
-	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada nacionalidad con el numero total de habitantes es representada por un objeto 'Nacionalidad'
-																		  *	El nombre de la nacionalidad se almacena en el atributo 'nacionalidad' y el número de personas en 'nPersonas' */
+	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();		/* Lista en la que se almacenan los resultados del algoritmo: Cada nacionalidad con el numero total de habitantes es representada por un objeto 'Nacionalidad'
+																		 * 		El nombre de la nacionalidad se almacena en el atributo 'nacionalidad' y el número de personas en 'nPersonas' */
  	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
 	Nacionalidad* nacionAux;											//Puntero auxiliar para consultar la lista local 'lNacion'
 
 	//Recorre la lista de datos demográficos auxiliar secuencialmente de inicio a fin
 	lDatDemograficos->moverInicio();
-	while(!lDatDemograficos->finLista()){
+	while(!lDatDemograficos->finLista()){								//También comprueba si la lista está vacía inicialmente
 		lDatDemograficos->consultar(dD);
 		lDatDemograficos->avanzar();
-		dD->alg5(lNacion);
+		dD->alg5(lNacion);												//Modifica la lista local 'lNacion' con los resultados del algoritmo
 	}
 
 	//Muestra la lista con los resultados del algoritmo una vez completado
 	lNacion->moverInicio();
-	while(!lNacion->finLista()){										//Recorre secuencialmente la lista de nacionalidades de inicio a fin
+	while(!lNacion->finLista()){										//Recorre secuencialmente la lista de nacionalidades de inicio a fin. También comprueba si inicialmente la lista está vacía inicialmente
 		lNacion->consultar(nacionAux);
 		lNacion->avanzar();
 		cout << nacionAux->getNacionalidad() << " (" << nacionAux->getNPersonas() << ")" << endl;
 	}
 
-	//Libera la memoria asociada a las nuevas nacionalidades creadas por el algoritmo 5
+	//Libera la memoria asociada a las nuevas nacionalidades creadas
 	lNacion->moverInicio();
-	while(!lNacion->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
+	while(!lNacion->finLista()){										//Recorre secuencialmente la lista de nacionalidades de inicio a fin. También maneja que no haya ningún elemento en la lista
 		lNacion->consultar(nacionAux);
 		lNacion->avanzar();
 		delete nacionAux;												//Libera cada nacionalidad de la lista
@@ -313,30 +313,30 @@ void Padron::alg5() {
 }
 
 void Padron::alg6() {													
-	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada provincia con el numero total de habitantes es representada por un objeto 'LugarNacimiento'
-																		  *	El nombre de la provincia se almacena en el atributo 'provinciaPais' y el número de habitantes en 'nPersonas' */
- 	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
+	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo: Cada provincia con el numero total de habitantes es representada por un objeto 'LugarNacimiento'
+																		  *		El nombre de la provincia se almacena en el atributo 'provinciaPais' y el número de habitantes en 'nPersonas' */
+ 	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista de datos demográficos auxiliar
 	LugarNacimiento* lugNacAux;											//Puntero auxiliar para consultar la lista local 'lLugNac'
 
 	//Recorre la lista de datos demográficos auxiliar secuencialmente de inicio a fin
 	lDatDemograficos->moverInicio();
-	while(!lDatDemograficos->finLista()){
+	while(!lDatDemograficos->finLista()){								//También comprueba si la lista está vacía inicialmente
 		lDatDemograficos->consultar(dD);
 		lDatDemograficos->avanzar();
-		dD->alg6(lLugNac);
+		dD->alg6(lLugNac);												//Modifica la lista con los resultados del algoritmo
 	}
 
 	//Muestra la lista con los resultados del algoritmo una vez completado
 	lLugNac->moverInicio();
-	while(!lLugNac->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
+	while(!lLugNac->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin. También comprueba si la lista está vacía inicialmente
 		lLugNac->consultar(lugNacAux);
 		lLugNac->avanzar();
 		cout << lugNacAux->getProvinciaPais() << " (" << lugNacAux->getNPersonas() << ")" << endl;
 	}
 
-	//Libera la memoria asociada a los nuevos lugares de nacimiento creados por el algoritmo 6
+	//Libera la memoria asociada a los nuevos lugares de nacimiento creados
 	lLugNac->moverInicio();
-	while(!lLugNac->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin
+	while(!lLugNac->finLista()){										//Recorre secuencialmente la lista de lugares de nacimiento de inicio a fin. También maneja que no haya ningún elemento en la lista
 		lLugNac->consultar(lugNacAux);
 		lLugNac->avanzar();
 		delete lugNacAux;												//Libera cada lugar de nacimiento de la lista
@@ -345,7 +345,7 @@ void Padron::alg6() {
 }
 
 void Padron::alg7(int limInf, int limSup) {								///@NOTA: Método invocativo
-	if(limInf <= limSup)												//Comprueba que el rango sea correcto
+	if(limInf <= limSup)												//Comprueba que el rango sea válido. El límite inferior debe ser menor o igual que el límite superior y viceversa
 		gBarrio->alg7(limInf, limSup);
 	else
 		cout << "ERROR : El límite inferior (" << limInf << ") debe ser inferior al límite superior (" << limSup << ")" << endl;
@@ -360,18 +360,17 @@ void Padron::alg9() {													///@NOTA: Método invocativo
 }
 
 void Padron::alg10(string nombreProvincia) {							
-	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada lugar de nacimiento con el numero total de habitantes
- 																	      * es representada por un objeto 'LugarNacimiento':
+	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo: Cada lugar de nacimiento con el numero total de habitantes es representada por un objeto 'LugarNacimiento':
 																	      *		La población se almacena en el atributo 'poblacion' y el número de personas en 'nPersonas' */
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
 	string ruta = "Poblaciones-";										//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
-	DatosDemograficos* dD;												//Puntero auxiliar para consultar los datos demográficos de la lista auxiliar de datos demográficos
-	LugarNacimiento* lugNacAux;											//Puntero auxiliar para consultar la lista 'lLugNac'
+	DatosDemograficos* dD;												//Puntero auxiliar para consultar los datos demográficos de la lista de datos demográficos auxiliar
+	LugarNacimiento* lugNacAux;											//Puntero auxiliar para consultar la lista local 'lLugNac'
 
 	//Recorre la lista de datos demográficos auxiliar secuencialmente de inicio a fin
 	lDatDemograficos->moverInicio();
-	while (!lDatDemograficos->finLista()){
+	while (!lDatDemograficos->finLista()){								//También comprueba si la lista está vacía inicialmente
 		lDatDemograficos->consultar(dD);
 		lDatDemograficos->avanzar();
 		dD->alg10(lLugNac, nombreProvincia);							//Actualiza la lista de poblaciones para la provincia dada con cada set de datos demográficos
@@ -385,7 +384,7 @@ void Padron::alg10(string nombreProvincia) {
 			ofs << endl << endl << "Poblaciones que pertenecen a la provincia - " << nombreProvincia << endl;
 			ofs << "-----------------------------------------------------------------------------------------------" << endl;
 			lLugNac->moverInicio();
-			while (!lLugNac->finLista()){
+			while(!lLugNac->finLista()){
 				lLugNac->consultar(lugNacAux);
 				lLugNac->avanzar();
 				ofs << lugNacAux->getPoblacion() << " (" << lugNacAux->getNPersonas() << ")" << endl;
@@ -398,9 +397,9 @@ void Padron::alg10(string nombreProvincia) {
 	}
 	ofs.close();														//Cierra el flujo
 
-	//Libera la memoria asociada a los nuevos datos creados por el algoritmo 10
+	//Libera la memoria asociada a los nuevos datos creados
 	lLugNac->moverInicio();
-	while (!lLugNac->finLista()){										//Recorre secuencialmente la lista de estudios de inicio a fin
+	while(!lLugNac->finLista()){										//Recorre secuencialmente la lista de estudios de inicio a fin. También maneja que no haya ningún elemento en la lista
 		lLugNac->consultar(lugNacAux);
 		lLugNac->avanzar();
 		delete lugNacAux;												//Libera cada lugar de nacimiento de la lista
@@ -420,8 +419,8 @@ void Padron::alg11_EDL(string nombreVia) {
 		ofs << endl << endl << "Lista de LUGARES de NACIMIENTO para la VIA - " << nombreVia << endl;
 		ofs << "-----------------------------------------------------------------------------------------------" << endl;
 		lVias->moverInicio();
-		while (!lVias->finLista()){										/*Recorre la lista de vías auxiliar secuencialmente de inicio a fin porque cada vía puede pasar por varios barrios (hay varios objetos 'Via' para una misma vía)
-																		 * También comprueba que contenga alguna vía inicialmente */
+		while(!lVias->finLista()){										/*Recorre la lista de vías auxiliar secuencialmente de inicio a fin porque cada vía puede pasar por varios barrios (hay varios objetos 'Via' para una misma vía)
+																		 *	También comprueba que contenga alguna vía inicialmente */
 			lVias->consultar(vAux);
 			lVias->avanzar();
 			if(vAux->getNombreVia() == nombreVia)						//Comprueba si el nombre de la vía actual coincide con el buscado
@@ -459,7 +458,7 @@ void Padron::alg12_EDL(const string &raiz, const string &nombreProvincia) {
 	Via* vAux;															//Puntero auxiliar para consultar la lista de vías auxiliar
 
 	lVias->moverInicio();
-	while (!lVias->finLista()){											//También comprueba si la lista está vacía inicialmente
+	while(!lVias->finLista()){											//También comprueba si la lista está vacía inicialmente
 		lVias->consultar(vAux);
 		lVias->avanzar();
 		if(vAux->getNombreVia().find(raiz) == 0)						//Comprueba si la vía actual comienza por la raíz dada
@@ -498,15 +497,15 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
-	Via* vAux;															//Puntero auxiliar para mostrar las vías almacenadas en la lista auxiliar de vías 'lVias'
-	DatosDemograficos* dD;												//Puntero auxiliar para mostrar los datos demográficos en la lista auxiliar de datos demográficos 'lDatDemograficos'
+	Via* vAux;															//Puntero auxiliar para consultar las vías de la lista auxiliar de vías 'lVias'
+	DatosDemograficos* dD;												//Puntero auxiliar para consultar los datos demográficos de la lista auxiliar de datos demográficos 'lDatDemograficos'
 
 	gBarrio->mostrar();													///@TEST: Muestra toda la estructura de datos cargada
 
 	cout << "LISTA DE VÍAS AUXILIAR" << endl;							///@TEST: Muestra la lista auxiliar de todas las vías
 	cout << "***********************************************************************************************" << endl;
 	lVias->moverInicio();
-	while(!lVias->finLista()){
+	while(!lVias->finLista()){											//Recorre la lista de inicio a fin. También comprueba si está vacía inicialmente
 		lVias->consultar(vAux);
 		lVias->avanzar();
 		cout << "Via : " << vAux->getNombreVia() << " | Barrio : " << vAux->getBarrioVia() << " | Longitud : " <<
@@ -517,10 +516,10 @@ void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura
 	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIAR" << endl << endl;		///@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
 	cout << "***********************************************************************************************" << endl;
 	lDatDemograficos->moverInicio();
-	while(!lDatDemograficos->finLista()){
+	while(!lDatDemograficos->finLista()){								//Recorre la lista de inicio a fin. También comprueba si está vacía inicialmente
 		lDatDemograficos->consultar(dD);
 		lDatDemograficos->avanzar();
-		dD->mostrar();
+		dD->mostrar();													//Llama a mostrar cada dato de cada dato demográfico
 	}
 	cout << "***********************************************************************************************" << endl;
 }
