@@ -5,13 +5,9 @@
  */
 
 #include "GestorAnioNacimiento.h"
-#include <time.h>
+
 
 namespace std {
-
-/*** DEFINCIÓN DE CONSTANTES *** 																			TODO: Pensar declaracion/inicializacion de constantes */
-extern const int RANGO_EDAD_ALG_4;																			//Amplitud del intervalo de edad que usa el algorimto 4 para agrupar los años de nacimiento de los habitantes
-
 
 GestorAnioNacimiento::GestorAnioNacimiento() {
 	lAnioNacimiento = new ListaPI<AnioNacimiento*>();														//Reserva memoria para la lista de años de nacimiento que encapsula

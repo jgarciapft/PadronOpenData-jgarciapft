@@ -8,10 +8,6 @@
 
 namespace std {
 
-/*** DEFINCIÓN DE CONSTANTES ***/
-const string POBLACION_TEXTO_RELLENO = "";										//Texto de relleno para el atributo 'poblacion' al crear nuevos objetos 'LugarNacimiento' aplicado al algoritmo 6
-const string PROVINCIA_PAIS_TEXTO_RELLENO = "";									//Texto de relleno para el atributo 'provincia/pais' al crear nuevos objetos 'LugarNacimiento' aplicado al algoritmo 10
-
 GestorLugarNacimiento::GestorLugarNacimiento() {
 	lLugarNacimiento = new ListaPI<LugarNacimiento*>();							//Reserva memoria para la lista de lugares de nacimiento que encapsula
 }

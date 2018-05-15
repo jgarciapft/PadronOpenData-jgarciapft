@@ -8,18 +8,6 @@
 
 namespace std {
 
-/*** DEFINCIÓN DE CONSTANTES *** 										@NOTA: Pensar declaracion/inicializacion de constantes */
-const string RUTA_BARRIO = "Barrio.csv"; 								//Ruta relativa del fichero que contiene la información de los barrios
-const string RUTA_VIAS = "Via.csv"; 									//Ruta relativa del fichero que contiene la información de las vías
-const string RUTA_DATOS_DEMOGRAFICOS = "InformacionPadron.csv";	 		//Ruta relativa del fichero que contiene la informacion del padrón (Año 2016)
-const int N_CAMPOS_BARRIO = 2; 											//Número de campos del fichero de datos de barrios
-const int N_CAMPOS_VIA = 5;												//Número de campos del fichero de datos de vías
-const int N_CAMPOS_DATOS_DEMOGRAFICOS = 7;								//Número de campos del fichero de datos de datos demográficos
-const char SEP = '#'; 													//Carácter separador de campos en los ficheros de datos
-const string DEF_BARRIO = "BARRIO CONTENEDOR";							//Nombre del distrito del objeto barrio que incluirá las vías que no tienen ningún barrio asignado
-extern const int RANGO_EDAD_ALG_4 = 10;									//Amplitud del intervalo de edad que usa el algorimto 4 para agrupar los años de nacimiento de los habitantes
-
-
 Padron::Padron() {
 	gBarrio = new GestorBarrio();
 	lVias = new ListaPI<Via*>();										//Lista de nuevas vías creadas auxiliar

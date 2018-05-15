@@ -6,13 +6,9 @@
 // Description : Interfaz de usuario
 //============================================================================
 
-#include <limits>
 #include "ui.h"
 
 using namespace std;
-
-/*** DEFINCIÓN DE CONSTANTES *** 										@NOTA: Pensar declaracion/inicializacion de constantes */
-const char TECLA_MENU = 'm';
 
 UI::UI() {
 	ejecutar();
