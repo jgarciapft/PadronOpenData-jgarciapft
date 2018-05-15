@@ -34,6 +34,7 @@ public:
 	void alg8(ListaPI<Estudios*>*& lEstud);
 	void alg9(float& nHombres, float& nMujeres);
 	void alg11(ofstream& ofs);
+	int alg12(const string& nombreProvincia);
 
 	void mostrar();
 
