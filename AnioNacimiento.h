@@ -12,9 +12,11 @@
 namespace std {
 
 class AnioNacimiento {
+
 private:
 	int anio;
 	int nPersonas;
+
 public:
 	AnioNacimiento();
 	AnioNacimiento(int aN, int nP);

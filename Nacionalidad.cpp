@@ -40,11 +40,13 @@ void Nacionalidad::mostrar() {									//Muestra toda la información del objeto
 	cout << "Nacionalidad : " << nacionalidad << " | Personas : " << nPersonas << endl;
 }
 
-bool Nacionalidad::operator >(const Nacionalidad& nacion) {		///@NOTA: Adecuado si solo se le da uso para el algoritmo 5
+
+
+bool Nacionalidad::operator >(const Nacionalidad& nacion) {
 	return nPersonas > nacion.nPersonas;						//Criterio de comparación: orden matemático de 'nPersonas'
 }
 
-bool Nacionalidad::operator ==(const Nacionalidad& nacion) {	///@NOTA: Adecuado si solo se le da uso para el algoritmo 5
+bool Nacionalidad::operator ==(const Nacionalidad& nacion) {
 	return nacionalidad == nacion.nacionalidad;					//Criterio de comparación: comparación lexicográfica de 'nacionalidad'
 }
 

@@ -54,7 +54,7 @@ void Via::setDatosDemograficos(DatosDemograficos* dD) {
 	datDemograficos = dD;
 }
 
-int Via::alg7(int limInf, int limSup) {			///@NOTA: Nombre provisional	@NOTA: Método invocativo
+int Via::alg7(int limInf, int limSup) {			///@NOTA: Método invocativo
 	int ret = 0;
 
 	if(datDemograficos != NULL)					//Comprueba que la vía contenga un set de datos demográficos
@@ -63,24 +63,24 @@ int Via::alg7(int limInf, int limSup) {			///@NOTA: Nombre provisional	@NOTA: M�
 	return ret;
 }
 
-void Via::alg8(ListaPI<Estudios*>*& lEstud) {	///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Via::alg8(ListaPI<Estudios*>*& lEstud) {	///@NOTA: Método invocativo
 	if(datDemograficos != NULL)					//Comprueba que la vía contenga un set de datos demográficos
 		datDemograficos->alg8(lEstud);
 }
 
-void Via::alg9(float& nHombres, float& nMujeres) {	///@NOTA: Nombre provisional
+void Via::alg9(float& nHombres, float& nMujeres) {
 	if(datDemograficos != NULL){				//Comprueba que exista un set de datos demográficos y actualiza los acumuladores
 		nHombres += datDemograficos->getNHombres();
 		nMujeres += datDemograficos->getNMujeres();
 	}
 }
 
-void Via::alg11(ofstream& ofs) {				///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Via::alg11(ofstream& ofs) {				///@NOTA: Método invocativo
 	if(datDemograficos != NULL)					//Comprueba que exista un set de datos demográficos
 		datDemograficos->alg11(ofs);
 }
 
-int Via::alg12(const string& nombreProvincia) {	///@NOTA: Nombre provisional	@NOTA: Método invocativo
+int Via::alg12(const string& nombreProvincia) {	///@NOTA: Método invocativo
 	int res = 0;
 
 	if(datDemograficos != NULL)					//Comprueba que exista un set de datos demográficos
@@ -97,6 +97,8 @@ void Via::mostrar() {							//Muestra la información de cada vía
 	if(datDemograficos != NULL)					//Comprueba que la vía contenga un set de datos demográficos
 		datDemograficos->mostrar();				//Llama a mostrar toda la información de los datos demográficos
 }
+
+
 
 bool Via::operator >(const Via& v) {			//Compara alfabéticamente las vías por su nombre
 	return nombreVia.compare(v.nombreVia) < 0;

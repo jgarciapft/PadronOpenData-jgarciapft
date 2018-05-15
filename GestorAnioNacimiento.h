@@ -14,8 +14,10 @@
 namespace std {
 
 class GestorAnioNacimiento {
+
 private:
 	ListaPI<AnioNacimiento*> *lAnioNacimiento;
+
 public:
 	GestorAnioNacimiento();
 	GestorAnioNacimiento(string aniosNacimiento);

@@ -12,8 +12,10 @@
 namespace std {
 
 class GestorBarrio {
+
 private:
 	ListaPI<Barrio*>* lBarrios;
+
 public:
 	GestorBarrio();
 	~GestorBarrio();

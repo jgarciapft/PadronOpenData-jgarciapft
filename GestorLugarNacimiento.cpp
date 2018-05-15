@@ -84,7 +84,7 @@ void GestorLugarNacimiento::alg6(ListaPI<LugarNacimiento *> *&lLugNac) {
 	}
 }
 
-void GestorLugarNacimiento::alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia) {	///@NOTA: Nombre provisional
+void GestorLugarNacimiento::alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia) {
 	bool enc = false;															//Bandera para salir del bucle que compara si la población encontrada para la provincia dada está ya en la lista 'lLugNac'
 	LugarNacimiento* lugNacAux1;												//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 	LugarNacimiento* lugNacAux2;												//Puntero auxiliar para consultar la lista de lugares de nacimiento pasada por parámetro 'lLugNac'
@@ -111,7 +111,7 @@ void GestorLugarNacimiento::alg10(ListaPI<LugarNacimiento*>*& lLugNac, string no
 	}
 }
 
-void GestorLugarNacimiento::alg11(ofstream& ofs) {								///@NOTA: Nombre provisional
+void GestorLugarNacimiento::alg11(ofstream& ofs) {
 	LugarNacimiento* lugNacAux;													//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 
 	//Recorre secuencialmente la lista de lugares de nacimiento del gestor de inicio a fin
@@ -123,7 +123,7 @@ void GestorLugarNacimiento::alg11(ofstream& ofs) {								///@NOTA: Nombre provi
 	}
 }
 
-int GestorLugarNacimiento::alg12(const string& nombreProvincia) {				///@NOTA: Nombre provisional
+int GestorLugarNacimiento::alg12(const string& nombreProvincia) {
 	int cont = 0;																//Acumulador del número de habitantes de la lista que encapsula el gestor que pertenecen a la provincia dada
 	LugarNacimiento* lugNacAux;													//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 

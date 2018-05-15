@@ -67,10 +67,9 @@ void GestorNacionalidad::ordenarLista(ListaPI<Nacionalidad*>*& lNacion) {
 	}
 }
 
-
 /****************************************************************************		INTERFAZ PÚBLICA	****************************************************************************/
 
-void GestorNacionalidad::alg5(ListaPI<Nacionalidad*>*& lNacion) {							///@NOTA: Nombre provisional
+void GestorNacionalidad::alg5(ListaPI<Nacionalidad*>*& lNacion) {
 	bool enc = false;																		//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse o actualizarse el lugar de nacimiento
 	Nacionalidad* nacionAux1;																//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 	Nacionalidad* nacionAux2;																//Puntero auxiliar para consultar la lista de lugares de nacimiento pasada por parámetro
@@ -104,6 +103,8 @@ void GestorNacionalidad::alg5(ListaPI<Nacionalidad*>*& lNacion) {							///@NOTA
 		}
 	}
 }
+
+
 
 void GestorNacionalidad::mostrar() {														//Muestra la información las nacionalidades de la lista
 	Nacionalidad* nacAux;																	//Puntero auxiliar para consultar la lista de nacionalidades

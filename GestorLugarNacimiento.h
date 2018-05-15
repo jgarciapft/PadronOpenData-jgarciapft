@@ -15,8 +15,10 @@
 namespace std {
 
 class GestorLugarNacimiento {
+
 private:
 	ListaPI<LugarNacimiento*>* lLugarNacimiento;
+
 public:
 	GestorLugarNacimiento();
 	GestorLugarNacimiento(string lugaresNacimiento);

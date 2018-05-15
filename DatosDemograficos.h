@@ -15,6 +15,7 @@
 namespace std {
 
 class DatosDemograficos {
+
 private:
 	int codVia;
 	GestorAnioNacimiento* gAnioNacimiento;
@@ -23,6 +24,7 @@ private:
 	int nMujeres;
 	int nHombres;
 	GestorNacionalidad* gNacionalidad;
+
 public:
 	DatosDemograficos();
 	DatosDemograficos(int _codVia, string aniosNacimiento, string lugaresNacimiento, string estudios, int _nMujeres,

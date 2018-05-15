@@ -42,15 +42,15 @@ void Barrio::insertarDatosDemograficos(DatosDemograficos* dD) {	///@NOTA: Métod
 	gVias->insertarDatosDemograficos(dD);
 }
 
-int Barrio::alg7(int limInf, int limSup) {						///@NOTA: Nombre provisional	@NOTA: Método invocativo
+int Barrio::alg7(int limInf, int limSup) {						///@NOTA: Método invocativo
 	return gVias->alg7(limInf, limSup);
 }
 
-void Barrio::alg8() {											///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Barrio::alg8() {											///@NOTA: Método invocativo
 	gVias->alg8();
 }
 
-void Barrio::alg9(float& pHombres, float& pMujeres) {			///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Barrio::alg9(float& pHombres, float& pMujeres) {			///@NOTA: Método invocativo
 	gVias->alg9(pHombres, pMujeres);
 }
 

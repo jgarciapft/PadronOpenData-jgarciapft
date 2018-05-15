@@ -12,6 +12,7 @@
 namespace std {
 
 class Via {
+
 private:
 	string barrioVia;
 	string nombreVia;
@@ -19,6 +20,7 @@ private:
 	string tipoVia;
 	int codVia;
 	DatosDemograficos* datDemograficos;
+
 public:
 	Via();
 	Via(string barV, string nomV, float lonV, string tipV, int codV);
@@ -42,6 +44,7 @@ public:
 };
 
 class ComparadorPtrVia {
+
 public:
 	int operator() (const Via* v1, const Via* v2){																	/*Implementación del operador a utilizar por un ABB para comparar vías. Criterio de comparación:
  																													 * 		-Comparación de igualdad: coincidencia lexicográfica de sus nombres y los nombres de los barrios a los que pertenecen

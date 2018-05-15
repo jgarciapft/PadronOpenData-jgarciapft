@@ -12,10 +12,12 @@
 namespace std {
 
 class Barrio {
+
 private:
 	string nombreBarrio;
 	string nombreDistrito;
 	GestorVia* gVias;
+
 public:
 	Barrio();
 	Barrio(string nB, string nD);

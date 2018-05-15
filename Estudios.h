@@ -12,9 +12,11 @@
 namespace std {
 
 class Estudios {
+
 private:
 	string nivEstudios;
 	int nPersonas;
+
 public:
 	Estudios();
 	Estudios(string nEst, int nP);

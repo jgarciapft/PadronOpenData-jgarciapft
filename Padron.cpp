@@ -65,14 +65,14 @@ Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVia
 }
 
 int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz, const string& nombreProvincia) {
-	int nPersonas = 0;												//Acumulador del número total de habitantes que pertenecen a la provincia dada
+	int nPersonas = 0;													//Acumulador del número total de habitantes que pertenecen a la provincia dada
 
 	//RECORRIDO en IN-ORDEN. Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos intermedios
 	if(aVias->hijoIzq() != NULL)
 		nPersonas += filtroInOrden(aVias->hijoIzq(), raiz, nombreProvincia);
 
-	if(aVias->raiz()->getNombreVia().find(raiz) == 0)				//Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos intermedios
-		nPersonas += aVias->raiz()->alg12(nombreProvincia);			//Acumula el núemro de habitantes de la vía raíz que pertenecen a la provincia dada
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0)					//Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos intermedios
+		nPersonas += aVias->raiz()->alg12(nombreProvincia);				//Acumula el núemro de habitantes de la vía raíz que pertenecen a la provincia dada
 
 	if(aVias->hijoDer() != NULL)
 		nPersonas += filtroInOrden(aVias->hijoDer(), raiz, nombreProvincia);
@@ -153,7 +153,7 @@ void Padron::cargarDatosDemograficos() {
 	fEnt.close();
 }
 
-void Padron::alg2(string nombreBarrio) {								///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Padron::alg2(string nombreBarrio) {								///@NOTA: Método invocativo
 	gBarrio->alg2(nombreBarrio);
 }
 
@@ -210,7 +210,7 @@ void Padron::alg3() {
 	}
 }
 
-void Padron::alg4() {													///@NOTA: Nombre provisional
+void Padron::alg4() {													
 	ListaPI<AnioNacimiento*>* lAnioNac = new ListaPI<AnioNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada intervalo con el numero total de habitantes es representada por un objeto 'AnioNacimiento'
 																		 * La marca de clase del intervalo, siempre el límite inferior,  se almacena en el atributo 'anio' y el número de habitantes en 'nPersonas' */
 	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista de datos demográficos auxiliar
@@ -284,7 +284,7 @@ void Padron::alg4() {													///@NOTA: Nombre provisional
 	delete lAnioNac;													//Libera la lista
 }
 
-void Padron::alg5() {													///@NOTA: Nombre provisional
+void Padron::alg5() {													
 	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada nacionalidad con el numero total de habitantes es representada por un objeto 'Nacionalidad'
 																		  *	El nombre de la nacionalidad se almacena en el atributo 'nacionalidad' y el número de personas en 'nPersonas' */
  	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
@@ -316,7 +316,7 @@ void Padron::alg5() {													///@NOTA: Nombre provisional
 	delete lNacion;														//Libera la lista
 }
 
-void Padron::alg6() {													///@NOTA: Nombre provisional
+void Padron::alg6() {													
 	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada provincia con el numero total de habitantes es representada por un objeto 'LugarNacimiento'
 																		  *	El nombre de la provincia se almacena en el atributo 'provinciaPais' y el número de habitantes en 'nPersonas' */
  	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
@@ -348,22 +348,22 @@ void Padron::alg6() {													///@NOTA: Nombre provisional
 	delete lLugNac;														//Libera la lista
 }
 
-void Padron::alg7(int limInf, int limSup) {								///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Padron::alg7(int limInf, int limSup) {								///@NOTA: Método invocativo
 	if(limInf <= limSup)												//Comprueba que el rango sea correcto
 		gBarrio->alg7(limInf, limSup);
 	else
 		cout << "ERROR : El límite inferior (" << limInf << ") debe ser inferior al límite superior (" << limSup << ")" << endl;
 }
 
-void Padron::alg8(string nombreBarrio) {								///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Padron::alg8(string nombreBarrio) {								///@NOTA: Método invocativo
 	gBarrio->alg8(nombreBarrio);
 }
 
-void Padron::alg9() {													///@NOTA: Nombre provisional	@NOTA: Método invocativo
+void Padron::alg9() {													///@NOTA: Método invocativo
 	gBarrio->alg9();
 }
 
-void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
+void Padron::alg10(string nombreProvincia) {							
 	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada lugar de nacimiento con el numero total de habitantes
  																	      * es representada por un objeto 'LugarNacimiento':
 																	      *		La población se almacena en el atributo 'poblacion' y el número de personas en 'nPersonas' */
@@ -412,7 +412,7 @@ void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
 	delete lLugNac;														//Libera la lista
 }
 
-void Padron::alg11_EDL(string nombreVia) {								///@NOTA: Nombre provisional
+void Padron::alg11_EDL(string nombreVia) {								
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
 	string ruta = "LugaresNacimiento-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
@@ -458,7 +458,7 @@ void Padron::alg11_EDNL(string nombreVia) {
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
 }
 
-void Padron::alg12_EDL(const string &raiz, const string &nombreProvincia) {///@NOTA: Nombre provisional
+void Padron::alg12_EDL(const string &raiz, const string &nombreProvincia) {	
 	int nPersonas = 0;													//Acumulador del núemro de personas nacidas en la provincia 'nombreProvincia' y que habiten en las vías que comiencen por 'raiz'
 	Via* vAux;															//Puntero auxiliar para consultar la lista de vías auxiliar
 
@@ -478,7 +478,7 @@ void Padron::alg12_EDL(const string &raiz, const string &nombreProvincia) {///@N
 	}
 }
 
-void Padron::alg12_EDNL(string raiz, string nombreProvincia) {			///@NOTA: Nombre provisional
+void Padron::alg12_EDNL(string raiz, string nombreProvincia) {			
 	Arbol<Via*, ComparadorPtrVia>* aAux;								//ABB auxiliar para almacenar el ABB cuyos datos presentan potencialmente la misma raíz
 	int nPersonas;														//Total de habitantes entre todas las vías que comiencen por la raíz 'raiz'
 	if(!aVias->vacio()) {
@@ -498,6 +498,8 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {			///@NOTA: Nombr
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA QUE COMIENCE POR LA RAÍZ (" << raiz << ")" << endl;
 	}
 }
+
+
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;															//Puntero auxiliar para mostrar las vías almacenadas en la lista auxiliar de vías 'lVias'

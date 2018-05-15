@@ -14,10 +14,13 @@
 namespace std {
 
 class GestorEstudios {
+
 private:
 	ListaPI<Estudios*>* lEstudios;
+
 private:
 	void ordenarLista(ListaPI<Estudios*>*& lEstud);
+
 public:
 	GestorEstudios();
 	GestorEstudios(string estudios);

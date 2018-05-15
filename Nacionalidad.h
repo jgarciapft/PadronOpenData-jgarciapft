@@ -12,9 +12,11 @@
 namespace std {
 
 class Nacionalidad {
+
 private:
 	string nacionalidad;
 	int nPersonas;
+
 public:
 	Nacionalidad();
 	Nacionalidad(string nac, int nP);

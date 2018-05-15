@@ -12,10 +12,12 @@
 namespace std {
 
 class LugarNacimiento {
+
 private:
 	string poblacion;
 	string provinciaPais;
 	int nPersonas;
+
 public:
 	LugarNacimiento();
 	LugarNacimiento(string pobl, string provP, int nP);

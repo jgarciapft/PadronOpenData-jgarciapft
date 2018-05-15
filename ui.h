@@ -6,7 +6,6 @@
 // Description : Interfaz de usuario
 //============================================================================
 
-
 #ifndef UI_H_
 #define UI_H_
 
@@ -16,8 +15,9 @@
 class UI {
 
 private:
-	Padron p;				//Instancia de la clase principal
+	Padron p;
 
+private:
 	int  menu     ();
 	void ejecutar ();
 	void pausa();

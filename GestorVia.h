@@ -12,8 +12,10 @@
 namespace std {
 
 class GestorVia {
+
 private:
 	ListaPI<Via*>* lVias;
+
 public:
 	GestorVia();
 	~GestorVia();

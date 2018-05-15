@@ -60,7 +60,7 @@ void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {	//Busca si el
 	}
 }
 
-int GestorVia::alg7(int limInf, int limSup) {						///@NOTA: Nombre provisional
+int GestorVia::alg7(int limInf, int limSup) {
 	Via* vAux;														//Puntero auxiliar para consultar la lista de vías
 	int cont = 0;													//Acumulador para la suma del número de habitantes pertenecientes al rango dado por vía
 
@@ -75,7 +75,7 @@ int GestorVia::alg7(int limInf, int limSup) {						///@NOTA: Nombre provisional
 	return cont;
 }
 
-void GestorVia::alg8() {											///@NOTA: Nombre provisional
+void GestorVia::alg8() {
 	ListaPI<Estudios*> *lEstud = new ListaPI<Estudios*>();			/* Lista en la que se almacenan los resultados del algoritmo. Cada nivel de estudios con el numero total de habitantes
  																	 * es representada por un objeto 'Estudios':
 																	 *		El nivel se almacena en el atributo 'nivEstudios' y el número de personas en 'nPersonas' */
@@ -124,7 +124,7 @@ void GestorVia::alg8() {											///@NOTA: Nombre provisional
 	delete lEstud;													//Libera la lista
 }
 
-void GestorVia::alg9(float& pHombres, float& pMujeres) {			///@NOTA: Nombre provisional
+void GestorVia::alg9(float& pHombres, float& pMujeres) {
 	Via* vAux;														//Puntero auxiliar para consultar la lista de vías que encapsula el gestor
 	float nHombres = 0;												//Acumulador del número de hombres para el barrio que contiene este gestor de vías
 	float nMujeres = 0;												//Acumulador del número de mujeres para el barrio que contiene este gestor de vías

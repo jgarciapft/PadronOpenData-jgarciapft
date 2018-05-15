@@ -14,10 +14,13 @@
 namespace std {
 
 class GestorNacionalidad {
+
 private:
 	ListaPI<Nacionalidad*>* lNacionalidad;
+
 private:
 	void ordenarLista(ListaPI<Nacionalidad*>*& lNacion);
+
 public:
 	GestorNacionalidad();
 	GestorNacionalidad(string nacionalidades);

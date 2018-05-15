@@ -104,6 +104,8 @@ void GestorEstudios::alg8(ListaPI<Estudios*>*& lEstud) {
 	}
 }
 
+
+
 void GestorEstudios::mostrar() {													//Muestra la información de los estudios de la lista
 	Estudios* estAux;																//Puntero auxiliar para consultar la lista de estudios
 

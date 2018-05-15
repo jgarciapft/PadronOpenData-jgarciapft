@@ -6,7 +6,6 @@
 
 #include "GestorAnioNacimiento.h"
 
-
 namespace std {
 
 GestorAnioNacimiento::GestorAnioNacimiento() {
@@ -37,7 +36,9 @@ GestorAnioNacimiento::~GestorAnioNacimiento() {																//Libera la memor
 	delete lAnioNacimiento;																					//Libera la lista de años de nacimiento
 }
 
-void GestorAnioNacimiento::alg4(ListaPI<AnioNacimiento*>*& lAnioNac) {										///@NOTA: Nombre provisional
+
+
+void GestorAnioNacimiento::alg4(ListaPI<AnioNacimiento*>*& lAnioNac) {
 	bool enc = false;																						//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse o actualizarse el año de nacimiento
 	AnioNacimiento* anNacAux1;																				//Puntero auxiliar para consular la lista que encapsula el gestor
 	AnioNacimiento* anNacAux2;																				//Puntero auxiliar para consultar la lista pasada por parámetro 'lAnioNac'
