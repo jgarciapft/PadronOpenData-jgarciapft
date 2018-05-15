@@ -127,7 +127,7 @@ void GestorLugarNacimiento::alg11(ofstream& ofs) {								///@NOTA: Nombre provi
 	}
 }
 
-int GestorLugarNacimiento::alg12(string nombreProvincia) {
+int GestorLugarNacimiento::alg12(const string& nombreProvincia) {				///@NOTA: Nombre provisional
 	int cont = 0;																//Acumulador del número de habitantes de la lista que encapsula el gestor que pertenecen a la provincia dada
 	LugarNacimiento* lugNacAux;													//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 

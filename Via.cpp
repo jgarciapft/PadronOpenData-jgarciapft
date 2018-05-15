@@ -80,7 +80,7 @@ void Via::alg11(ofstream& ofs) {				///@NOTA: Nombre provisional	@NOTA: Método 
 		datDemograficos->alg11(ofs);
 }
 
-int Via::alg12(string nombreProvincia) {		///@NOTA: Nombre provisional	@NOTA: Método invocativo
+int Via::alg12(const string& nombreProvincia) {	///@NOTA: Nombre provisional	@NOTA: Método invocativo
 	int res = 0;
 
 	if(datDemograficos != NULL)					//Comprueba que exista un set de datos demográficos
