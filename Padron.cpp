@@ -485,7 +485,7 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {			///@NOTA: Nombr
 		if(nPersonas != 0){												//Comprueba si se ha encontrado algún habitante para la provincia dada
 			cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
 				 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
-			cout << "-----------------------------------------------------------------------------------------------" << endl;
+			cout << "---------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 		}else{															//Si no se encuentran se indica al usuario por consola
 			cout << "NO SE HA ENCONTRADO NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
 		}
