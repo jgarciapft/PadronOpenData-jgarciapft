@@ -21,6 +21,8 @@ private:
 	ListaPI<DatosDemograficos*>* lDatDemograficos;
 private:
 	void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstream& ofs, bool& enc);
+	Arbol<Via*, ComparadorPtrVia>* alg12(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz);
+	int filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz, const string& nombreProvincia);
 public:
 	Padron();
 	~Padron();
@@ -39,6 +41,7 @@ public:
 	void alg10(string nombreProvincia);
 	void alg11_EDL(string nombreVia);
 	void alg11_EDNL(string nombreVia);
+	void alg12_EDNL(string raiz, string nombreProvincia);
 
 	void mostrarEstructura();
 };

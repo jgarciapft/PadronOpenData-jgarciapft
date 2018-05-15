@@ -62,6 +62,36 @@ void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstr
 	}
 }
 
+Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz) {
+	Arbol<Via*, ComparadorPtrVia>* aAux;								//Puntero auxiliar con el ABB a devolver
+
+	//RECORRIDO en PRE-ORDEN. Explora la raíz de cada nodo según llega a él para explorar el menor número de nodos que no van a cumplir los requisitos
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0)					//Comprueba si se ha encontrado la ráiz que compartirán los subárboles precedentes a la raíz
+		aAux = aVias;
+	else if(aVias->raiz()->getNombreVia() < raiz && aVias->hijoDer() != NULL) //Si la el nombre de la vía es alfabéticamente MENOR la búsqueda debe continuar por el subárbol derecho, mientras que exista
+		aAux = alg12(aVias->hijoDer(), raiz);
+	else if(aVias->hijoIzq() != NULL)									//Sino el nombre de la vía es alfabéticamente MAYOR la búsqueda debe continuar por el subárbol derecho, mientras que exista
+		aAux = alg12(aVias->hijoIzq(), raiz);
+
+	return aAux;
+}
+
+int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz, const string& nombreProvincia) {
+	int nPersonas = 0;												//Acumulador del número total de habitantes que pertenecen a la provincia dada
+
+	//RECORRIDO en IN-ORDEN. Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos intermedios
+	if(aVias->hijoIzq() != NULL)
+		nPersonas += filtroInOrden(aVias->hijoIzq(), raiz, nombreProvincia);
+
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0)				//Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos intermedios
+		nPersonas += aVias->raiz()->alg12(nombreProvincia);			//Acumula el núemro de habitantes de la vía raíz que pertenecen a la provincia dada
+
+	if(aVias->hijoDer() != NULL)
+		nPersonas += filtroInOrden(aVias->hijoDer(), raiz, nombreProvincia);
+
+	return nPersonas;
+}
+
 /****************************************************************************		INTERFAZ PÚBLICA	****************************************************************************/
 
 void Padron::cargarBarrios() {
@@ -345,6 +375,8 @@ void Padron::alg9() {													///@NOTA: Nombre provisional	@NOTA: Método in
 	gBarrio->alg9();
 }
 
+
+
 void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
 	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada lugar de nacimiento con el numero total de habitantes
  																	      * es representada por un objeto 'LugarNacimiento':
@@ -440,7 +472,27 @@ void Padron::alg11_EDNL(string nombreVia) {								///@NOTA: Nombre provisional
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
 }
 
+void Padron::alg12_EDNL(string raiz, string nombreProvincia) {			///@NOTA: Nombre provisional
+	Arbol<Via*, ComparadorPtrVia>* aAux;								//ABB auxiliar para almacenar el ABB cuyos datos presentan potencialmente la misma raíz
+	int nPersonas;														//Total de habitantes entre todas las vías que comiencen por la raíz 'raiz'
 
+	if(!aVias->vacio()) {
+		aAux = alg12(aVias, raiz);
+	}
+
+	if(aAux != NULL){													//Comprueba que se haya encontrado alguna vía que comience por la raíz indicada
+		nPersonas = filtroInOrden(aAux, raiz, nombreProvincia);			//Calcula el número de habitantes para la provincia dada.
+		if(nPersonas != 0){												//Comprueba si se ha encontrado algún habitante para la provincia dada
+			cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
+				 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
+			cout << "---------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+		}else{															//Si no se encuentran se indica al usuario por consola
+			cout << "NO SE HA ENCONTRADO NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
+		}
+	}else{																//Si no se encuentran resultados se indica al usuario por consola
+		cout << "NO SE HA ENCONTRADO NINGUNA VÍA QUE COMIENCE POR LA RAÍZ (" << raiz << ")" << endl;
+	}
+}
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;															//Puntero auxiliar para mostrar las vías almacenadas en la lista auxiliar de vías 'lVias'

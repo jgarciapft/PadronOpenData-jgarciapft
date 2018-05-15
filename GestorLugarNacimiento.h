@@ -25,6 +25,7 @@ public:
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);
 	void alg11(ofstream& ofs);
+	int alg12(const string& nombreProvincia);
 
 	void mostrar();
 };
