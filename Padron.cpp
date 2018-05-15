@@ -16,36 +16,36 @@ Padron::Padron() {
 }
 
 Padron::~Padron() {
-	DatosDemograficos* dD;												//Puntero auxiliar para recorrer la lista auxiliar de datos demográficos
+	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista auxiliar de datos demográficos
 
-	//Libera todos los datos demográficos creados, que están almacenados en la lista auxiliar 'lDatDemograficos', y la misma lista
+	//Libera todos los datos demográficos creados, almacenados en la lista auxiliar 'lDatDemograficos', y la misma lista
 	lDatDemograficos->moverInicio();
-	while(!lDatDemograficos->finLista()){
+	while (!lDatDemograficos->finLista()) {
 		lDatDemograficos->consultar(dD);
 		lDatDemograficos->avanzar();
 		delete dD;														//Libera cada dato demográfico
 	}
-	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos liberando el espacio reservado para todos los datos, menos los datos demográficos
+	delete gBarrio;														//Desencadena los destructores de toda la estructura de datos en cascada liberando el espacio reservado, menos los datos demográficos (ya liberados)
 	delete lVias;														//Libera los nodos de la lista de vías auxiliar, pero no las vías
-	delete aVias;														//Libera el ABB auxiliar de vías, pero no las vías
-	delete lDatDemograficos;											//Libera la lista auxiliar
+	delete aVias;														//Libera el ABB de vías auxiliar, pero no las vías
+	delete lDatDemograficos;											//Libera la lista de datos demográficos auxiliar
 }
 
 /****************************************************************************		INTERFAZ PRIVADA	****************************************************************************/
 
 void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstream& ofs, bool& enc) {
-	Via* vRaiz = aVias->raiz();											//Puntero auxiliar para almacenar la raíz. Evita múltiples llamadas a consultar la raíz del ABB actual
+	Via* vRaiz = aVias->raiz();											//Puntero auxiliar para almacenar la raíz del ABB. Evita múltiples llamadas a consultar la raíz del ABB actual
 
-	//RECORRIDO en PRE-ORDEN
-	if(vRaiz->getNombreVia() == nombreVia){								//Comprueba si coinciden los nombres de las vías
-		enc = true;														//Actualiza la badendera para que una vez consultadas todos los tramos de una vía no se siga recorriendo el árbol
+	//RECORRIDO en PRE-ORDEN. Solo se explora el ABB hasta que se encuentra la vía (raíz) buscada
+	if(vRaiz->getNombreVia() == nombreVia && aVias->hijoIzq() != NULL){	//Comprueba si la vía raíz es la buscada. Si se encuentra se comprueba que sea el único tramo de vía (No tiene un subárbol izquierdo tal que los nombres de vía de ambas raíces coincidan)
+		enc = true;														//Actualiza la badendera para que una vez consultadas todos los tramos de una vía no se siga recorriendo el resto del ABB
 		vRaiz->alg11(ofs);
-		alg11(aVias->hijoIzq(), nombreVia, ofs, enc);					//Como una vía puede estar formada por tramos de vías (Objetos 'Via' también) y éstos siempre estarán en el árbol izquiero hay que comprobar todos los subárboles izquierdos hasta que no compartan el nombre de vías
-	}else if(vRaiz->getNombreVia() < nombreVia && !enc){				//Si el nombre de la ráiz es alfabéticamente menor que la vía a buscar se sigue buscando por el subárbol derecho (vías mayores)
-		if(aVias->hijoDer() != NULL )									//Comprobación de subárbol derecho
+		alg11(aVias->hijoIzq(), nombreVia, ofs, enc);					//Como una vía puede estar formada por tramos de vías (Objetos 'Via' también) y éstos siempre estarán en el subárbol izquiero hay que comprobar todos los subárboles izquierdos hasta que no compartan el nombre de vía
+	}else if(vRaiz->getNombreVia() < nombreVia && !enc){				//Si el nombre de la vía de la ráiz es alfabéticamente MENOR que la vía a buscar se sigue buscando por el subárbol derecho (vías mayores)
+		if(aVias->hijoDer() != NULL)
 			alg11(aVias->hijoDer(), nombreVia, ofs, enc);
-	}else if(!enc){														//Sino el nombre de la raíz es alfabéticamente superior que la vía a busca y se sigue buscando por el subárbol izquierdo (vías menores)
-		if(aVias->hijoIzq() != NULL)									//Comprobación de subárbol izquierdo
+	}else if(!enc){														//Sino el nombre de la raíz es alfabéticamente MAYOR que la vía a busca y se sigue buscando por el subárbol izquierdo (vías menores)
+		if(aVias->hijoIzq() != NULL)
 			alg11(aVias->hijoIzq(), nombreVia, ofs, enc);
 	}
 }
@@ -53,12 +53,13 @@ void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstr
 Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz) {
 	Arbol<Via*, ComparadorPtrVia>* aAux;								//Puntero auxiliar con el ABB a devolver
 
-	//RECORRIDO en PRE-ORDEN. Explora la raíz de cada nodo según llega a él para explorar el menor número de nodos que no van a cumplir los requisitos
-	if(aVias->raiz()->getNombreVia().find(raiz) == 0)					//Comprueba si se ha encontrado la ráiz que compartirán los subárboles precedentes a la raíz
+	//RECORRIDO en PRE-ORDEN. Explora la raíz de cada nodo en cada llamada para explorar el menor número de nodos que no van a cumplir los requisitos
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0)					//Comprueba si se ha encontrado la ráiz que compartirán los subárboles precedentes a esta raíz
 		aAux = aVias;
-	else if(aVias->raiz()->getNombreVia() < raiz && aVias->hijoDer() != NULL) //Si la el nombre de la vía es alfabéticamente MENOR la búsqueda debe continuar por el subárbol derecho, mientras que exista
-		aAux = alg12(aVias->hijoDer(), raiz);
-	else if(aVias->hijoIzq() != NULL)									//Sino el nombre de la vía es alfabéticamente MAYOR la búsqueda debe continuar por el subárbol derecho, mientras que exista
+	else if(aVias->raiz()->getNombreVia() < raiz) 						//Si la el nombre de la vía es alfabéticamente MENOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
+		if(aVias->hijoDer() != NULL)
+			aAux = alg12(aVias->hijoDer(), raiz);
+	else if(aVias->hijoIzq() != NULL)									//Sino el nombre de la vía es alfabéticamente MAYOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
 		aAux = alg12(aVias->hijoIzq(), raiz);
 
 	return aAux;
@@ -67,12 +68,12 @@ Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVia
 int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz, const string& nombreProvincia) {
 	int nPersonas = 0;													//Acumulador del número total de habitantes que pertenecen a la provincia dada
 
-	//RECORRIDO en IN-ORDEN. Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos intermedios
+	//RECORRIDO en IN-ORDEN. Recorre en el orden establecido el ABB con las vías que potencialmente comienzan por la raíz dada
 	if(aVias->hijoIzq() != NULL)
 		nPersonas += filtroInOrden(aVias->hijoIzq(), raiz, nombreProvincia);
 
-	if(aVias->raiz()->getNombreVia().find(raiz) == 0)					//Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos intermedios
-		nPersonas += aVias->raiz()->alg12(nombreProvincia);				//Acumula el núemro de habitantes de la vía raíz que pertenecen a la provincia dada
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0)					//Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos menores que el actual pero mayores que el anterior al actual
+		nPersonas += aVias->raiz()->alg12(nombreProvincia);				//Acumula el número de habitantes de cada vía raíz que pertenecen a la provincia dada
 
 	if(aVias->hijoDer() != NULL)
 		nPersonas += filtroInOrden(aVias->hijoDer(), raiz, nombreProvincia);
@@ -83,8 +84,8 @@ int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, const string& ra
 /****************************************************************************		INTERFAZ PÚBLICA	****************************************************************************/
 
 void Padron::cargarBarrios() {
-	ifstream fEnt;
-	string campos[N_CAMPOS_BARRIO];										//Almacena los campos que definen cada objeto Barrio
+	ifstream fEnt;														//Flujo de entrada del que leer los datos
+	string campos[N_CAMPOS_BARRIO];										//Almacena los campos que definen cada objeto 'Barrio'
 
 	fEnt.open(RUTA_BARRIO.c_str());
 	if(fEnt.is_open()){													//Comprueba que exista el fichero de datos comprobando si el flujo se abrió correctamente
@@ -92,19 +93,19 @@ void Padron::cargarBarrios() {
 		while(!fEnt.eof()){
 			getline(fEnt, campos[0], SEP); 								//Lee el nombre del barrio
 			getline(fEnt, campos[1]);									//Lee el nombre del distrito
-			if(!fEnt.eof())												//Doble comprobación del FINAL DE FICHERO para evitar leer una línea vacía adicional
-				gBarrio->insertar(new Barrio(campos[0], campos[1]));	//Inicializa e inserta el nuevo objeto Barrio a partir de los campos leídos en la estructura de datos
+			if(!fEnt.eof())												//Doble comprobación del FINAL DE FICHERO (EOF) para evitar leer una línea vacía adicional
+				gBarrio->insertar(new Barrio(campos[0], campos[1]));	//Inicializa e inserta el nuevo objeto 'Barrio' en la estructura de datos a partir de los campos leídos
 		}
 	}
-	gBarrio->insertar(new Barrio("", DEF_BARRIO));						//Barrio que contendrá las vías que no tengan ningún barrio asignado
+	gBarrio->insertar(new Barrio(DEF_POBLACION, DEF_BARRIO));			//Barrio que contiene las vías que no tienen ningún barrio asignado
 
-	fEnt.close();
+	fEnt.close();														//Cierra el flujo
 }
 
 void Padron::cargarVias() {
-	ifstream fEnt;
+	ifstream fEnt;														//Flujo de entrada del que leer los datos
 	string campos[N_CAMPOS_VIA];										//Almacena los campos que definen cada objeto Via
-	Via* vAux;															//Puntero a objeto Via auxiliar para almacenar la vía recién creada en la lista auxiliar y en su barrio correspondiente
+	Via* vAux;															//Puntero auxiliar para almacenar la vía recién creada en la lista de vías auxiliar y en su barrio correspondiente
 
 	fEnt.open(RUTA_VIAS.c_str());
 	if(fEnt.is_open()){													//Comprueba que exista el fichero de datos comprobando si el flujo se abrió correctamente
@@ -114,9 +115,9 @@ void Padron::cargarVias() {
 				getline(fEnt, campos[i], SEP);
 			}
 			getline(fEnt, campos[4]);									//Lee el último campo
-			if(!fEnt.eof()){											//Doble comprobación del FINAL DE FICHERO para evitar leer una línea vacía adicional
+			if(!fEnt.eof()){											//Doble comprobación del FINAL DE FICHERO (EOF) para evitar leer una línea vacía adicional
 				vAux = new Via(campos[0], campos[1], atof(campos[2].c_str()), campos[3], atoi(campos[4].c_str()));
-				lVias->insertar(vAux);									//Insertar la vía creada en la lista auxiliar de vías
+				lVias->insertar(vAux);									//Insertar la vía creada en la lista de vías auxiliar
 				lVias->avanzar();
 				aVias->insertar(vAux);									//Inserta la vía recién creada en el ABB
 				gBarrio->insertarVia(vAux);								//Inserta la vía creada en la estructura de datos
@@ -124,13 +125,13 @@ void Padron::cargarVias() {
 		}
 	}
 
-	fEnt.close();
+	fEnt.close();														//Cierra el flujo
 }
 
 void Padron::cargarDatosDemograficos() {
-	ifstream fEnt;
+	ifstream fEnt;														//Flujo de entrada del que leer los datos
 	string campos[N_CAMPOS_DATOS_DEMOGRAFICOS];							//Almacena los campos que definen cada objeto
-	DatosDemograficos* dD;												//Puntero a objeto 'DatosDemograficos' auxiliar para almacenar el dato recién creado en la lista auxiliar y en su vía correspondiente
+	DatosDemograficos* dD;												//Puntero auxiliar para almacenar el dato demográfico recién creado en la lista auxiliar y en su(s) vía(s) correspondiente(s)
 
 	fEnt.open(RUTA_DATOS_DEMOGRAFICOS.c_str());
 	if(fEnt.is_open()){
@@ -140,17 +141,16 @@ void Padron::cargarDatosDemograficos() {
 				getline(fEnt, campos[i], SEP);
 			}
 			getline(fEnt, campos[6]);									//Lee el último campo
-			if(!fEnt.eof()){											//Doble comprobación del FINAL DE FICHERO para evitar leer una línea vacía adicional
+			if(!fEnt.eof()){											//Doble comprobación del FINAL DE FICHERO (EOF) para evitar leer una línea vacía adicional
 				dD = new DatosDemograficos(atoi(campos[0].c_str()), campos[1], campos[2], campos[3], atoi(campos[4].c_str()),
 							atoi(campos[5].c_str()), campos[6]);
 				lDatDemograficos->insertar(dD);							//Inserta el dato demográfico creado en la lista auxiliar de datos demográficos
-				lDatDemograficos->avanzar();
 				gBarrio->insertarDatosDemograficos(dD);					//Inserta el dato demográfico creado en la estructura de datos
 			}
 		}
 	}
 
-	fEnt.close();
+	fEnt.close();														//Cierra el flujo
 }
 
 void Padron::alg2(string nombreBarrio) {								///@NOTA: Método invocativo
@@ -158,55 +158,51 @@ void Padron::alg2(string nombreBarrio) {								///@NOTA: Método invocativo
 }
 
 void Padron::alg3() {
-	bool primerRes = true;												//Bandera que controla la impresión de la cabecera de para una vía que atraviese varios barrios
+	bool primerRes = true;												//Bandera que controla la impresión de la cabecera para una vía que atraviese varios barrios
 	bool coincidencia = false;											//Bandera que verifica que no se haya procesado previamente la vía actual
 	Via* vAux1;															//Puntero auxilar que recorre secuencialmente el bucle externo
 	Via* vAux2;															//Puntero auxiliar que recorre secuencialmente el resto de vías por detrás de 'vAux1' para compararlas con ésta
 	string nombreVia;													//Cadena auxiliar para consultar los nombres de vías anteriormente procesadas por el algoritmo
-	ListaPI<string> lCoincidencias;										//Lista de vías que ya han sido procesadas. Evita volver a procesar casos ya tratados
+	ListaPI<string> lCoincidencias;										//Lista de nombres vías que ya han sido procesadas. Evita volver a procesar vías ya tratadas
 
 	lVias->moverInicio();
-	while(!lVias->finLista()){											//BUCLE EXTERNO: Lee secuencialmente todas las vías de arriba a abajo
+	while(!lVias->finLista()){											//BUCLE EXTERNO: Lee secuencialmente todas las vías de la lista de inicio a fin
 		lVias->consultar(vAux1);
 		lVias->avanzar();
 		lCoincidencias.moverInicio();
-		while(!lCoincidencias.finLista() && !coincidencia){				//Antes de entrar al bucle interno hay que comprobar que no hayamos procesado ya la vía apuntada actualmente
+		while(!lCoincidencias.finLista() && !coincidencia){				//Antes de entrar al bucle interno se comprueba si la vía actual ya ha sido procesada
 			lCoincidencias.consultar(nombreVia);
 			lCoincidencias.avanzar();
 			if(vAux1->getNombreVia() == nombreVia)
 				coincidencia = true;
 		}
-		if(!coincidencia){												//Si no ha habido ninguna coincidencia se procede a procesar el resto de vías en la lista
-			while(!lVias->finLista()){									//BUCLE INTERNO: Para cada vía apuntada por el bucle externo procesa todas las siguientes. No podemos asumir el número máximo de coincidencias
+		if(!coincidencia){												//Si no ha habido ninguna coincidencia se procesan el resto de vías en la lista
+			while(!lVias->finLista()){									//BUCLE INTERNO: Para cada vía apuntada por el bucle externo procesa todas las siguientes. No se pueden asumir el número de coincidencias
 				lVias->consultar(vAux2);
 				lVias->avanzar();
 				if(vAux1->getNombreVia() == vAux2->getNombreVia()){
 					if(primerRes){										//Comprueba si es una nueva vía que atraviesa varios barrios
-						//Imprime una cabecera
 						cout << "Vía : " << vAux1->getNombreVia() << endl;
-						cout << "***********************************************************************************************" << endl;
+						cout << "-----------------------------------------------------------------------------------------------" << endl;
 						cout << "Barrios que atraviesa : " << endl << endl;
 						cout << vAux1->getBarrioVia() << endl;
-						lCoincidencias.insertar(vAux1->getNombreVia());	//Añade el nombr de la vía a la lista de vías procesadas una sola vez, la primera vez que encuentre un duplicado
-						primerRes = false;								//Actualiza la bandera para evitar volver a imprimir la cabeceras
+						lCoincidencias.insertar(vAux1->getNombreVia());	//Añade el nombre de la vía a la lista de vías procesadas
+						primerRes = false;								//Actualiza la bandera para evitar volver a añadir el nombre de la vía acutual a la lista de coincidencias
 					}
-					cout << vAux2->getBarrioVia() << endl;				//Para el resto de vías simplemente imprime el nombre de su barrio
+					cout << vAux2->getBarrioVia() << endl;
 				}
 			}
 			if(!primerRes)												//Solo imprime el footer si ha habido alguna coincidencia
-				cout << "***********************************************************************************************" << endl << endl;
+				cout << "-----------------------------------------------------------------------------------------------" << endl << endl;
 			lVias->moverInicio();
-			/*El uso de la estructura 'do while' se justifica porque al final de cada ejecución del bucle interno el pI siempre apuntará a NULL
-			 *		porque hay que recorrer el resto de la lista entera. No podemos suponer el número de barrios por los que pasará una vía.
-			 *		Moviendo el pI al inicio y consultándolo antes de hacer la comprobación nos libra de comprobar la certeza de que 'vAux1' nunca será 'vAux2'
-			 */
-			do{
+			do {														/* El uso de la estructura 'do while' se justifica porque al final de cada ejecución del bucle interno el PI siempre apuntará a NULL, siempre se recorre el resto de la lista entera
+			 															 *		No se puede asumir el número de barrios por los que pasará una vía. Moviendo el pI al inicio y consultándolo antes de hacer la comprobación elimina la comprobación trivial de que 'vAux1' nunca será 'vAux2' */
 				lVias->consultar(vAux2);
 				lVias->avanzar();
-			}while(vAux1 != vAux2);
+			} while(vAux1 != vAux2);									//Coloca el PI en la posición siguiente en relación a la que tenía al abandonar el bucle externo
 			primerRes = true; 											//Reinicia la banera de primer resultado. Solo tiene efecto si hubo alguna coincidencia de vías
 		}
-		coincidencia = false;											//Reinicia la bandera de coincidencias. Solo tiene efecto si hubo alguna coincidencia con alguna vía ya tratada, y pueda volver a tratar otra vía
+		coincidencia = false;											//Reinicia la bandera de coincidencias. Solo tiene efecto si hubo alguna coincidencia con alguna vía ya tratada
 	}
 }
 

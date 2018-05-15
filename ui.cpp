@@ -30,18 +30,18 @@ void UI::ejecutar() {
 	double t_start, t_end;						//Almacena la diferencia de tiempo entre dos intervalos. Mide los tiempos de ejecución de los algoritmos
 	int opcion;									//Opción del menú elegida por el usuario
 	string nombreBarrio;						//Nombre del barrio a utilizar por los algoritmos 2 y 8
-	string nombreProvincia;						//Nombre de la provincia a utilizar por el algoritmo 10 y 12
+	string nombreProvincia;						//Nombre de la provincia a utilizar por los algoritmos 10 y 12
 	string nombreVia;							//Nombre de la vía a utilizar por el algoritmo 11
 	string raizVia;								//Raíz de la vía a utilizar por el algoritmo 12
 	int limInf;									//Límite inferior del rango de edad a utilizar por el algoritmo 7
 	int limSup;									//Límite superior del rango de edad a utilizar por el algoritmo 7
 
-	bool salir = false;							//Bandera que indica que si el usuario ha decidido cerrar el programa
-	bool datosCargados = false;					//Bandera para prevenir la ejecución de algoritmo sin haber cargado los datos y para prevenir la múltiple carga de datos
+	bool salir = false;							//Bandera que indica si el usuario ha decidido terminar el programa
+	bool datosCargados = false;					//Bandera para prevenir la ejecución de algoritmos sin haber cargado los datos y la múltiple carga de datos
 
 	do {
-		opcion = menu();						//Obtiene la opción indicada por el usuario
-		switch (opcion) {						//En base a la opción elegida pregunta datos adicionales y/o ejecuta el algoritmo seleccionado
+		opcion = menu();						//Obtiene la opción elegida por el usuario
+		switch (opcion) {						//En base a la opción elegida pregunta datos adicionales y ejecuta el algoritmo seleccionado
 		case 1:
 			if(!datosCargados){					//Maneja la múltiple carga de datos
 				t_start = Time::getTime();
@@ -54,10 +54,10 @@ void UI::ejecutar() {
 				cout << "Carga finalizada ... " << endl;
 				t_end = Time::getTime();
 				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
-				datosCargados = true;			//Actualización de la bandera para indicar que los datos ya están cargados
+				datosCargados = true;			//Actualización de la bandera para indicar que los datos ya han sido cargados
 			}else{								//Si los datos ya han sido cargados se indica al usuario por consola
-				cout << "YA HAN SIDO CARGADOS LOS DATOS DEL PADRÓN \n Puede ejecutar los algoritmos con norlmalidad" << endl;
-				pausa();
+				cout << "YA HAN SIDO CARGADOS LOS DATOS DEL PADRÓN \nPuede ejecutar los algoritmos con norlmalidad" << endl;
+				pausa();						//Pausa la ejecución hasta que el usuario pulse la tecla de retorno para dar tiempo a visualizar los resultados de los algoritmos y mensajes del programa
 			}
 			break;
 		case 2:
@@ -70,20 +70,20 @@ void UI::ejecutar() {
 
 				t_end = Time::getTime();
 				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
-			}else{						//Sino se indica al usuario por consola
+			}else{								//Sino se indica al usuario por consola
 				cout << "ERROR : No se han cargados los datos del Padrón \nUtilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
 			}
-			pausa();							//Pausa la ejecución hasta que el usuario pulse una tecla para dar tiempo a visualizar los resultados de los algoritmos
+			pausa();
 			break;
 		case 3:
-			if(datosCargados){					//Comprueba que los datos del padrón hayan sido cargados
+			if(datosCargados){
 				t_start = Time::getTime();
 
 				p.alg3();
 
 				t_end = Time::getTime();
 				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
-			}else{						//Sino se indica al usuario por consola
+			}else{
 				cout << "ERROR : No se han cargados los datos del Padrón \nUtilice la OPCIÓN 1 y vuelva a intentarlo" << endl;
 			}
 			pausa();
@@ -252,9 +252,9 @@ int UI::menu() {
 		cout << "\n   0. Finalizar. " << endl;
 		cout << " Opcion :\t";
 		cin >> opcion;							//Lee la opción introducida por el usuario
-		cin.ignore();							//No hay que interferir con la ejecución de otras partes del programa
+		cin.ignore();							//No hay que interferir con el buffer de escritura para no afectar la ejecución de otras partes del programa
 
-	} while ((opcion < 0) || (opcion > 13));	//Valida la opción introducida. Si no es válida espera a una opción válida
+	} while ((opcion < 0) || (opcion > 13));	//Valida la opción introducida. Si no es válida repite hasta que se introduzca una opción válida
 
 	return opcion;
 }
@@ -264,7 +264,7 @@ void UI::pausa() {
 
 	do {										//Permite al usuario elegir cuando quiere volver al menú
 		cout << "\nPresione la tecla (" << TECLA_MENU << ") para volver al menú . . ." << endl;
-		cin >> tecla;							//Lee la tecla pulsada
+		cin >> tecla;
 	} while (tecla[0] != TECLA_MENU);			//Mientras no se pulse la tecla correcta no se carga de nuevo el menú
 }
 
