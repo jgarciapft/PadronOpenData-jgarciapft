@@ -11,13 +11,17 @@
 #define UI_H_
 
 #include "Padron.h"
+#include "timer.h"
 
 class UI {
 
 private:
-	// TODO instanciar la clase principal
+	Padron p;				//Instancia de la clase principal
+
 	int  menu     ();
 	void ejecutar ();
+	void pausa();
+
 public:
 	 UI();
 	~UI();
