@@ -454,7 +454,7 @@ void Padron::alg11_EDNL(string nombreVia) {
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
 }
 
-void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
+void Padron::alg12_EDNL(string raiz, string nombreProvincia) {			///@NOTA: Nombre provisional
 	bool enc = false;													//Bandera que indica si se ha encontrado o no la vía buscada
 	int nPersonas = 0;													//Total de habitantes entre todas las vías que comiencen por la raíz 'raiz'
 
