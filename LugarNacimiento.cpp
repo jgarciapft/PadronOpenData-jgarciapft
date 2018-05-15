@@ -36,7 +36,7 @@ int LugarNacimiento::getNPersonas() {
 	return nPersonas;
 }
 
-void LugarNacimiento::incNPersonas(int nP) {							//Incrementa el atributo 'nPersonas'. Utilizado por el algoritmo 6
+void LugarNacimiento::incNPersonas(int nP) {							//Incrementa el atributo 'nPersonas' en 'nP'
 	nPersonas += nP;
 }
 
@@ -53,7 +53,7 @@ bool LugarNacimiento::operator >=(const LugarNacimiento& lugNac) {
 }
 
 bool LugarNacimiento::operator ==(const LugarNacimiento& lugNac) {
-	return provinciaPais.compare(lugNac.provinciaPais) == 0;			//Criterio de comparación: coincidencia de cadenas carácter a carácter
+	return provinciaPais == lugNac.provinciaPais;						//Criterio de comparación: orden lexicográfico de 'provinciaPais'
 }
 
 }

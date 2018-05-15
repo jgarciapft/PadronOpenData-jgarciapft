@@ -8,12 +8,12 @@
 
 namespace std {
 
-GestorEstudios::GestorEstudios() {
-	lEstudios = new ListaPI<Estudios*>();											//Reserva memoria para la lista de estudios que encapsula
+GestorEstudios::GestorEstudios() {													///@NOTA: Reserva memoria para la lista de estudios que encapsula
+	lEstudios = new ListaPI<Estudios*>();
 }
 
-GestorEstudios::GestorEstudios(string estudios) {
-	lEstudios = new ListaPI<Estudios*>();											//Reserva memoria para la lista de estudios que encapsula
+GestorEstudios::GestorEstudios(string estudios) {									///@NOTA: Reserva memoria para la lista de estudios que encapsula y la inicializa con un set de datos
+	lEstudios = new ListaPI<Estudios*>();
 
 	vector<string> vText = splitStringToVector(estudios, DELIM);					//Delimita cada objeto 'Estudios' y lo almacena en un vector
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
@@ -23,12 +23,12 @@ GestorEstudios::GestorEstudios(string estudios) {
 	}
 }
 
-GestorEstudios::~GestorEstudios() {													//Libera la memoria asociada a cada estudio y la lista que los contiene
-	Estudios* estAux;																//Puntero auxiliar para consultar la lista de estudios
+GestorEstudios::~GestorEstudios() {													///@NOTA: Libera la memoria asociada a cada estudio y la lista que los contiene
+	Estudios* estAux;																//Puntero auxiliar para consultar la lista de estudios que encapsula el gestor
 
 	//Recorre secuencialmente la lista de estudios de inicio a fin
 	lEstudios->moverInicio();
-	while(!lEstudios->finLista()){
+	while(!lEstudios->finLista()){													//También comprueba si la lista está inicialmente vacía
 		lEstudios->consultar(estAux);
 		lEstudios->avanzar();
 		delete estAux;																//Libera cada estudio
@@ -59,18 +59,18 @@ void GestorEstudios::ordenarLista(ListaPI<Estudios *> *&lEstud) {
 		do{
 			lEstud->retroceder();
 			lEstud->consultar(estud);
-			siguiente = *estudPI > *estud;                                          //El dato insertado/modificado es menor/mayor
-		}while(siguiente && !lEstud->enInicio());
+			siguiente = *estudPI > *estud;                                          //El dato insertado/modificado es menor/mayor. Adelante la comprobación de orden para examinar la condición de salida fuera del bucle
+		}while(siguiente && !lEstud->enInicio());									//Busca el lugar de inserción
 		if(!siguiente)																//Comprueba si el dato insertado/modificado es mayor que todos los de la lista
-			lEstud->avanzar();														//No lo es. Hay que insertarlo detrás del PI
-		lEstud->insertar(estudPI);													//Si era el mayor de todos hay que insertarlo el primero. Si no ya se ha avanzado el PI y se puede insertar detrás de éste
+			lEstud->avanzar();														//No lo es. Se inserta detrás del PI
+		lEstud->insertar(estudPI);													//Si era el mayor de todos se inserta el primero. Si no ya se ha avanzado el PI y se puede insertar detrás de éste
 	}
 }
 
 /****************************************************************************		INTERFAZ PÚBLICA	****************************************************************************/
 
 void GestorEstudios::alg8(ListaPI<Estudios*>*& lEstud) {
-	bool enc = false;																//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse o actualizarse el estudio
+	bool enc = false;																//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse/actualizarse el estudio
 	Estudios* estudAux1;															//Puntero auxiliar para consultar la lista de estudios que encapsula el gestor
 	Estudios* estudAux2;															//Puntero auxiliar para consultar la lista de estudios pasada por parámetro
 
@@ -91,11 +91,11 @@ void GestorEstudios::alg8(ListaPI<Estudios*>*& lEstud) {
 				if (*estudAux1 == *estudAux2)				                        //Comparación lexicográfica por el nivel de estudios. Comprueba si el estudio ya existe en 'lEstud'
 					enc = true;                             			            //Actualiza la bandera que permite salir del bucle cuando se ha encontrado la posición del dato a procesar
 				else
-					lEstud->avanzar();                               				//Se avanza solo si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
+					lEstud->avanzar();                               				//SOLO se avanza si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
 			}
 			if(enc)                                                                 //Se comprueba que el dato no se duplique. La condición de duplicidad es que haya 2 datos con el mismo valor para 'nivEstudios'
-				estudAux2->incNPersonas(estudAux1->getNPersonas());             	//Si existe se actualiza el atributo 'nPersonas' a modo de acumulador
-			else                                                                    //Si no existe se inserta un nuevo objeto. Si modificasemos los objetos ya introducidos en memoria cambiaríamos los datos del padrón
+				estudAux2->incNPersonas(estudAux1->getNPersonas());             	//Si existe se actualiza el atributo 'nPersonas' a modo de acumulador con el número de personas del estudio coincidente
+			else                                                                    //Si no existe se inserta un nuevo objeto. Si se modificasen los objetos ya introducidos en memoria se modificarían los datos del padrón
 				lEstud->insertar(new Estudios(estudAux1->getNivEstudios(), estudAux1->getNPersonas()));
 
 			ordenarLista(lEstud);													//Actualiza la lista para que mantenga su orden
@@ -106,12 +106,12 @@ void GestorEstudios::alg8(ListaPI<Estudios*>*& lEstud) {
 
 
 
-void GestorEstudios::mostrar() {													//Muestra la información de los estudios de la lista
-	Estudios* estAux;																//Puntero auxiliar para consultar la lista de estudios
+void GestorEstudios::mostrar() {													///@NOTA: Muestra la información de los estudios de la lista
+	Estudios* estAux;																//Puntero auxiliar para consultar la lista de estudios que encapsula el gestor
 
 	//Recorre secuencialmente la lista de estudios de inicio a fin
 	lEstudios->moverInicio();
-	while(!lEstudios->finLista()){
+	while(!lEstudios->finLista()){													//También comprueba si la lista está inicialmente vacía
 		lEstudios->consultar(estAux);
 		lEstudios->avanzar();
 		estAux->mostrar();															//LLama a mostrar la información de cada estudio de la lista de estudios

@@ -14,7 +14,7 @@ Via::Via() {
 	longitudVia = 0.0;
 	tipoVia = "";
 	codVia = 0;
-	datDemograficos = NULL;						//No se reserva memoria para los datos demograficos porque se asignan mediante el método 'setDatosDemograficos'
+	datDemograficos = NULL;						///@NOTA: No se reserva memoria para los datos demograficos porque se asignan mediante el método 'Via::setDatosDemograficos'
 }
 
 Via::Via(string barV, string nomV, float lonV, string tipV, int codV) {
@@ -23,10 +23,10 @@ Via::Via(string barV, string nomV, float lonV, string tipV, int codV) {
 	longitudVia = lonV;
 	tipoVia = tipV;
 	codVia = codV;
-	datDemograficos = NULL;						//No se reserva memoria para los datos demograficos porque se asignan mediante el método 'setDatosDemograficos'
+	datDemograficos = NULL;						///@NOTA: No se reserva memoria para los datos demograficos porque se asignan mediante el método 'Via::setDatosDemograficos'
 }
 
-Via::~Via() {}									//No libera la memoria de los datos demográficos porque se liberan el la clase 'Padron' para evitar liberar dos veces el mismo puntero
+Via::~Via() {}									///@NOIA: No se libera la memoria asociada a los datos demográficos porque se liberan el la clase 'Padron' para evitar dobles liberaciones
 
 
 
@@ -91,7 +91,7 @@ int Via::alg12(const string& nombreProvincia) {	///@NOTA: Método invocativo
 
 
 
-void Via::mostrar() {							//Muestra la información de cada vía
+void Via::mostrar() {							///@NOTA: Muestra la información de cada vía
 	cout << "Via : " << nombreVia << " | Barrio : " << barrioVia << " | Longitud : " <<
 			longitudVia << " (m) | Tipo : " << tipoVia << " | Codigo : " << codVia << endl;
 	if(datDemograficos != NULL)					//Comprueba que la vía contenga un set de datos demográficos
@@ -100,7 +100,7 @@ void Via::mostrar() {							//Muestra la información de cada vía
 
 
 
-bool Via::operator >(const Via& v) {			//Compara alfabéticamente las vías por su nombre
+bool Via::operator >(const Via& v) {			///@NOTA: Criterio de comparación: Orden alfabético de 'nombreVia'
 	return nombreVia.compare(v.nombreVia) < 0;
 }
 

@@ -30,7 +30,7 @@ int Nacionalidad::getNPersonas() {
 	return nPersonas;
 }
 
-void Nacionalidad::incNPersonas(int nP) {						//Incrementa el atributo 'nPersonas'. Utilizado por el algoritmo 5
+void Nacionalidad::incNPersonas(int nP) {						//Incrementa el atributo 'nPersonas' en 'nP'
 	nPersonas += nP;
 }
 

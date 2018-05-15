@@ -119,7 +119,7 @@ void Padron::cargarVias() {
 				vAux = new Via(campos[0], campos[1], atof(campos[2].c_str()), campos[3], atoi(campos[4].c_str()));
 				lVias->insertar(vAux);									//Insertar la vía creada en la lista de vías auxiliar
 				lVias->avanzar();
-				aVias->insertar(vAux);									//Inserta la vía recién creada en el ABB
+				aVias->insertar(vAux);									//Inserta la vía recién creada en el ABB. No se asegura que el ABB quede perfectamente balanceado
 				gBarrio->insertarVia(vAux);								//Inserta la vía creada en la estructura de datos
 			}
 		}

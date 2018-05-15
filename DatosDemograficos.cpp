@@ -8,7 +8,7 @@
 
 namespace std {
 
-DatosDemograficos::DatosDemograficos() {														//Reserva memoria para cada gestor
+DatosDemograficos::DatosDemograficos() {														///@NOTA: Reserva memoria para cada gestor
 	codVia = 0;
 	gAnioNacimiento = new GestorAnioNacimiento();
 	gLugarNacimiento = new GestorLugarNacimiento();
@@ -18,7 +18,7 @@ DatosDemograficos::DatosDemograficos() {														//Reserva memoria para cad
 	gNacionalidad = new GestorNacionalidad();
 }
 
-DatosDemograficos::DatosDemograficos(int _codVia, string aniosNacimiento,						//Reserva memoria para cada gestor
+DatosDemograficos::DatosDemograficos(int _codVia, string aniosNacimiento,						///@NOTA: Reserva memoria para cada gestor
 		string lugaresNacimiento, string estudios, int _nMujeres, int _nHombres,
 		string nacionalidades) {
 	codVia = _codVia;
@@ -30,7 +30,7 @@ DatosDemograficos::DatosDemograficos(int _codVia, string aniosNacimiento,						/
 	gNacionalidad = new GestorNacionalidad(nacionalidades);
 }
 
-DatosDemograficos::~DatosDemograficos() {														//Libera la memoria asociada a cada gestor
+DatosDemograficos::~DatosDemograficos() {														///@NOTA: Libera la memoria asociada a cada gestor
 	delete gAnioNacimiento;
 	delete gLugarNacimiento;
 	delete gEstudios;
@@ -85,7 +85,7 @@ int DatosDemograficos::alg12(const string& nombreProvincia) {									///@NOTA: 
 
 
 
-void DatosDemograficos::mostrar() {																//Llama a mostrar la información de cada gestor contenido
+void DatosDemograficos::mostrar() {																///@NOTA: Llama a mostrar la información de cada gestor contenido
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	gAnioNacimiento->mostrar();
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;

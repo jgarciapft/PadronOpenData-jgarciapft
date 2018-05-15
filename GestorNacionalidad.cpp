@@ -8,12 +8,12 @@
 
 namespace std {
 
-GestorNacionalidad::GestorNacionalidad() {
-	lNacionalidad = new ListaPI<Nacionalidad*>();											//Reserva memoria para la lista de nacionalidades que encapsula
+GestorNacionalidad::GestorNacionalidad() {													///@NOTA:_Reserva memoria para la lista de nacionalidades que encapsula
+	lNacionalidad = new ListaPI<Nacionalidad*>();
 }
 
-GestorNacionalidad::GestorNacionalidad(string nacionalidades) {
-	lNacionalidad = new ListaPI<Nacionalidad*>();											//Reserva memoria para la lista de nacionalidades que encapsula
+GestorNacionalidad::GestorNacionalidad(string nacionalidades) {								///@NOTA: Reserva memoria para la lista de nacionalidades que encapsula
+	lNacionalidad = new ListaPI<Nacionalidad*>();
 
 	vector<string> vText = splitStringToVector(nacionalidades, DELIM);						//Delimita cada objeto 'Nacionalidad' y lo almacena en un vector
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
@@ -23,12 +23,12 @@ GestorNacionalidad::GestorNacionalidad(string nacionalidades) {
 	}
 }
 
-GestorNacionalidad::~GestorNacionalidad() {													//Libera la memoria asociada a cada nacionalidad y a la lista que las contiene
-	Nacionalidad* nacAux;																	//Puntero auxiliar para consultar la lista de nacionalidades
+GestorNacionalidad::~GestorNacionalidad() {													///@NOTA: Libera la memoria asociada a cada nacionalidad y a la lista que las contiene
+	Nacionalidad* nacAux;																	//Puntero auxiliar para consultar la lista de nacionalidades que encapsula el gestor
 
 	//Recorre secuencialmente la lista de nacionalidades de inicio a fin
 	lNacionalidad->moverInicio();
-	while(!lNacionalidad->finLista()){
+	while(!lNacionalidad->finLista()){														//También comprueba si la lista está inicialmente vacía
 		lNacionalidad->consultar(nacAux);
 		lNacionalidad->avanzar();
 		delete nacAux;																		//Libera cada nacionalidad
@@ -63,14 +63,14 @@ void GestorNacionalidad::ordenarLista(ListaPI<Nacionalidad*>*& lNacion) {
 		}while(siguiente && !lNacion->enInicio());
 		if(!siguiente)																		//Comprueba si el dato insertado/modificado es mayor que todos los de la lista
 			lNacion->avanzar();																//No lo es. Hay que insertarlo detrás del PI
-		lNacion->insertar(nacionPI);														//Si era el mayor de todos hay que insertarlo el primero. Si no ya se ha avanzado el PI y se puede insertar detrás de éste
+		lNacion->insertar(nacionPI);														//Si era el mayor de todos se inserta el primero. Si no ya se ha avanzado el PI y se puede insertar detrás de éste
 	}
 }
 
 /****************************************************************************		INTERFAZ PÚBLICA	****************************************************************************/
 
 void GestorNacionalidad::alg5(ListaPI<Nacionalidad*>*& lNacion) {
-	bool enc = false;																		//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse o actualizarse el lugar de nacimiento
+	bool enc = false;																		//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse/actualizarse el lugar de nacimiento
 	Nacionalidad* nacionAux1;																//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 	Nacionalidad* nacionAux2;																//Puntero auxiliar para consultar la lista de lugares de nacimiento pasada por parámetro
 
@@ -82,7 +82,8 @@ void GestorNacionalidad::alg5(ListaPI<Nacionalidad*>*& lNacion) {
 			lNacion->insertar(new Nacionalidad(nacionAux1->getNacionalidad(), nacionAux1->getNPersonas()));
 		}
 
-		while (!lNacionalidad->finLista()) {                 				           		//Recorre secuencialmente la lista de nacionaliadades del gestor de inicio a fin
+		//Recorre secuencialmente la lista de nacionaliadades del gestor de inicio a fin
+		while (!lNacionalidad->finLista()) {                 				           		//También comprueba si la lista está inicialmente vacía
 			lNacionalidad->consultar(nacionAux1);
 			lNacionalidad->avanzar();
 			lNacion->moverInicio();
@@ -91,11 +92,11 @@ void GestorNacionalidad::alg5(ListaPI<Nacionalidad*>*& lNacion) {
 				if (*nacionAux1 == *nacionAux2)				                        	    //Comparación lexicográfica por la nacionalidad. Comprueba si la nacionalidad ya existe en 'lNacion'
 					enc = true;                             			                	//Actualiza la bandera que permite salir del bucle cuando se ha encontrado la posición del dato a procesar
 				else
-					lNacion->avanzar();                               						//Se avanza solo si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
+					lNacion->avanzar();                               						//SOLO se avanza si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
 			}
 			if(enc)                                                                         //Se comprueba que el dato no se duplique. La condición de duplicidad es que haya 2 datos con el mismo valor para 'nacionalidad'
-				nacionAux2->incNPersonas(nacionAux1->getNPersonas());             		    //Si existe se actualiza el atributo 'nPersonas' a modo de acumulador
-			else                                                                            //Si no existe se inserta un nuevo objeto. Si modificasemos los objetos ya introducidos en memoria cambiaríamos los datos del padrón
+				nacionAux2->incNPersonas(nacionAux1->getNPersonas());             		    //Si existe se actualiza el atributo 'nPersonas' a modo de acumulador con el número de personas de la nacionalidad coincidente
+			else                                                                            //Si no existe se inserta un nuevo objeto. Si se modificasen los objetos ya introducidos en memoria se modificarían los datos del padrón
 				lNacion->insertar(new Nacionalidad(nacionAux1->getNacionalidad(), nacionAux1->getNPersonas()));
 
 			ordenarLista(lNacion);															//Actualiza la lista para que mantenga su orden
@@ -106,12 +107,12 @@ void GestorNacionalidad::alg5(ListaPI<Nacionalidad*>*& lNacion) {
 
 
 
-void GestorNacionalidad::mostrar() {														//Muestra la información las nacionalidades de la lista
-	Nacionalidad* nacAux;																	//Puntero auxiliar para consultar la lista de nacionalidades
+void GestorNacionalidad::mostrar() {														///@NOTA: Muestra la información las nacionalidades de la lista
+	Nacionalidad* nacAux;																	//Puntero auxiliar para consultar la lista de nacionalidades que encapsula el gestor
 
 	//Recorre secuencialmente la lista de nacionalidades de inicio a fin
 	lNacionalidad->moverInicio();
-	while(!lNacionalidad->finLista()){
+	while(!lNacionalidad->finLista()){														//También comprueba si la lista está inicialmente vacía
 		lNacionalidad->consultar(nacAux);
 		lNacionalidad->avanzar();
 		nacAux->mostrar();																	//Llama a mostrar la información de cada nacionalidad en la lista

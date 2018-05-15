@@ -30,7 +30,7 @@ int Estudios::getNPersonas() {
 	return nPersonas;
 }
 
-void Estudios::incNPersonas(int nP) {
+void Estudios::incNPersonas(int nP) {						//Incrementa el atributo 'nPersonas' en 'nP'
 	nPersonas += nP;
 }
 
