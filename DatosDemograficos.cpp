@@ -79,6 +79,10 @@ void DatosDemograficos::alg11(ofstream& ofs) {										///@NOTA: Nombre provisi
 	gLugarNacimiento->alg11(ofs);
 }
 
+int DatosDemograficos::alg12(string nombreProvincia) {								///@NOTA: Nombre provisional	@NOTA: Método invocativo
+	return gLugarNacimiento->alg12(nombreProvincia);
+}
+
 
 
 void DatosDemograficos::mostrar() {													//Llama a mostrar la información de cada gestor contenido
