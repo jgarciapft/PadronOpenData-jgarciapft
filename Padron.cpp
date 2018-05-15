@@ -375,8 +375,6 @@ void Padron::alg9() {													///@NOTA: Nombre provisional	@NOTA: Método in
 	gBarrio->alg9();
 }
 
-
-
 void Padron::alg10(string nombreProvincia) {							///@NOTA: Nombre provisional
 	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo. Cada lugar de nacimiento con el numero total de habitantes
  																	      * es representada por un objeto 'LugarNacimiento':
@@ -451,7 +449,7 @@ void Padron::alg11_EDL(string nombreVia) {								///@NOTA: Nombre provisional
 	ofs.close();														//Cierra el flujo
 }
 
-void Padron::alg11_EDNL(string nombreVia) {								///@NOTA: Nombre provisional
+void Padron::alg11_EDNL(string nombreVia) {
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
 	string ruta = "LugaresNacimietno-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
@@ -472,10 +470,29 @@ void Padron::alg11_EDNL(string nombreVia) {								///@NOTA: Nombre provisional
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
 }
 
+void Padron::alg12_EDL(const string &raiz, const string &nombreProvincia) {///@NOTA: Nombre provisional
+	int nPersonas = 0;													//Acumulador del núemro de personas nacidas en la provincia 'nombreProvincia' y que habiten en las vías que comiencen por 'raiz'
+	Via* vAux;															//Puntero auxiliar para consultar la lista de vías auxiliar
+
+	lVias->moverInicio();
+	while (!lVias->finLista()){											//También comprueba si la lista está vacía inicialmente
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		if(vAux->getNombreVia().find(raiz) == 0)						//Comprueba si la vía actual comienza por la raíz dada
+			nPersonas += vAux->alg12(nombreProvincia);					//Actualiza el acumulador de personas nacidas en la provincia dada
+	}
+
+	if(nPersonas != 0){													//Comprueba que se haya encontrado alguna vía que comience por la raíz dada o que exista algún habitante nacido en la provincia dada en todas las vías
+		cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
+				 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
+	}else{																//Sino se indica al usuario por consola
+		cout << "NO SE HA ENCONTRADO NINGUNA VÍA POR LA RÁIZ (" << raiz << ") O NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
+	}
+}
+
 void Padron::alg12_EDNL(string raiz, string nombreProvincia) {			///@NOTA: Nombre provisional
 	Arbol<Via*, ComparadorPtrVia>* aAux;								//ABB auxiliar para almacenar el ABB cuyos datos presentan potencialmente la misma raíz
 	int nPersonas;														//Total de habitantes entre todas las vías que comiencen por la raíz 'raiz'
-
 	if(!aVias->vacio()) {
 		aAux = alg12(aVias, raiz);
 	}
