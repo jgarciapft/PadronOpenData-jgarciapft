@@ -440,6 +440,26 @@ void Padron::alg11_EDNL(string nombreVia) {
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
 }
 
+void Padron::alg12_EDL(const string &raiz, const string &nombreProvincia) {///@NOTA: Nombre provisional
+	int nPersonas = 0;
+	Via* vAux;
+
+	lVias->moverInicio();
+	while (!lVias->finLista()){
+		lVias->consultar(vAux);
+		lVias->avanzar();
+		if(vAux->getNombreVia().find(raiz) == 0)
+			nPersonas += vAux->alg12(nombreProvincia);
+	}
+
+	if(nPersonas != 0){
+		cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
+				 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
+	}else{
+		cout << "NO SE HA ENCONTRADO NINGUNA VÍA POR LA RÁIZ (" << raiz << ") O NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
+	}
+}
+
 
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
