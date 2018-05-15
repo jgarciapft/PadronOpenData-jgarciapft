@@ -441,21 +441,21 @@ void Padron::alg11_EDNL(string nombreVia) {
 }
 
 void Padron::alg12_EDL(const string &raiz, const string &nombreProvincia) {///@NOTA: Nombre provisional
-	int nPersonas = 0;
-	Via* vAux;
+	int nPersonas = 0;													//Acumulador del núemro de personas nacidas en la provincia 'nombreProvincia' y que habiten en las vías que comiencen por 'raiz'
+	Via* vAux;															//Puntero auxiliar para consultar la lista de vías auxiliar
 
 	lVias->moverInicio();
-	while (!lVias->finLista()){
+	while (!lVias->finLista()){											//También comprueba si la lista está vacía inicialmente
 		lVias->consultar(vAux);
 		lVias->avanzar();
-		if(vAux->getNombreVia().find(raiz) == 0)
-			nPersonas += vAux->alg12(nombreProvincia);
+		if(vAux->getNombreVia().find(raiz) == 0)						//Comprueba si la vía actual comienza por la raíz dada
+			nPersonas += vAux->alg12(nombreProvincia);					//Actualiza el acumulador de personas nacidas en la provincia dada
 	}
 
-	if(nPersonas != 0){
+	if(nPersonas != 0){													//Comprueba que se haya encontrado alguna vía que comience por la raíz dada o que exista algún habitante nacido en la provincia dada en todas las vías
 		cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
 				 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
-	}else{
+	}else{																//Sino se indica al usuario por consola
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA POR LA RÁIZ (" << raiz << ") O NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
 	}
 }
