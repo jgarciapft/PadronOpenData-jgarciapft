@@ -419,7 +419,7 @@ void Padron::alg11_EDL(string nombreVia) {								///@NOTA: Nombre provisional
 	ofs.close();														//Cierra el flujo
 }
 
-void Padron::alg11_EDNL(string nombreVia) {
+void Padron::alg11_EDNL(string nombreVia) {								///@NOTA: Nombre provisional
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
 	string ruta = "LugaresNacimietno-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
