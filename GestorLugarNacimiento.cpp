@@ -127,6 +127,24 @@ void GestorLugarNacimiento::alg11(ofstream& ofs) {								///@NOTA: Nombre provi
 	}
 }
 
+int GestorLugarNacimiento::alg12(string nombreProvincia) {
+	int cont = 0;																//Acumulador del número de habitantes de la lista que encapsula el gestor que pertenecen a la provincia dada
+	LugarNacimiento* lugNacAux;													//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
+
+	//Recorre secuencialmente la lista de lugares de nacimiento del gestor de inicio a fin
+	lLugarNacimiento->moverInicio();
+	while (!lLugarNacimiento->finLista()){										//También comprueba si la lista está inicialmente vacía
+		lLugarNacimiento->consultar(lugNacAux);
+		lLugarNacimiento->avanzar();
+		if(lugNacAux->getPoblacion() != POBLACION_TEXTO_RELLENO){				//Comprueba que la nacionalidad no sea extranjera, indicado por la cadena POBLACION_TEXTO_RELLENO en el atributo 'poblacion'
+			if(lugNacAux->getProvinciaPais() == nombreProvincia)				//Comprueba si es la provincia buscada
+				cont += lugNacAux->getNPersonas();								//Actualiza el acumulador
+		}
+	}
+
+	return cont;
+}
+
 
 
 void GestorLugarNacimiento::mostrar() {											//Muestra la información de cada lugar de nacimiento
