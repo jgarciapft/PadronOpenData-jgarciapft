@@ -453,7 +453,7 @@ void Padron::alg11_EDNL(string nombreVia) {
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
 }
 
-void Padron::alg12_EDL(string &raiz, string &nombreProvincia) {
+void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 	int nPersonas = 0;													//Acumulador del núemro de personas nacidas en la provincia 'nombreProvincia' y que habiten en las vías que comiencen por 'raiz'
 	Via* vAux;															//Puntero auxiliar para consultar la lista de vías auxiliar
 

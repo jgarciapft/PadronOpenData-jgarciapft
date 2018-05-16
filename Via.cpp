@@ -93,7 +93,7 @@ int Via::alg12(string& nombreProvincia) {		///@NOTA: Método invocativo
 
 void Via::mostrar() {							///@NOTA: Muestra la información de cada vía
 	cout << "Via : " << nombreVia << " | Barrio : " << barrioVia << " | Longitud : " <<
-			longitudVia << " (m) | Tipo : " << tipoVia << " | Codigo : " << codVia << endl;
+			longitudVia << " (m) | Tipo : " << tipoVia << " | Código : " << codVia << endl;
 	if(datDemograficos != NULL)					//Comprueba que exista un set de datos demográficos
 		datDemograficos->mostrar();				//Llama a mostrar toda la información de los datos demográficos
 }

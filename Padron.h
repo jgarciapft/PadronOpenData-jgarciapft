@@ -43,7 +43,7 @@ public:
 	void alg10(string nombreProvincia);
 	void alg11_EDL(string nombreVia);
 	void alg11_EDNL(string nombreVia);
-	void alg12_EDL(string& raiz, string& nombreProvincia);
+	void alg12_EDL(string raiz, string nombreProvincia);
 	void alg12_EDNL(string raiz, string nombreProvincia);
 
 	void mostrarEstructura();

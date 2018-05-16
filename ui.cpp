@@ -20,11 +20,11 @@ UI::~UI() {
 
 
 
-int main() {
-	UI ui;										//Instancia la clase principal que maneja la ejecución del programa
-
-	return 0;
-}
+//int main() {
+//	UI ui;										//Instancia la clase principal que maneja la ejecución del programa
+//
+//	return 0;
+//}
 
 void UI::ejecutar() {
 	double t_start, t_end;						//Almacena la diferencia de tiempo entre dos intervalos. Mide los tiempos de ejecución de los algoritmos
