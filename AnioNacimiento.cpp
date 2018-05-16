@@ -22,11 +22,11 @@ AnioNacimiento::~AnioNacimiento() {}
 
 
 
-int AnioNacimiento::getAnio() {
+int AnioNacimiento::getAnio() const {
 	return anio;
 }
 
-int AnioNacimiento::getNPersonas() {
+int AnioNacimiento::getNPersonas() const {
 	return nPersonas;
 }
 

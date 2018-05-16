@@ -24,15 +24,15 @@ LugarNacimiento::~LugarNacimiento() {}
 
 
 
-string LugarNacimiento::getPoblacion() {
+string LugarNacimiento::getPoblacion() const {
 	return poblacion;
 }
 
-string LugarNacimiento::getProvinciaPais() {
+string LugarNacimiento::getProvinciaPais() const {
 	return provinciaPais;
 }
 
-int LugarNacimiento::getNPersonas() {
+int LugarNacimiento::getNPersonas() const {
 	return nPersonas;
 }
 

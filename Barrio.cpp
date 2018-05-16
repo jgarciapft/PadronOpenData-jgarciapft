@@ -26,11 +26,11 @@ Barrio::~Barrio() {
 
 
 
-string Barrio::getNombreBarrio() {
+string Barrio::getNombreBarrio() const {
 	return nombreBarrio;
 }
 
-string Barrio::getNombreDistrito() {
+string Barrio::getNombreDistrito() const {
 	return nombreDistrito;
 }
 

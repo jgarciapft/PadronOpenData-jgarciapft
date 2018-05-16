@@ -22,11 +22,11 @@ Nacionalidad::~Nacionalidad() {}
 
 
 
-string Nacionalidad::getNacionalidad() {
+string Nacionalidad::getNacionalidad() const {
 	return nacionalidad;
 }
 
-int Nacionalidad::getNPersonas() {
+int Nacionalidad::getNPersonas() const {
 	return nPersonas;
 }
 

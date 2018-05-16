@@ -31,9 +31,9 @@ public:
 			int _nHombres, string nacionalidades);
 	~DatosDemograficos();
 
-	int getCodVia();
-	int getNMujeres();
-	int getNHombres();
+	int getCodVia() const;
+	int getNMujeres() const;
+	int getNHombres() const;
 	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
 	void alg5(ListaPI<Nacionalidad*>*& lNacion);
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);

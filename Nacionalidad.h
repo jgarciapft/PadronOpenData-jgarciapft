@@ -22,8 +22,8 @@ public:
 	Nacionalidad(string nac, int nP);
 	~Nacionalidad();
 
-	string getNacionalidad();
-	int getNPersonas();
+	string getNacionalidad() const;
+	int getNPersonas() const;
 	void incNPersonas(int nP);
 
 	void mostrar();

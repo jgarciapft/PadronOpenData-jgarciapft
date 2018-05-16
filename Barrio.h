@@ -23,8 +23,8 @@ public:
 	Barrio(string nB, string nD);
 	~Barrio();
 
-	string getNombreBarrio();
-	string getNombreDistrito();
+	string getNombreBarrio() const ;
+	string getNombreDistrito() const;
 	void insertarVia(Via* v);
 	void insertarDatosDemograficos(DatosDemograficos* dD);
 	int alg7(int limInf, int limSup);

@@ -39,15 +39,15 @@ DatosDemograficos::~DatosDemograficos() {														///@NOTA: Libera la memor
 
 
 
-int DatosDemograficos::getCodVia() {
+int DatosDemograficos::getCodVia() const {
 	return codVia;
 }
 
-int DatosDemograficos::getNMujeres() {
+int DatosDemograficos::getNMujeres() const {
 	return nMujeres;
 }
 
-int DatosDemograficos::getNHombres() {
+int DatosDemograficos::getNHombres() const {
 	return nHombres;
 }
 

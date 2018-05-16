@@ -22,8 +22,8 @@ public:
 	Estudios(string nEst, int nP);
 	~Estudios();
 
-	string getNivEstudios();
-	int getNPersonas();
+	string getNivEstudios() const;
+	int getNPersonas() const;
 	void incNPersonas(int nP);
 
 	void mostrar();

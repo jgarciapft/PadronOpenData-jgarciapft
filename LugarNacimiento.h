@@ -23,9 +23,9 @@ public:
 	LugarNacimiento(string pobl, string provP, int nP);
 	~LugarNacimiento();
 
-	string getPoblacion();
-	string getProvinciaPais();
-	int getNPersonas();
+	string getPoblacion() const;
+	string getProvinciaPais() const;
+	int getNPersonas() const;
 	void incNPersonas(int nP);
 
 	void mostrar();

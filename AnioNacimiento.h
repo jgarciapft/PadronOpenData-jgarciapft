@@ -22,8 +22,8 @@ public:
 	AnioNacimiento(int aN, int nP);
 	~AnioNacimiento();
 
-	int getAnio();
-	int getNPersonas();
+	int getAnio() const;
+	int getNPersonas() const;
 	void incNPersonas(int nP);
 
 	void mostrar();

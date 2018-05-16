@@ -22,11 +22,11 @@ Estudios::~Estudios() {}
 
 
 
-string Estudios::getNivEstudios() {
+string Estudios::getNivEstudios() const {
 	return nivEstudios;
 }
 
-int Estudios::getNPersonas() {
+int Estudios::getNPersonas() const {
 	return nPersonas;
 }
 
