@@ -51,16 +51,17 @@ void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstr
 }
 
 Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz) {
-	Arbol<Via*, ComparadorPtrVia>* aAux;								//Puntero auxiliar con el ABB a devolver
+	Arbol<Via*, ComparadorPtrVia>* aAux = NULL;							//Puntero auxiliar con el ABB a devolver
 
 	//RECORRIDO en PRE-ORDEN. Explora la raíz de cada nodo en cada llamada para explorar el menor número de nodos que no van a cumplir los requisitos
-	if(aVias->raiz()->getNombreVia().find(raiz) == 0)					//Comprueba si se ha encontrado la ráiz que compartirán los subárboles precedentes a esta raíz
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0){					//Comprueba si se ha encontrado la ráiz que compartirán los subárboles precedentes a esta raíz
 		aAux = aVias;
-	else if(aVias->raiz()->getNombreVia() < raiz) 						//Si la el nombre de la vía es alfabéticamente MENOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
-		if(aVias->hijoDer() != NULL)
+	}else if(aVias->raiz()->getNombreVia() < raiz){                     //Si la el nombre de la vía es alfabéticamente MENOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
+		if (aVias->hijoDer() != NULL)
 			aAux = alg12(aVias->hijoDer(), raiz);
-	else if(aVias->hijoIzq() != NULL)									//Sino el nombre de la vía es alfabéticamente MAYOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
+	}else if(aVias->hijoIzq() != NULL){									//Sino el nombre de la vía es alfabéticamente MAYOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
 		aAux = alg12(aVias->hijoIzq(), raiz);
+	}
 
 	return aAux;
 }
@@ -478,21 +479,22 @@ void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 void Padron::alg12_EDNL(string raiz, string nombreProvincia) {			
 	Arbol<Via*, ComparadorPtrVia>* aAux;								//ABB auxiliar para almacenar el ABB cuyos datos presentan potencialmente la misma raíz
 	int nPersonas;														//Total de habitantes entre todas las vías que comiencen por la raíz 'raiz'
-	if(!aVias->vacio()) {
-		aAux = alg12(aVias, raiz);
-	}
 
-	if(aAux != NULL){													//Comprueba que se haya encontrado alguna vía que comience por la raíz indicada
-		nPersonas = filtroInOrden(aAux, raiz, nombreProvincia);			//Calcula el número de habitantes para la provincia dada.
-		if(nPersonas != 0){												//Comprueba si se ha encontrado algún habitante para la provincia dada
-			cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
-				 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
-			cout << "---------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
-		}else{															//Si no se encuentran se indica al usuario por consola
-			cout << "NO SE HA ENCONTRADO NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
+	if(!aVias->vacio()){												//Comprueba que el árbol no esté vacío inicialmente
+		aAux = alg12(aVias, raiz);										//Procesa el subárbol que contiene la(s) vía(s) que comienzan por la ráiz dada
+
+		if(aAux != NULL){												//Comprueba que se haya encontrado alguna vía que comience por la raíz indicada
+			nPersonas = filtroInOrden(aAux, raiz, nombreProvincia);		//Calcula el número de habitantes para la provincia dada.
+			if(nPersonas != 0){											//Comprueba si se ha encontrado algún habitante para la provincia dada
+				cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
+					 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
+				cout << "---------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+			}else{														//Si no se encuentran se indica al usuario por consola
+				cout << "NO SE HA ENCONTRADO NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
+			}
+		}else{															//Si no se encuentran resultados se indica al usuario por consola
+			cout << "NO SE HA ENCONTRADO NINGUNA VÍA QUE COMIENCE POR LA RAÍZ (" << raiz << ")" << endl;
 		}
-	}else{																//Si no se encuentran resultados se indica al usuario por consola
-		cout << "NO SE HA ENCONTRADO NINGUNA VÍA QUE COMIENCE POR LA RAÍZ (" << raiz << ")" << endl;
 	}
 }
 
