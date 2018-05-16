@@ -59,7 +59,7 @@ void GestorEstudios::ordenarLista(ListaPI<Estudios *> *&lEstud) {
 		do{
 			lEstud->retroceder();
 			lEstud->consultar(estud);
-			siguiente = *estudPI > *estud;                                          //El dato insertado/modificado es menor/mayor. Adelante la comprobación de orden para examinar la condición de salida fuera del bucle
+			siguiente = *estud > *estudPI;                                          //El dato insertado/modificado es menor/mayor. Adelante la comprobación de orden para examinar la condición de salida fuera del bucle
 		}while(siguiente && !lEstud->enInicio());									//Busca el lugar de inserción
 		if(!siguiente)																//Comprueba si el dato insertado/modificado es mayor que todos los de la lista
 			lEstud->avanzar();														//No lo es. Se inserta detrás del PI
