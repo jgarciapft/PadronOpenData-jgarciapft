@@ -49,7 +49,7 @@ void LugarNacimiento::mostrar() {										//Muestra toda la información del ob
 
 
 bool LugarNacimiento::operator >=(const LugarNacimiento& lugNac) {
-	return provinciaPais.compare(lugNac.provinciaPais) <= 0;			//Criterio de comparación: orden alfabético de 'provinciaPais'
+	return provinciaPais >= lugNac.provinciaPais;						//Criterio de comparación: orden alfabético de 'provinciaPais'
 }
 
 bool LugarNacimiento::operator ==(const LugarNacimiento& lugNac) {

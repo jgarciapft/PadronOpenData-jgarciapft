@@ -80,7 +80,7 @@ void Via::alg11(ofstream& ofs) {				///@NOTA: Método invocativo
 		datDemograficos->alg11(ofs);
 }
 
-int Via::alg12(const string& nombreProvincia) {	///@NOTA: Método invocativo
+int Via::alg12(string& nombreProvincia) {		///@NOTA: Método invocativo
 	int res = 0;
 
 	if(datDemograficos != NULL)					//Comprueba que exista un set de datos demográficos
@@ -94,14 +94,14 @@ int Via::alg12(const string& nombreProvincia) {	///@NOTA: Método invocativo
 void Via::mostrar() {							///@NOTA: Muestra la información de cada vía
 	cout << "Via : " << nombreVia << " | Barrio : " << barrioVia << " | Longitud : " <<
 			longitudVia << " (m) | Tipo : " << tipoVia << " | Codigo : " << codVia << endl;
-	if(datDemograficos != NULL)					//Comprueba que la vía contenga un set de datos demográficos
+	if(datDemograficos != NULL)					//Comprueba que exista un set de datos demográficos
 		datDemograficos->mostrar();				//Llama a mostrar toda la información de los datos demográficos
 }
 
 
 
-bool Via::operator >(const Via& v) {			///@NOTA: Criterio de comparación: Orden alfabético de 'nombreVia'
-	return nombreVia.compare(v.nombreVia) < 0;
+bool Via::operator >(const Via& v) {
+	return nombreVia > v.nombreVia;				//Criterio de comparación: Orden alfabético de 'nombreVia'
 }
 
 }

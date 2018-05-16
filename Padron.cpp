@@ -50,7 +50,7 @@ void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstr
 	}
 }
 
-Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz) {
+Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVias, string& raiz) {
 	Arbol<Via*, ComparadorPtrVia>* aAux;								//Puntero auxiliar con el ABB a devolver
 
 	//RECORRIDO en PRE-ORDEN. Explora la raíz de cada nodo en cada llamada para explorar el menor número de nodos que no van a cumplir los requisitos
@@ -65,7 +65,7 @@ Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVia
 	return aAux;
 }
 
-int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, const string& raiz, const string& nombreProvincia) {
+int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string& raiz, string& nombreProvincia) {
 	int nPersonas = 0;													//Acumulador del número total de habitantes que pertenecen a la provincia dada
 
 	//RECORRIDO en IN-ORDEN. Recorre en el orden establecido el ABB con las vías que potencialmente comienzan por la raíz dada
@@ -453,7 +453,7 @@ void Padron::alg11_EDNL(string nombreVia) {
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
 }
 
-void Padron::alg12_EDL(const string &raiz, const string &nombreProvincia) {	
+void Padron::alg12_EDL(string &raiz, string &nombreProvincia) {
 	int nPersonas = 0;													//Acumulador del núemro de personas nacidas en la provincia 'nombreProvincia' y que habiten en las vías que comiencen por 'raiz'
 	Via* vAux;															//Puntero auxiliar para consultar la lista de vías auxiliar
 
