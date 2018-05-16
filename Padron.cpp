@@ -96,8 +96,8 @@ void Padron::cargarBarrios() {
 			if(!fEnt.eof())												//Doble comprobación del FINAL DE FICHERO (EOF) para evitar leer una línea vacía adicional
 				gBarrio->insertar(new Barrio(campos[0], campos[1]));	//Inicializa e inserta el nuevo objeto 'Barrio' en la estructura de datos a partir de los campos leídos
 		}
+		gBarrio->insertar(new Barrio(DEF_BARRIO, DEF_PLACEHOLDER));		//Barrio que contiene las vías que no tienen ningún barrio asignado
 	}
-	gBarrio->insertar(new Barrio(DEF_POBLACION, DEF_BARRIO));			//Barrio que contiene las vías que no tienen ningún barrio asignado
 
 	fEnt.close();														//Cierra el flujo
 }
@@ -114,6 +114,8 @@ void Padron::cargarVias() {
 			for(int i=0; i<N_CAMPOS_VIA-1; i++){						//Lee todos los campos de cada vía menos el último
 				getline(fEnt, campos[i], SEP);
 			}
+			if(campos[0] == DEF_PLACEHOLDER)							//Comprueba si la vía no está asignada a ningún barrio
+				campos[0] = DEF_BARRIO;									//Entonces se le asigna al barrio contenedor
 			getline(fEnt, campos[4]);									//Lee el último campo
 			if(!fEnt.eof()){											//Doble comprobación del FINAL DE FICHERO (EOF) para evitar leer una línea vacía adicional
 				vAux = new Via(campos[0], campos[1], atof(campos[2].c_str()), campos[3], atoi(campos[4].c_str()));
