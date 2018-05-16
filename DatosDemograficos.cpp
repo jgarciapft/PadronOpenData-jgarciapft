@@ -85,7 +85,7 @@ int DatosDemograficos::alg12(string nombreProvincia) {											///@NOTA: Méto
 
 
 
-void DatosDemograficos::mostrar() {																///@NOTA: Llama a mostrar la información de cada gestor contenido
+void DatosDemograficos::mostrar() {																///@NOTA: Llama a mostrar la información de cada gestor contenido y muestra los atributos estáticos
 	cout << "//////////////////////////////////////////////////////////////////////////////////////////////" << endl;
 	cout << "Código : " << codVia << " | Nº de Mujeres : " << nMujeres << " | Nº de Hombres : " << nHombres << endl;
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;

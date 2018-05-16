@@ -41,7 +41,6 @@ void GestorVia::insertarViaOrden(Via* v) {
 			lVias->avanzar();										//Solo se avanza el PI si no se ha encontrado el hueco dónde insertar. Al insertar una vía se coloca delante del PI
 	}
 	lVias->insertar(v);												//Quedan manejados los casos: 1.Primer elemento de la lista, 2. Último elemento de la lista
-	lVias->avanzar();
 }
 
 void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {	//Busca si el dato demográfico pasado por parámetro 'dD' corresponde a alguna vía de esta lista y lo une a ella

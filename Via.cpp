@@ -101,7 +101,7 @@ void Via::mostrar() {							///@NOTA: Muestra la información de cada vía
 
 
 bool Via::operator >(const Via& v) {
-	return nombreVia > v.nombreVia;				//Criterio de comparación: Orden alfabético de 'nombreVia'
+	return v.nombreVia > nombreVia;				//Criterio de comparación: Orden alfabético de 'nombreVia'
 }
 
 }
