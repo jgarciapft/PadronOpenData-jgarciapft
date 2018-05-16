@@ -22,8 +22,8 @@ private:
 
 private:
 	void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstream& ofs, bool& enc);
-	Arbol<Via*, ComparadorPtrVia>* alg12(Arbol<Via*, ComparadorPtrVia>* aVias, string& raiz);
-	int filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string& raiz, string& nombreProvincia);
+	Arbol<Via*, ComparadorPtrVia>* alg12(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz);
+	int filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia);
 
 public:
 	Padron();
