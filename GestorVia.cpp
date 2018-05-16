@@ -43,7 +43,7 @@ void GestorVia::insertarViaOrden(Via* v) {
 	lVias->insertar(v);												//Quedan manejados los casos: 1.Primer elemento de la lista, 2. Último elemento de la lista
 }
 
-void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {	//Busca si el dato demográfico pasado por parámetro 'dD' corresponde a alguna vía de esta lista y lo une a ella
+void GestorVia::insertarDatosDemograficos(DatosDemograficos* dD) {	///@NOTA: Busca si el dato demográfico pasado por parámetro 'dD' corresponde a alguna vía de esta lista y lo une a ella
 	bool enc = false;												//Bandera para indicar cuando se ha encotrado (si se encuentra) la vía la que corresponde el dato demográfico 'dD'
 	Via* vAux;														//Puntero auxiliar para consultar la lista de vías que encapsula el gestor
 

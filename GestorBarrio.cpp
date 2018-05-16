@@ -28,8 +28,7 @@ GestorBarrio::~GestorBarrio() {												///@NOTA: Libera la memoria asociada 
 
 
 void GestorBarrio::insertar(Barrio* b) {									///@NOTA: Método invocativo
-	lBarrios->insertar(b);													//Inserta el barrio 'b' en la lista con avance del pI sin ningún criterio
-	lBarrios->avanzar();
+	lBarrios->insertar(b);													//Inserta el barrio 'b' en la lista sin ningún criterio
 }
 
 void GestorBarrio::insertarVia(Via* v) {									///@NOTA: Inserta la vía 'v' en el barrio que le corresponda con orden alfabético descendente
@@ -61,7 +60,7 @@ void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {		///@NOTA:
 }
 
 void GestorBarrio::alg2(string nombreBarrio) {
-	bool enc  = false;														//Bandera utilizada para terminar la búsqueda del barrio que corresponde con el parámetro 'nombreBarrio'
+	bool enc  = false;														//Bandera utilizada para comprobar si se ha econtrado el barrio dado
 	Barrio* bAux;															//Puntero auxiliar para recorrer la lista de barrios
 
 	//Recorre secuencialmente de inicio a fin la lista de barrios
@@ -73,6 +72,9 @@ void GestorBarrio::alg2(string nombreBarrio) {
 			bAux->mostrarVias();											//Muestra todas las vías del barrio que coincide con el parámetro 'nombreBarrio'
 			enc = true;														//Actualiza la bandera para salir del bucle
 		}
+	}
+	if(!enc){																//Sino se encuentra el barrio dado se indica al usuario por consola
+		cout << "NO SE HA ENCONTRADO NINGÚN BARRIO CON EL NOMBRE (" << nombreBarrio << ")" << endl;
 	}
 }
 
