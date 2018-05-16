@@ -436,7 +436,7 @@ void Padron::alg11_EDL(string nombreVia) {
 
 void Padron::alg11_EDNL(string nombreVia) {
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
-	string ruta = "LugaresNacimietno-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
+	string ruta = "LugaresNacimiento-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
 	bool enc = false;													//Bandera que indica si se ha encontrado o no la vía buscada
 
