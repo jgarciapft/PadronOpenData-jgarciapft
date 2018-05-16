@@ -122,7 +122,7 @@ void GestorLugarNacimiento::alg11(ofstream& ofs) {
 		lLugarNacimiento->avanzar();
 		if(lugNacAux->getPoblacion() != POBLACION_TEXTO_RELLENO)				//Comprueba si el lugar de nacimiento es extranjero. Entonces solo se muestra el país y el número de habitantes
 			ofs << lugNacAux->getPoblacion() << ", ";
-		ofs << lugNacAux->getProvinciaPais() << " (" << lugNacAux->getNPersonas() << ") " << endl;	//Escribe cada lugar de nacimiento presente en la lista al ficehro de volcado
+		ofs << lugNacAux->getProvinciaPais() << " (" << lugNacAux->getNPersonas() << ") " << endl;
 	}
 }
 
