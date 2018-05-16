@@ -444,7 +444,7 @@ void Padron::alg11_EDNL(string nombreVia) {
 	ofs.open(ruta.c_str(), ios::app);									//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
 	if(ofs.is_open()){													//Comprueba que se haya abierto el flujo correctamente
 		if(!aVias->vacio()){											//Comprueba que el árbol no esté vacío
-			ofs << endl << endl << "Lista de LUGARES de NACIMIENTO para la VIA - " << nombreVia << endl;
+			ofs << "\n\nLista de LUGARES de NACIMIENTO para la VIA - " << nombreVia << endl;
 			ofs << "-----------------------------------------------------------------------------------------------" << endl;
 			alg11(aVias, nombreVia, ofs, enc);							//Imprime los resultados del algoritmo
 		}
