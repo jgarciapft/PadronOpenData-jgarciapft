@@ -380,10 +380,10 @@ void Padron::alg10(string nombreProvincia) {
 
 	//Muestra los resultados del algoritmo
 	ruta += nombreProvincia + extension;								//Conforma la ruta relativa del archivo de volcado
-	ofs.open(ruta.c_str());												//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
-	if(ofs.is_open(), ios::app){										//Comprueba que se haya abierto el flujo correctamente
+	ofs.open(ruta.c_str(), ios::app);									//Modo de apertura : adjutar. Añade a continuación de los contenidos previos los resultados de esta ejecución
+	if(ofs.is_open()){													//Comprueba que se haya abierto el flujo correctamente
 		if(!lLugNac->estaVacia()){										//Comprueba que se haya leído algún dato
-			ofs << endl << endl << "Poblaciones que pertenecen a la provincia - " << nombreProvincia << endl;
+			ofs << "\n\nCenso de las poblaciones que pertenecen a la provincia - " << nombreProvincia << endl;
 			ofs << "-----------------------------------------------------------------------------------------------" << endl;
 			lLugNac->moverInicio();
 			while(!lLugNac->finLista()){
