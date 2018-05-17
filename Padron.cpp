@@ -470,6 +470,7 @@ void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 	if(nPersonas != 0){													//Comprueba que se haya encontrado alguna vía que comience por la raíz dada o que exista algún habitante nacido en la provincia dada en todas las vías
 		cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
 				 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
+		cout << "---------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	}else{																//Sino se indica al usuario por consola
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA POR LA RÁIZ (" << raiz << ") O NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
 	}

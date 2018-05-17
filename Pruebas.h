@@ -16,7 +16,7 @@ private:
 	Padron p;
 
 private:
-	/**@SOBRECARGA_OPERADORES
+	/**@PRUEBA :SOBRECARGA_OPERADORES
 	 * CLASE : Via
 	 * 		*v1   >   *v1   ->  FALSE
 	 * 		*v1   >   *v2   ->  FALSE
@@ -56,6 +56,18 @@ private:
 	 */
 	void pruebaSobrecargaOperadores();
 
+	/**@PRUEBA: EJECUCIÓN SECUENCIAL DE TODOS LOS ALGORITMOS DEL PROTECTO
+	 *
+	 * Ejecución secuencial de todos los algoritmos del proyecto con parámetros de entrada predefinidos. Consituye una
+	 * 	prueba de integración entre las distintas partes del programa:
+	 * 		-Muestra los tiempos de ejecución para cada algoritmo
+	 * 		-Para los algoritmos con dos implementaciones, una en EDL y otra en EDNL, se ejecutan 'nRep' veces cada una
+	 * 			mostrando los tiempos parciales y el tiempo promedio
+	 *
+	 * 	En el fichero 'ruta' del sistema de archivos en el que se ejecuta el proyecto se vuelca una tabla con los tiempos
+	 * 		de ejución calculados
+	 */
+	void pruebaEjecucionSecuencial();
 public:
 	Pruebas();
 	~Pruebas();
