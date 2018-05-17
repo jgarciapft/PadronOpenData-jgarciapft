@@ -118,13 +118,33 @@ void Pruebas::pruebaSobrecargaOperadores() {
 	delete v2;
 }
 
+void Pruebas::pruebaMetodosAuxiliares() {
+	salidaPruebas << "INICIO : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
+	salidaPruebas << "FIN : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
+
+	salidaPruebas << "INICIO : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
+	salidaPruebas << "FIN : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
+
+	salidaPruebas << "INICIO : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
+	salidaPruebas << "FIN : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
+
+	salidaPruebas << "INICIO : MÉTODO \'Padron::alg11\'" << endl;
+	salidaPruebas << "FIN : MÉTODO \'Padron::alg11\'" << endl;
+
+	salidaPruebas << "INICIO : MÉTODO \'Padron::alg12\'" << endl;
+	salidaPruebas << "FIN : MÉTODO \'Padron::alg12\'" << endl;
+
+	salidaPruebas << "INICIO : MÉTODO \'Padron::filtroInOrden\'" << endl;
+	salidaPruebas << "FIN : MÉTODO \'Padron::filtroInOrden\'" << endl;
+}
+
 void Pruebas::pruebaUI() {
 	cout << "Compruebe que :" << endl <<
 		 "\t 1. Solo se puede ejecutar un algoritmo si antes se han cargado los datos del padrón, de vías y de barrios (Algoritmo 1)" << endl <<
 		 "\t 2. Solo se pueden cargar una vez los datos (Algoritmo 1)" << endl << endl <<
    		 "Una vez termine utilice la opción cero (0) para continuar con las pruebas" << endl;
 
-	///@TEST: Descomentar para probar
+	///@TEST: Descomentar para probar. Las pruebas preliminares no arrojan ningún error
 //	UI ui;																		//Ejecuta la UI para que el usuario realice las comprobaciones mencionadas
 
 	salidaPruebas << "PRUEBA SUPERADA" << endl;
@@ -318,7 +338,7 @@ void Pruebas::pruebaEjecucionSecuencial() {
 
 
 
-void Pruebas::ejecutarPruebas() {
+void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas del proyecto
 	salidaPruebas << "EJECUTANDO # Sobrecarga de operadores" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
 	pruebaSobrecargaOperadores();
