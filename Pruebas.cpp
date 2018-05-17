@@ -343,6 +343,10 @@ void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas de
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
 	pruebaSobrecargaOperadores();
 	salidaPruebas << endl << endl;
+	salidaPruebas << "EJECUTANDO # Métodos auxiliares" << endl;
+	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
+	pruebaMetodosAuxiliares();
+	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Interfaz de usuario (UI)" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
 	pruebaUI();
