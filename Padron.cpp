@@ -115,13 +115,12 @@ void Padron::cargarVias() {
 			for(int i=0; i<N_CAMPOS_VIA-1; i++){						//Lee todos los campos de cada vía menos el último
 				getline(fEnt, campos[i], SEP);
 			}
+			getline(fEnt, campos[4]);									//Lee el último campo
 			if(campos[0] == DEF_PLACEHOLDER)							//Comprueba si la vía no está asignada a ningún barrio
 				campos[0] = DEF_BARRIO;									//Entonces se le asigna al barrio contenedor
-			getline(fEnt, campos[4]);									//Lee el último campo
 			if(!fEnt.eof()){											//Doble comprobación del FINAL DE FICHERO (EOF) para evitar leer una línea vacía adicional
 				vAux = new Via(campos[0], campos[1], atof(campos[2].c_str()), campos[3], atoi(campos[4].c_str()));
 				lVias->insertar(vAux);									//Insertar la vía creada en la lista de vías auxiliar
-				lVias->avanzar();
 				aVias->insertar(vAux);									//Inserta la vía recién creada en el ABB. No se asegura que el ABB quede perfectamente balanceado
 				gBarrio->insertarVia(vAux);								//Inserta la vía creada en la estructura de datos
 			}
