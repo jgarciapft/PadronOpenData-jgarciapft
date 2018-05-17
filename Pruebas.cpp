@@ -258,12 +258,15 @@ void Pruebas::pruebaEjecucionSecuencial() {
 			vTEejecAcum[2] += vTEjecAlg12EDL[i];
 			vTEejecAcum[3] += vTEjecAlg12EDNL[i];
 		}
-		ofs << "-----------------------------------------------------------------------------------------------" << endl;
-		ofs << "-----------------------------------------------------------------------------------------------" << endl;
+		ofs << "······························································································" << endl;
 		ofs << "\t\t\t\t\t\t\tTIEMPO MEDIO DE EJECUCIÓN" << endl;
 		ofs << "  Algoritmo 11 EDL \t| Algoritmo 11 EDNL | Algoritmo 12 EDL  | Algoritmo 12 EDNL |" << endl;
 		ofs << vTEejecAcum[0]/nRep << " seg.\t| " << vTEejecAcum[1]/nRep << " seg.\t| " << vTEejecAcum[2]/nRep << " seg.\t| "
 			  << vTEejecAcum[3]/nRep << " seg.\t|" << endl;
+		ofs << "······························································································" << endl;
+		ofs << "\t\t\t\t\t\tPORCENTAJE DE MEJORA RELATIVA" << endl << " \t\t\t\t\t\t";
+		ofs <<"Algoritmo 11 | Algoritmo 12" << endl << "\t\t\t\t\t\t\t";
+		ofs << (vTEejecAcum[1]/nRep)/(vTEejecAcum[0]/nRep)*100 << " % | " << (vTEejecAcum[3]/nRep)/(vTEejecAcum[2]/nRep)*100 << " % " << endl;
 		ofs << "-----------------------------------------------------------------------------------------------" << endl;
 		salidaPruebas << "Tabla de tiempos de ejecución creada en - \'" << RUTA_FIHCERO_PRUEBAS << "\'" << endl;
 	}else{																		//Sino se indica al usuario por consola
