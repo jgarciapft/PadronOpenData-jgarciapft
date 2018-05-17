@@ -59,7 +59,7 @@ void GestorNacionalidad::ordenarLista(ListaPI<Nacionalidad*>*& lNacion) {
 		do{
 			lNacion->retroceder();
 			lNacion->consultar(nacion);
-			siguiente = *nacion > *nacionPI;                                                //Indica si el dato insertado/modificado es menor/mayor
+			siguiente = *nacionPI > *nacion;                                                //Indica si el dato insertado/modificado es menor/mayor
 		}while(siguiente && !lNacion->enInicio());
 		if(!siguiente)																		//Comprueba si el dato insertado/modificado es mayor que todos los de la lista
 			lNacion->avanzar();																//No lo es. Hay que insertarlo detrás del PI

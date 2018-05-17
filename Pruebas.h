@@ -18,14 +18,14 @@ private:
 private:
 	/**@SOBRECARGA_OPERADORES
 	 * CLASE : Via
-	 * 		*v1	   >   *v1   ->  FALSE
-	 * 		*v1    >   *v2   ->	 FALSE
-	 * 		*v2	   >   *v1   ->	 TRUE
+	 * 		*v1   >   *v1   ->  FALSE
+	 * 		*v1   >   *v2   ->  FALSE
+	 * 		*v2	  >   *v1   ->  TRUE
 	 *
 	 * CLASE : ComparadorPtrVia
 	 *		v1   operator()   v1   ->	0
-	 *		v1	 operator()	  v2   ->  -1
-	 *		v2	 operator()   v1   ->	1
+	 *		v1	 operator()	  v2   ->   1
+	 *		v2	 operator()   v1   ->  -1
 	 *
 	 * CLASE : Lugar Nacimiento
 	 *		lugNac1   >=   lugNac1   ->  TRUE
@@ -49,6 +49,10 @@ private:
 	 * 		nacion1   >   nacion1   ->  FALSE
 	 * 		nacion1   >   nacion2   ->  FALSE
 	 * 		nacion2   >   nacion1   ->  TRUE
+	 * 		
+	 * 		nacion1   ==  nacion1   ->  TRUE
+	 *		nacion1   ==  nacion2   ->  FALSE
+	 *		nacion1   ==  nacion3   ->  TRUE
 	 */
 	void pruebaSobrecargaOperadores();
 

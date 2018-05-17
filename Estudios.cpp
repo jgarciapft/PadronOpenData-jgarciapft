@@ -43,11 +43,11 @@ void Estudios::mostrar() {									//Muestra toda la información del objeto 'Es
 
 
 bool Estudios::operator >(const Estudios& estudio) {
-	return estudio.nPersonas > nPersonas;					//Criterio de comparación: orden matemático de 'nPersonas'
+	return nPersonas > estudio.nPersonas;					//Criterio de comparación: orden matemático de 'nPersonas'
 }
 
 bool Estudios::operator==(const Estudios &estudio) {
-	return estudio.nivEstudios == nivEstudios;				//Criterio de comparación: comparación lexicográfica de 'nivEsudios'
+	return nivEstudios == estudio.nivEstudios;				//Criterio de comparación: comparación lexicográfica de 'nivEsudios'
 }
 
 }

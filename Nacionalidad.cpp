@@ -43,11 +43,11 @@ void Nacionalidad::mostrar() {									//Muestra toda la información del objeto
 
 
 bool Nacionalidad::operator >(const Nacionalidad& nacion) {
-	return nacion.nPersonas > nPersonas;						//Criterio de comparación: orden matemático de 'nPersonas'
+	return nPersonas > nacion.nPersonas;						//Criterio de comparación: orden matemático de 'nPersonas'
 }
 
 bool Nacionalidad::operator ==(const Nacionalidad& nacion) {
-	return nacion.nacionalidad == nacionalidad;					//Criterio de comparación: comparación lexicográfica de 'nacionalidad'
+	return nacionalidad == nacion.nacionalidad;					//Criterio de comparación: comparación lexicográfica de 'nacionalidad'
 }
 
 }
