@@ -23,6 +23,7 @@ Pruebas::~Pruebas() {
 	salidaPruebas << "***********************************************************************************************" << endl;
 	salidaPruebas << "\t\t\t\t\t\t\tFIN DE LAS PRUEBAS DEL PROYECTO" 								  				  << endl;
 	salidaPruebas << "***********************************************************************************************" << endl << endl;
+	cout << "LOS RESULTADOS DE LAS PRUEBAS SE HAN VOLCADO EN EL FICHERO - " << RUTA_FIHCERO_PRUEBAS << " (RUTA RELATIVA EN LA RAÍZ DEL PROGRAMA)" << endl;
 
 	salidaPruebas.close();											//Cierra el flujo
 }
@@ -185,6 +186,7 @@ void Pruebas::pruebaSobrecargaOperadores() {
 void Pruebas::pruebaMetodosAuxiliares() {
 	salidaPruebas << "INICIO : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
 	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();
+	Nacionalidad* nacionAux;
 
 	///@TEST: 1. lista1 - Lista vacía
 	MetodosAuxiliares::ordenarLista(lNacion);
@@ -206,6 +208,15 @@ void Pruebas::pruebaMetodosAuxiliares() {
 
 	salidaPruebas << "INICIO : MÉTODO \'Padron::filtroInOrden\'" << endl;
 	salidaPruebas << "FIN : MÉTODO \'Padron::filtroInOrden\'" << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lNacion->moverInicio();
+	while(!lNacion->finLista()){
+		lNacion->consultar(nacionAux);
+		lNacion->avanzar();
+		delete nacionAux;
+	}
+	delete lNacion;
 }
 
 void Pruebas::pruebaUI() {
@@ -219,8 +230,6 @@ void Pruebas::pruebaUI() {
 
 	salidaPruebas << "PRUEBA SUPERADA" << endl;
 }
-
-
 
 void Pruebas::pruebaEjecucionSecuencial() {
 	ofstream ofs;																//Flujo de salida para el volcado de la tabla de tiempos de ejecución
@@ -407,6 +416,8 @@ void Pruebas::pruebaEjecucionSecuencial() {
 
 	ofs.close();																//Cierra el flujo
 }
+
+
 
 void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas del proyecto
 	salidaPruebas << "EJECUTANDO # Utilidadades de cadena" << endl;
