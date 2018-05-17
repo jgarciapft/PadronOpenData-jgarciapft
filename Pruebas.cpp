@@ -7,22 +7,23 @@
 using namespace std;
 
 Pruebas::Pruebas() {
-	salidaPruebas << "***********************************************************************************************" << endl;
-	salidaPruebas << "				INICIO DE LAS PRUEBAS DEL PROYECTO" 							 				  << endl;
-	salidaPruebas << "***********************************************************************************************" << endl << endl;
-
 	salidaPruebas.open(RUTA_FIHCERO_PRUEBAS.c_str(), ios::trunc);	//Modo de apertura: truncamiento. Sobreescribe cualquier dato previo en cada ejecución de las pruebas
-	if(salidaPruebas.is_open())										//Comprueba que se haya podido abrir el flujo
-		ejecutarPruebas();											//Ejecuta todas las pruebas del proyecto
-	else															//Sino se indica al usuario por consola
-		cout << "ERROR : No se ha podido crear el fichero de volcado de las pruebas" << endl;
+	if(salidaPruebas.is_open())	{									//Comprueba que se haya podido abrir el flujo
+		salidaPruebas << "***********************************************************************************************" << endl;
+		salidaPruebas << "\t\t\t\t\t\t\tINICIO DE LAS PRUEBAS DEL PROYECTO" 							 				  << endl;
+		salidaPruebas << "***********************************************************************************************" << endl << endl;
 
-	salidaPruebas << "***********************************************************************************************" << endl;
-	salidaPruebas << "				FIN DE LAS PRUEBAS DEL PROYECTO" 								  				  << endl;
-	salidaPruebas << "***********************************************************************************************" << endl << endl;
+		ejecutarPruebas();											//Ejecuta todas las pruebas del proyecto
+	}else{															//Sino se indica al usuario por consola
+		cout << "ERROR : No se ha podido crear el fichero de volcado de las pruebas" << endl;
+	}
 }
 
 Pruebas::~Pruebas() {
+	salidaPruebas << "***********************************************************************************************" << endl;
+	salidaPruebas << "\t\t\t\t\t\t\tFIN DE LAS PRUEBAS DEL PROYECTO" 								  				  << endl;
+	salidaPruebas << "***********************************************************************************************" << endl << endl;
+
 	salidaPruebas.close();											//Cierra el flujo
 }
 
@@ -132,6 +133,7 @@ void Pruebas::pruebaEjecucionSecuencial() {
 	double vTEjecAlg11EDNL[nRep];												//Vector para almacenar los tiempos de ejecución del algoritmo 11 en su versión EDNL
 	double vTEjecAlg12EDL[nRep];												//Vector para almacenar los tiempos de ejecución del algoritmo 12 en su versión EDL
 	double vTEjecAlg12EDNL[nRep];												//Vector para almacenar los tiempos de ejecución del algoritmo 12 en su versión EDNL
+	double vTEejecAcum[4];														//Vector de acumuladores para calcular la media estadística de los tiempos de ejecución de los algoritmos con doble implementación
 	double t;																	//Acumulador que representa la diferencia de tiempo entre dos llamadas consecutivas a std::clock(). Utilizado para medir tiempos de ejecución
 
 	///@TEST: Carga de datos
@@ -229,6 +231,7 @@ void Pruebas::pruebaEjecucionSecuencial() {
 		vTEjecAlg12EDNL[i] = -t / CLOCKS_PER_SEC;
 	}
 
+	//Volcado de resultados
 	ofs.open(ruta.c_str(), ios::trunc);											//Modo de apertura: truncamiento. Sobreescribe cualquier dato previo en cada ejecución de las pruebas
 	if(ofs.is_open()){															//Comprueba que el flujo esté abierto
 		//Volcado de los tiempos de ejecución de los algoritmos con implementación única
@@ -243,12 +246,24 @@ void Pruebas::pruebaEjecucionSecuencial() {
 		ofs << "\t\t\tTABLA DE TIEMPOS - Algoritmos con doble implementación (EDL y EDNL)" << endl;
 		ofs << "\t|Algoritmo 11 EDL \t| Algoritmo 11 EDNL | Algoritmo 12 EDL  | Algoritmo 12 EDNL |" << endl;
 		ofs << "-----------------------------------------------------------------------------------------------" << endl;
+		for(int i=0; i < 4; i++){ vTEejecAcum[i] = 0; }							//Inicialización de los acumuladores
 		for(int i=0; i < nRep; i++){
-			ofs << "#" << i+1 << " |" << vTEjecAlg11EDL[i] << " seg." <<
-				   "\t| " << vTEjecAlg11EDNL[i] << " seg." <<
-				   "\t| " << vTEjecAlg12EDL[i] << " seg." <<
-				   "\t| " << vTEjecAlg12EDNL[i] << " seg.\t|" << endl;
+			ofs << "#" << i+1 << " |" << vTEjecAlg11EDL[i] << " seg.\t| " <<
+				vTEjecAlg11EDNL[i] << " seg\t| " <<
+				vTEjecAlg12EDL[i] << " seg.\t| " <<
+				vTEjecAlg12EDNL[i] << " seg.\t|" << endl;
+			//Sumatorio de tiempos de ejecución
+			vTEejecAcum[0] += vTEjecAlg11EDL[i];
+			vTEejecAcum[1] += vTEjecAlg11EDNL[i];
+			vTEejecAcum[2] += vTEjecAlg12EDL[i];
+			vTEejecAcum[3] += vTEjecAlg12EDNL[i];
 		}
+		ofs << "-----------------------------------------------------------------------------------------------" << endl;
+		ofs << "-----------------------------------------------------------------------------------------------" << endl;
+		ofs << "\t\t\t\t\t\t\tTIEMPO MEDIO DE EJECUCIÓN" << endl;
+		ofs << "  Algoritmo 11 EDL \t| Algoritmo 11 EDNL | Algoritmo 12 EDL  | Algoritmo 12 EDNL |" << endl;
+		ofs << vTEejecAcum[0]/nRep << " seg.\t| " << vTEejecAcum[1]/nRep << " seg.\t| " << vTEejecAcum[2]/nRep << " seg.\t| "
+			  << vTEejecAcum[3]/nRep << " seg.\t|" << endl;
 		ofs << "-----------------------------------------------------------------------------------------------" << endl;
 		salidaPruebas << "Tabla de tiempos de ejecución creada en - \'" << RUTA_FIHCERO_PRUEBAS << "\'" << endl;
 	}else{																		//Sino se indica al usuario por consola
