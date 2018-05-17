@@ -14,6 +14,7 @@ class Pruebas {
 
 private:
 	Padron p;
+	ofstream salidaPruebas;
 
 private:
 	/**@PRUEBA :SOBRECARGA_OPERADORES
