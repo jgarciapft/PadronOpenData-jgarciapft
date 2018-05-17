@@ -4,7 +4,7 @@
 
 #include "Pruebas.h"
 
-using namespace std;
+namespace pruebas{
 
 Pruebas::Pruebas() {
 	salidaPruebas.open(RUTA_FIHCERO_PRUEBAS.c_str(), ios::trunc);	//Modo de apertura: truncamiento. Sobreescribe cualquier dato previo en cada ejecución de las pruebas
@@ -120,6 +120,12 @@ void Pruebas::pruebaSobrecargaOperadores() {
 
 void Pruebas::pruebaMetodosAuxiliares() {
 	salidaPruebas << "INICIO : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
+	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();
+
+	///@TEST: 1. lista1 - Lista vacía
+	MetodosAuxiliares::ordenarLista(lNacion);
+	if(lNacion->estaVacia() != false)
+		cout << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #1 - La lista ha sido modificada" << endl;
 	salidaPruebas << "FIN : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
@@ -341,7 +347,7 @@ void Pruebas::pruebaEjecucionSecuencial() {
 void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas del proyecto
 	salidaPruebas << "EJECUTANDO # Sobrecarga de operadores" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
-	pruebaSobrecargaOperadores();
+//	pruebaSobrecargaOperadores();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Métodos auxiliares" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
@@ -349,10 +355,12 @@ void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas de
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Interfaz de usuario (UI)" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
-	pruebaUI();
+//	pruebaUI();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Prueba de ejecución secuencial" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
-	pruebaEjecucionSecuencial();
+//	pruebaEjecucionSecuencial();
 	salidaPruebas << endl << endl;
+}
+
 }

@@ -2,14 +2,17 @@
  * PLACEHOLDER
  */
 
-#ifndef PRUEBAS_H
-#define PRUEBAS_H
+#ifndef PRUEBAS_H_
+#define PRUEBAS_H_
 
 #include "ui.h"
 #include "Padron.h"
 #include "timer.h"
 
-using namespace std;
+///@TEST: Includes de prueba de clases
+#include "MetodosAuxiliares.h"
+
+namespace pruebas{
 
 class Pruebas {
 
@@ -52,7 +55,7 @@ private:
 	 * 		nacion1   >   nacion1   ->  FALSE
 	 * 		nacion1   >   nacion2   ->  FALSE
 	 * 		nacion2   >   nacion1   ->  TRUE
-	 * 		
+	 *
 	 * 		nacion1   ==  nacion1   ->  TRUE
 	 *		nacion1   ==  nacion2   ->  FALSE
 	 *		nacion1   ==  nacion3   ->  TRUE
@@ -62,10 +65,10 @@ private:
 	/**@PRUEBA: MÉTODOS AUXILIARES
 	 *
 	 *@MÉTODO : GestorNacionalidad::ordenarLista y GestorEstudios::ordenarLista
-	 * 		1. lista1 - Lista vacía 						  ->   No hace nada
-	 * 		2. lista2 - Lista con 1 elemento				  ->   No la modifica
-	 * 		3. lista3 - Lista con 10 elementos ordenados	  ->   No la modifica
-	 * 		4. lista4 - Lista con 10 elementos desordenados	  ->   Queda ordenada descendentemente por número de habitantes (elem0, elem 2, ..., elem9)
+	 * 		1. Lista vacía 						  	 ->   No hace nada
+	 * 		2. Lista con 1 elemento				  	 ->   No la modifica
+	 * 		3. Lista con 10 elementos ordenados	  	 ->   No la modifica
+	 * 		4. Lista con 10 elementos desordenados	 ->   Queda ordenada descendentemente por número de habitantes (elem0, elem 2, ..., elem9)
 	 *
 	 * @MÉTODO : GestorBarrio::insertarVia
 	 * 		1. v1 está en lBarrios      ->   v1 se inserta en el gestor de vías del barrio
@@ -125,4 +128,6 @@ public:
 	void ejecutarPruebas();
 };
 
-#endif /* PADRONOPENDATA_JGARCIAPFT_PRUEBAS_H */
+}
+
+#endif /* PADRONOPENDATA_JGARCIAPFT_PRUEBAS_H_ */
