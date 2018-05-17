@@ -10,6 +10,7 @@
 namespace pruebas {
 
 class MetodosAuxiliares {
+
 public:
 	MetodosAuxiliares();
 	~MetodosAuxiliares();

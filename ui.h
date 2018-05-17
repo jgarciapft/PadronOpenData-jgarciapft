@@ -11,6 +11,7 @@
 
 #include "Padron.h"
 #include "timer.h"
+#include "Pruebas.h"
 
 class UI {
 

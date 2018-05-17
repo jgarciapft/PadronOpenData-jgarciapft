@@ -10,6 +10,8 @@ MetodosAuxiliares::MetodosAuxiliares() {}
 
 MetodosAuxiliares::~MetodosAuxiliares() {}
 
+
+
 void MetodosAuxiliares::ordenarLista(ListaPI<Nacionalidad *> *&lNacion) {
 	bool siguiente;																			/* Bandera que compara si el dato modificado/insertado con el anterior (sabiendo que existe) antes de comprobar si el PI está en el inicio.
 																							 * 		CONTROLA EL CASO DEL SEGUNDO ELEMENTO INSERTADO: al comprobar la condición del bucle no compararía el primer dato con el segundo,
@@ -38,6 +40,5 @@ void MetodosAuxiliares::ordenarLista(ListaPI<Nacionalidad *> *&lNacion) {
 		lNacion->insertar(nacionPI);														//Si era el mayor de todos se inserta el primero. Si no ya se ha avanzado el PI y se puede insertar detrás de éste
 	}
 }
-
 
 }
