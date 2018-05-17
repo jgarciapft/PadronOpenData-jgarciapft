@@ -118,6 +118,18 @@ void Pruebas::pruebaSobrecargaOperadores() {
 	delete v2;
 }
 
+void Pruebas::pruebaUI() {
+	cout << "Compruebe que :" << endl <<
+		 "\t 1. Solo se puede ejecutar un algoritmo si antes se han cargado los datos del padrón, de vías y de barrios (Algoritmo 1)" << endl <<
+		 "\t 2. Solo se pueden cargar una vez los datos (Algoritmo 1)" << endl << endl <<
+   		 "Una vez termine utilice la opción cero (0) para continuar con las pruebas" << endl;
+
+	///@TEST: Descomentar para probar
+//	UI ui;																		//Ejecuta la UI para que el usuario realice las comprobaciones mencionadas
+
+	salidaPruebas << "PRUEBA SUPERADA" << endl;
+}
+
 void Pruebas::pruebaEjecucionSecuencial() {
 	ofstream ofs;																//Flujo de salida para el volcado de la tabla de tiempos de ejecución
 	string ruta = "TablaTiemposEjecucion.txt";									//Ruta relativa del fichero de volcado de la tabla con los tiempos calculados de la ejecución de todos los algoritmos
@@ -138,98 +150,126 @@ void Pruebas::pruebaEjecucionSecuencial() {
 
 	///@TEST: Carga de datos
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 1" << endl;
 	p.cargarBarrios();
 	p.cargarVias();
 	p.cargarDatosDemograficos();
 	t -= Time::getTime();
 	p.mostrarEstructura();														//Muestra todos los datos cargados y su estructura
+	salidaPruebas << "FIN : Algoritmo 1" << endl;
 	vTEjec[0] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 2
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 2" << endl;
 	p.alg2(nombreBarrio);
+	salidaPruebas << "FIN : Algoritmo 2" << endl;
 	t -= Time::getTime();
 	vTEjec[1] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 3
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 3" << endl;
 	p.alg3();
+	salidaPruebas << "FIN : Algoritmo 3" << endl;
 	t -= Time::getTime();
 	vTEjec[2] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 4
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 4" << endl;
 	p.alg4();
+	salidaPruebas << "FIN : Algoritmo 4" << endl;
 	t -= Time::getTime();
 	vTEjec[3] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 5
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 5" << endl;
 	p.alg5();
+	salidaPruebas << "FIN : Algoritmo 5" << endl;
 	t -= Time::getTime();
 	vTEjec[4] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 6
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 6" << endl;
 	p.alg6();
+	salidaPruebas << "FIN : Algoritmo 6" << endl;
 	t -= Time::getTime();
 	vTEjec[5] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 7
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 7" << endl;
 	p.alg7(limInf, limSup);
+	salidaPruebas << "FIN : Algoritmo 7" << endl;
 	t -= Time::getTime();
 	vTEjec[6] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 8
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 8" << endl;
 	p.alg8(nombreBarrio);
+	salidaPruebas << "FIN : Algoritmo 8" << endl;
 	t -= Time::getTime();
 	vTEjec[7] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 9
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 9" << endl;
 	p.alg9();
+	salidaPruebas << "FIN : Algoritmo 9" << endl;
 	t -= Time::getTime();
 	vTEjec[8] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 10
 	t = Time::getTime();
+	salidaPruebas << "INICIO : Algoritmo 10" << endl;
 	p.alg10(nombreProvincia);
+	salidaPruebas << "FIN : Algoritmo 10" << endl;
 	t -= Time::getTime();
 	vTEjec[9] = -t / CLOCKS_PER_SEC;
 
 	///@TEST: Algoritmo 11_EDL
+	salidaPruebas << "INICIO : Algoritmo 11 EDL" << endl;
 	for(int i=0; i < nRep; i++) {
 		t = Time::getTime();
 		p.alg11_EDL(nombreVia);
 		t -= Time::getTime();
 		vTEjecAlg11EDL[i] = -t / CLOCKS_PER_SEC;
 	}
+	salidaPruebas << "FIN : Algoritmo 11 EDL" << endl;
 
 	///@TEST: Algoritmo 11_EDNL
+	salidaPruebas << "INICIO : Algoritmo 11 EDNL" << endl;
 	for(int i=0; i < nRep; i++) {
 		t = Time::getTime();
 		p.alg11_EDNL(nombreVia);
 		t -= Time::getTime();
 		vTEjecAlg11EDNL[i] = -t / CLOCKS_PER_SEC;
 	}
+	salidaPruebas << "FIN : Algoritmo 11 EDNL" << endl;
 
 	///@TEST: Algoritmo 12_EDL
+	salidaPruebas << "INICIO : Algoritmo 12 EDL" << endl;
 	for(int i=0; i < nRep; i++) {
 		t = Time::getTime();
 		p.alg12_EDL(raizVia, nombreProvincia);
 		t -= Time::getTime();
 		vTEjecAlg12EDL[i] = -t / CLOCKS_PER_SEC;
 	}
+	salidaPruebas << "FIN : Algoritmo 12 EDL" << endl;
 
 	///@TEST: Algoritmo 12_EDNL
+	salidaPruebas << "INICIO : Algoritmo 12 EDNL" << endl;
 	for(int i=0; i < nRep; i++) {
 		t = Time::getTime();
 		p.alg12_EDNL(raizVia, nombreProvincia);
 		t -= Time::getTime();
 		vTEjecAlg12EDNL[i] = -t / CLOCKS_PER_SEC;
 	}
+	salidaPruebas << "FIN : Algoritmo 12 EDNL" << endl;
 
 	//Volcado de resultados
 	ofs.open(ruta.c_str(), ios::trunc);											//Modo de apertura: truncamiento. Sobreescribe cualquier dato previo en cada ejecución de las pruebas
@@ -282,9 +322,13 @@ void Pruebas::ejecutarPruebas() {
 	salidaPruebas << "EJECUTANDO # Sobrecarga de operadores" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
 	pruebaSobrecargaOperadores();
+	salidaPruebas << endl << endl;
+	salidaPruebas << "EJECUTANDO # Interfaz de usuario (UI)" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
+	pruebaUI();
+	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Prueba de ejecución secuencial" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
 	pruebaEjecucionSecuencial();
-	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
+	salidaPruebas << endl << endl;
 }

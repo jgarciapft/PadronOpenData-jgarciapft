@@ -5,6 +5,7 @@
 #ifndef PRUEBAS_H
 #define PRUEBAS_H
 
+#include "UI.h"
 #include "Padron.h"
 #include "timer.h"
 
@@ -17,7 +18,7 @@ private:
 	ofstream salidaPruebas;
 
 private:
-	/**@PRUEBA :SOBRECARGA_OPERADORES
+	/**@PRUEBA: SOBRECARGAR DE OPERADORES
 	 * CLASE : Via
 	 * 		*v1   >   *v1   ->  FALSE
 	 * 		*v1   >   *v2   ->  FALSE
@@ -56,6 +57,15 @@ private:
 	 *		nacion1   ==  nacion3   ->  TRUE
 	 */
 	void pruebaSobrecargaOperadores();
+
+	/**@PRUEBA: INTERFZA DE USUARIO(UI)
+	 *
+	 * Comprobaciones por parte del usuario:
+	 * 		1. Solo se puede ejecutar un algoritmo si antes se han cargado
+	 * 			los datos del padrón, de vías y de barrios (Algoritmo 1)
+	 * 		2. Solo se pueden cargar una vez los datos (Algoritmo 1)
+	 */
+	void pruebaUI();
 
 	/**@PRUEBA: EJECUCIÓN SECUENCIAL DE TODOS LOS ALGORITMOS DEL PROTECTO
 	 *
