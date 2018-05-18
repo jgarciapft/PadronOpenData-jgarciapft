@@ -32,18 +32,20 @@ private:
 	 *
 	 * @CLASE : Via
 	 * 		*v1   >   *v1   ->  FALSE
-	 * 		*v1   >   *v2   ->  FALSE
-	 * 		*v2	  >   *v1   ->  TRUE
+	 * 		*v1   >   *v2   ->  TRUE
+	 * 		*v2	  >   *v1   ->  FALSE
 	 *
 	 * @CLASE : ComparadorPtrVia
 	 *		v1   operator()   v1   ->	0
-	 *		v1	 operator()	  v2   ->   1
-	 *		v2	 operator()   v1   ->  -1
+	 *		v1	 operator()	  v2   ->  -1
+	 *		v2	 operator()   v1   ->   1
+	 *		v1   operator()   v3   ->  -1
+	 *		v3   operator()   v1   ->   1
 	 *
 	 * @CLASE : Lugar Nacimiento
 	 *		lugNac1   >=   lugNac1   ->  TRUE
-	 *		lugNac1   >=   lugNac2   ->  FALSE
-	 *		lugNac2   >=   lugNac1   ->  TRUE
+	 *		lugNac1   >=   lugNac2   ->  TRUE
+	 *		lugNac2   >=   lugNac1   ->  FALSE
 	 *
 	 *		lugNac1   ==   lugNac1   ->  TRUE
 	 *		lugNac1   ==   lugNac2   ->  FALSE
@@ -92,10 +94,11 @@ private:
 	 * 			3.2 v3 es alfabéticamente menor que el primer elemento y alfabéticamente mayor que el último   ->   v3 se inserta en la posición 2 (ViaB, ViaC, ViaD)
 	 *
 	 * @MÉTODO : Padron::alg11
-	 * 		1. El nombre de la vía v4 está en el ABB
-	 * 			1.1 v4 tiene 1 tramo				  ->   No se buscan más tramos en el subárbol izquierdo
-	 * 			1.2 v4 tiene más de 1 tramo			  ->   Se buscan más tramos en el subárbol izquierdo (1 tramo más)
-	 * 		2. v4 v1 no está en el ABB   			  ->   Se indica al usuario por consola que se ha encontrado
+	 * 		1. La vía 'nombreVia' está en el ABB
+	 * 			1.1 La vía 'nombreVia' tiene 1 tramo			->   Cont = 1
+	 * 			1.2 La vía 'nombreVia' tiene 2 tramos		    ->   Cont = 2
+	 * 			1.3 La vía 'nombreVia' tiene más de 2 tramos	->   Si funciona para 2 tramos, fuciona para 'n' tramos (n >= 2)
+	 * 		2.  La vía 'nombreVia' no está en el ABB   			->   Cont = 0. Se vuelca en el fichero de pruebas que no se ha encontrado la vía
 	 *
 	 * @MÉTODO : Padron::alg12
 	 * 		1. Ninguna vía comienza por la raíz				   ->  Se indica al usuario por consola que no se ha encontrado

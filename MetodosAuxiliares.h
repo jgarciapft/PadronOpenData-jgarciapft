@@ -65,6 +65,10 @@ namespace pruebas {
 	 */
 	static void insertarViaOrden(Via* v, ListaPI<Via*>& lVias);
 
+	static void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, int& cont, bool& enc);
+
+
+
 void pruebaTrocearCadenaAnioNacimiento(string text, ofstream& salidaPruebas) {
 
     char delim = ';';
@@ -153,6 +157,22 @@ void insertarViaOrden(Via* v, ListaPI<Via*>& lVias) {
 			lVias.avanzar();
 	}
 	lVias.insertar(v);
+}
+
+void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, int& cont, bool& enc) {
+	Via* vRaiz = aVias->raiz();
+
+	if(vRaiz->getNombreVia() == nombreVia && aVias->hijoIzq() != NULL){
+		enc = true;
+		cont++;
+		alg11(aVias->hijoIzq(), nombreVia, cont, enc);
+	}else if(vRaiz->getNombreVia() < nombreVia && !enc){
+		if(aVias->hijoDer() != NULL)
+			alg11(aVias->hijoDer(), nombreVia, cont, enc);
+	}else if(!enc){
+		if(aVias->hijoIzq() != NULL)
+			alg11(aVias->hijoIzq(), nombreVia, cont, enc);
+	}
 }
 
 }

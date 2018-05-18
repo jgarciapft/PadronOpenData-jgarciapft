@@ -49,11 +49,11 @@ void LugarNacimiento::mostrar() {										//Muestra toda la información del ob
 
 
 bool LugarNacimiento::operator >=(const LugarNacimiento& lugNac) {
-	return lugNac.provinciaPais >= provinciaPais;						//Criterio de comparación: orden alfabético de 'provinciaPais'
+	return provinciaPais <= lugNac.provinciaPais;						//Criterio de comparación: orden alfabético de 'provinciaPais'
 }
 
 bool LugarNacimiento::operator ==(const LugarNacimiento& lugNac) {
-	return lugNac.provinciaPais == provinciaPais;						//Criterio de comparación: orden lexicográfico de 'provinciaPais'
+	return provinciaPais == lugNac.provinciaPais;						//Criterio de comparación: coincidencia lexicográfica de 'provinciaPais'
 }
 
 }

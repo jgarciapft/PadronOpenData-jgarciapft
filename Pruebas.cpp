@@ -54,15 +54,16 @@ void Pruebas::pruebaUtils() {
 
 void Pruebas::pruebaSobrecargaOperadores() {
 	salidaPruebas << "INICIO : Sobrecarga de operadores de la clase VIA" << endl;
-	Via* v1 = new Via("BarrioA", "Canovas", 0, "TipoA", 0);
-	Via* v2 = new Via("BarrioB", "Beethoven", 0, "TipoB", 0);
+	Via* v1 = new Via("BarrioA", "ViaA", 0, "TipoA", 0);
+	Via* v2 = new Via("BarrioB", "ViaB", 0, "TipoB", 0);
+	Via* v3 = new Via("BarrioA", "ViaC", 0, "TipoA", 0);
 
 	if(*v1 > *v1 != false)
 		salidaPruebas << "\tERROR : Clase VIA - Operador \'>\' # *v1 > *v1 ->  FALSE\t| En su lugar -> " << bool(*v1 > *v1) << endl;
-	if(*v1 > *v2 != false)
-		salidaPruebas << "\tERROR : Clase VIA - Operador \'>\' # *v1 > *v2 -> FALSE\t| En su lugar -> " << bool(*v1 > *v2) << endl;
-	if(*v2 > *v1 != true)
-		salidaPruebas << "\tERROR : Clase VIA - Operador \'>\' # *v2 > *v1 -> TRUE\t| En su lugar -> " << bool(*v2 > *v1) << endl;
+	if(*v1 > *v2 != true)
+		salidaPruebas << "\tERROR : Clase VIA - Operador \'>\' # *v1 > *v2 -> TRUE\t| En su lugar -> " << bool(*v1 > *v2) << endl;
+	if(*v2 > *v1 != false)
+		salidaPruebas << "\tERROR : Clase VIA - Operador \'>\' # *v2 > *v1 -> FALSE\t| En su lugar -> " << bool(*v2 > *v1) << endl;
 	salidaPruebas << "FIN : Sobrecarga de operadores de la clase VIA" << endl << endl;
 
 	salidaPruebas << "INICIO : Sobrecarga de operadores de la clase COMPARADORPTRVIA" << endl;
@@ -70,23 +71,27 @@ void Pruebas::pruebaSobrecargaOperadores() {
 
 	if(cPtrVia.operator()(v1, v1) != 0)
 		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v1, v1) -> 0\t| En su lugar -> " << cPtrVia.operator()(v1, v1) << endl;
-	if(cPtrVia.operator()(v1, v2) != 1)
-		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v1, v2) -> 1\t| En su lugar -> " << cPtrVia.operator()(v1, v2) << endl;
-	if(cPtrVia.operator()(v2, v1) != -1)
-		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v2, v1) -> -1\t| En su lugar -> " << cPtrVia.operator()(v2, v1) << endl;
+	if(cPtrVia.operator()(v1, v2) != -1)
+		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v1, v2) -> -1\t| En su lugar -> " << cPtrVia.operator()(v1, v2) << endl;
+	if(cPtrVia.operator()(v2, v1) != 1)
+		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v2, v1) -> 1\t| En su lugar -> " << cPtrVia.operator()(v2, v1) << endl;
+	if(cPtrVia.operator()(v1, v3) != -1)
+		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v1, v3) -> -1\t| En su lugar -> " << cPtrVia.operator()(v1, v3) << endl;
+	if(cPtrVia.operator()(v3, v1) != 1)
+		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v3, v1) -> 1\t| En su lugar -> " << cPtrVia.operator()(v3, v1) << endl;
 	salidaPruebas << "FIN : Sobrecarga de operadores de la clase COMPARADORPTRVIA" << endl << endl;
 
 	salidaPruebas << "INICIO : Sobrecarga de operadores de la clase LUGAR DE NACIMIENTO" << endl;
-	LugarNacimiento lugNac1 = LugarNacimiento("PoblacionA", "Caceres", 0);
-	LugarNacimiento lugNac2 = LugarNacimiento("PoblacionB", "Badajoz", 0);
-	LugarNacimiento lugNac3 = LugarNacimiento("PoblacionC", "Caceres", 0);
+	LugarNacimiento lugNac1 = LugarNacimiento("PoblacionA", "ProvinciaA", 0);
+	LugarNacimiento lugNac2 = LugarNacimiento("PoblacionB", "ProvinciaB", 0);
+	LugarNacimiento lugNac3 = LugarNacimiento("PoblacionC", "ProvinciaA", 0);
 
 	if(lugNac1 >= lugNac1 != true)
 		salidaPruebas << "\tERROR : Clase LUGARNACIMIENTO - Operador \'>=\' # lugNac1 >= lugNac1 -> TRUE\t| En su lugar -> " << bool(lugNac1 >= lugNac1) << endl;
-	if(lugNac1 >= lugNac2 != false)
-		salidaPruebas << "\tERROR : Clase LUGARNACIMIENTO - Operador \'>=\' # lugNac1 >= lugNac2 -> FALSE\t| En su lugar -> " << bool(lugNac1 >= lugNac2) << endl;
-	if(lugNac2 >= lugNac1 != true)
-		salidaPruebas << "\tERROR : Clase LUGARNACIMIENTO - Operador \'>=\' # lugNac2 >= lugNac1 -> TRUE\t| En su lugar -> " << bool(lugNac2 >= lugNac1) << endl;
+	if(lugNac1 >= lugNac2 != true)
+		salidaPruebas << "\tERROR : Clase LUGARNACIMIENTO - Operador \'>=\' # lugNac1 >= lugNac2 -> TRUE\t| En su lugar -> " << bool(lugNac1 >= lugNac2) << endl;
+	if(lugNac2 >= lugNac1 != false)
+		salidaPruebas << "\tERROR : Clase LUGARNACIMIENTO - Operador \'>=\' # lugNac2 >= lugNac1 -> FALSE\t| En su lugar -> " << bool(lugNac2 >= lugNac1) << endl;
 
 	if(lugNac1 == lugNac1 != true)
 		salidaPruebas << "\tERROR : Clase LUGARNACIMIENTO - Operador \'==\' # lugNac1 == lugNac1 -> TRUE\t| En su lugar -> " << bool(lugNac1 == lugNac1) << endl;
@@ -97,9 +102,9 @@ void Pruebas::pruebaSobrecargaOperadores() {
 	salidaPruebas << "FIN : Sobrecarga de operadores de la clase LUGAR DE NACIMIENTO" << endl << endl;
 
 	salidaPruebas << "INICIO : Sobrecarga de operadores de la clase ESTUDIOS" << endl;
-	Estudios est1 = Estudios("Nivel_A", 1);
-	Estudios est2 = Estudios("Nivel_B", 2);
-	Estudios est3 = Estudios("Nivel_A", 2);
+	Estudios est1 = Estudios("NivelA", 1);
+	Estudios est2 = Estudios("NivelB", 2);
+	Estudios est3 = Estudios("NivelA", 2);
 
 	if(est1 > est1 != false)
 		salidaPruebas << "\tERROR : Clase ESTUDIOS - Operador \'>\' # est1 > est1 -> FALSE\t| En su lugar -> " << bool(est1 > est1) << endl;
@@ -139,6 +144,7 @@ void Pruebas::pruebaSobrecargaOperadores() {
 	///@NOTA: Liberación de los recursos reservados dinámicamente
 	delete v1;
 	delete v2;
+	delete v3;
 }
 
 void Pruebas::pruebaMetodosAuxiliares() {
@@ -226,7 +232,7 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	insertarViaOrden(v3, lVias);
 	lVias.consultar(vAux);
 	if(lVias.estaVacia() != false || vAux != v3)
-		cout << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #1 - No se ha insertado la vía v3 en la lista" << endl;
+		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #1 - No se ha insertado la vía v3 en la lista" << endl;
 
 	///@TEST: 2.1 v3 es alfabéticamente mayor que el elemento en lVias
 	v3 = new Via("BarrioA", "ViaA", 0, "TipoA", 0);
@@ -234,7 +240,7 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	lVias.moverInicio();
 	lVias.consultar(vAux);
 	if(vAux != v3)
-		cout << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.1 - v3 no está en la posición correcta" << endl;
+		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.1 - v3 no está en la posición correcta" << endl;
 	lVias.borrar();
 	delete vAux;
 
@@ -244,7 +250,7 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	lVias.moverFinal();
 	lVias.consultar(vAux);
 	if(vAux != v3)
-		cout << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.2 - v3 no está en la posición correcta" << endl;
+		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.2 - v3 no está en la posición correcta" << endl;
 
 	///@TEST: 3.2 v3 es alfabéticamente menor que el primer elemento y alfabéticamente mayor que el último
 	v3 = new Via("BarrioC", "ViaC", 0, "TipoC", 0);
@@ -252,7 +258,7 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	lVias.moverInicio();lVias.avanzar();
 	lVias.consultar(vAux);
 	if(vAux != v3)
-		cout << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #3.2 - v3 no está en la posición correcta" << endl;
+		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #3.2 - v3 no está en la posición correcta" << endl;
 
 	///@NOTA: Liberación de los recursos reservados dinámicamente
 	lVias.moverInicio();
@@ -264,7 +270,40 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	salidaPruebas << "FIN : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'Padron::alg11\'" << endl;
+	Arbol<Via*, ComparadorPtrVia>* aVias = new Arbol<Via*, ComparadorPtrVia>();
+	Via* vIns1 = new Via("BarrioC", "ViaC", 0, "TipoC", 0); aVias->insertar(vIns1);
+	Via* vIns2 = new Via("BarrioB", "ViaB", 0, "TipoB", 0); aVias->insertar(vIns2);
+	Via* vIns3 =  new Via("BarrioD", "ViaD", 0, "TipoD", 0); aVias->insertar(vIns3);
+	Via* vIns4 = new Via("BarrioC2", "ViaC", 0, "TipoC", 0); aVias->insertar(vIns4);
+	string nombreVia = "ViaB";
+	int cont = 0;
+	bool enc = false;
 
+	///@TEST: 1.1 La vía 'nombreVia' tiene un tramo
+	alg11(aVias, nombreVia, cont, enc);
+	if(cont != 1 || enc != true)
+		cout << "\tERROR : Método \'Padron::alg11\' - TEST #1.1 - No se ha encontrado 1 solo tramo\t| En su lugar -> " << cont << endl;
+
+	///@TEST: 1.2 La vía 'nombreVia' tiene 2 tramos
+	cont = 0; enc = false; nombreVia = "ViaC";
+
+	alg11(aVias, nombreVia, cont, enc);
+	if(cont != 2 || enc != true)
+		cout << "\tERROR : Método \'Padron::alg11\' - TEST #1.2 - No se han encontrado 2 tramos\t| En su lugar -> " << cont << endl;
+
+	///@TEST: 2.  La vía 'nombreVia' no está en el ABB
+	cont = 0; enc = false; nombreVia = "ViaA";
+
+	alg11(aVias, nombreVia, cont, enc);
+	if(cont != 0 || enc != false)
+		cout << "\tERROR : Método \'Padron::alg11\' - TEST #2 - Se ha encontrado algún tramo\t| En su lugar -> " << cont << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	delete vIns1;
+	delete vIns2;
+	delete vIns3;
+	delete vIns4;
+	delete aVias;
 	salidaPruebas << "FIN : MÉTODO \'Padron::alg11\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'Padron::alg12\'" << endl;
@@ -480,7 +519,7 @@ void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas de
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Sobrecarga de operadores" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
-//	pruebaSobrecargaOperadores();
+	pruebaSobrecargaOperadores();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Métodos auxiliares" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
