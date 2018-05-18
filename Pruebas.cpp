@@ -189,12 +189,12 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	Nacionalidad* nacion = new Nacionalidad("NacionalidadA", 4);
 	Nacionalidad* nacionAux;
 
-	///@TEST: 1. lista1 - Lista vacía
+	///@TEST: 1. lVias - Lista vacía
 	MetodosAuxiliares::ordenarLista(lNacion);
 	if(lNacion->estaVacia() != true)
 		salidaPruebas << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #1 - La lista ha sido modificada" << endl;
 
-	///@TEST 2. Lista con 1 elemento
+	///@TEST 2. lVias con 1 elemento
 	lNacion->insertar(nacion);
 
 	MetodosAuxiliares::ordenarLista(lNacion);
@@ -205,7 +205,7 @@ void Pruebas::pruebaMetodosAuxiliares() {
 		nacionAux->mostrar();
 	}
 
-	///@TEST: 3. Lista con 4 elementos ordenados
+	///@TEST: 3. lVias con 4 elementos ordenados
 	lNacion->avanzar();
 	lNacion->insertar(new Nacionalidad("NacionalidaD", 1));
 	lNacion->insertar(new Nacionalidad("NacionalidaC", 2));
@@ -220,7 +220,7 @@ void Pruebas::pruebaMetodosAuxiliares() {
 			salidaPruebas << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #3 - La lista ordenada ha sido modificada (POS #" << i << endl;
 	}
 
-	///@TEST: 4. Lista con 4 elementos desordenados
+	///@TEST: 4. lVias con 5 elementos desordenados
 	lNacion->retroceder();lNacion->retroceder();
 	lNacion->insertar(new Nacionalidad("NacionalidadE", 5));
 
@@ -228,10 +228,35 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	lNacion->moverInicio();lNacion->consultar(nacionAux);
 	if(nacionAux->getNPersonas() != 5)
 		salidaPruebas << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #4 - La lista no se ha ordenado correctamente" << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lNacion->moverInicio();
+	while(!lNacion->finLista()){
+		lNacion->consultar(nacionAux);
+		lNacion->avanzar();
+		delete nacionAux;
+	}
+	delete lNacion;
 	salidaPruebas << "FIN : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
+	Barrio* bAux = new Barrio("BarrioA", "DistritoA");
+	ListaPI<Barrio*> lBarrios; lBarrios.insertar(bAux);
+	Via* v1 = new Via("BarrioA", "ViaA", 0, "TipoA", 0);
+	Via* v2 = new Via("BarrioB", "ViaA", 0, "TipoA", 0);
 
+	///@TEST: 1. v1 está en lBarrios
+	if(MetodosAuxiliares::insertarVia(v1, lBarrios) != true)
+		salidaPruebas << "\tERROR : Método \'GestorBarrio::insertarVia\' - TEST #1 - No se ha insertado la vía v1 en la lista de barrios" << endl;
+
+	///@TEST: 2. v2 no está en lBarrios
+	if(MetodosAuxiliares::insertarVia(v2, lBarrios) != false)
+		salidaPruebas << "\tERROR : Método \'GestorBarrio::insertarVia\' - TEST #2 - Se se ha insertado la vía v2 en la lista de barrios" << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	delete bAux;
+	delete v1;
+	delete v2;
 	salidaPruebas << "FIN : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
@@ -245,15 +270,6 @@ void Pruebas::pruebaMetodosAuxiliares() {
 
 	salidaPruebas << "INICIO : MÉTODO \'Padron::filtroInOrden\'" << endl;
 	salidaPruebas << "FIN : MÉTODO \'Padron::filtroInOrden\'" << endl;
-
-	///@NOTA: Liberación de los recursos reservados dinámicamente
-	lNacion->moverInicio();
-	while(!lNacion->finLista()){
-		lNacion->consultar(nacionAux);
-		lNacion->avanzar();
-		delete nacionAux;
-	}
-	delete lNacion;
 }
 
 void Pruebas::pruebaUI() {

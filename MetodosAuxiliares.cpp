@@ -31,4 +31,20 @@ void MetodosAuxiliares::ordenarLista(ListaPI<Nacionalidad*>*& lNacion) {
 	}
 }
 
+bool MetodosAuxiliares::insertarVia(Via* v, ListaPI<Barrio*>& lBarrios) {
+	bool enc = false;
+	Barrio* bAux;
+
+	lBarrios.moverInicio();
+	while(!lBarrios.finLista() && !enc){
+		lBarrios.consultar(bAux);
+		lBarrios.avanzar();
+		if(bAux->getNombreBarrio() == v->getBarrioVia()){
+			enc = true;
+		}
+	}
+
+	return enc;
+}
+
 }

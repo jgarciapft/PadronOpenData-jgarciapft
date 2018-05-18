@@ -76,14 +76,15 @@ private:
 	/**@PRUEBA: MÉTODOS AUXILIARES
 	 *
 	 *@MÉTODO : GestorNacionalidad::ordenarLista y GestorEstudios::ordenarLista
-	 * 		1. Lista vacía 						  	 ->   No hace nada
-	 * 		2. Lista con 1 elemento				  	 ->   No la modifica
-	 * 		3. Lista con 4 elementos ordenados	  	 ->   No la modifica
-	 * 		4. Lista con 4 elementos desordenados	 ->   Queda ordenada descendentemente por número de habitantes (elem0, elem 2, ..., elem9)
+	 * 		1. lVias vacía 						  	 ->   No hace nada
+	 * 		2. lVias con 1 elemento				  	 ->   No la modifica
+	 * 		3. lVias con 4 elementos ordenados	  	 ->   No la modifica
+	 * 		4. lVias con 5 elementos desordenados	 ->   Queda ordenada descendentemente por número de habitantes (NacionalidadE, NacionalidadA,
+	 * 														NacionalidadB, NacionalidadC, NacionalidadD)
 	 *
 	 * @MÉTODO : GestorBarrio::insertarVia
-	 * 		1. v1 está en lBarrios      ->   v1 se inserta en el gestor de vías del barrio
-	 * 		2. v1 no está en lBarrios   ->   v1 no inserta
+	 * 		1. v1 está en lBarrios      ->   v1 se inserta al final de lBarrios
+	 * 		2. v2 no está en lBarrios   ->   v2 no inserta
 	 *
 	 * @MÉTODO : GestorVia::insertarViaOrden
 	 * 		1. lVias vacía   																				   ->   Se inserta v1 sin ningún orden
