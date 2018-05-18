@@ -186,15 +186,53 @@ void Pruebas::pruebaSobrecargaOperadores() {
 void Pruebas::pruebaMetodosAuxiliares() {
 	salidaPruebas << "INICIO : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
 	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();
+	Nacionalidad* nacion = new Nacionalidad("NacionalidadA", 4);
 	Nacionalidad* nacionAux;
 
 	///@TEST: 1. lista1 - Lista vacía
 	MetodosAuxiliares::ordenarLista(lNacion);
 	if(lNacion->estaVacia() != true)
-		cout << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #1 - La lista ha sido modificada" << endl;
+		salidaPruebas << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #1 - La lista ha sido modificada" << endl;
+
+	///@TEST 2. Lista con 1 elemento
+	lNacion->insertar(nacion);
+
+	MetodosAuxiliares::ordenarLista(lNacion);
+	lNacion->moverInicio();
+	lNacion->consultar(nacionAux);
+	if(lNacion->estaVacia() != false || nacionAux != nacion){
+		salidaPruebas << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #2 - El único elemento de la lista ha sido modificado" << endl;
+		nacionAux->mostrar();
+	}
+
+	///@TEST: 3. Lista con 4 elementos ordenados
+	lNacion->avanzar();
+	lNacion->insertar(new Nacionalidad("NacionalidaD", 1));
+	lNacion->insertar(new Nacionalidad("NacionalidaC", 2));
+	lNacion->insertar(new Nacionalidad("NacionalidaB", 3));
+
+	MetodosAuxiliares::ordenarLista(lNacion);
+	lNacion->moverInicio();
+	for(int i=4; !lNacion->finLista(); i--){
+		lNacion->consultar(nacionAux);
+		lNacion->avanzar();
+		if(nacionAux->getNPersonas() != i)
+			salidaPruebas << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #3 - La lista ordenada ha sido modificada (POS #" << i << endl;
+	}
+
+	///@TEST: 4. Lista con 4 elementos desordenados
+	lNacion->retroceder();lNacion->retroceder();
+	lNacion->insertar(new Nacionalidad("NacionalidadE", 5));
+
+	MetodosAuxiliares::ordenarLista(lNacion);
+	lNacion->moverInicio();lNacion->consultar(nacionAux);
+	if(nacionAux->getNPersonas() != 5)
+		salidaPruebas << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #4 - La lista no se ha ordenado correctamente" << endl;
 	salidaPruebas << "FIN : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
+	Via* v1 = new Via
+
 	salidaPruebas << "FIN : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
