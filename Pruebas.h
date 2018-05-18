@@ -83,19 +83,19 @@ private:
 	 * 		2. v2 no está en lBarrios   ->   v2 no inserta
 	 *
 	 * @MÉTODO : GestorVia::insertarViaOrden
-	 * 		1. lVias vacía   																				   ->   Se inserta v1 sin ningún orden
+	 * 		1. lVias vacía   																				   ->   Se inserta v1 sin ningún orden (ViaB)
 	 * 		2. lVias contiene 1 elemento
-	 * 			2.1 v1 es alfabéticamente mayor que el elemento en lVias  									   ->   v1 se inserta en primera posición
-	 * 			2.2 v1 es alfabéticamente menor que el elemento en lVias   									   ->   v1 se inserta en última posición
-	 * 		3. lVias contiene 10 elementos
+	 * 			2.1 v3 es alfabéticamente mayor que el elemento en lVias  									   ->   v3 se inserta en primera posición (ViaA, ViaB)
+	 * 			2.2 v3 es alfabéticamente menor que el elemento en lVias   									   ->   v3 se inserta en última posición  (ViaB, ViaD)
+	 * 		3. lVias contiene 3 elementos
 	 * 			3.1 Si la inserción en primer y último lugar funciona para una vía   						   ->   Funciona para cualquier número de vías
-	 * 			3.2 v1 es alfabéticamente menor que el primer elemento y alfabéticamente mayor que el último   ->   v1 se inserta en la posición 3
+	 * 			3.2 v3 es alfabéticamente menor que el primer elemento y alfabéticamente mayor que el último   ->   v3 se inserta en la posición 2 (ViaB, ViaC, ViaD)
 	 *
 	 * @MÉTODO : Padron::alg11
-	 * 		1. El nombre de la vía v1 está en el ABB
-	 * 			1.1 La vía tiene 1 tramo				  ->   No se buscan más tramos en el subárbol izquierdo
-	 * 			1.2 La vía tiene más de 1 tramo			  ->   Se buscan más tramos en el subárbol izquierdo (1 tramo más)
-	 * 		2. El nombre de la vía v1 no está en el ABB   ->   Se indica al usuario por consola que se ha encontrado
+	 * 		1. El nombre de la vía v4 está en el ABB
+	 * 			1.1 v4 tiene 1 tramo				  ->   No se buscan más tramos en el subárbol izquierdo
+	 * 			1.2 v4 tiene más de 1 tramo			  ->   Se buscan más tramos en el subárbol izquierdo (1 tramo más)
+	 * 		2. v4 v1 no está en el ABB   			  ->   Se indica al usuario por consola que se ha encontrado
 	 *
 	 * @MÉTODO : Padron::alg12
 	 * 		1. Ninguna vía comienza por la raíz				   ->  Se indica al usuario por consola que no se ha encontrado

@@ -56,7 +56,14 @@ namespace pruebas {
 	 */
 	static bool insertarVia(Via* v, ListaPI<Barrio*>& lBarrios);
 
-
+	/**@TEST: Implementación de la prueba del método GestorVia::insertarViaOrden
+	 *
+	 * @param v
+	 * 		Vía a insertar en la lista de vías 'lVias'
+	 * @param lVias
+	 * 		Simula la lista de vías encapsulada del gestor GestorVia
+	 */
+	static void insertarViaOrden(Via* v, ListaPI<Via*>& lVias);
 
 void pruebaTrocearCadenaAnioNacimiento(string text, ofstream& salidaPruebas) {
 
@@ -131,6 +138,21 @@ bool insertarVia(Via* v, ListaPI<Barrio*>& lBarrios) {
 	}
 
 	return enc;
+}
+
+void insertarViaOrden(Via* v, ListaPI<Via*>& lVias) {
+	bool enc = false;
+	Via* vAux;
+
+	lVias.moverInicio();
+	while(!lVias.finLista() && !enc){
+		lVias.consultar(vAux);
+		if(*v > *vAux)
+			enc = true;
+		else
+			lVias.avanzar();
+	}
+	lVias.insertar(v);
 }
 
 }

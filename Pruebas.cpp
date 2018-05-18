@@ -218,9 +218,53 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	salidaPruebas << "FIN : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
+	ListaPI<Via*> lVias;
+	Via* v3 = new Via("BarrioB", "ViaB", 0, "TipoB", 0);
+	Via* vAux;
+
+	///@TEST: 1. lVias vacía
+	insertarViaOrden(v3, lVias);
+	lVias.consultar(vAux);
+	if(lVias.estaVacia() != false || vAux != v3)
+		cout << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #1 - No se ha insertado la vía v3 en la lista" << endl;
+
+	///@TEST: 2.1 v3 es alfabéticamente mayor que el elemento en lVias
+	v3 = new Via("BarrioA", "ViaA", 0, "TipoA", 0);
+	insertarViaOrden(v3, lVias);
+	lVias.moverInicio();
+	lVias.consultar(vAux);
+	if(vAux != v3)
+		cout << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.1 - v3 no está en la posición correcta" << endl;
+	lVias.borrar();
+	delete vAux;
+
+	///@TEST: 2.2 v3 es alfabéticamente menor que el elemento en lVias
+	v3 = new Via("BarrioD", "ViaD", 0 , "TipoD", 0);
+	insertarViaOrden(v3, lVias);
+	lVias.moverFinal();
+	lVias.consultar(vAux);
+	if(vAux != v3)
+		cout << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.2 - v3 no está en la posición correcta" << endl;
+
+	///@TEST: 3.2 v3 es alfabéticamente menor que el primer elemento y alfabéticamente mayor que el último
+	v3 = new Via("BarrioC", "ViaC", 0, "TipoC", 0);
+	insertarViaOrden(v3, lVias);
+	lVias.moverInicio();lVias.avanzar();
+	lVias.consultar(vAux);
+	if(vAux != v3)
+		cout << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #3.2 - v3 no está en la posición correcta" << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lVias.moverInicio();
+	while(!lVias.finLista()){
+		lVias.consultar(vAux);
+		lVias.avanzar();
+		delete vAux;
+	}
 	salidaPruebas << "FIN : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'Padron::alg11\'" << endl;
+
 	salidaPruebas << "FIN : MÉTODO \'Padron::alg11\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'Padron::alg12\'" << endl;
@@ -236,8 +280,7 @@ void Pruebas::pruebaUI() {
 		 "\t 2. Solo se pueden cargar una vez los datos (Algoritmo 1)" << endl << endl <<
    		 "Una vez termine utilice la opción cero (0) para continuar con las pruebas" << endl;
 
-	///@TEST: Descomentar para probar. Las pruebas preliminares no arrojan ningún error
-//	UI ui;																		//Ejecuta la UI para que el usuario realice las comprobaciones mencionadas
+///	UI ui;																		//@TEST: Descomentar para probar. Las pruebas preliminares no arrojan ningún error
 
 	salidaPruebas << "PRUEBA SUPERADA" << endl;
 }
@@ -433,7 +476,7 @@ void Pruebas::pruebaEjecucionSecuencial() {
 void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas del proyecto
 	salidaPruebas << "EJECUTANDO # Utilidadades de cadena" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
-	pruebaUtils();
+//	pruebaUtils();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Sobrecarga de operadores" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
