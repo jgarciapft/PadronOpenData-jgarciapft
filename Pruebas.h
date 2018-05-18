@@ -6,7 +6,6 @@
 #define PRUEBAS_H_
 
 #include "ui.h"
-#include "Padron.h"
 #include "timer.h"
 
 ///@TEST: Includes de prueba de clases
@@ -24,12 +23,9 @@ public:
 
 private:
 	/**\@PRUEBA: Utilidades de cadenas
+	 *
 	 *	Invoca las pruebas ya implementadas en el proyecto base de las utilidades de cadenas
 	 */
-	void pruebaTrocearCadenaAnioNacimiento(string text);
-	void pruebaTrocearCadenaLugarNacimiento(string text);
-	void pruebaTrocearCadenaEstudios(string text);
-	void pruebaTrocearCadenaNacionalidad(string text);
 	void pruebaUtils();
 
 	/**@PRUEBA: SOBRECARGA DE OPERADORES

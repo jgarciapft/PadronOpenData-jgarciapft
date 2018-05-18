@@ -6,6 +6,38 @@
 
 namespace pruebas {
 
+	/**@TEST: Implementación de las pruebas de utilidades de cadenas. (DEL PROYECTO BASE)
+	 *
+	 * @param text
+	 * @param salidaPruebas
+	 * 		Flujo de salida del archivo de volcado de pruebas
+	 */
+	static void pruebaTrocearCadenaAnioNacimiento(string text, ofstream& salidaPruebas);
+
+	/**@TEST: Implementación de las pruebas de utilidades de cadenas. (DEL PROYECTO BASE)
+	 *
+	 * @param text
+	 * @param salidaPruebas
+	 * 		Flujo de salida del archivo de volcado de pruebas
+	 */
+	static void pruebaTrocearCadenaLugarNacimiento(string text, ofstream& salidaPruebas);
+
+	/**@TEST: Implementación de las pruebas de utilidades de cadenas. (DEL PROYECTO BASE)
+	 *
+	 * @param text
+	 * @param salidaPruebas
+	 * 		Flujo de salida del archivo de volcado de pruebas
+	 */
+	static void pruebaTrocearCadenaEstudios(string text, ofstream& salidaPruebas);
+
+	/**@TEST: Implementación de las pruebas de utilidades de cadenas. (DEL PROYECTO BASE)
+	 *
+	 * @param text
+	 * @param salidaPruebas
+	 * 		Flujo de salida del archivo de volcado de pruebas
+	 */
+	static void pruebaTrocearCadenaNacionalidad(string text, ofstream& salidaPruebas);
+
 	/**@TEST: Implementación de prueba del método GestorNacionalidad::ordenarLista y GestorEstudios::ordenarLista
 	 *
 	 * @param lNacion
@@ -23,6 +55,48 @@ namespace pruebas {
 	 * 		Devuelve si la vía pertence a algún barrio de la lista \param lBarrios
 	 */
 	static bool insertarVia(Via* v, ListaPI<Barrio*>& lBarrios);
+
+
+
+void pruebaTrocearCadenaAnioNacimiento(string text, ofstream& salidaPruebas) {
+
+    char delim = ';';
+	vector<string> vText = splitStringToVector(text, delim);
+	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
+		vector<string> vString = splitString(vText[i]);
+		salidaPruebas << "Año: "<< vString[0]<< "  nº personas: "<< atoi(vString[1].c_str())<<endl;
+	}
+}
+
+void pruebaTrocearCadenaLugarNacimiento(string text, ofstream& salidaPruebas) {
+    char delim = ';';
+	vector<string> vText = splitStringToVector(text, delim);
+	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
+		vector<string> vString = splitString(vText[i]);
+		if ( vString.size()== 2)
+			salidaPruebas << "Poblacion: "<< " "<< " Provincia : "<< vString[0]<<"  nº personas: "<< atoi(vString[1].c_str())<<endl;
+		else
+			salidaPruebas << "Poblacion: "<< vString[0]<< " Provincia : "<< vString[1]<<"  nº personas: "<< atoi(vString[2].c_str())<<endl;
+	}
+}
+
+void pruebaTrocearCadenaEstudios(string text, ofstream& salidaPruebas) {
+    char delim = ';';
+	vector<string> vText = splitStringToVector(text, delim);
+	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
+		vector<string> vString = splitString(vText[i]);
+		salidaPruebas << "Estudios: "<< vString[0]<< "  nº personas: "<< atoi(vString[1].c_str())<<endl;
+	}
+}
+
+void pruebaTrocearCadenaNacionalidad(string text, ofstream& salidaPruebas) {
+    char delim = ';';
+	vector<string> vText = splitStringToVector(text, delim);
+	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
+		vector<string> vString = splitString(vText[i]);
+		salidaPruebas << "Pais: "<< vString[0]<< "  nº personas: "<< atoi(vString[1].c_str())<<endl;
+	}
+}
 
 void ordenarLista(ListaPI<Nacionalidad*>*& lNacion) {
 	bool siguiente;
