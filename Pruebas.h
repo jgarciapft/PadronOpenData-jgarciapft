@@ -18,6 +18,8 @@ class Pruebas {
 
 private:
 	Padron p;
+
+public:
 	ofstream salidaPruebas;
 
 private:
@@ -76,8 +78,8 @@ private:
 	 *@MÉTODO : GestorNacionalidad::ordenarLista y GestorEstudios::ordenarLista
 	 * 		1. Lista vacía 						  	 ->   No hace nada
 	 * 		2. Lista con 1 elemento				  	 ->   No la modifica
-	 * 		3. Lista con 10 elementos ordenados	  	 ->   No la modifica
-	 * 		4. Lista con 10 elementos desordenados	 ->   Queda ordenada descendentemente por número de habitantes (elem0, elem 2, ..., elem9)
+	 * 		3. Lista con 4 elementos ordenados	  	 ->   No la modifica
+	 * 		4. Lista con 4 elementos desordenados	 ->   Queda ordenada descendentemente por número de habitantes (elem0, elem 2, ..., elem9)
 	 *
 	 * @MÉTODO : GestorBarrio::insertarVia
 	 * 		1. v1 está en lBarrios      ->   v1 se inserta en el gestor de vías del barrio
