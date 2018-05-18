@@ -65,7 +65,7 @@ namespace pruebas {
 	 */
 	static void insertarViaOrden(Via* v, ListaPI<Via*>& lVias);
 
-	static void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, int& cont, bool& enc);
+	static void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, bool& enc);
 
 
 
@@ -159,19 +159,16 @@ void insertarViaOrden(Via* v, ListaPI<Via*>& lVias) {
 	lVias.insertar(v);
 }
 
-void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, int& cont, bool& enc) {
+void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, bool& enc) {
 	Via* vRaiz = aVias->raiz();
 
-	if(vRaiz->getNombreVia() == nombreVia && aVias->hijoIzq() != NULL){
+	if(vRaiz->getNombreVia() == nombreVia){
 		enc = true;
-		cont++;
-		alg11(aVias->hijoIzq(), nombreVia, cont, enc);
-	}else if(vRaiz->getNombreVia() < nombreVia && !enc){
+	}else if(vRaiz->getNombreVia() < nombreVia){
 		if(aVias->hijoDer() != NULL)
-			alg11(aVias->hijoDer(), nombreVia, cont, enc);
-	}else if(!enc){
-		if(aVias->hijoIzq() != NULL)
-			alg11(aVias->hijoIzq(), nombreVia, cont, enc);
+			alg11(aVias->hijoDer(), nombreVia, enc);
+	}else if(aVias->hijoIzq() != NULL){
+		alg11(aVias->hijoIzq(), nombreVia, enc);
 	}
 }
 

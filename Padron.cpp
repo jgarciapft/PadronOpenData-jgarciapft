@@ -37,16 +37,14 @@ void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstr
 	Via* vRaiz = aVias->raiz();											//Puntero auxiliar para almacenar la raíz del ABB. Evita múltiples llamadas a consultar la raíz del ABB actual
 
 	//RECORRIDO en PRE-ORDEN. Solo se explora el ABB hasta que se encuentra la vía (raíz) buscada
-	if(vRaiz->getNombreVia() == nombreVia && aVias->hijoIzq() != NULL){	//Comprueba si la vía raíz es la buscada. Si se encuentra se comprueba que sea el único tramo de vía (No tiene un subárbol izquierdo tal que los nombres de vía de ambas raíces coincidan)
-		enc = true;														//Actualiza la badendera para que una vez consultadas todos los tramos de una vía no se siga recorriendo el resto del ABB
-		vRaiz->alg11(ofs);
-		alg11(aVias->hijoIzq(), nombreVia, ofs, enc);					//Como una vía puede estar formada por tramos de vías (Objetos 'Via' también) y éstos siempre estarán en el subárbol izquiero hay que comprobar todos los subárboles izquierdos hasta que no compartan el nombre de vía
-	}else if(vRaiz->getNombreVia() < nombreVia && !enc){				//Si el nombre de la vía de la ráiz es alfabéticamente MENOR que la vía a buscar se sigue buscando por el subárbol derecho (vías mayores)
+	if(vRaiz->getNombreVia() == nombreVia){								//Comprueba si la vía raíz es la buscada. Si se encuentra se comprueba si es el único tramo de vía y se ejecuta el algoritmo por cada tramo de la misma vía
+		enc = true;														//Actualiza la bandera
+		vRaiz->alg11(ofs);												//Ejecuta la funcionalidad del algoritmo 11
+	}else if(vRaiz->getNombreVia() < nombreVia){						//Si el nombre de la vía de la ráiz es alfabéticamente MENOR que la vía a buscar se sigue buscando por el subárbol derecho (vías mayores)
 		if(aVias->hijoDer() != NULL)
 			alg11(aVias->hijoDer(), nombreVia, ofs, enc);
-	}else if(!enc){														//Sino el nombre de la raíz es alfabéticamente MAYOR que la vía a busca y se sigue buscando por el subárbol izquierdo (vías menores)
-		if(aVias->hijoIzq() != NULL)
-			alg11(aVias->hijoIzq(), nombreVia, ofs, enc);
+	}else if(aVias->hijoIzq() != NULL){									//Sino el nombre de la raíz es alfabéticamente MAYOR que la vía a busca y se sigue buscando por el subárbol izquierdo (vías menores)
+		alg11(aVias->hijoIzq(), nombreVia, ofs, enc);
 	}
 }
 
@@ -208,7 +206,7 @@ void Padron::alg3() {
 	}
 }
 
-void Padron::alg4() {													
+void Padron::alg4() {
 	ListaPI<AnioNacimiento*>* lAnioNac = new ListaPI<AnioNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo: Cada intervalo con el numero total de habitantes es representada por un objeto 'AnioNacimiento'
 																		 * 		La marca de clase del intervalo, siempre el límite inferior, se almacena en el atributo 'anio' y el número de habitantes en 'nPersonas' */
 	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista de datos demográficos auxiliar
@@ -282,7 +280,7 @@ void Padron::alg4() {
 	delete lAnioNac;													//Libera la lista
 }
 
-void Padron::alg5() {													
+void Padron::alg5() {
 	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();		/* Lista en la que se almacenan los resultados del algoritmo: Cada nacionalidad con el numero total de habitantes es representada por un objeto 'Nacionalidad'
 																		 * 		El nombre de la nacionalidad se almacena en el atributo 'nacionalidad' y el número de personas en 'nPersonas' */
  	DatosDemograficos* dD;												//Puntero auxiliar para consultar cada dato demográfico de la lista de datos demográficos auxiliar
@@ -314,7 +312,7 @@ void Padron::alg5() {
 	delete lNacion;														//Libera la lista
 }
 
-void Padron::alg6() {													
+void Padron::alg6() {
 	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo: Cada provincia con el numero total de habitantes es representada por un objeto 'LugarNacimiento'
 																		  *		El nombre de la provincia se almacena en el atributo 'provinciaPais' y el número de habitantes en 'nPersonas' */
  	DatosDemograficos* dD;												//Puntero auxiliar para consultar la lista de datos demográficos auxiliar
@@ -361,7 +359,7 @@ void Padron::alg9() {													///@NOTA: Método invocativo
 	gBarrio->alg9();
 }
 
-void Padron::alg10(string nombreProvincia) {							
+void Padron::alg10(string nombreProvincia) {
 	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();/* Lista en la que se almacenan los resultados del algoritmo: Cada lugar de nacimiento con el numero total de habitantes es representada por un objeto 'LugarNacimiento':
 																	      *		La población se almacena en el atributo 'poblacion' y el número de personas en 'nPersonas' */
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
@@ -409,7 +407,7 @@ void Padron::alg10(string nombreProvincia) {
 	delete lLugNac;														//Libera la lista
 }
 
-void Padron::alg11_EDL(string nombreVia) {								
+void Padron::alg11_EDL(string nombreVia) {
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
 	string ruta = "LugaresNacimiento-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
@@ -476,7 +474,9 @@ void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 	}
 }
 
-void Padron::alg12_EDNL(string raiz, string nombreProvincia) {			
+
+
+void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 	Arbol<Via*, ComparadorPtrVia>* aAux;								//ABB auxiliar para almacenar el ABB cuyos datos presentan potencialmente la misma raíz
 	int nPersonas;														//Total de habitantes entre todas las vías que comiencen por la raíz 'raiz'
 
@@ -497,8 +497,6 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 		}
 	}
 }
-
-
 
 void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
 	Via* vAux;															//Puntero auxiliar para consultar las vías de la lista auxiliar de vías 'lVias'

@@ -95,10 +95,9 @@ private:
 	 *
 	 * @MÉTODO : Padron::alg11
 	 * 		1. La vía 'nombreVia' está en el ABB
-	 * 			1.1 La vía 'nombreVia' tiene 1 tramo			->   Cont = 1
-	 * 			1.2 La vía 'nombreVia' tiene 2 tramos		    ->   Cont = 2
-	 * 			1.3 La vía 'nombreVia' tiene más de 2 tramos	->   Si funciona para 2 tramos, fuciona para 'n' tramos (n >= 2)
-	 * 		2.  La vía 'nombreVia' no está en el ABB   			->   Cont = 0. Se vuelca en el fichero de pruebas que no se ha encontrado la vía
+	 * 			1.1 La vía 'nombreVia' tiene 1 tramo			->   enc = true
+	 * 			1.2 La vía 'nombreVia' tiene más de 1 tramo	    ->   Cada tramo de vía contiene todos los datos demográficos de todos los tramos. Encontrar 1 tramo es suficiente
+	 * 		2.  La vía 'nombreVia' no está en el ABB   			->   enc = false
 	 *
 	 * @MÉTODO : Padron::alg12
 	 * 		1. Ninguna vía comienza por la raíz				   ->  Se indica al usuario por consola que no se ha encontrado

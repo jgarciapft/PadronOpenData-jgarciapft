@@ -276,27 +276,19 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	Via* vIns3 =  new Via("BarrioD", "ViaD", 0, "TipoD", 0); aVias->insertar(vIns3);
 	Via* vIns4 = new Via("BarrioC2", "ViaC", 0, "TipoC", 0); aVias->insertar(vIns4);
 	string nombreVia = "ViaB";
-	int cont = 0;
 	bool enc = false;
 
-	///@TEST: 1.1 La vía 'nombreVia' tiene un tramo
-	alg11(aVias, nombreVia, cont, enc);
-	if(cont != 1 || enc != true)
-		cout << "\tERROR : Método \'Padron::alg11\' - TEST #1.1 - No se ha encontrado 1 solo tramo\t| En su lugar -> " << cont << endl;
-
-	///@TEST: 1.2 La vía 'nombreVia' tiene 2 tramos
-	cont = 0; enc = false; nombreVia = "ViaC";
-
-	alg11(aVias, nombreVia, cont, enc);
-	if(cont != 2 || enc != true)
-		cout << "\tERROR : Método \'Padron::alg11\' - TEST #1.2 - No se han encontrado 2 tramos\t| En su lugar -> " << cont << endl;
+	///@TEST: 1.1 La vía 'nombreVia' tiene 1 tramo
+	alg11(aVias, nombreVia, enc);
+	if(enc != true)
+		salidaPruebas << "\tERROR : Método \'Padron::alg11\' - TEST #1.1 - No se ha encontrado la vía \'" << nombreVia << "\'" << endl;
 
 	///@TEST: 2.  La vía 'nombreVia' no está en el ABB
-	cont = 0; enc = false; nombreVia = "ViaA";
+	enc = false; nombreVia = "ViaA";
 
-	alg11(aVias, nombreVia, cont, enc);
-	if(cont != 0 || enc != false)
-		cout << "\tERROR : Método \'Padron::alg11\' - TEST #2 - Se ha encontrado algún tramo\t| En su lugar -> " << cont << endl;
+	alg11(aVias, nombreVia, enc);
+	if(enc != false)
+		salidaPruebas << "\tERROR : Método \'Padron::alg11\' - TEST #2 - Se ha encontrado una vía \'" << nombreVia << "\'" << endl;
 
 	///@NOTA: Liberación de los recursos reservados dinámicamente
 	delete vIns1;
@@ -519,7 +511,7 @@ void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas de
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Sobrecarga de operadores" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
-	pruebaSobrecargaOperadores();
+//	pruebaSobrecargaOperadores();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Métodos auxiliares" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
