@@ -231,7 +231,6 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	salidaPruebas << "FIN : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
-	Via* v1 = new Via
 
 	salidaPruebas << "FIN : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
 
