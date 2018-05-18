@@ -2,18 +2,9 @@
  * PLACEHOLDER
  */
 
-#ifndef METODOSAUXILIARES_H_
-#define METODOSAUXILIARES_H_
-
 #include "Padron.h"
 
 namespace pruebas {
-
-class MetodosAuxiliares {
-
-public:
-	MetodosAuxiliares();
-	~MetodosAuxiliares();
 
 	/**@TEST: Implementación de prueba del método GestorNacionalidad::ordenarLista y GestorEstudios::ordenarLista
 	 *
@@ -32,8 +23,40 @@ public:
 	 * 		Devuelve si la vía pertence a algún barrio de la lista \param lBarrios
 	 */
 	static bool insertarVia(Via* v, ListaPI<Barrio*>& lBarrios);
-};
 
+void ordenarLista(ListaPI<Nacionalidad*>*& lNacion) {
+	bool siguiente;
+	Nacionalidad* nacionPI;
+	Nacionalidad* nacion;
+
+	if(!lNacion->enInicio()){
+		lNacion->consultar(nacionPI);
+		lNacion->borrar();
+		do{
+			lNacion->retroceder();
+			lNacion->consultar(nacion);
+			siguiente = *nacionPI > *nacion;
+		}while(siguiente && !lNacion->enInicio());
+		if(!siguiente)
+			lNacion->avanzar();
+		lNacion->insertar(nacionPI);
+	}
 }
 
-#endif /* METODOSAUXILIARES_H_ */
+bool insertarVia(Via* v, ListaPI<Barrio*>& lBarrios) {
+	bool enc = false;
+	Barrio* bAux;
+
+	lBarrios.moverInicio();
+	while(!lBarrios.finLista() && !enc){
+		lBarrios.consultar(bAux);
+		lBarrios.avanzar();
+		if(bAux->getNombreBarrio() == v->getBarrioVia()){
+			enc = true;
+		}
+	}
+
+	return enc;
+}
+
+}

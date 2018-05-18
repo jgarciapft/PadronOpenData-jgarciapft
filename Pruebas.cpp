@@ -190,14 +190,14 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	Nacionalidad* nacionAux;
 
 	///@TEST: 1. lVias - Lista vacía
-	MetodosAuxiliares::ordenarLista(lNacion);
+	ordenarLista(lNacion);
 	if(lNacion->estaVacia() != true)
 		salidaPruebas << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #1 - La lista ha sido modificada" << endl;
 
 	///@TEST 2. lVias con 1 elemento
 	lNacion->insertar(nacion);
 
-	MetodosAuxiliares::ordenarLista(lNacion);
+	ordenarLista(lNacion);
 	lNacion->moverInicio();
 	lNacion->consultar(nacionAux);
 	if(lNacion->estaVacia() != false || nacionAux != nacion){
@@ -211,7 +211,7 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	lNacion->insertar(new Nacionalidad("NacionalidaC", 2));
 	lNacion->insertar(new Nacionalidad("NacionalidaB", 3));
 
-	MetodosAuxiliares::ordenarLista(lNacion);
+	ordenarLista(lNacion);
 	lNacion->moverInicio();
 	for(int i=4; !lNacion->finLista(); i--){
 		lNacion->consultar(nacionAux);
@@ -224,7 +224,7 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	lNacion->retroceder();lNacion->retroceder();
 	lNacion->insertar(new Nacionalidad("NacionalidadE", 5));
 
-	MetodosAuxiliares::ordenarLista(lNacion);
+	ordenarLista(lNacion);
 	lNacion->moverInicio();lNacion->consultar(nacionAux);
 	if(nacionAux->getNPersonas() != 5)
 		salidaPruebas << "\tERROR : Método \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista - TEST #4 - La lista no se ha ordenado correctamente" << endl;
@@ -246,11 +246,11 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	Via* v2 = new Via("BarrioB", "ViaA", 0, "TipoA", 0);
 
 	///@TEST: 1. v1 está en lBarrios
-	if(MetodosAuxiliares::insertarVia(v1, lBarrios) != true)
+	if(insertarVia(v1, lBarrios) != true)
 		salidaPruebas << "\tERROR : Método \'GestorBarrio::insertarVia\' - TEST #1 - No se ha insertado la vía v1 en la lista de barrios" << endl;
 
 	///@TEST: 2. v2 no está en lBarrios
-	if(MetodosAuxiliares::insertarVia(v2, lBarrios) != false)
+	if(insertarVia(v2, lBarrios) != false)
 		salidaPruebas << "\tERROR : Método \'GestorBarrio::insertarVia\' - TEST #2 - Se se ha insertado la vía v2 en la lista de barrios" << endl;
 
 	///@NOTA: Liberación de los recursos reservados dinámicamente
