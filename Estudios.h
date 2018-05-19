@@ -28,14 +28,26 @@ public:
 	/**
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Inicializa los atributos al valor por defecto
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de Estudios inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de Estudios inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	Estudios();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase Estudios
+	 * 			a partir de los parámetros
+	 *
+	 * @param nEst
+	 * 		Titulación categorizada
+	 * @param nP
+	 * 		Número de personas que ostentan la titulación 'nEst'
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase Estudios inicializada paramétricamente
+	 * @complejidad: O(1)
+	 */
 	Estudios(string nEst, int nP);
 	/**
 	 * @brief
@@ -44,8 +56,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(1)
-	 *
-	 * @return
 	 */
 	~Estudios();
 

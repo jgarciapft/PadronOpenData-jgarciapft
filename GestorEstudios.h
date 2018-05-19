@@ -34,14 +34,24 @@ public:
 	/**
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para la lista que encapsula
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de GestorEstudios inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de GestorEstudios inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	GestorEstudios();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase GestorEstudios
+	 * 			a partir de los parámetros
+	 *
+	 * @param estudios
+	 * 		Cadena 'parseada' con los campos de múltiples objetos Estudios
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase GestorEstudios inicializada paramétricamente
+	 * @complejidad: O(n)
+	 */
 	GestorEstudios(string estudios);
 	/**
 	 * @brief
@@ -50,8 +60,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(n)
-	 *
-	 * @return
 	 */
 	~GestorEstudios();
 

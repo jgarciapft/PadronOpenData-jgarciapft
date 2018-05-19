@@ -32,14 +32,29 @@ public:
 	/**
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Inicializa los atributos al valor por defecto
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de LugarNacimiento inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de LugarNacimiento inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	LugarNacimiento();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase LugarNacimiento
+	 * 			a partir de los parámetros
+	 *
+	 * @param pobl
+	 * 		Población de nacimiento
+	 * @param provP
+	 * 		Si la nacionalidad es española, representa la provincia de nacimiento. Si la nacionalidad es extranjera
+	 * 			representa el país de origen
+	 * @param nP
+	 * 		Número de personas nacidas en la población 'pobl'
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase LugarNacimiento inicializada paramétricamente
+	 * @complejidad: O(1)
+	 */
 	LugarNacimiento(string pobl, string provP, int nP);
 	/**
 	 * @brief
@@ -48,8 +63,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(1)
-	 *
-	 * @return
 	 */
 	~LugarNacimiento();
 

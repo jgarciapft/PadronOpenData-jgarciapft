@@ -28,14 +28,26 @@ public:
 	/**
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Inicializa los atributos al valor por defecto
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de AnioNacimiento inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de AnioNacimiento inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	AnioNacimiento();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase AnioNacimiento
+	 * 			a partir de los parámetros
+	 *
+	 * @param aN
+	 * 		Año de nacimiento
+	 * @param nP
+	 * 		Número de personas que nacieron en el año 'aN'
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase AnioNacimiento inicializada paramétricamente
+	 * @complejidad: O(1)
+	 */
 	AnioNacimiento(int aN, int nP);
 	/**
 	 * @brief
@@ -44,8 +56,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(1)
-	 *
-	 * @return
 	 */
 	~AnioNacimiento();
 

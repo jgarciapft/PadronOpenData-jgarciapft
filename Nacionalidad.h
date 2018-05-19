@@ -28,14 +28,26 @@ public:
 	/**
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Inicializa los atributos al valor por defecto
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de Nacionalidad inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de Nacionalidad inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	Nacionalidad();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase Nacionalidad
+	 * 			a partir de los parámetros
+	 *
+	 * @param nac
+	 * 		Nacionalidad
+	 * @param nP
+	 * 		Número de personas que tienen la nacionalidad 'nac'
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase Nacionalidad inicializada paramétricamente
+	 * @complejidad: O(1)
+	 */
 	Nacionalidad(string nac, int nP);
 	/**
 	 * @brief
@@ -44,8 +56,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(1)
-	 *
-	 * @return
 	 */
 	~Nacionalidad();
 

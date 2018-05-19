@@ -81,11 +81,9 @@ namespace pruebas {
 	 *
 	 * @param aVias
 	 * 		Simula el ABB de vías auxiliar que encapsula la clase Padron
-	 *
 	 * @param raiz
 	 * 		Subcadena con la que comparar la ráiz de cada vía
-	 *
-	 * 	@return
+	 * @return
 	 * 		Devuelve si se ha encntrado alguna vía por el nombre \param raiz
 	 */
 	static bool filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz);
@@ -94,16 +92,12 @@ namespace pruebas {
 	 *
 	 * @param gBarrio
 	 * 		Simula el gestor de barrios que encapsula la clase Padron
-	 *
 	 * @param cont
 	 * 		Contador de datos cargados
-	 *
 	 * @param ruta
 	 * 		Ruta del fichero de datos
-	 *
 	 * @param lDatDem
 	 * 		Lista auxiliar de datos demográficos para liberarlos posteriormente
-	 *
 	 * @return
 	 * 		Devuelve el estado de la carga de datos
 	 */

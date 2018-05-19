@@ -32,14 +32,24 @@ public:
 	/**
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para la lista que encapsula
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de GestorLugarNacimiento inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de GestorLugarNacimiento inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	GestorLugarNacimiento();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase GestorLugarNacimiento
+	 * 			a partir de los parámetros
+	 *
+	 * @param lugaresNacimiento
+	 * 		Cadena 'parseada' con los campos de múltiples objetos LugarNacimiento
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase GestorLugarNacimiento inicializada paramétricamente
+	 * @complejidad: O(n)
+	 */
 	GestorLugarNacimiento(string lugaresNacimiento);
 	/**
 	 * @brief
@@ -48,8 +58,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(n)
-	 *
-	 * @return
 	 */
 	~GestorLugarNacimiento();
 

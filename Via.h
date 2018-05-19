@@ -44,14 +44,31 @@ public:
 	/**
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Inicializa 'datDemograficos' a NULL y el resto de atributos al valor por defecto
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de Via inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de Via inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	Via();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase Via a partir de los parámetros
+	 *
+	 * @param barV
+	 * 		Nombre del barrio
+	 * @param nomV
+	 * 		Nombre de la vía
+	 * @param lonV
+	 * 		Longitud de la vía
+	 * @param tipV
+	 * 		Tipo de la vía
+	 * @param codV
+	 * 		Código de la vía
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase Via inicializada paramétricamente
+	 * @complejidad: O(1)
+	 */
 	Via(string barV, string nomV, float lonV, string tipV, int codV);
 	/**
 	 * @brief
@@ -60,8 +77,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(1)
-	 *
-	 * @return
 	 */
 	~Via();
 

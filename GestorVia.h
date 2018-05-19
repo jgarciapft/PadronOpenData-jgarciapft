@@ -28,11 +28,8 @@ public:
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para la lista que encapsula
 	 * @pre:
-	 * @post:
+	 * @post: Instancia de GestorVia inicializada por defecto
 	 * @complejidad: O(1)
-	 *
-	 * @return
-	 * 		Instancia de GestorVia inicializada por defecto
 	 */
 	GestorVia();
 	/**
@@ -42,8 +39,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(n)
-	 *
-	 * @return
 	 */
 	~GestorVia();
 

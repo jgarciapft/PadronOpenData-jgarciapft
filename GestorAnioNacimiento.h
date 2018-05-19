@@ -31,14 +31,24 @@ public:
 	/**
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para la lista que encapsula
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de GestorAnioNacimiento inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de GestorAnioNacimiento inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	GestorAnioNacimiento();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase GestorAnioNacimiento
+	 * 			a partir de los parámetros
+	 *
+	 * @param aniosNacimiento
+	 * 		Cadena 'parseada' con los campos de múltiples objetos AnioNacimiento
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase GestorAnioNacimiento inicializada paramétricamente
+	 * @complejidad: O(n)
+	 */
 	GestorAnioNacimiento(string aniosNacimiento);
 	/**
 	 * @brief
@@ -47,8 +57,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(n)
-	 *
-	 * @return
 	 */
 	~GestorAnioNacimiento();
 

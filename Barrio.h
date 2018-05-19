@@ -33,13 +33,23 @@ public:
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para 'gVias' e hace una inicialización por defecto de los atributos
 	 * @pre:
-	 * @post:
+	 * @post: Instancia de Barrio inicializada por defecto
 	 * @complejidad: O(1)
-	 *
-	 * @return
-	 * 		Instancia de Barrio inicializada por defecto
 	 */
 	Barrio();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase Barrio a partir de los parámetros
+	 *
+	 * @param nB
+	 * 		Nombre del barrio
+	 * @param nD
+	 * 		Nombre del distrito
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase Barrio inicializada paramétricamente
+	 * @complejidad: O(1)
+	 */
 	Barrio(string nB, string nD);
 	/**
 	 * @brief
@@ -49,8 +59,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(n)
-	 *
-	 * @return
 	 */
 	~Barrio();
 

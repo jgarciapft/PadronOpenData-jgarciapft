@@ -51,14 +51,36 @@ public:
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para los gestores de datos del padrón e inicializa por defecto
 	 * 			el resto de atributos
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de DatosDemograficos inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de DatosDemograficos inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	DatosDemograficos();
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR PARAMETRIZADO. Inicializa todos los atributos de una instancia de la clase DatosDemograficos
+	 * 			a partir de los parámetros
+	 *
+	 * @param _codVia
+	 * 		Código de la vía a la que pertenece la instancia
+	 * @param aniosNacimiento
+	 * 		Cadena 'parseada' con los campos de múltiples objetos AnioNacimiento
+	 * @param lugaresNacimiento
+	 * 		Cadena 'parseada' con los campos de múltiples objetos LugarNacimiento
+	 * @param estudios
+	 * 		Cadena 'parseada' con los campos de múltiples objetos Estudios3
+	 * @param _nMujeres
+	 * 		Número de mujeres en la vía a la que pertenece la instancia
+	 * @param _nHombres
+	 *  	Número de hombres en la vía a la que pertenece la instancia
+	 * @param nacionalidades
+	 * 		Cadena 'parseada' con los campos de múltiples objetos Nacionalidad
+	 *
+	 * @pre:
+	 * @post: Instancia de la clase DatosDemograficos inicializada paramétricamente
+	 * @complejidad: O(n)
+	 */
 	DatosDemograficos(int _codVia, string aniosNacimiento, string lugaresNacimiento, string estudios, int _nMujeres,
 			int _nHombres, string nacionalidades);
 	/**
@@ -69,8 +91,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(n)
-	 *
-	 * @return
 	 */
 	~DatosDemograficos();
 

@@ -45,12 +45,10 @@ public:
 	/**
 	 * @brief
 	 * 		CONSTRUCTOR POR DEFECTO. Reserva espacio para 'gBarrio', 'lVias', 'aVias' y 'lDatDemograficos'
-	 * @pre:
-	 * @post:
-	 * @complejidad: O(1)
 	 *
-	 * @return
-	 * 		Instancia de Padron inicializada por defecto
+	 * @pre:
+	 * @post: Instancia de Padron inicializada por defecto
+	 * @complejidad: O(1)
 	 */
 	Padron();
 	/**
@@ -63,8 +61,6 @@ public:
 	 * @pre:
 	 * @post:
 	 * @complejidad: O(n)
-	 *
-	 * @return
 	 */
 	~Padron();
 
