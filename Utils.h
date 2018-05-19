@@ -34,13 +34,6 @@ const string POBLACION_TEXTO_RELLENO = "";							//Texto de relleno para el atri
 const string PROVINCIA_PAIS_TEXTO_RELLENO = "";						//Texto de relleno para el atributo 'provincia/pais' al crear nuevos objetos 'LugarNacimiento' aplicado al algoritmo 10
 const char TECLA_MENU = 'm';										//Tecla para volver al menú de la interfaz del usuario
 
-/******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
-
-///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: Set_1
-const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_1_Barrios.csv";
-const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_1_Vias.csv";
-const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_1_Padron.csv";
-
 /****************************************************** DEFINCIÓN DE CONSTANTES ******************************************************/
 
 /*

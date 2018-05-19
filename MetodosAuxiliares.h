@@ -7,6 +7,15 @@
 
 namespace pruebas {
 
+/******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
+
+///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: Set_1
+const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_1_Barrios.csv";
+const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_1_Vias.csv";
+const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_1_Padron.csv";
+
+/******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
+
 	/**@TEST: Implementación de las pruebas de utilidades de cadenas. (DEL PROYECTO BASE)
 	 *
 	 * @param text
