@@ -111,6 +111,17 @@ public:
 	 * 		FALSE ->  Si no se pudo acceder a \const RUTA_PADRON
 	 */
 	bool cargarDatosDemograficos();
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 2
+	 *
+	 * @param nombreBarrio
+	 * 		Nombre del barrio utilizar por el Algoritmo 2
+	 *
+	 * @pre:
+	 * @post: Llama a ejecutar el Algoritmo 2
+	 * @complejidada: O(n)
+	 */
 	void alg2(string nombreBarrio);
 	void alg3();
 	void alg4();

@@ -82,6 +82,19 @@ public:
 	 * @complejidad: O(n)
 	 */
 	void insertarDatosDemograficos(DatosDemograficos* dD);
+	/**
+	 * @brief
+	 * 		Busca el barrio introducido por el usuario en la lista de todos los barrios y llama a mostrar las vías que lo
+	 * 			componen (si existe)
+	 *
+	 * @param nombreBarrio
+	 * 		nombre del barrio a buscar
+	 *
+	 * @pre:
+	 * @post: Si el barrio existe en la lista de barrio que encapsula el gestor llama a mostrar las vías que le pertenecen
+	 * 		  Si no existe se indica al usuario por consola
+	 * @complejidad: O(n)
+	 */
 	void alg2(string nombreBarrio);
 	void alg7(int limInf, int limSup);
 	void alg8(string nombreBarrio);

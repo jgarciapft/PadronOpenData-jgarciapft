@@ -50,7 +50,7 @@ public:
 
 	/**
 	 * @brief
-	 * 		Muestra la información de cada vía en la lista que encapsula. Se utiliza para el Algoritmo 3
+	 * 		Muestra la información de cada vía en la lista que encapsula. Se utiliza para el Algoritmo 2
 	 *
 	 * @pre:
 	 * @post: Muestra las vías de la lista que encapsula, menos los datos demográficos asociados a cada vía

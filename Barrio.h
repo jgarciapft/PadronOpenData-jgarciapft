@@ -72,7 +72,7 @@ public:
 
 	/**
 	 * @brief
-	 * 		MÉTODO INVOCATIVO. Se utiliza para el Algoritmo 3
+	 * 		MÉTODO INVOCATIVO. Se utiliza para el Algoritmo 2
 	 *
 	 * @pre:
 	 * @post: Llama a mostrar las vías en el gestor 'gVias' del barrio, menos los datos demográficos asociados a cada vía
