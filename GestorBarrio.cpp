@@ -29,7 +29,7 @@ void GestorBarrio::insertar(Barrio* b) {									///@NOTA: Método invocativo
 	lBarrios->insertar(b);													//Inserta el barrio 'b' en la lista sin ningún criterio
 }
 
-void GestorBarrio::insertarVia(Via* v) {									///@NOTA: Inserta la vía 'v' en el barrio que le corresponda con orden alfabético descendente
+void GestorBarrio::insertarVia(Via* v) {
 	bool enc = false;														//Bandera utilizada para terminar la búsqueda del barrio que le corresponde a la vía a insertar una vez haya una coincidencia
 	Barrio* bAux;															//Puntero auxiliar para consultar la lista de barrios que encapsula el gestor
 
@@ -45,7 +45,7 @@ void GestorBarrio::insertarVia(Via* v) {									///@NOTA: Inserta la vía 'v' e
 	}
 }
 
-void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {		///@NOTA: Inserta el dato demográfico 'dD' en su(s) vía(s) correspondiente(s)	@NOTA: Hay multiplicidad de vías para las que corresponde un dato demográfico
+void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {		///@NOTA: Hay multiplicidad de vías para las que corresponde un dato demográfico
 	Barrio* bAux;															//Puntero auxiliar para consultar la lista de barrios que encapsula el gestor
 
 	//Recorre secuencialmente de inicio a fin la lista de barrios

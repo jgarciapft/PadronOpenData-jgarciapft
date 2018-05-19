@@ -92,7 +92,17 @@ public:
 	void alg11(ofstream& ofs);
 	int alg12(string nombreProvincia);
 
+	/**
+	 * @brief
+	 * 		Muestra toda la información de cada vía y la relacionada con su dato demográfico (si tiene).
+	 * 			Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Muestra los atributos de cada vía y llama a mostrar todos los datos del set de datos demográficos (si tiene)
+	 * @complejidad: O(n)
+	 */
 	void mostrar();
+
 	/**
 	 * @brief
 	 * 		Sobrecarga del operador MAYOR QUE (>)
