@@ -94,6 +94,9 @@ public:
 	 */
 	~DatosDemograficos();
 
+	/**
+	 * GETTERS
+	 */
 	int getCodVia() const;
 	int getNMujeres() const;
 	int getNHombres() const;

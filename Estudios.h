@@ -59,8 +59,14 @@ public:
 	 */
 	~Estudios();
 
+	/**
+	 * GETTERS
+	 */
 	string getNivEstudios() const;
-	int getNPersonas() const;
+	int getNPersonas() const;3
+	/**
+	 * SETTERS
+	 */
 	void incNPersonas(int nP);
 
 	/**

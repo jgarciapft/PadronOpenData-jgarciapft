@@ -59,8 +59,14 @@ public:
 	 */
 	~Nacionalidad();
 
+	/**
+	 * GETTERS
+	 */
 	string getNacionalidad() const;
 	int getNPersonas() const;
+	/**
+	 * SETTERS
+	 */
 	void incNPersonas(int nP);
 
 	/**

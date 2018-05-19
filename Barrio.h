@@ -62,6 +62,9 @@ public:
 	 */
 	~Barrio();
 
+	/**
+	 * GETTERS
+	 */
 	string getNombreBarrio() const ;
 	string getNombreDistrito() const;
 	void insertarVia(Via* v);

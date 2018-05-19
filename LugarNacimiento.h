@@ -66,9 +66,15 @@ public:
 	 */
 	~LugarNacimiento();
 
+	/**
+	 * GETTERS
+	 */
 	string getPoblacion() const;
 	string getProvinciaPais() const;
 	int getNPersonas() const;
+	/**
+	 * SETTERS
+	 */
 	void incNPersonas(int nP);
 
 	/**

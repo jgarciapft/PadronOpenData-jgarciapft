@@ -80,11 +80,17 @@ public:
 	 */
 	~Via();
 
+	/**
+	 * GETTERS
+	 */
 	string getBarrioVia() const;
 	string getNombreVia() const;
 	float getLongitudVia() const;
 	string getTipoVia() const;
 	int getCodVia() const;
+	/**
+	 * SETTERS
+	 */
 	void setDatosDemograficos(DatosDemograficos* dD);
 	int alg7(int limInf, int limSup);
 	void alg8(ListaPI<Estudios*>*& lEstud);

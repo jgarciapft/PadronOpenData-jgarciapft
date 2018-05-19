@@ -59,8 +59,14 @@ public:
 	 */
 	~AnioNacimiento();
 
+	/**
+	 * GETTERS
+	 */
 	int getAnio() const;
 	int getNPersonas() const;
+	/**
+	 * SETTERS
+	 */
 	void incNPersonas(int nP);
 
 	/**
