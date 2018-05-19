@@ -140,9 +140,9 @@ private:
 	void pruebaEjecucionSecuencial();
 
 	/**@PRUEBA	Validación de la carga de datos a partir del set de datos \SET_DATOS: Set_1
-	 * 				-Un fichero con los BARRIOS. 			RUTA_BARRIO
-	 * 				-Un fichero con las VÍAS.				RUTA_VIA
-	 * 				-Un fichero con los datos del PADRON.	RUTA_PADRON
+	 * 				-Un fichero con los BARRIOS. 			RUTA_BARRIO (\constante RUTA_BARRIO_ALG_1)
+	 * 				-Un fichero con las VÍAS.				RUTA_VIA	(\constante RUTA_VIA_ALG_1)
+	 * 				-Un fichero con los datos del PADRON.	RUTA_PADRON	(\constante RUTA_PADRON_ALG_1)
 	 *
 	 * @ESTRUCTURA: Lista de vías auxiliar 'lVias' en la clase 'Padron'
 	 *  		1. No existe el fichero RUTA_VIA		->	\return = false
@@ -171,6 +171,11 @@ private:
 	void pruebaEstructuraLDatDem();
 	void pruebaEstructuraGBarrio();
 	void pruebaAlg1();
+
+	/**
+	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos
+	 */
+	void pruebaAlgoritmos();
 
 public:
 	Pruebas();

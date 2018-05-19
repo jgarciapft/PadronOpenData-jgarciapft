@@ -28,6 +28,8 @@ Pruebas::~Pruebas() {
 	salidaPruebas.close();											//Cierra el flujo
 }
 
+
+
 void Pruebas::pruebaUtils() {
 	string cadena = "1947 (1);1948 (1);1949 (1);1950 (1);1951 (2);1952 (3);1953 (2);1954 (1);1955 (3);1958 (3);1959 (3);1960 (3);1961 (7);1962 (5);1963 (3);1964 (5);1965 (2);1966 (2);1967 (3);1968 (2);1969 (2);1970 (1)"
 			";1971 (3);1972 (2);1981 (1);1982 (1);1983 (2);1984 (1);1985 (2);1987 (1);1988 (5);1989 (2);1990 (2);1991 (1);1992 (3);1993 (6);1994 (2);1995 (7);1996 (2);1997 (1);1998 (4);1999 (4);2000 (1);2001 (1)"
@@ -565,6 +567,84 @@ void Pruebas::pruebaEjecucionSecuencial() {
 	ofs.close();																//Cierra el flujo
 }
 
+void Pruebas::pruebaEstructuraLVias() {
+
+}
+
+void Pruebas::pruebaAlg1() {
+	salidaPruebas << "INICIO : ESTRUCTURA \'lVias\' y \'aVias\'" << endl;
+	pruebaEstructuraLVias();
+	salidaPruebas << "FIN : ESTRUCTURA \'lVias\' y \'aVias\'" << endl;
+
+	salidaPruebas << "INICIO : ESTRUCTURA \'lDatDemograficos\'" << endl;
+	pruebaEstructuraLDatDem();
+	salidaPruebas << "FIN : ESTRUCTURA \'lDatDemograficos\'" << endl;
+
+	salidaPruebas << "INICIO : ESTRUCTURA \'lDatDemograficos\'" << endl;
+	pruebaEstructuraGBarrio();
+	salidaPruebas << "FIN : ESTRUCTURA \'lDatDemograficos\'" << endl;
+}
+
+
+
+void Pruebas::pruebaAlgoritmos() {
+	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
+	pruebaAlg1();
+	salidaPruebas << "FIN : ALGORITMO 1" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 2" << endl;
+//	pruebaAlg2();
+	salidaPruebas << "FIN : ALGORITMO 2" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 3" << endl;
+//	pruebaAlg3();
+	salidaPruebas << "FIN : ALGORITMO 3" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 4" << endl;
+//	pruebaAlg4();
+	salidaPruebas << "FIN : ALGORITMO 4" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 5" << endl;
+//	pruebaAlg5();
+	salidaPruebas << "FIN : ALGORITMO 5" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 6" << endl;
+//	pruebaAlg6();
+	salidaPruebas << "FIN : ALGORITMO 6" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 7" << endl;
+//	pruebaAlg7();
+	salidaPruebas << "FIN : ALGORITMO 7" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 8" << endl;
+//	pruebaAlg8();
+	salidaPruebas << "FIN : ALGORITMO 8" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 9" << endl;
+//	pruebaAlg9();
+	salidaPruebas << "FIN : ALGORITMO 9" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 10" << endl;
+//	pruebaAlg10();
+	salidaPruebas << "FIN : ALGORITMO 10" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 11 EDL" << endl;
+//	pruebaAlg11EDL();
+	salidaPruebas << "FIN : ALGORITMO 11 EDL" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 11 EDNL" << endl;
+//	pruebaAlg11EDNL();
+	salidaPruebas << "FIN : ALGORITMO 11 EDNL" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 2 EDL" << endl;
+//	pruebaAlg12EDL();
+	salidaPruebas << "FIN : ALGORITMO 12 EDL" << endl;
+
+	salidaPruebas << "INICIO : ALGORITMO 2 EDNL" << endl;
+//	pruebaAlg12EDNL();
+	salidaPruebas << "FIN : ALGORITMO 12 EDNL" << endl;
+}
+
 void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas del proyecto
 	salidaPruebas << "EJECUTANDO # Utilidadades de cadena" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
@@ -585,6 +665,10 @@ void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas de
 	salidaPruebas << "EJECUTANDO # Prueba de ejecución secuencial" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
 //	pruebaEjecucionSecuencial();
+	salidaPruebas << endl << endl;
+	salidaPruebas << "EJECUTANDO # Prueba de los Algoritmos" << endl;
+	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
+	pruebaAlgoritmos();
 	salidaPruebas << endl << endl;
 }
 
