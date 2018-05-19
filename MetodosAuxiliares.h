@@ -101,6 +101,28 @@ namespace pruebas {
 	 */
 	static bool filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz);
 
+	/** @TEST: Implementación de la prueba del Algoritmo 1 (Carga de datos)
+	 *
+	 * @param gBarrio
+	 * 		Simula el gestor de barrios que encapsula la clase Padron
+	 *
+	 * @param cont
+	 * 		Contador de datos cargados
+	 *
+	 * @param ruta
+	 * 		Ruta del fichero de datos
+	 *
+	 * @param lDatDem
+	 * 		Lista auxiliar de datos demográficos para liberarlos posteriormente
+	 *
+	 * @return
+	 * 		Devuelve el estado de la carga de datos
+	 */
+	static bool cargarBarrios(GestorBarrio& gBarrio, int& cont, string& ruta);
+	static bool cargarVias(GestorBarrio& gBarrio, int& cont, string& ruta);
+	static bool cargarDatosDemograficos(GestorBarrio& gBarrio, int& cont, string& ruta, ListaPI<DatosDemograficos*>& lDatDem);
+
+
 /********************************************************************************************************************************************************/
 
 void pruebaTrocearCadenaAnioNacimiento(string text, ofstream& salidaPruebas) {
@@ -234,6 +256,89 @@ bool filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz) {
 		enc = filtroInOrden(aVias->hijoDer(), raiz);
 
 	return enc;
+}
+
+bool cargarBarrios(GestorBarrio& gBarrio, int& cont, string& ruta) {
+	ifstream fEnt;
+	bool rutaValida = false;
+	string campos[N_CAMPOS_BARRIO];
+
+	fEnt.open(ruta.c_str());
+	if(fEnt.is_open()){
+		rutaValida = true;
+		getline(fEnt, campos[0]);
+		while(!fEnt.eof()){
+			getline(fEnt, campos[0], SEP);
+			getline(fEnt, campos[1]);
+			if(!fEnt.eof()){
+				gBarrio.insertar(new Barrio(campos[0], campos[1]));
+				cont++;
+			}
+		}
+		gBarrio.insertar(new Barrio(DEF_BARRIO, DEF_PLACEHOLDER));
+		cont++;
+	}
+	fEnt.close();
+
+	return rutaValida;
+}
+
+bool cargarVias(GestorBarrio& gBarrio, int& cont, string& ruta) {
+	ifstream fEnt;
+	bool rutaValida = false;
+	string campos[N_CAMPOS_VIA];
+	Via* vAux;
+
+	fEnt.open(ruta.c_str());
+	if(fEnt.is_open()){
+		rutaValida = true;
+		getline(fEnt, campos[0]);
+		while(!fEnt.eof()){
+			for(int i=0; i<N_CAMPOS_VIA-1; i++){
+				getline(fEnt, campos[i], SEP);
+			}
+			getline(fEnt, campos[4]);
+			if(campos[0] == DEF_PLACEHOLDER)
+				campos[0] = DEF_BARRIO;
+			if(!fEnt.eof()){
+				vAux = new Via(campos[0], campos[1], atof(campos[2].c_str()), campos[3], atoi(campos[4].c_str()));
+				gBarrio.insertarVia(vAux);
+				cont++;
+			}
+		}
+	}
+	fEnt.close();
+
+	return rutaValida;
+}
+
+bool cargarDatosDemograficos(GestorBarrio& gBarrio, int& cont, string& ruta, ListaPI<DatosDemograficos*>& lDatDem) {
+	ifstream fEnt;
+	bool rutaValida = false;
+	string campos[N_CAMPOS_DATOS_DEMOGRAFICOS];
+	DatosDemograficos* dD;
+
+	fEnt.open(ruta.c_str());
+	if(fEnt.is_open()){
+		rutaValida = true;
+		getline(fEnt, campos[0]);
+		while(!fEnt.eof()){
+			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){
+				getline(fEnt, campos[i], SEP);
+			}
+			getline(fEnt, campos[N_CAMPOS_DATOS_DEMOGRAFICOS-1]);
+			if(!fEnt.eof()){
+				dD = new DatosDemograficos(atoi(campos[0].c_str()), campos[1], campos[2], campos[3], atoi(campos[4].c_str()),
+							atoi(campos[5].c_str()), campos[6]);
+				gBarrio.insertarDatosDemograficos(dD);
+				lDatDem.insertar(dD);
+				cont++;
+			}
+		}
+	}
+	fEnt.close();
+
+	return rutaValida;
 }
 
 }

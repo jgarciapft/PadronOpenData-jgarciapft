@@ -22,7 +22,6 @@ UI::~UI() {
 
 int main() {
 	pruebas::Pruebas pruebasProyecto;			//Ejecuta todas las pruebas del proyecto
-
 //	UI ui;										//Instancia la clase principal que maneja la ejecución del programa
 
 	return 0;

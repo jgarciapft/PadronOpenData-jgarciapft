@@ -567,24 +567,102 @@ void Pruebas::pruebaEjecucionSecuencial() {
 	ofs.close();																//Cierra el flujo
 }
 
-void Pruebas::pruebaEstructuraLVias() {
+void Pruebas::pruebaEstructuraLBarrios(GestorBarrio& gBarrio, int& cont, string ruta) {
+	///@TEST: 1. Existen todos los ficheros de datos
+	if(cargarBarrios(gBarrio, cont, ruta) != true)
+		salidaPruebas << "\tERROR : Estructura de datos - TEST #1 - No se ha podido cargar el fichero de barrios (" << ")" << endl;
+
+	///@TEST: 1.1 'lBarrios' contiene 4 barrios (3 + barrio contenedor)
+	if(cont != 4)
+		salidaPruebas << "\tERROR : Estructura de datos - TEST #1.1 - No se han cargado 4 barrios\t| En su lugar -> " << cont << endl;
+
+	///@TEST: 2. No existe ningún fichero de datos
+	ruta = "OtroNombre.csv";
+
+	if(cargarBarrios(gBarrio, cont, ruta) != false)
+		salidaPruebas << "\tERROR : Estructura de datos - TEST #2 - Se ha encontrado un archivo de barrio incorrecto (" << ruta << ")" << endl;
+}
+
+void Pruebas::pruebaEstructuraLVias(GestorBarrio& gBarrio, int& cont, string ruta) {
+	///@TEST: 1. Existe el fichero RUTA_VIA
+	if(cargarVias(gBarrio, cont, ruta) != true)
+		salidaPruebas << "\tERROR : Estructura \'lVias\' y \'aVias\' - TEST #1 - No se ha podido cargar el fichero de vías (" << ruta << ")" << endl;
+
+	///@TEST: 1.1 Validación por conteo de objetos
+	if(cont != 5)
+		salidaPruebas << "\tERROR : Estructura \'lVias\' y \'aVias\' - TEST #1.1 - No se han cargado 5 vías\t| En su lugar -> " << cont << endl;
+
+	///@TEST: 2. No existe el fichero RUTA_VIA
+	ruta = "OtroNombre.csv";
+
+	if(cargarVias(gBarrio, cont, ruta) != false)
+		salidaPruebas << "\tERROR : Estructura \'lVias\' y \'aVias\' - TEST #2 - Se ha encontrado un archivo de vías incorrecto (" << ruta << ")" << endl;
+}
+
+void Pruebas::pruebaEstructuraLDatDem(GestorBarrio& gBarrio, int& cont, string ruta, ListaPI<DatosDemograficos*>& lDatDem) {
+	///@TEST: 1. Existe el fichero RUTA_PADRON
+	if(cargarDatosDemograficos(gBarrio, cont, ruta,lDatDem) != true)
+		salidaPruebas << "\tERROR : Estructura \'lDatDemograficos\' - TEST #1 - No se ha podido cargar el fichero de datos del padrón (" << ruta << ")" << endl;
+
+	///@TEST: 1.1 Validación por conteo de objetos
+	if(cont != 3)
+		salidaPruebas << "\tERROR : Estructura \'lDatDemograficos\' - TEST #1.1 - No se han cargado 3 datos\t| En su lugar -> " << cont << endl;
+
+	///@TEST: 2. No existe el fichero RUTA_PADRON
+	ruta = "OtroNombre.csv";
+
+	if(cargarDatosDemograficos(gBarrio, cont, ruta, lDatDem) != false)
+		salidaPruebas << "\tERROR : Estructura \'lDatDemograficos\' - TEST #2 - Se ha encontrado un archivo de datos del padrón incorrecto (" << ruta << ")" << endl;
+}
+
+void Pruebas::pruebaEstructuraGBarrio(GestorBarrio& gBarrio) {
+	///@TEST: 1. El barrio 'BarrioA' contiene 1 vía
+	///@TEST: 2. El barrio 'BarrioB' contiene más de 1 vía
+	///@TEST: 3. El barrio contenedor contiene una vía
+	///@TEST: 4. La vía 'ViaA' no contiene un set de datos demográficos
+	///@TEST: 5. La vía 'ViaB' contiene un set de datos demográficos
+	///@TEST: 6. Los barrios 'BarrioB' y 'BarrioC' comparten la vía 'ViaB'
+	gBarrio.mostrar();
 }
 
 void Pruebas::pruebaAlg1() {
+	GestorBarrio gBarrio;
+	ListaPI<DatosDemograficos*> lDatDem;
+	DatosDemograficos* dD;
+	string ruta = RUTA_BARRIO_PRUEBA_ALG1;
+	int cont = 0;
+
+	salidaPruebas << "INICIO : ESTRUCTURA \'lBarrios\'" << endl;
+	pruebaEstructuraLBarrios(gBarrio, cont, ruta);
+	salidaPruebas << "FIN : ESTRUCTURA \'lBarrios\'" << endl;
+
 	salidaPruebas << "INICIO : ESTRUCTURA \'lVias\' y \'aVias\'" << endl;
-	pruebaEstructuraLVias();
+	ruta = RUTA_VIA_PRUEBA_ALG1;
+	cont = 0;
+
+	pruebaEstructuraLVias(gBarrio, cont, ruta);
 	salidaPruebas << "FIN : ESTRUCTURA \'lVias\' y \'aVias\'" << endl;
 
 	salidaPruebas << "INICIO : ESTRUCTURA \'lDatDemograficos\'" << endl;
-	pruebaEstructuraLDatDem();
+	ruta = RUTA_PADRON_PRUEBA_ALG1;
+	cont = 0;
+
+	pruebaEstructuraLDatDem(gBarrio, cont, ruta, lDatDem);
 	salidaPruebas << "FIN : ESTRUCTURA \'lDatDemograficos\'" << endl;
 
-	salidaPruebas << "INICIO : ESTRUCTURA \'lDatDemograficos\'" << endl;
-	pruebaEstructuraGBarrio();
-	salidaPruebas << "FIN : ESTRUCTURA \'lDatDemograficos\'" << endl;
+	salidaPruebas << "INICIO : ESTRUCTURA DE DATOS" << endl;
+	pruebaEstructuraGBarrio(gBarrio);
+	salidaPruebas << "FIN : ESTRUCTURA DE DATOS" << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		delete dD;
+	}
+
 }
-
-
 
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;

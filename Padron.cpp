@@ -145,9 +145,10 @@ bool Padron::cargarDatosDemograficos() {
 		rutaValida = true;												//Actualiza la bandera para indicar que se pudo cargar los datos demográficos
 		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
-			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS; i++){			//Lee todos los campos. El último (año del padron) no se usará
+			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){			//Lee todos los campos menos el último(año del padron, no se usará)
 				getline(fEnt, campos[i], SEP);
 			}
+			getline(fEnt, campos[N_CAMPOS_DATOS_DEMOGRAFICOS-1]);		//Salta a la siguiente línea
 			if(!fEnt.eof()){											//Doble comprobación del FINAL DE FICHERO (EOF) para evitar leer una línea vacía adicional
 				dD = new DatosDemograficos(atoi(campos[0].c_str()), campos[1], campos[2], campos[3], atoi(campos[4].c_str()),
 							atoi(campos[5].c_str()), campos[6]);
