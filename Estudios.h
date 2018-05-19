@@ -65,7 +65,27 @@ public:
 
 	void mostrar();
 
+	/**
+	 * @brief
+	 * 		Sobrecarga del operador MAYOR QUE (>)
+	 * 		Criterio de comparación: Orden matemático de 'nPeronas'
+	 *
+	 * @param estudio
+	 * 		Segundo operando
+	 * @return
+	 * 		Resultado booleano de la operación
+	 */
 	bool operator >(const Estudios& estudio);
+	/**
+	 * @brief
+	 * 		Sobrecarga del operador IGUALDAD (==)
+	 * 		Criterio de comparación: comparación lexicográfica de 'nivEsudios'
+	 *
+	 * @param estudio
+	 * 		Segundo operando
+	 * @return
+	 * 		Resultado booleano de la operación
+	 */
 	bool operator ==(const Estudios& estudio);
 };
 

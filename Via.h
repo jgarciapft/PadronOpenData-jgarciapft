@@ -93,7 +93,16 @@ public:
 	int alg12(string nombreProvincia);
 
 	void mostrar();
-
+	/**
+	 * @brief
+	 * 		Sobrecarga del operador MAYOR QUE (>)
+	 * 		Criterio de comparación: Orden alfabético de 'nombreVia'
+	 *
+	 * @param v
+	 * 		Segundo operando
+	 * @return
+	 * 		Resultado booleano de la operación
+	 */
 	bool operator >(const Via& v);
 };
 

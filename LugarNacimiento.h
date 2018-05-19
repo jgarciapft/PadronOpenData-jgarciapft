@@ -73,7 +73,27 @@ public:
 
 	void mostrar();
 
+	/**
+	 * @brief
+	 * 		Sobrecarga del operador IGUAL O MAYOR QUE (>=)
+	 * 		Criterio de comparación: orden alfabético de 'provinciaPais'
+	 *
+	 * @param lugNac
+	 * 		Segundo operando
+	 * @return
+	 * 		Resultado booleano de la operación
+	 */
 	bool operator >=(const LugarNacimiento& lugNac);
+	/**
+	 * @brief
+	 * 		Sobrecarga del operador IGUALDAD (==)
+	 * 		Criterio de comparación: comparación lexicográfica de 'provinciaPais'
+	 *
+	 * @param lugNac
+	 * 		Segundo operando
+	 * @return
+	 * 		Resultado booleano de la operación
+	 */
 	bool operator ==(const LugarNacimiento& lugNac);
 };
 
