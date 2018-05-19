@@ -29,9 +29,9 @@ public:
 	Padron();
 	~Padron();
 
-	void cargarBarrios();
-	void cargarVias();
-	void cargarDatosDemograficos();
+	bool cargarBarrios();
+	bool cargarVias();
+	bool cargarDatosDemograficos();
 	void alg2(string nombreBarrio);
 	void alg3();
 	void alg4();

@@ -139,6 +139,38 @@ private:
 	 */
 	void pruebaEjecucionSecuencial();
 
+	/**@PRUEBA	Validación de la carga de datos a partir del set de datos \SET_DATOS: SET_1
+	 * 				-Un fichero con los BARRIOS. 			RUTA_BARRIO
+	 * 				-Un fichero con las VÍAS.				RUTA_VIA
+	 * 				-Un fichero con los datos del PADRON.	RUTA_PADRON
+	 *
+	 * @ESTRUCTURA: Lista de vías auxiliar 'lVias' en la clase 'Padron'
+	 *  		1. No existe el fichero RUTA_VIA		->	\return = false
+	 *  		2. Existe el fichero RUTA_VIA
+	 *  			* Validación por conteo de objetos	->	cont = 5 y \return = true
+	 *
+	 * @ESTRUCTURA: ABB de vías auxiliar 'aVias' en la clase 'Padron'
+	 *  		1. Deductivamente si los métodos auxiliares son correctos y si se carga correctamente 'lVias': 'aVias' también es correcto
+	 *
+	 * @ESTRUCTURA: Lista de datos demográficos auxiliar 'lDatDemograficos' en la clase 'Padron'
+	 *  		1. No existe el fichero RUTA_PADRON		->  \return = false
+	 *  		2. Existe el fichero RUTA_PADRON
+	 *  			* Validación por conteo de objetos	->	cont = 4 y \return = true
+	 *
+	 * @ESTRUCTURA: Estructura de datos según en diagrama UML a partir de 'gBarrio' en la clase 'Padron'
+	 * 			1. No existe ningún fichero de datos							->	\return = false
+	 * 			2. Existen todos los ficheros de datos							->	\return = true
+	 * 				2.1 'lBarrios' contiene 3 barrios							->	BarrioA, BarrioB, BarrioC
+	 * 				2.2 El barrio 'BarrioA' contiene 1 vía 						->	ViaA
+	 * 				2.3 El barrio 'BarrioA' contiene más de 1 vía 				-> 	Deductivamente si el algoritmo sirve para 1 vía, sirve para 'n' vías
+	 * 				2.4 La vía 'ViaA' no contiene un set de datos demográficos	->	No se muestra nada
+	 * 				2.5 La vía 'ViaA' contiene un set de datos demográficos		->	[AñoNacA, LugNacA, EstudA, NacionA]
+	 */
+	void pruebaEstructuraLVias();
+	void pruebaEstructuraLDatDem();
+	void pruebaEstructuraGBarrio();
+	void pruebaAlg1();
+
 public:
 	Pruebas();
 	~Pruebas();
@@ -148,4 +180,4 @@ public:
 
 }
 
-#endif /* PADRONOPENDATA_JGARCIAPFT_PRUEBAS_H_ */
+#endif /* PRUEBAS_H_ */

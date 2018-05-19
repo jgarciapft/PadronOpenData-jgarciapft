@@ -82,12 +82,14 @@ int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, str
 
 /****************************************************************************		INTERFAZ PÚBLICA	****************************************************************************/
 
-void Padron::cargarBarrios() {
+bool Padron::cargarBarrios() {
 	ifstream fEnt;														//Flujo de entrada del que leer los datos
+	bool rutaValida = false;											//Almacena el estado de la carga
 	string campos[N_CAMPOS_BARRIO];										//Almacena los campos que definen cada objeto 'Barrio'
 
 	fEnt.open(RUTA_BARRIO.c_str());
 	if(fEnt.is_open()){													//Comprueba que exista el fichero de datos comprobando si el flujo se abrió correctamente
+		rutaValida = true;												//Actualiza la bandera para indicar que se pudo cargar los barrios
 		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
 			getline(fEnt, campos[0], SEP); 								//Lee el nombre del barrio
@@ -97,17 +99,20 @@ void Padron::cargarBarrios() {
 		}
 		gBarrio->insertar(new Barrio(DEF_BARRIO, DEF_PLACEHOLDER));		//Barrio que contiene las vías que no tienen ningún barrio asignado
 	}
-
 	fEnt.close();														//Cierra el flujo
+
+	return rutaValida;
 }
 
-void Padron::cargarVias() {
+bool Padron::cargarVias() {
 	ifstream fEnt;														//Flujo de entrada del que leer los datos
+	bool rutaValida = false;											//Almacena el estado de la carga
 	string campos[N_CAMPOS_VIA];										//Almacena los campos que definen cada objeto Via
 	Via* vAux;															//Puntero auxiliar para almacenar la vía recién creada en la lista de vías auxiliar y en su barrio correspondiente
 
 	fEnt.open(RUTA_VIAS.c_str());
 	if(fEnt.is_open()){													//Comprueba que exista el fichero de datos comprobando si el flujo se abrió correctamente
+		rutaValida = true;												//Actualiza la bandera para indicar que se pudo cargar las vías
 		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
 			for(int i=0; i<N_CAMPOS_VIA-1; i++){						//Lee todos los campos de cada vía menos el último
@@ -124,17 +129,20 @@ void Padron::cargarVias() {
 			}
 		}
 	}
-
 	fEnt.close();														//Cierra el flujo
+
+	return rutaValida;
 }
 
-void Padron::cargarDatosDemograficos() {
+bool Padron::cargarDatosDemograficos() {
 	ifstream fEnt;														//Flujo de entrada del que leer los datos
+	bool rutaValida = false;											//Almacena el estado de la carga
 	string campos[N_CAMPOS_DATOS_DEMOGRAFICOS];							//Almacena los campos que definen cada objeto
 	DatosDemograficos* dD;												//Puntero auxiliar para almacenar el dato demográfico recién creado en la lista auxiliar y en su(s) vía(s) correspondiente(s)
 
-	fEnt.open(RUTA_DATOS_DEMOGRAFICOS.c_str());
+	fEnt.open(RUTA_PADRON.c_str());
 	if(fEnt.is_open()){
+		rutaValida = true;												//Actualiza la bandera para indicar que se pudo cargar los datos demográficos
 		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
 			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){			//Lee todos los campos de cada dato menos el último
@@ -149,8 +157,9 @@ void Padron::cargarDatosDemograficos() {
 			}
 		}
 	}
-
 	fEnt.close();														//Cierra el flujo
+
+	return rutaValida;
 }
 
 void Padron::alg2(string nombreBarrio) {								///@NOTA: Método invocativo

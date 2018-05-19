@@ -48,15 +48,15 @@ void UI::ejecutar() {
 			if(!datosCargados){					//Maneja la múltiple carga de datos
 				t_start = Time::getTime();
 				cout << "Cargando datos ... " << endl;
-
-				p.cargarBarrios();
-				p.cargarVias();
-				p.cargarDatosDemograficos();
-
-				cout << "Carga finalizada ... " << endl;
+				if(p.cargarBarrios() && p.cargarVias() && p.cargarDatosDemograficos()){	//Comprueba que se haya podido cargar la estructura de datos
+					datosCargados = true;			//Actualización de la bandera para indicar que los datos ya han sido cargados
+					cout << "Carga finalizada ... " << endl;
+				}else{
+					cout << "ERROR : No se pudieron cargar los ficheros de datos" << endl;
+					pausa();
+				}
 				t_end = Time::getTime();
 				cout << "Tiempo: " << t_end - t_start << "  seg." << endl;
-				datosCargados = true;			//Actualización de la bandera para indicar que los datos ya han sido cargados
 			}else{								//Si los datos ya han sido cargados se indica al usuario por consola
 				cout << "YA HAN SIDO CARGADOS LOS DATOS DEL PADRÓN \nPuede ejecutar los algoritmos con norlmalidad" << endl;
 				pausa();						//Pausa la ejecución hasta que el usuario pulse la tecla de retorno para dar tiempo a visualizar los resultados de los algoritmos y mensajes del programa

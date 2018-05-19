@@ -576,7 +576,7 @@ void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas de
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Métodos auxiliares" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
-	pruebaMetodosAuxiliares();
+//	pruebaMetodosAuxiliares();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Interfaz de usuario (UI)" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
