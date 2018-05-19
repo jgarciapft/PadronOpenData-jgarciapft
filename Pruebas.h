@@ -10,6 +10,8 @@
  *	@atributo salidaPruebas
  *		Flujo de salida para el volcado de los resultados de las pruebas. La ruta del fichero está
  *			especificada en \constante RUTA_FICEHRO_PRUEBAS
+ *	@atributo bufferSalidaConsola
+ *		Almacena el buffer de consola para restaurarlo al final de las pruebas
  */
 
 #ifndef PRUEBAS_H_
@@ -27,8 +29,7 @@ class Pruebas {
 
 private:
 	Padron p;
-
-public:
+	streambuf* bufferSalidaConsola;
 	ofstream salidaPruebas;
 
 private:
@@ -149,7 +150,7 @@ private:
 	 */
 	void pruebaEjecucionSecuencial();
 
-	/**@PRUEBA	Validación de la carga de datos a partir del set de datos \SET_DATOS: SetDatos_1
+	/**@PRUEBA	Validación de la carga de datos. Datos: \SET_DATOS SetDatos_1
 	 * 				-Un fichero con los BARRIOS. 			RUTA_BARRIO (\constante RUTA_BARRIO_ALG_1)
 	 * 				-Un fichero con las VÍAS.				RUTA_VIA	(\constante RUTA_VIA_ALG_1)
 	 * 				-Un fichero con los datos del PADRON.	RUTA_PADRON	(\constante RUTA_PADRON_ALG_1)
@@ -185,6 +186,13 @@ private:
 	void pruebaEstructuraLVias(GestorBarrio& gBarrio, int& cont, string ruta);
 	void pruebaEstructuraLDatDem(GestorBarrio& gBarrio, int& cont, string ruta, ListaPI<DatosDemograficos*>& lDatDem);
 	void pruebaEstructuraGBarrio(GestorBarrio& gBarrio);
+
+	/**@PRUEBA: Validación del Algoritmo 2. Datos: \SET_DATOS SET_ESTANDAR
+	 *
+	 * 1. Barrio 'Vera Cruz' existe		  ->   Se muestran 3 VIAS
+	 * 2. Barrio 'OtroBarrio' no existe   ->   Se indica que no se ha encontrado el barrio 'OtroBarrio'
+	 */
+	void pruebaAlg2();
 
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos

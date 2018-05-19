@@ -9,44 +9,22 @@ namespace pruebas {
 
 /******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
 
-///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: Set_1
-const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_1_Barrios.csv";
-const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_1_Vias.csv";
-const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_1_Padron.csv";
+	///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: Set_1
+	const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_1_Barrios.csv";
+	const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_1_Vias.csv";
+	const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_1_Padron.csv";
 
 /******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
 
 	/**@TEST: Implementación de las pruebas de utilidades de cadenas. (DEL PROYECTO BASE)
 	 *
 	 * @param text
-	 * @param salidaPruebas
-	 * 		Flujo de salida del archivo de volcado de pruebas
+	 * 		Cadena con toda la información que debe convertirse en objetos a almacenar por los gestores
 	 */
-	static void pruebaTrocearCadenaAnioNacimiento(string text, ofstream& salidaPruebas);
-
-	/**@TEST: Implementación de las pruebas de utilidades de cadenas. (DEL PROYECTO BASE)
-	 *
-	 * @param text
-	 * @param salidaPruebas
-	 * 		Flujo de salida del archivo de volcado de pruebas
-	 */
-	static void pruebaTrocearCadenaLugarNacimiento(string text, ofstream& salidaPruebas);
-
-	/**@TEST: Implementación de las pruebas de utilidades de cadenas. (DEL PROYECTO BASE)
-	 *
-	 * @param text
-	 * @param salidaPruebas
-	 * 		Flujo de salida del archivo de volcado de pruebas
-	 */
-	static void pruebaTrocearCadenaEstudios(string text, ofstream& salidaPruebas);
-
-	/**@TEST: Implementación de las pruebas de utilidades de cadenas. (DEL PROYECTO BASE)
-	 *
-	 * @param text
-	 * @param salidaPruebas
-	 * 		Flujo de salida del archivo de volcado de pruebas
-	 */
-	static void pruebaTrocearCadenaNacionalidad(string text, ofstream& salidaPruebas);
+	static void pruebaTrocearCadenaAnioNacimiento(string text);
+	static void pruebaTrocearCadenaLugarNacimiento(string text);
+	static void pruebaTrocearCadenaEstudios(string text);
+	static void pruebaTrocearCadenaNacionalidad(string text);
 
 	/**@TEST: Implementación de prueba del método GestorNacionalidad::ordenarLista y GestorEstudios::ordenarLista
 	 *
@@ -134,43 +112,43 @@ const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_1_Padron.csv";
 
 /********************************************************************************************************************************************************/
 
-void pruebaTrocearCadenaAnioNacimiento(string text, ofstream& salidaPruebas) {
+void pruebaTrocearCadenaAnioNacimiento(string text) {
 
     char delim = ';';
 	vector<string> vText = splitStringToVector(text, delim);
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);
-		salidaPruebas << "Año: "<< vString[0]<< "  nº personas: "<< atoi(vString[1].c_str())<<endl;
+		cout << "Año: "<< vString[0]<< "  nº personas: "<< atoi(vString[1].c_str())<<endl;
 	}
 }
 
-void pruebaTrocearCadenaLugarNacimiento(string text, ofstream& salidaPruebas) {
+void pruebaTrocearCadenaLugarNacimiento(string text) {
     char delim = ';';
 	vector<string> vText = splitStringToVector(text, delim);
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);
 		if ( vString.size()== 2)
-			salidaPruebas << "Poblacion: "<< " "<< " Provincia : "<< vString[0]<<"  nº personas: "<< atoi(vString[1].c_str())<<endl;
+			cout << "Poblacion: "<< " "<< " Provincia : "<< vString[0]<<"  nº personas: "<< atoi(vString[1].c_str())<<endl;
 		else
-			salidaPruebas << "Poblacion: "<< vString[0]<< " Provincia : "<< vString[1]<<"  nº personas: "<< atoi(vString[2].c_str())<<endl;
+			cout << "Poblacion: "<< vString[0]<< " Provincia : "<< vString[1]<<"  nº personas: "<< atoi(vString[2].c_str())<<endl;
 	}
 }
 
-void pruebaTrocearCadenaEstudios(string text, ofstream& salidaPruebas) {
+void pruebaTrocearCadenaEstudios(string text) {
     char delim = ';';
 	vector<string> vText = splitStringToVector(text, delim);
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);
-		salidaPruebas << "Estudios: "<< vString[0]<< "  nº personas: "<< atoi(vString[1].c_str())<<endl;
+		cout << "Estudios: "<< vString[0]<< "  nº personas: "<< atoi(vString[1].c_str())<<endl;
 	}
 }
 
-void pruebaTrocearCadenaNacionalidad(string text, ofstream& salidaPruebas) {
+void pruebaTrocearCadenaNacionalidad(string text) {
     char delim = ';';
 	vector<string> vText = splitStringToVector(text, delim);
 	for (int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);
-		salidaPruebas << "Pais: "<< vString[0]<< "  nº personas: "<< atoi(vString[1].c_str())<<endl;
+		cout << "Pais: "<< vString[0]<< "  nº personas: "<< atoi(vString[1].c_str())<<endl;
 	}
 }
 

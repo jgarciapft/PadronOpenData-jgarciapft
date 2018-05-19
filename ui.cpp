@@ -21,7 +21,10 @@ UI::~UI() {
 
 
 int main() {
-	pruebas::Pruebas pruebasProyecto;			//Ejecuta todas las pruebas del proyecto
+	//Ejecuta todas las pruebas del proyecto y termina todos los procesos relacionados con ellas
+	pruebas::Pruebas* pruebasProyecto = new pruebas::Pruebas;
+	delete pruebasProyecto;
+
 //	UI ui;										//Instancia la clase principal que maneja la ejecución del programa
 
 	return 0;
