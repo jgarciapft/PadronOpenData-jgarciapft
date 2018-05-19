@@ -31,6 +31,16 @@ private:
 	void ordenarLista(ListaPI<Nacionalidad*>*& lNacion);
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para la lista que encapsula
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de GestorNacionalidad inicializada por defecto
+	 */
 	GestorNacionalidad();
 	GestorNacionalidad(string nacionalidades);
 	~GestorNacionalidad();

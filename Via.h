@@ -41,6 +41,16 @@ private:
 	DatosDemograficos* datDemograficos;
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Inicializa 'datDemograficos' a NULL y el resto de atributos al valor por defecto
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de Via inicializada por defecto
+	 */
 	Via();
 	Via(string barV, string nomV, float lonV, string tipV, int codV);
 	~Via();

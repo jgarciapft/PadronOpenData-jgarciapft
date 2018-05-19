@@ -25,6 +25,16 @@ private:
 	int nPersonas;
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Inicializa los atributos al valor por defecto
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de Nacionalidad inicializada por defecto
+	 */
 	Nacionalidad();
 	Nacionalidad(string nac, int nP);
 	~Nacionalidad();

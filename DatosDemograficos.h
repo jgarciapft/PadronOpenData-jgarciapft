@@ -47,6 +47,17 @@ private:
 	GestorNacionalidad* gNacionalidad;
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para los gestores de datos del padrón e inicializa por defecto
+	 * 			el resto de atributos
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de DatosDemograficos inicializada por defecto
+	 */
 	DatosDemograficos();
 	DatosDemograficos(int _codVia, string aniosNacimiento, string lugaresNacimiento, string estudios, int _nMujeres,
 			int _nHombres, string nacionalidades);

@@ -29,6 +29,16 @@ private:
 	int nPersonas;
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Inicializa los atributos al valor por defecto
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de LugarNacimiento inicializada por defecto
+	 */
 	LugarNacimiento();
 	LugarNacimiento(string pobl, string provP, int nP);
 	~LugarNacimiento();

@@ -24,6 +24,16 @@ private:
 	ListaPI<Barrio*>* lBarrios;
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para la lista que encapsula
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de GestorBarrio inicializada por defecto
+	 */
 	GestorBarrio();
 	~GestorBarrio();
 

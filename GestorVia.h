@@ -24,6 +24,16 @@ private:
 	ListaPI<Via*>* lVias;
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para la lista que encapsula
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de GestorVia inicializada por defecto
+	 */
 	GestorVia();
 	~GestorVia();
 

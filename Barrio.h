@@ -29,6 +29,16 @@ private:
 	GestorVia* gVias;
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para 'gVias' e hace una inicialización por defecto de los atributos
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de Barrio inicializada por defecto
+	 */
 	Barrio();
 	Barrio(string nB, string nD);
 	~Barrio();

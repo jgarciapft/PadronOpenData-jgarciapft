@@ -31,6 +31,16 @@ private:
 	void ordenarLista(ListaPI<Estudios*>*& lEstud);
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Reserva memoria para la lista que encapsula
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de GestorEstudios inicializada por defecto
+	 */
 	GestorEstudios();
 	GestorEstudios(string estudios);
 	~GestorEstudios();

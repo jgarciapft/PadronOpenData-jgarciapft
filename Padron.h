@@ -42,7 +42,29 @@ private:
 	int filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia);
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO. Reserva espacio para 'gBarrio', 'lVias', 'aVias' y 'lDatDemograficos'
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 * 		Instancia de Padron inicializada por defecto
+	 */
 	Padron();
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Libera toda la memoria reservada para toda la estructura de datos en cascada.
+	 * 			Los datos demográficos se liberan a partir de la lista 'lDatDemograficos'
+	 * 			Los nodos del ABB 'aVias' ya han sido liberados, solo se libera el ABB 'aVias'
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 */
 	~Padron();
 
 	bool cargarBarrios();
