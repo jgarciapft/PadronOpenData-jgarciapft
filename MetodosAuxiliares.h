@@ -12,9 +12,9 @@ namespace pruebas {
 	const string RUTA_FIHCERO_PRUEBAS = "Pruebas.txt";					//Ruta relativa del fichero de volcado para la ejecución de las pruebas
 
 	///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: Set_1
-	const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_1_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 1
-	const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_1_Vias.csv";			//Ruta relativa del fichero de vías para el set de pruebas 1
-	const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_1_Padron.csv";		//Ruta relativa del fichero de datos del padrón (Año 2016) para el set de pruebas 1
+	const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 1
+	const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Vias.csv";			//Ruta relativa del fichero de vías para el set de pruebas 1
+	const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Padron.csv";	//Ruta relativa del fichero de datos del padrón (Año 2016) para el set de pruebas 1
 
 /******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
 
@@ -105,6 +105,14 @@ namespace pruebas {
 	static bool cargarVias(GestorBarrio& gBarrio, int& cont, string& ruta);
 	static bool cargarDatosDemograficos(GestorBarrio& gBarrio, int& cont, string& ruta, ListaPI<DatosDemograficos*>& lDatDem);
 
+	/**@TEST: Implementación de la prueba del Algoritmo 3
+	 *
+	 * @param lVias
+	 * 		Simula la lista de vías auxiliar de la clase Padron
+	 * @param cont
+	 * 		Número de vías que pasan por más de 1 barrio en la lista 'lVias'
+	 */
+	static void alg3(ListaPI<Via*>& lVias, int& cont);
 
 /********************************************************************************************************************************************************/
 
@@ -322,6 +330,50 @@ bool cargarDatosDemograficos(GestorBarrio& gBarrio, int& cont, string& ruta, Lis
 	fEnt.close();
 
 	return rutaValida;
+}
+
+void alg3(ListaPI<Via*>& lVias, int& cont) {
+	bool primerRes = true;												
+	bool coincidencia = false;											
+	Via* vAux1;															
+	Via* vAux2;															
+	string nombreVia;													
+	ListaPI<string> lCoincidencias;										
+
+	lVias.moverInicio();
+	while(!lVias.finLista()){											
+		lVias.consultar(vAux1);
+		lVias.avanzar();
+		lCoincidencias.moverInicio();
+		while(!lCoincidencias.finLista() && !coincidencia){				
+			lCoincidencias.consultar(nombreVia);
+			lCoincidencias.avanzar();
+			if(vAux1->getNombreVia() == nombreVia)
+				coincidencia = true;
+		}
+		if(!coincidencia){												
+			while(!lVias.finLista()){									
+				lVias.consultar(vAux2);
+				lVias.avanzar();
+				if(vAux1->getNombreVia() == vAux2->getNombreVia()){
+					if(primerRes){										
+						cont++;
+						lCoincidencias.insertar(vAux1->getNombreVia());	
+						primerRes = false;								
+					}
+					cout << vAux2->getBarrioVia() << endl;
+					cont++;
+				}
+			}
+			lVias.moverInicio();
+			do {														
+				lVias.consultar(vAux2);
+				lVias.avanzar();
+			} while(vAux1 != vAux2);									
+			primerRes = true; 											
+		}
+		coincidencia = false;											
+	}
 }
 
 }

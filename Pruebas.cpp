@@ -686,18 +686,58 @@ void Pruebas::pruebaAlg2() {
 	p.alg2("OtroBarrio");
 }
 
+void Pruebas::pruebaAlg3() {
+	ListaPI<Via*> lVias;
+	lVias.insertar(new Via("BarrioA", "ViaA", 0,"TipoA", 0));
+	lVias.insertar(new Via("BarrioB", "ViaB", 0,"TipoB", 0));
+	lVias.insertar(new Via("BarrioX", "ViaX", 0,"TipoX", 0));
+	lVias.insertar(new Via("BarrioD", "ViaD", 0,"TipoD", 0));
+	Via* vAux;
+	int cont = 0;
+
+	///@TEST: 1. No existe ninguna vía que pasa por más de 1 barrio
+	alg3(lVias, cont);
+	if(cont != 0)
+		salidaPruebas << "\tERROR : TEST #1 - Se ha encontrado alguna vía que pasa por más de 1 barrio\t| En su lugar -> " << cont << endl;
+
+	///@TEST: 2. Existe 1 vía que pasa por 2 barrios
+	lVias.insertar(new Via("BarrioD", "ViaA", 0, "TipoA", 0));
+	cont = 0;
+
+	alg3(lVias, cont);
+	if(cont != 1)
+		salidaPruebas << "\tERROR : TEST #2 - No se ha encontrado 1 vía que pasa por más de 1 barrio\t| En su lugar -> " << cont << endl;
+
+	///TEST: 3. Existen 3 vías que pasan por más de 1 barrio
+	lVias.insertar(new Via("BarrioF", "ViaB", 0, "TipoB", 0));
+	lVias.insertar(new Via("BarrioF", "ViaD", 0, "TipoD", 0));
+	cont = 0;
+
+	alg3(lVias, cont);
+	if(cont != 3)
+		salidaPruebas << "\tERROR : TEST #3 - No se han encontrado 3 vía que pasa por más de 1 barrio\t| En su lugar -> " << cont << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lVias.moverInicio();
+	while(!lVias.finLista()){
+		lVias.consultar(vAux);
+		lVias.avanzar();
+		delete vAux;
+	}
+}
+
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
 //	pruebaAlg1();
 	salidaPruebas << "FIN : ALGORITMO 1" << endl;
 
 	//TODO BORRAR @TEST: Carga de la estructura de datos para el resto de algoritmos que la requieran
-	p.cargarBarrios();
-	p.cargarVias();
-	p.cargarDatosDemograficos();
+//	p.cargarBarrios();
+//	p.cargarVias();
+//	p.cargarDatosDemograficos();
 
 	salidaPruebas << "INICIO : ALGORITMO 2" << endl;
-	pruebaAlg2();
+//	pruebaAlg2();
 	salidaPruebas << "FIN : ALGORITMO 2" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 3" << endl;

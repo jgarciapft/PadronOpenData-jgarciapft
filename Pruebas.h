@@ -9,7 +9,7 @@
  *		Instancia de la clase principal para incluir toda la implementación del proyecto
  *	@atributo salidaPruebas
  *		Flujo de salida para el volcado de los resultados de las pruebas. La ruta del fichero está
- *			especificada en \constante RUTA_FICEHRO_PRUEBAS
+ *			especificada en \const RUTA_FICEHRO_PRUEBAS
  *	@atributo bufferSalidaConsola
  *		Almacena el buffer de consola para restaurarlo al final de las pruebas
  */
@@ -151,9 +151,9 @@ private:
 	void pruebaEjecucionSecuencial();
 
 	/**@PRUEBA	Validación de la carga de datos. Datos: \SET_DATOS SetDatos_1
-	 * 				-Un fichero con los BARRIOS. 			RUTA_BARRIO (\constante RUTA_BARRIO_ALG_1)
-	 * 				-Un fichero con las VÍAS.				RUTA_VIA	(\constante RUTA_VIA_ALG_1)
-	 * 				-Un fichero con los datos del PADRON.	RUTA_PADRON	(\constante RUTA_PADRON_ALG_1)
+	 * 				-Un fichero con los BARRIOS. 			RUTA_BARRIO (\const RUTA_BARRIO_ALG_1)
+	 * 				-Un fichero con las VÍAS.				RUTA_VIA	(\const RUTA_VIA_ALG_1)
+	 * 				-Un fichero con los datos del PADRON.	RUTA_PADRON	(\const RUTA_PADRON_ALG_1)
 	 *
 	 * @ESTRUCTURA: Lista de barrios que encapsula la clase 'GestorBarrio'
 	 * 			1. Existe el fichero RUTA_BARRIO								->	\return = true
@@ -193,6 +193,15 @@ private:
 	 * 2. Barrio 'OtroBarrio' no existe   ->   Se indica que no se ha encontrado el barrio 'OtroBarrio'
 	 */
 	void pruebaAlg2();
+
+	/**@PRUEBA: Validación del Algoritmo 3.
+	 *
+	 * 1. No existe ninguna vía que pasa por más de 1 barrio							->	cont = 0
+	 * 2. Existe 1 vía que pasa por 2 barrios											->	cont = 1
+	 * 		2.1 Deductivamente si el algorirmo sirve para vías que pasan por 2 barrios	->	Sirve para 'n' barrios
+	 * 3. Existen 3 vías que pasan por más de 1 barrio									->	cont = 3
+	 */
+	void pruebaAlg3();
 
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos
