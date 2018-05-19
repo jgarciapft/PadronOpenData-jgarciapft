@@ -43,6 +43,16 @@ public:
 	 */
 	GestorNacionalidad();
 	GestorNacionalidad(string nacionalidades);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Libera la memoria reservada para la lista de nacionalidades y las nacionalidades de la lista
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 */
 	~GestorNacionalidad();
 
 	void alg5(ListaPI<Nacionalidad*>*& lNacion);

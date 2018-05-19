@@ -43,6 +43,16 @@ public:
 	 */
 	GestorEstudios();
 	GestorEstudios(string estudios);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Libera la memoria reservada para la lista de estudios y los estudios de la lista
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 */
 	~GestorEstudios();
 
 	void alg8(ListaPI<Estudios*>*& lEstud);

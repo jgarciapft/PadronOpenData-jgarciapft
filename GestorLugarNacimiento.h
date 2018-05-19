@@ -41,6 +41,16 @@ public:
 	 */
 	GestorLugarNacimiento();
 	GestorLugarNacimiento(string lugaresNacimiento);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Libera la memoria reservada para la lista de lugares de nacimiento y los lugares de nacimiento de la lista
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 */
 	~GestorLugarNacimiento();
 
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);

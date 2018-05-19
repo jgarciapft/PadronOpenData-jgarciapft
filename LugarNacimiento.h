@@ -41,6 +41,16 @@ public:
 	 */
 	LugarNacimiento();
 	LugarNacimiento(string pobl, string provP, int nP);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 */
 	~LugarNacimiento();
 
 	string getPoblacion() const;

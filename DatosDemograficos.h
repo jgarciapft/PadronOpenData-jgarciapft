@@ -61,6 +61,17 @@ public:
 	DatosDemograficos();
 	DatosDemograficos(int _codVia, string aniosNacimiento, string lugaresNacimiento, string estudios, int _nMujeres,
 			int _nHombres, string nacionalidades);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Libera la memoria reservada para los gestores de datos del padrón: 'gAnioNacimiento',
+	 * 			'gLugarNacimiento', 'gEstudios' y 'gNacionalidad'
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 */
 	~DatosDemograficos();
 
 	int getCodVia() const;

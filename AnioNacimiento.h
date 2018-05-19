@@ -37,6 +37,16 @@ public:
 	 */
 	AnioNacimiento();
 	AnioNacimiento(int aN, int nP);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 */
 	~AnioNacimiento();
 
 	int getAnio() const;

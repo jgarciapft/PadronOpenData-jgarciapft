@@ -55,9 +55,10 @@ public:
 	Padron();
 	/**
 	 * @brief
-	 * 		DESTRUCTOR. Libera toda la memoria reservada para toda la estructura de datos en cascada.
+	 * 		DESTRUCTOR. Libera la memoria reservada para toda la jerarquía de datos en cascada.
 	 * 			Los datos demográficos se liberan a partir de la lista 'lDatDemograficos'
-	 * 			Los nodos del ABB 'aVias' ya han sido liberados, solo se libera el ABB 'aVias'
+	 * 			Las raices de los nodos del ABB 'aVias' ya han sido liberadas, solo se liberan
+	 * 				los nodos del ABB 'aVias'
 	 *
 	 * @pre:
 	 * @post:

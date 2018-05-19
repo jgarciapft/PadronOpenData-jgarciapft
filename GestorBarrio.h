@@ -35,6 +35,17 @@ public:
 	 * 		Instancia de GestorBarrio inicializada por defecto
 	 */
 	GestorBarrio();
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Libera la memoria reservada para la lista de barrios que encapsula y los barrios de la lista.
+	 * 		En cascada las vías asociadas a cada barrio.
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 */
 	~GestorBarrio();
 
 	void insertar(Barrio* b);

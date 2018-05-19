@@ -41,6 +41,17 @@ public:
 	 */
 	Barrio();
 	Barrio(string nB, string nD);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Libera la memoria reservada para el gestor de vías 'gVias', por lo que se liberan en cascada las vías
+	 * 			asociadas a ese gestor
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 */
 	~Barrio();
 
 	string getNombreBarrio() const ;

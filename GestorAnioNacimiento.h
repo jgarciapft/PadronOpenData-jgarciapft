@@ -40,6 +40,16 @@ public:
 	 */
 	GestorAnioNacimiento();
 	GestorAnioNacimiento(string aniosNacimiento);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Libera la memoria reservada para la lista de años de nacimiento y los años de nacimiento de la lista
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 */
 	~GestorAnioNacimiento();
 
 	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);

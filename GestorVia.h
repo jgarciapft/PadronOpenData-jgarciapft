@@ -35,6 +35,16 @@ public:
 	 * 		Instancia de GestorVia inicializada por defecto
 	 */
 	GestorVia();
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Libera la memoria reservada para la lista de vías que encapsula y las vías de la lista
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 */
 	~GestorVia();
 
 	void insertarViaOrden(Via* v);

@@ -37,6 +37,16 @@ public:
 	 */
 	Nacionalidad();
 	Nacionalidad(string nac, int nP);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 */
 	~Nacionalidad();
 
 	string getNacionalidad() const;

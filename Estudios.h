@@ -37,6 +37,16 @@ public:
 	 */
 	Estudios();
 	Estudios(string nEst, int nP);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 */
 	~Estudios();
 
 	string getNivEstudios() const;

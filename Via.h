@@ -53,6 +53,16 @@ public:
 	 */
 	Via();
 	Via(string barV, string nomV, float lonV, string tipV, int codV);
+	/**
+	 * @brief
+	 * 		DESTRUCTOR
+	 *
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 *
+	 * @return
+	 */
 	~Via();
 
 	string getBarrioVia() const;
