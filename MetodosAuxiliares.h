@@ -65,9 +65,42 @@ namespace pruebas {
 	 */
 	static void insertarViaOrden(Via* v, ListaPI<Via*>& lVias);
 
+	/**@TEST: Implementación de la prueba del método Padron::alg11
+	 *
+	 * @param aVias
+	 * 		Simula el ABB de vías auxiliar que encapsula la clase Padron
+	 * @param nombreVia
+	 * 		Nombre de la vía a buscar
+	 * @param enc
+	 * 		Devuelve si se ha encntrado alguna vía por el nombre \param nombreVia
+	 */
 	static void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, bool& enc);
 
+	/**@TEST: Implementación de la prueba del método Padron::alg12
+	 *
+	 * @param aVias
+	 * 		Simula el ABB de vías auxiliar que encapsula la clase Padron
+	 * @param raiz
+	 * 		Subcadena con la que comparar la ráiz de cada vía
+	 * @return
+	 * 		Devuelve un ABB con todas las potenciales vías (sino todas) que comienzan por la raíz \param raiz
+	 */
+	static Arbol<Via*, ComparadorPtrVia>* alg12(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz);
 
+	/**@TEST: Implementación de la prueba del método Padron::filtroInOrden
+	 *
+	 * @param aVias
+	 * 		Simula el ABB de vías auxiliar que encapsula la clase Padron
+	 *
+	 * @param raiz
+	 * 		Subcadena con la que comparar la ráiz de cada vía
+	 *
+	 * 	@return
+	 * 		Devuelve si se ha encntrado alguna vía por el nombre \param raiz
+	 */
+	static bool filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz);
+
+/********************************************************************************************************************************************************/
 
 void pruebaTrocearCadenaAnioNacimiento(string text, ofstream& salidaPruebas) {
 
@@ -170,6 +203,36 @@ void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, bool& enc) {
 	}else if(aVias->hijoIzq() != NULL){
 		alg11(aVias->hijoIzq(), nombreVia, enc);
 	}
+}
+
+Arbol<Via*, ComparadorPtrVia>* alg12(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz) {
+	Arbol<Via*, ComparadorPtrVia>* aAux = NULL;
+
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0){
+		aAux = aVias;
+	}else if(aVias->raiz()->getNombreVia() < raiz){
+		if (aVias->hijoDer() != NULL)
+			aAux = alg12(aVias->hijoDer(), raiz);
+	}else if(aVias->hijoIzq() != NULL){
+		aAux = alg12(aVias->hijoIzq(), raiz);
+	}
+
+	return aAux;
+}
+
+bool filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz) {
+	bool enc = false;
+
+	if(aVias->hijoIzq() != NULL)
+		enc = filtroInOrden(aVias->hijoIzq(), raiz);
+
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0)
+		enc = true;
+
+	if(aVias->hijoDer() != NULL)
+		enc = filtroInOrden(aVias->hijoDer(), raiz);
+
+	return enc;
 }
 
 }

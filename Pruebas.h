@@ -87,11 +87,11 @@ private:
 	 * @MÉTODO : GestorVia::insertarViaOrden
 	 * 		1. lVias vacía   																				   ->   Se inserta v1 sin ningún orden (ViaB)
 	 * 		2. lVias contiene 1 elemento
-	 * 			2.1 v3 es alfabéticamente mayor que el elemento en lVias  									   ->   v3 se inserta en primera posición (ViaA, ViaB)
-	 * 			2.2 v3 es alfabéticamente menor que el elemento en lVias   									   ->   v3 se inserta en última posición  (ViaB, ViaD)
+	 * 			2.1 v3 es alfabéticamente mayor que el elemento en lVias  									   ->   v1 se inserta en primera posición (ViaA, ViaB)
+	 * 			2.2 v3 es alfabéticamente menor que el elemento en lVias   									   ->   v1 se inserta en última posición  (ViaB, ViaD)
 	 * 		3. lVias contiene 3 elementos
 	 * 			3.1 Si la inserción en primer y último lugar funciona para una vía   						   ->   Funciona para cualquier número de vías
-	 * 			3.2 v3 es alfabéticamente menor que el primer elemento y alfabéticamente mayor que el último   ->   v3 se inserta en la posición 2 (ViaB, ViaC, ViaD)
+	 * 			3.2 v3 es alfabéticamente menor que el primer elemento y alfabéticamente mayor que el último   ->   v1 se inserta en la posición 2 (ViaB, ViaC, ViaD)
 	 *
 	 * @MÉTODO : Padron::alg11
 	 * 		1. La vía 'nombreVia' está en el ABB
@@ -100,14 +100,22 @@ private:
 	 * 		2.  La vía 'nombreVia' no está en el ABB   			->   enc = false
 	 *
 	 * @MÉTODO : Padron::alg12
-	 * 		1. Ninguna vía comienza por la raíz				   ->  Se indica al usuario por consola que no se ha encontrado
-	 * 		2. Existe al menos 1 vía que comienza por la raíz  ->  Se devuelve el subárbol
-	 * 		3. Deductivamente si el algoritmo sirve para 1 vía ->  Sirve para todas
+	 * 		1. Ninguna vía comienza por la raíz	'raiz'		   ->  ABB == NULL. Se indica al usuario por consola que no se ha encontrado
+	 * 		2. Existe 1 vía que comienza por la raíz 'raiz'    ->  Se devuelve el subárbol (ABB :Plaza->NULL
+	 * 																								  ->Plaza)
+	 * 		3. Deductivamente si el algoritmo sirve para 1 vía ->  Sirve para 'n' vías
 	 *
 	 * @MÉTODO : Padron::filtroInOrden
-	 * 		1. Al menos 1 vía comienza por la raíz   ->   Calcula el número de habitantes para la provincia dada
+	 * 		1. 1 vía comienza por la raíz 'raiz'   				->   enc = true
+	 * 		2. Deductivamente si el algoritmo sirve para 1 vía	->   Sirve para 'n' vías
 	 */
 	void pruebaMetodosAuxiliares();
+	void pruebaOrdenLista();
+	void pruebaInsertarVia();
+	void pruebaInsertarViaOrden();
+	void pruebaAlg11();
+	void pruebaAlg12();
+	void pruebaFiltroInOrden();
 
 	/**@PRUEBA: INTERFZA DE USUARIO(UI)
 	 *

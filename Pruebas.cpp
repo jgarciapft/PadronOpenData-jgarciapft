@@ -76,9 +76,9 @@ void Pruebas::pruebaSobrecargaOperadores() {
 	if(cPtrVia.operator()(v2, v1) != 1)
 		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v2, v1) -> 1\t| En su lugar -> " << cPtrVia.operator()(v2, v1) << endl;
 	if(cPtrVia.operator()(v1, v3) != -1)
-		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v1, v3) -> -1\t| En su lugar -> " << cPtrVia.operator()(v1, v3) << endl;
+		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v1, v1) -> -1\t| En su lugar -> " << cPtrVia.operator()(v1, v3) << endl;
 	if(cPtrVia.operator()(v3, v1) != 1)
-		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v3, v1) -> 1\t| En su lugar -> " << cPtrVia.operator()(v3, v1) << endl;
+		salidaPruebas << "\tERROR : Clase COMPARADORPTRVIA - Operador \'()\' # ()(v1, v1) -> 1\t| En su lugar -> " << cPtrVia.operator()(v3, v1) << endl;
 	salidaPruebas << "FIN : Sobrecarga de operadores de la clase COMPARADORPTRVIA" << endl << endl;
 
 	salidaPruebas << "INICIO : Sobrecarga de operadores de la clase LUGAR DE NACIMIENTO" << endl;
@@ -147,8 +147,7 @@ void Pruebas::pruebaSobrecargaOperadores() {
 	delete v3;
 }
 
-void Pruebas::pruebaMetodosAuxiliares() {
-	salidaPruebas << "INICIO : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
+void Pruebas::pruebaOrdenLista() {
 	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();
 	Nacionalidad* nacion = new Nacionalidad("NacionalidadA", 4);
 	Nacionalidad* nacionAux;
@@ -201,9 +200,9 @@ void Pruebas::pruebaMetodosAuxiliares() {
 		delete nacionAux;
 	}
 	delete lNacion;
-	salidaPruebas << "FIN : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
+}
 
-	salidaPruebas << "INICIO : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
+void Pruebas::pruebaInsertarVia() {
 	Barrio* bAux = new Barrio("BarrioA", "DistritoA");
 	ListaPI<Barrio*> lBarrios; lBarrios.insertar(bAux);
 	Via* v1 = new Via("BarrioA", "ViaA", 0, "TipoA", 0);
@@ -221,44 +220,44 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	delete bAux;
 	delete v1;
 	delete v2;
-	salidaPruebas << "FIN : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
+}
 
-	salidaPruebas << "INICIO : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
+void Pruebas::pruebaInsertarViaOrden() {
 	ListaPI<Via*> lVias;
-	Via* v3 = new Via("BarrioB", "ViaB", 0, "TipoB", 0);
+	Via* v1 = new Via("BarrioB", "ViaB", 0, "TipoB", 0);
 	Via* vAux;
 
 	///@TEST: 1. lVias vacía
-	insertarViaOrden(v3, lVias);
+	insertarViaOrden(v1, lVias);
 	lVias.consultar(vAux);
-	if(lVias.estaVacia() != false || vAux != v3)
-		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #1 - No se ha insertado la vía v3 en la lista" << endl;
+	if(lVias.estaVacia() != false || vAux != v1)
+		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #1 - No se ha insertado la vía v1 en la lista" << endl;
 
 	///@TEST: 2.1 v3 es alfabéticamente mayor que el elemento en lVias
-	v3 = new Via("BarrioA", "ViaA", 0, "TipoA", 0);
-	insertarViaOrden(v3, lVias);
+	v1 = new Via("BarrioA", "ViaA", 0, "TipoA", 0);
+	insertarViaOrden(v1, lVias);
 	lVias.moverInicio();
 	lVias.consultar(vAux);
-	if(vAux != v3)
-		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.1 - v3 no está en la posición correcta" << endl;
+	if(vAux != v1)
+		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.1 - v1 no está en la posición correcta" << endl;
 	lVias.borrar();
 	delete vAux;
 
 	///@TEST: 2.2 v3 es alfabéticamente menor que el elemento en lVias
-	v3 = new Via("BarrioD", "ViaD", 0 , "TipoD", 0);
-	insertarViaOrden(v3, lVias);
+	v1 = new Via("BarrioD", "ViaD", 0 , "TipoD", 0);
+	insertarViaOrden(v1, lVias);
 	lVias.moverFinal();
 	lVias.consultar(vAux);
-	if(vAux != v3)
-		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.2 - v3 no está en la posición correcta" << endl;
+	if(vAux != v1)
+		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #2.2 - v1 no está en la posición correcta" << endl;
 
 	///@TEST: 3.2 v3 es alfabéticamente menor que el primer elemento y alfabéticamente mayor que el último
-	v3 = new Via("BarrioC", "ViaC", 0, "TipoC", 0);
-	insertarViaOrden(v3, lVias);
+	v1 = new Via("BarrioC", "ViaC", 0, "TipoC", 0);
+	insertarViaOrden(v1, lVias);
 	lVias.moverInicio();lVias.avanzar();
 	lVias.consultar(vAux);
-	if(vAux != v3)
-		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #3.2 - v3 no está en la posición correcta" << endl;
+	if(vAux != v1)
+		salidaPruebas << "\tERROR : Método \'GestorVia::insertarViaOrden\' - TEST #3.2 - v1 no está en la posición correcta" << endl;
 
 	///@NOTA: Liberación de los recursos reservados dinámicamente
 	lVias.moverInicio();
@@ -267,9 +266,9 @@ void Pruebas::pruebaMetodosAuxiliares() {
 		lVias.avanzar();
 		delete vAux;
 	}
-	salidaPruebas << "FIN : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
+}
 
-	salidaPruebas << "INICIO : MÉTODO \'Padron::alg11\'" << endl;
+void Pruebas::pruebaAlg11() {
 	Arbol<Via*, ComparadorPtrVia>* aVias = new Arbol<Via*, ComparadorPtrVia>();
 	Via* vIns1 = new Via("BarrioC", "ViaC", 0, "TipoC", 0); aVias->insertar(vIns1);
 	Via* vIns2 = new Via("BarrioB", "ViaB", 0, "TipoB", 0); aVias->insertar(vIns2);
@@ -296,12 +295,76 @@ void Pruebas::pruebaMetodosAuxiliares() {
 	delete vIns3;
 	delete vIns4;
 	delete aVias;
+}
+
+void Pruebas::pruebaAlg12() {
+	Arbol<Via*, ComparadorPtrVia>* aVias = new Arbol<Via*, ComparadorPtrVia>();
+	Arbol<Via*, ComparadorPtrVia>* aAux;
+	Via* vIns1 = new Via("BarrioC", "Plaza", 0, "TipoC", 0); aVias->insertar(vIns1);
+	Via* vIns2 = new Via("BarrioB", "Rotonda", 0, "TipoB", 0); aVias->insertar(vIns2);
+	Via* vIns3 =  new Via("BarrioD", "Plaza", 0, "TipoD", 0); aVias->insertar(vIns3);
+	string raiz = "Cal";
+
+	///@TEST: 1. Ninguna vía comienza por la raíz 'raiz'
+	aAux = alg12(aVias, raiz);
+	if(aAux != NULL)
+		salidaPruebas << "\tERROR : Método \'Padron::alg12\' - TEST #1 - Se ha encontrado un subárbol para la raíz \'" << raiz << "\'" << endl;
+
+	///@TEST: 2. Existe al menos 1 vía que comienza por la raíz	'raiz'
+	raiz = "Pla"; aAux = NULL;
+
+	aAux = alg12(aVias, raiz);
+	if(aAux == NULL || aAux->pertenece(vIns1) != true)
+		salidaPruebas << "\tERROR : Método \'Padron::alg12\' - TEST #2 - No se ha encontrado el subárbol para la raíz \'" << raiz << "\'" << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	delete vIns1;
+	delete vIns2;
+	delete vIns3;
+	delete aVias;
+}
+
+void Pruebas::pruebaFiltroInOrden() {
+	Arbol<Via*, ComparadorPtrVia>* aVias = new Arbol<Via*, ComparadorPtrVia>();
+	Via* vIns1 = new Via("BarrioC", "Plaza", 0, "TipoC", 0); aVias->insertar(vIns1);
+	Via* vIns2 = new Via("BarrioB", "Rotonda", 0, "TipoB", 0); aVias->insertar(vIns2);
+	Via* vIns3 =  new Via("BarrioD", "Plaza", 0, "TipoD", 0); aVias->insertar(vIns3);
+	string raiz = "Rot";
+
+	///@TEST: 1. 1 vía comienza por la raíz 'raiz'
+	if(filtroInOrden(aVias, raiz) != true)
+		salidaPruebas << "\tERROR : Método \'Padron::filtroInOrden\' - TEST #1 - No se ha encontrado ninguna vía para la raíz \'" << raiz << "\'" << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	delete vIns1;
+	delete vIns2;
+	delete vIns3;
+	delete aVias;
+}
+
+void Pruebas::pruebaMetodosAuxiliares() {
+	salidaPruebas << "INICIO : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
+	pruebaOrdenLista();
+	salidaPruebas << "FIN : MÉTODO \'GestorNacionalidad::ordenarLista\' y \'GestorEstudios::ordenarLista\'" << endl;
+
+	salidaPruebas << "INICIO : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
+	pruebaInsertarVia();
+	salidaPruebas << "FIN : MÉTODO \'GestorBarrio::insertarVia\'" << endl;
+
+	salidaPruebas << "INICIO : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
+	pruebaInsertarViaOrden();
+	salidaPruebas << "FIN : MÉTODO \'GestorVia::insertarViaOrden\'" << endl;
+
+	salidaPruebas << "INICIO : MÉTODO \'Padron::alg11\'" << endl;
+	pruebaAlg11();
 	salidaPruebas << "FIN : MÉTODO \'Padron::alg11\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'Padron::alg12\'" << endl;
+	pruebaAlg12();
 	salidaPruebas << "FIN : MÉTODO \'Padron::alg12\'" << endl;
 
 	salidaPruebas << "INICIO : MÉTODO \'Padron::filtroInOrden\'" << endl;
+	pruebaFiltroInOrden();
 	salidaPruebas << "FIN : MÉTODO \'Padron::filtroInOrden\'" << endl;
 }
 
@@ -501,8 +564,6 @@ void Pruebas::pruebaEjecucionSecuencial() {
 
 	ofs.close();																//Cierra el flujo
 }
-
-
 
 void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas del proyecto
 	salidaPruebas << "EJECUTANDO # Utilidadades de cadena" << endl;
