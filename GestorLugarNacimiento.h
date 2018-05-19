@@ -66,6 +66,14 @@ public:
 	void alg11(ofstream& ofs);
 	int alg12(string nombreProvincia);
 
+	/**
+	 * @brief
+	 * 		Muestra todos los lugares de nacimiento. Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Llama a mostrar los atributos de cada lugar de nacimiento de la lista encapsula
+	 * @complejidad: O(n)
+	 */
 	void mostrar();
 };
 

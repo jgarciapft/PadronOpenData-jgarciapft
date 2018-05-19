@@ -505,7 +505,7 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 	}
 }
 
-void Padron::mostrarEstructura() {										///@TEST: Muestra toda la estructura de datos cargada y las estructuras auxiliares
+void Padron::mostrarEstructura() {
 	Via* vAux;															//Puntero auxiliar para consultar las vías de la lista auxiliar de vías 'lVias'
 	DatosDemograficos* dD;												//Puntero auxiliar para consultar los datos demográficos de la lista auxiliar de datos demográficos 'lDatDemograficos'
 

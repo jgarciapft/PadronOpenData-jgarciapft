@@ -81,6 +81,14 @@ public:
 	void alg12_EDL(string raiz, string nombreProvincia);
 	void alg12_EDNL(string raiz, string nombreProvincia);
 
+	/**
+	 * @brief
+	 * 		Muestra toda la información procesada y cargada. Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Muestra toda la jerarquía de datos cargada y las estructuras auxiliares
+	 * @complejidad: O(n)
+	 */
 	void mostrarEstructura();
 };
 

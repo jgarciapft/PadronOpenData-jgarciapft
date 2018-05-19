@@ -106,6 +106,15 @@ public:
 	void alg11(ofstream& ofs);
 	int alg12(string nombreProvincia);
 
+	/**
+	 * @brief
+	 * 		Muestra toda la información de cada vía asocidada. Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Llama a mostrar los datos del padrón almacenados en cada gestor: 'gAnioNacimiento',
+	 * 		'gLugNacimiento', 'gEstudios', 'gNacionalidad' y muestra por consola el resto de atributos
+	 * @complejidad: O(n)
+	 */
 	void mostrar();
 };
 

@@ -52,6 +52,14 @@ public:
 	void alg8(string nombreBarrio);
 	void alg9();
 
+	/**
+	 * @brief
+	 * 		Muestra todos los barrios cargados y sus estructuras de datos asocidas. Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Muestra todos los barrios, vías en cada barrio y datos demográficos de cada vía
+	 * @complejidad: O(n)
+	 */
 	void mostrar();
 };
 

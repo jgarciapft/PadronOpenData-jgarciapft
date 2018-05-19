@@ -48,7 +48,24 @@ public:
 	void alg8();
 	void alg9(float& pHombres, float& pMujeres);
 
+	/**
+	 * @brief
+	 * 		Muestra la información de cada vía en la lista que encapsula. Se utiliza para el Algoritmo 3
+	 *
+	 * @pre:
+	 * @post: Muestra las vías de la lista que encapsula, menos los datos demográficos asociados a cada vía
+	 * @complejidad: O(n)
+	 */
 	void mostrarVias();
+	/**
+	 * @brief
+	 * 		Muestra toda la información de cada barrio y la información cargada en el gestor de vías.
+	 * 			Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Muestra los atributos de cada vía y los datos demográficos asociados a cada vía
+	 * @complejidad: O(n)
+	 */
 	void mostrar();
 };
 

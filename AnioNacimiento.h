@@ -63,6 +63,14 @@ public:
 	int getNPersonas() const;
 	void incNPersonas(int nP);
 
+	/**
+	 * @brief
+	 * 		Muestra la información de cada año de nacimiento. Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Muestra los atributos de cada objeto 'AnioNacimiento'
+	 * @complejidad: O(1)
+	 */
 	void mostrar();
 };
 

@@ -70,7 +70,24 @@ public:
 	void alg8();
 	void alg9(float& pHombres, float& pMujeres);
 
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Se utiliza para el Algoritmo 3
+	 *
+	 * @pre:
+	 * @post: Llama a mostrar las vías en el gestor 'gVias' del barrio, menos los datos demográficos asociados a cada vía
+	 * @complejidad: O(n)
+	 */
 	void mostrarVias();
+	/**
+	 * @brief
+	 * 		Muestra toda la información de cada barrio y la información cargada en el gestor de vías.
+	 * 			Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Muestra los atributos de cada barrio, las vías del gestor 'gVias' y los datos demográficos asociados a cada vía
+	 * @complejidad: O(n)
+	 */
 	void mostrar();
 };
 

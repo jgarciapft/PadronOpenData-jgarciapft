@@ -65,6 +65,14 @@ public:
 
 	void alg8(ListaPI<Estudios*>*& lEstud);
 
+	/**
+	 * @brief
+	 * 		Muestra todos los estudios. Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Llama a mostrar los atributos de cada estudio de la lista encapsula
+	 * @complejidad: O(n)
+	 */
 	void mostrar();
 };
 

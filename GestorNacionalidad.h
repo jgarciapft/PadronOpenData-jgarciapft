@@ -65,6 +65,14 @@ public:
 
 	void alg5(ListaPI<Nacionalidad*>*& lNacion);
 
+	/**
+	 * @brief
+	 * 		Muestra todas las nacionalidades. Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Llama a mostrar los atributos de cada nacionalidad de la lista encapsula
+	 * @complejidad: O(n)
+	 */
 	void mostrar();
 };
 

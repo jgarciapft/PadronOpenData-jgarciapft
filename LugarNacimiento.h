@@ -71,6 +71,14 @@ public:
 	int getNPersonas() const;
 	void incNPersonas(int nP);
 
+	/**
+	 * @brief
+	 * 		Muestra la información de cada lugar de nacimiento. Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Muestra los atributos de cada objeto 'LugarNacimiento'
+	 * @complejidad: O(1)
+	 */
 	void mostrar();
 
 	/**

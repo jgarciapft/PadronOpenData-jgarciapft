@@ -63,6 +63,14 @@ public:
 	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
 	int alg7(int limInf, int limSup);
 
+	/**
+	 * @brief
+	 * 		Muestra todos los años de nacimientos. Se utiliza con fines de prueba
+	 *
+	 * @pre:
+	 * @post: Llama a mostrar los atributos de cada año de nacimiento de la lista encapsula
+	 * @complejidad: O(n)
+	 */
 	void mostrar();
 };
 
