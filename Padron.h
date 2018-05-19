@@ -69,8 +69,8 @@ public:
 	 * 		Lee los datos de los barrios del fichero \const RUTA_BARRIO, crea las instancias de objetos 'Barrio'
 	 * 			y las carga en la jerarquía de datos
 	 *
-	 * @pre: El fichero \const RUTA_BARRIO contiene los campos necesarios para conformar objetos 'Barrio' en un formato
-	 * 		correcto
+	 * @pre: Se puede abrir el flujo 'fEnt' y el fichero \const RUTA_BARRIO contiene los campos necesarios para conformar
+	 * 			objetos 'Barrio' en un formato correcto
 	 * @post: Se cargan en 'gBarrios' los barrios creados
 	 * @complejidad: O(n)
 	 *
@@ -84,8 +84,8 @@ public:
 	 * 		Lee los datos de las vías del fichero \const RUTA_VIA, crea las instancias de objetos 'Via'
 	 * 			y las carga en la jerarquía de datos, en la lista auxiliar de vías y en el ABB auxiliar de vías
 	 *
-	 * @pre: El fichero \const RUTA_VIA contiene los campos necesarios para conformar objetos 'Via' en un formato
-	 * 		correcto
+	 * @pre: Se puede abrir el flujo 'fEnt' y el fichero \const RUTA_VIA contiene los campos necesarios para conformar objetos
+	 * 		'Via' en un formato correcto
 	 * @post: Se cargan en los gestores 'gVias' de los barrios del gestor 'gBarrios' las vías según el nombre del
 	 * 		del barrio al que pertenecen
 	 * @complejidad: O(n^2)
@@ -100,8 +100,8 @@ public:
 	 * 		Lee los datos del padrón del fichero \const RUTA_PADRON, crea las instancias de objetos 'DatosDemografioos'
 	 * 			y las carga en la jerarquía de datos y en la lista auxiliar de datos demográficos
 	 *
-	 * @pre: El fichero \const RUTA_PADRON contiene los campos necesarios para conformar objetos 'DatosDemograficos' en un
-	 * 		formato correcto
+	 * @pre: Se puede abrir el flujo 'fEnt' y el fichero \const RUTA_PADRON contiene los campos necesarios para conformar objetos
+	 * 			'DatosDemograficos' en un formato correcto
 	 * @post: Se asignan las instancias de DatosDemograficos a los punteros de vías de toda la estructura de datos (incluidas
 	 * 		las estructuras auxiliares) según el código de vía
 	 * @complejidad: O(n)
@@ -118,11 +118,19 @@ public:
 	 * @param nombreBarrio
 	 * 		Nombre del barrio utilizar por el Algoritmo 2
 	 *
-	 * @pre:
+	 * @pre: Jerarquía de datos cargada
 	 * @post: Llama a ejecutar el Algoritmo 2
 	 * @complejidada: O(n)
 	 */
 	void alg2(string nombreBarrio);
+	/**
+	 * @brief
+	 * 		Muestra las vías que pasan por varios barrios (si existen) y los barrios que atraviesan. Utilizado por el Algoritmo 3
+	 *
+	 * @pre: Jerarquía de datos cargada
+	 * @post: Imprime por consola la lista de vías que atraviesan varios barrios (si existen) y los barrios que atraviesan
+	 * @complejidad: O(n^2)
+	 */
 	void alg3();
 	void alg4();
 	void alg5();
