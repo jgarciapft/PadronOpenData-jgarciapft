@@ -1,7 +1,5 @@
-/*
- * GestorNacionalidad.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: GestorNacionalidad
  */
 
 #include "GestorNacionalidad.h"

@@ -1,7 +1,5 @@
-/*
- * Nacionalidad.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: Nacionalidad
  */
 
 #include "Nacionalidad.h"

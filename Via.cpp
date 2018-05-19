@@ -1,7 +1,5 @@
-/*
- * Via.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: Via
  */
 
 #include "Via.h"

@@ -1,7 +1,17 @@
-/*
- * LugarNacimiento.h
+/**
+ * @CLASE: LugarNacimiento
  *
- *      Autor: jgarciapft
+ * @brief
+ * 		Clase que modela el concepto de 'lugar de nacimiento' y su comportamiento (operadores). Cada año de nacimiento
+ * 		está definido por el año de nacimiento y el número de personas nacidas ese año
+ *
+ * @atributo poblacion
+ * 		Población de nacimiento
+ * @atributo provinciaPais
+ * 		Si la nacionalidad es española, representa la provincia de nacimiento; pero si es extranjera representa
+ * 			el país de origen
+ * @atributo nPersonas
+ * 		Número de personas que nacieron la población 'poblacion'
  */
 
 #ifndef LUGARNACIMIENTO_H_

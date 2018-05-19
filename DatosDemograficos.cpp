@@ -1,7 +1,5 @@
-/*
- * DatosDemograficos.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: DatosDemograficos
  */
 
 #include "DatosDemograficos.h"

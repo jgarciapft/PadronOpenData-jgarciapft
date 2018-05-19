@@ -9,10 +9,11 @@ namespace pruebas {
 
 /******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
 
+	const string RUTA_FIHCERO_PRUEBAS = "Pruebas.txt";					//Ruta relativa del fichero de volcado para la ejecución de las pruebas
 	///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: Set_1
-	const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_1_Barrios.csv";
-	const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_1_Vias.csv";
-	const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_1_Padron.csv";
+	const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_1_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 1
+	const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_1_Vias.csv";			//Ruta relativa del fichero de vías para el set de pruebas 1
+	const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_1_Padron.csv";		//Ruta relativa del fichero de datos del padrón (Año 2016) para el set de pruebas 1
 
 /******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
 

@@ -1,7 +1,14 @@
-/*
- * GestorVia.h
+/**
+ * @CLASE: GestorVia
  *
- *      Autor: jgarciapft
+ * @brief
+ * 		Clase gestora que encapsula la lista de las vías que pertenecen a un barrio. Utilizada para
+ * 			contextualizar la búsqueda/manipulación de datos en un barrio concreto
+ *
+ * @atributo lVias
+ * 		Lista que encapsula el gestor. Almacena las vías que pertenecen a un barrio.
+ * 		@orden: Ordenación alfabéticamente descendente. Facilita el volcado de las vías que pertenecen
+ * 			a un barrio en orden alfabético (Algoritmo 3)
  */
 
 #ifndef GESTORVIA_H_

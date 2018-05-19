@@ -1,7 +1,5 @@
-/*
- * Estudios.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: Estudios
  */
 
 #include "Estudios.h"

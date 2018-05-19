@@ -1,7 +1,5 @@
-/*
- * GestorAnioNacimiento.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: GestorAnioNacimiento
  */
 
 #include "GestorAnioNacimiento.h"

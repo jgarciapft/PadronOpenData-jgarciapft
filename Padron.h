@@ -1,7 +1,23 @@
-/*
- * Padron.h
+/**
+ * @CLASE: Padron
  *
- *      Autor: jgarciapft
+ * @brief
+ * 		Almacena la jerarquia de la estructura de datos y provee una interfaz a la clase UI para ejecutar los algoritmos
+ * 			del proyecto a partir de la entrada del usuario por la entrada estandar (cin). También maneja la reserva/liberación de la
+ * 			memoria asociada a toda la estructura
+ *
+ * @atributo gBarrio
+ * 		Instancia de la clase gestora de la lista de barrios 'GestorBarrio' y, por tanto, de toda la jerarquía de datos
+ * @atributo lVias
+ * 		Lista de vías auxiliar para almacenar todas las vías creadas a partir de los ficheros de datos
+ * @atributo aVias
+ * 		ABB de vías auxiliar para almacenar para la implementación de los algoritmos 11 y 12 en su versión EDNL.
+ * 			No se garantiza el balanceado del árbol.
+ * @atributo lDatDemograficos
+ * 		Lista de datos demográficos auxiliar para almacenar todos los datos demográficos creados.
+ * 		También se usa para liberar la memoria asociada. Como una vía puede estar compuesta de varios tramos,
+ * 			y cada tramo es un objeto 'Via' en sí que apunta a los datos demográficos de todos los tramos,
+ * 			ocurre que varios objetos apuntan a un mismo objeto, lo que puede ocasionar la doble liberación de punteros
  */
 
 #ifndef PADRON_H_

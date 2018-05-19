@@ -1,7 +1,14 @@
-/*
- * AnioNacimiento.h
+/**
+ * @CLASE: AnioNacimiento
  *
- *      Autor: jgarciapft
+ * @brief
+ * 		Clase que modela el concepto de 'año de nacimiento' y su comportamiento (operadores). Cada año de nacimiento está
+ * 			definido por el año de nacimiento y el número de personas nacidas ese año
+ *
+ * @atributo anio
+ * 		Año de nacimiento
+ * @atributo nPersonas
+ * 		Número de personas que nacieron en el año 'anio'
  */
 
 #ifndef ANIONACIMIENTO_H_

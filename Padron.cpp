@@ -1,7 +1,5 @@
-/*
- * Padron.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: Padron
  */
 
 #include "Padron.h"

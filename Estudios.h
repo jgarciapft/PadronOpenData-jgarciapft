@@ -1,7 +1,14 @@
-/*
- * Estudios.h
+/**
+ * @CLASE: Estudios
  *
- *      Autor: jgarciapft
+ * @brief
+ * 		Clase que modela el concepto de 'nivel de estudios' y su comportamiento (operadores). Cada nivel de estudios
+ * 		está definido por el título que lo categoriza y el número de personas que lo ostentan
+ *
+ * @atributo nivEstudios
+ * 		Titulación categorizada
+ * @atributo nPersonas
+ * 		Número de personas que ostentan la titulación 'nivEstudios'
  */
 
 #ifndef ESTUDIOS_H_

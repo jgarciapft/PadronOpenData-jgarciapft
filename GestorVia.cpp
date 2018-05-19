@@ -1,7 +1,5 @@
-/*
- * GestorVia.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: GestorVia
  */
 
 #include "GestorVia.h"

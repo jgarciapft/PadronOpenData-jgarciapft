@@ -1,7 +1,5 @@
-/*
- * GestorBarrio.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: GestorBarrio
  */
 
 #include "GestorBarrio.h"
@@ -47,7 +45,7 @@ void GestorBarrio::insertarVia(Via* v) {									///@NOTA: Inserta la vía 'v' e
 	}
 }
 
-void GestorBarrio::insertarDatosDemograficos(DatosDemograficos* dD) {		///@NOTA: Inserta el dato demográfico 'dD' en su(s) vía(s) correspondiente(s)	@NOTA: Hay multiplicidad de vías para las que corresponde un dato demográfico
+void GestorBarrio::insertarDatosDemograficos(DatºosDemograficos* dD) {		///@NOTA: Inserta el dato demográfico 'dD' en su(s) vía(s) correspondiente(s)	@NOTA: Hay multiplicidad de vías para las que corresponde un dato demográfico
 	Barrio* bAux;															//Puntero auxiliar para consultar la lista de barrios que encapsula el gestor
 
 	//Recorre secuencialmente de inicio a fin la lista de barrios

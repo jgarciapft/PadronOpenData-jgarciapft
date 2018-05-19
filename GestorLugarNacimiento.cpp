@@ -1,7 +1,5 @@
-/*
- * GestorLugarNacimiento.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: GestorLugarNacimiento
  */
 
 #include "GestorLugarNacimiento.h"

@@ -1,7 +1,5 @@
-/*
- * AnioNacimiento.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: AnioNacimiento
  */
 
 #include "AnioNacimiento.h"

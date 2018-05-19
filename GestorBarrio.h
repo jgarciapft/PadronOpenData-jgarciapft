@@ -1,7 +1,14 @@
-/*
- * GestorBarrio.h
+/**
+ * @CLASE: GestorBarrio
  *
- *      Autor: jgarciapft
+ * @brief
+ * 		Clase gestora que encapsula la lista de todos los barrios cargados. Es el punto de inicio de toda
+ * 			la jerarquía de datos.
+ *
+ * @atributo lBarrios
+ * 		Lista que encapsula el gestor. Almacena todos los datos leídos del fichero \constante RUTA_BARRIO.
+ * 		@orden: Ninguna ordenación particular. El estado final de la lista es el orden inverso al orden
+ * 		de lectura del fichero de barrios
  */
 
 #ifndef GESTORBARRIO_H_

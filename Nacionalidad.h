@@ -1,7 +1,14 @@
-/*
- * Nacionalidad.h
+/**
+ * @CLASE: Nacionalidad
  *
- *      Autor: jgarciapft
+ * @brief
+ * 		Clase que modela el concepto de 'nacionalidad' y su comportamiento (operadores). Cada nacionalidad
+ * 		está definido por el país de origen y el número de personas nacidas en ese país
+ *
+ * @atributo nacionalidad
+ * 		País de procedencia
+ * @atributo nPersonas
+ * 		Número de personas que poseen la nacionalidad 'nacionalidad'
  */
 
 #ifndef NACIONALIDAD_H_

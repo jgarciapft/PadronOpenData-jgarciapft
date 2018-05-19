@@ -1,7 +1,5 @@
-/*
- * LugarNacimiento.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: LugarNacimiento
  */
 
 #include "LugarNacimiento.h"

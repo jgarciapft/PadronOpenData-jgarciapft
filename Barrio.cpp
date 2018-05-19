@@ -1,7 +1,5 @@
-/*
- * Barrio.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: Barrio
  */
 
 #include "Barrio.h"

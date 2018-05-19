@@ -1,7 +1,5 @@
-/*
- * GestorEstudios.cpp
- *
- *      Autor: jgarciapft
+/**
+ * @CLASE: GestorEstudios
  */
 
 #include "GestorEstudios.h"

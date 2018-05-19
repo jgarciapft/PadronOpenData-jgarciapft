@@ -1,7 +1,17 @@
-/*
- * Barrio.h
+/**
+ * CLASE: Barrio
  *
- *      Autor: jgarciapft
+ * @brief
+ * 		Modela el concepto de 'barrio' y su comportamiento. Cada barrio es está definido por su nombre y el distrito
+ * 			al que pertenece y almacena una lista gestionada de las vías que lo componen. Principalmente contiene métodos
+ * 			invocativos para los algoritmos que requieren búsquedas por barrio
+ *
+ * @atributo nombreBarrio
+ * 		Nombre del barrio
+ * @atributo nombreDistrito
+ * 		Nombre del distrito
+ * @atributo gVias
+ * 		Instancia de la clase que gestiona la lista de vías que pertenecen al barrio
  */
 
 #ifndef BARRIO_H_

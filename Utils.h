@@ -21,7 +21,6 @@ using namespace std;
 const string RUTA_BARRIO = "Barrio.csv"; 							//Ruta relativa del fichero que contiene la información de los barrios
 const string RUTA_VIAS = "Via.csv"; 								//Ruta relativa del fichero que contiene la información de las vías
 const string RUTA_PADRON = "InformacionPadron.csv";	 				//Ruta relativa del fichero que contiene la informacion del padrón (Año 2016)
-const string RUTA_FIHCERO_PRUEBAS = "Pruebas.txt";					//Ruta relativa del fichero de volcado para la ejecución de las pruebas
 const int N_CAMPOS_BARRIO = 2; 										//Número de campos del fichero de datos de barrios
 const int N_CAMPOS_VIA = 5;											//Número de campos del fichero de datos de vías
 const int N_CAMPOS_DATOS_DEMOGRAFICOS = 8;							//Número de campos del fichero de datos de datos demográficos (Contando el año del padron)
