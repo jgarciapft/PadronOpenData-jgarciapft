@@ -1,5 +1,6 @@
-/*
- * PLACEHOLDER
+/**
+ * @brief
+ * 		Ampliación del espacio de nombres de pruebas 'pruebas'
  */
 
 #include "Padron.h"

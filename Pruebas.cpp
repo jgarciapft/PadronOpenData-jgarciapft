@@ -1,5 +1,5 @@
-/*
- * PLACEHOLDER
+/**
+ * @CLASE: Pruebas
  */
 
 #include "Pruebas.h"
@@ -568,7 +568,6 @@ void Pruebas::pruebaEjecucionSecuencial() {
 }
 
 void Pruebas::pruebaEstructuraLVias() {
-
 }
 
 void Pruebas::pruebaAlg1() {

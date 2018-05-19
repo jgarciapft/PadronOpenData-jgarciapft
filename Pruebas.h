@@ -1,5 +1,15 @@
-/*
- * PLACEHOLDER
+/**
+ *	@CLASE: Pruebas
+ *
+ *	@brief
+ *		Coordina la implementación de las pruebas del proyecto.
+ *		Maneja el flujo de salida de volcado de las pruebas y la salida por consola visible al usuario
+ *
+ *	@atributo p
+ *		Instancia de la clase principal para incluir toda la implementación del proyecto
+ *	@atributo salidaPruebas
+ *		Flujo de salida para el volcado de los resultados de las pruebas. La ruta del fichero está
+ *			especificada en \constante RUTA_FICEHRO_PRUEBAS
  */
 
 #ifndef PRUEBAS_H_
@@ -8,7 +18,7 @@
 #include "ui.h"
 #include "timer.h"
 
-///@TEST: Includes de prueba de clases
+///@TEST: Inclusiones de pruebas
 #include "MetodosAuxiliares.h"
 
 namespace pruebas{
