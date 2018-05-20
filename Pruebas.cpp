@@ -1019,6 +1019,33 @@ void Pruebas::pruebaAlg12EDL() {
 	delete dD2;
 }
 
+void Pruebas::pruebaAlg12EDNL() {
+	Arbol<Via*, ComparadorPtrVia>* aVias = new Arbol<Via*, ComparadorPtrVia>();
+	DatosDemograficos* dD1 = new DatosDemograficos(1, "2001 (1)", "PoblacionA (ProvinciaB) (1);PaisA (1)", "NivelA (1)", 2,2, "NacionalidadA (1)");
+	Via* vAux1 = new Via("BarrioA", "ViaA", 0,"TipoA", 1);vAux1->setDatosDemograficos(dD1);aVias->insertar(vAux1);
+	DatosDemograficos* dD2 = new DatosDemograficos(1, "2009 (1)", "PoblacionB (ProvinciaB) (3);PaisB (2)", "NivelB (1)", 1,2, "NacionalidadB (1)");
+	Via* vAux2 = new Via("BarrioB", "ViaB", 0,"TipoB", 2);vAux2->setDatosDemograficos(dD2);aVias->insertar(vAux2);
+
+	///@TEST: Ninguna vía comienza por 'XX'
+	salidaPruebas << "COMPROBAR QUE SE INDIQUE QUE NINGUNA VÍA COMIENZA POR LA RAÍZ - XX -" << endl;
+	alg12_EDNL(aVias, "XX", "ProvinciaB");
+
+	///@TEST: 2.1 La provincia 'ProvinciaX' no existe
+	salidaPruebas << "COMPROBAR QUE SE INDIQUE QUE NO EXISTE LA PROVINCIA - ProvinciaX -" << endl;
+	alg12_EDNL(aVias, "Via", "ProvinciaX");
+
+	///@TEST: 2.2 La provincia 'ProvinciaB' existe
+	salidaPruebas << "COMPROBAR QUE SE MUESTRE : raiz 'Via'; 4 habitantes para la provincia - ProvinciaB" << endl;
+	alg12_EDNL(aVias, "Via", "ProvinciaB");
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	delete vAux1;
+	delete vAux2;
+	delete dD1;
+	delete dD2;
+	delete aVias;
+}
+
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
 //	pruebaAlg1();
@@ -1069,11 +1096,11 @@ void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "FIN : ALGORITMO 11 EDNL" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 2 EDL" << endl;
-	pruebaAlg12EDL();
+//	pruebaAlg12EDL();
 	salidaPruebas << "FIN : ALGORITMO 12 EDL" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 2 EDNL" << endl;
-//	pruebaAlg12EDNL();
+	pruebaAlg12EDNL();
 	salidaPruebas << "FIN : ALGORITMO 12 EDNL" << endl;
 }
 

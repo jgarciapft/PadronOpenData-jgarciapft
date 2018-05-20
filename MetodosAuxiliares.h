@@ -205,7 +205,8 @@ namespace pruebas {
 	 */
 	static void alg11_EDNL(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, bool& enc);
 
-	/**
+	/**@TEST: Implementación de la prueba edl Algoritmo 12 EDL
+	 *
 	 * @param lVias
 	 * 		Simula la lista auxiliar de vías de la clase Padron
 	 * @param raiz
@@ -214,6 +215,23 @@ namespace pruebas {
 	 * 		Nombre de la provincia a buscar
 	 */
 	static void alg12_EDL(ListaPI<Via*>& lVias, string raiz, string nombreProvincia);
+
+	/**
+	 * @NOTA: Nueva implementación para probar con el Algoritmo 12 EDNL
+	 */
+	static int	filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia, ListaPI<int>*& lCoincidencias);
+
+	/**@TEST; Implementación de la prueba del Algoritmo 12 EDNL
+	 *
+	 * @param aVias
+	 * 		Simula el ABB auxiliar de vías de la clase Padron
+	 * @param raiz
+	 * 		Subcadena por la que deben comenzar las vías
+	 * @param nombreProvincia
+	 * 		Nombre de la provincia a buscar
+	 */
+	static void alg12_EDNL(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia);
+
 
 /********************************************************************************************************************************************************/
 
@@ -751,6 +769,59 @@ void alg12_EDL(ListaPI<Via*>& lVias, string raiz, string nombreProvincia) {
 	}else{
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA POR LA RÁIZ (" << raiz << ") O NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
 	}
+}
+
+int	filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia, ListaPI<int>*& lCoincidencias) {
+	int nPersonas = 0;
+	int intAux;
+	bool coincidencia = false;
+
+	if(aVias->hijoIzq() != NULL)
+		nPersonas += filtroInOrden(aVias->hijoIzq(), raiz, nombreProvincia, lCoincidencias);
+
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0){
+		lCoincidencias->moverInicio();
+		while(!lCoincidencias->finLista() && !coincidencia){
+			lCoincidencias->consultar(intAux);
+			lCoincidencias->avanzar();
+			if(aVias->raiz()->getCodVia() == intAux)
+				coincidencia = true;
+		}
+		if(!coincidencia){
+			nPersonas += aVias->raiz()->alg12(nombreProvincia);
+			lCoincidencias->insertar(aVias->raiz()->getCodVia());
+		}
+	}
+
+	if(aVias->hijoDer() != NULL)
+		nPersonas += filtroInOrden(aVias->hijoDer(), raiz, nombreProvincia, lCoincidencias);
+
+	return nPersonas;
+}
+
+void alg12_EDNL(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia) {
+	Arbol<Via*, ComparadorPtrVia>* aAux;
+	int nPersonas;
+	ListaPI<int>* lCoincidencias = new ListaPI<int>();
+
+	if(!aVias->vacio()){
+		aAux = alg12(aVias, raiz);
+
+		if(aAux != NULL){
+			nPersonas = filtroInOrden(aAux, raiz, nombreProvincia, lCoincidencias);//Calcula el número de habitantes para la provincia dada.
+			if(nPersonas != 0){
+				cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
+					 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
+				cout << "---------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+			}else{
+				cout << "NO SE HA ENCONTRADO NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
+			}
+		}else{
+			cout << "NO SE HA ENCONTRADO NINGUNA VÍA QUE COMIENCE POR LA RAÍZ (" << raiz << ")" << endl;
+		}
+	}
+
+	delete lCoincidencias;
 }
 
 }
