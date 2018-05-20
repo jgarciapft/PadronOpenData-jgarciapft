@@ -11,10 +11,15 @@ namespace pruebas {
 
 	const string RUTA_FIHCERO_PRUEBAS = "Pruebas.txt";									//Ruta relativa del fichero de volcado para la ejecución de las pruebas
 
-	///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: Set_1
-	const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 1
-	const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Vias.csv";			//Ruta relativa del fichero de vías para el set de pruebas 1
-	const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Padron.csv";	//Ruta relativa del fichero de datos del padrón (Año 2016) para el set de pruebas 1
+	///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: SET_1
+	const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_2_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 1
+	const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_2_Vias.csv";			//Ruta relativa del fichero de vías para el set de pruebas 1
+	const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_2_Padron.csv";	//Ruta relativa del fichero de datos del padrón (Año 2016) para el set de pruebas 1
+
+	///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: SET_2
+	const string RUTA_BARRIO_PRUEBA_ALG7 = "SetDatos_Pruebas/SetDatos_2_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 2
+	const string RUTA_VIA_PRUEBA_ALG7 = "SetDatos_Pruebas/SetDatos_2_Vias.csv";			//Ruta relativa del fichero de vías para el set de pruebas 2
+	const string RUTA_PADRON_PRUEBA_ALG7 = "SetDatos_Pruebas/SetDatos_2_Padron.csv";	//Ruta relativa del fichero de datos del padrón (Año 2016) para el set de pruebas 2
 
 /******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
 
@@ -140,6 +145,17 @@ namespace pruebas {
 	 * 		Vector de contadores de personas para cada provincia
 	 */
 	static void alg6(ListaPI<DatosDemograficos*>& lDatDem, int cont[]);
+
+	/**@TEST: Implementación de la prueba del Algoritmo 7
+	 *
+	 * @param gBarrio
+	 * 		Simula el gestor de barrios que encapsula la clase Padron
+	 * @param limInf
+	 * 		Límite inferior del rango de edad
+	 * @param limSup
+	 * 		Límite superior del rango de edad
+	 */
+	static void alg7(GestorBarrio& gBarrio, int limInf, int limSup);
 
 /********************************************************************************************************************************************************/
 
@@ -533,6 +549,13 @@ void alg6(ListaPI<DatosDemograficos*>& lDatDem, int cont[]) {
 		delete lugNacAux;												
 	}
 	delete lLugNac;														
+}
+
+void alg7(GestorBarrio& gBarrio, int limInf, int limSup) {
+	if(limInf <= limSup)
+		gBarrio.alg7(limInf, limSup);
+	else
+		cout << "ERROR : El límite inferior (" << limInf << ") debe ser inferior al límite superior (" << limSup << ")" << endl;
 }
 
 }

@@ -92,6 +92,20 @@ public:
 	 * SETTERS
 	 */
 	void setDatosDemograficos(DatosDemograficos* dD);
+	/**
+	 *@brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 7
+	 *
+	 * @param limInf
+	 * 		Límite inferior del rango de edad
+	 * @param limSup
+	 * 		Límite superior del rango de edad
+	 *
+	 * @pre:
+	 * @post: Llama a calcular el número de habitantes pertenecientes al rango de edad [limInf, limSup] en la vía actual.
+	 * 			También comprueba que haya una instancia no nula a 'DatosDemograficos'
+	 * @complejidad: O(n)
+	 */
 	int alg7(int limInf, int limSup);
 	void alg8(ListaPI<Estudios*>*& lEstud);
 	void alg9(float& nHombres, float& nMujeres);

@@ -44,6 +44,21 @@ public:
 
 	void insertarViaOrden(Via* v);
 	void insertarDatosDemograficos(DatosDemograficos* dD);
+	/**
+	 *@brief
+	 * 		Calcula la suma de todos los habitantes de las vías que pertenecen al rango de edad dado.
+	 * 			Utilizado por el Algoritmo 7
+	 *
+	 * @param limInf
+	 * 		Límite inferior del rango de edad
+	 * @param limSup
+	 * 		Límite superior del rango de edad
+	 *
+	 * @pre:
+	 * @post: Calcula la suma de los habitantes de las vías de la lista que encapsula el gestor pertenecientes a un barrio,
+	 * 		pertencientes al rango de edad [limInf, limSup]
+	 * @complejidad: O(n)
+	 */
 	int alg7(int limInf, int limSup);
 	void alg8();
 	void alg9(float& pHombres, float& pMujeres);

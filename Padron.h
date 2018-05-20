@@ -165,6 +165,20 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg6();
+	/**
+	 *@brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 7
+	 *
+	 * @param limInf
+	 * 		Límite inferior del rango de edad
+	 * @param limSup
+	 * 		Límite superior del rango de edad
+	 *
+	 * @pre: Jerarquía de datos cargada
+	 * @post: Calcula el barrio con mayor número de habitantes para el rango [limInf, limSup] (si existe algún habitante en el
+	 * 		rango). Antes comprueba que el formato del intervalo sea válido
+	 * @complejidad: O(n)
+	 */
 	void alg7(int limInf, int limSup);
 	void alg8(string nombreBarrio);
 	void alg9();

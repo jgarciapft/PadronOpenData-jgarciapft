@@ -136,6 +136,19 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
+	/**
+	 *@brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 7
+	 *
+	 * @param limInf
+	 * 		Límite inferior del rango de edad
+	 * @param limSup
+	 * 		Límite superior del rango de edad
+	 *
+	 * @pre:
+	 * @post: Llama a calcular el número de habitantes pertencientes al rango de edad dado
+	 * @complejidad: O(n)
+	 */
 	int alg7(int limInf, int limSup);
 	void alg8(ListaPI<Estudios*>*& lEstud);
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);

@@ -69,6 +69,20 @@ public:
 	string getNombreDistrito() const;
 	void insertarVia(Via* v);
 	void insertarDatosDemograficos(DatosDemograficos* dD);
+	/**
+	 *@brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 7
+	 *
+	 * @param limInf
+	 * 		Límite inferior del rango de edad
+	 * @param limSup
+	 * 		Límite superior del rango de edad
+	 *
+	 * @pre:
+	 * @post: Calcula el barrio con mayor número de habitantes para el rango [limInf, limSup] (si existe algún habitante en el
+	 * 		rango)
+	 * @complejidad: O(n)
+	 */
 	int alg7(int limInf, int limSup);
 	void alg8();
 	void alg9(float& pHombres, float& pMujeres);

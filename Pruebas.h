@@ -235,6 +235,14 @@ private:
 	 */
 	void pruebaAlg6();
 
+	/**@PRUEBA: Validación  del Algoritmo 7. Datos: \SET_DATOS SET_2
+	 *
+	 * 1. Se intenta búsqueda para el rango (19-10)		  ->   Se indica al usuario por consola que el formato no es válido. Comprobación visual
+	 * 2. No hay ningún habitante para el rango (10-19)   ->   Se indica al usuario por consola. Comprobación visual
+	 * 3. Hay habitantes para el rango (0-9)			  ->   Mayor barrio = BarrioB con 6 habitantes. Comprobación visual
+	 */
+	void pruebaAlg7();
+
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos
 	 */

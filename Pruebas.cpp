@@ -819,15 +819,44 @@ void Pruebas::pruebaAlg6() {
 	}
 }
 
+void Pruebas::pruebaAlg7() {
+	GestorBarrio gBarrio;
+	ListaPI<DatosDemograficos*> lDatDem;
+	DatosDemograficos* dD;
+	string ruta = RUTA_BARRIO_PRUEBA_ALG7;
+	int cont = 0;
+
+	cargarBarrios(gBarrio, cont, ruta);
+	ruta = RUTA_VIA_PRUEBA_ALG7;
+	cargarVias(gBarrio, cont, ruta);
+	ruta = RUTA_PADRON_PRUEBA_ALG7;
+	cargarDatosDemograficos(gBarrio, cont, ruta, lDatDem);
+
+	///@TEST: 2. No hay ningún habitante para el rango (10-19)
+	salidaPruebas << "COMPROBAR QUE SE INDICA QUE EL FORMATO NO ES VÁLIDO (19, 10)" << endl;
+	alg7(gBarrio, 19, 10);
+
+	///@TEST: 2. No hay ningún habitante para el rango (10-19)
+	salidaPruebas << "COMPROBAR QUE SE INDICA QUE NO EXISTE NINGÚN HABITANTE PARA EL RANGO (10, 19)" << endl;
+	alg7(gBarrio, 10, 19);
+
+	///@TEST: 3. Hay habitantes para el rango (0-9)
+	salidaPruebas << "COMPRUEBA QUE SE INDICA QUE EL BARRIO RESULTADO PARA EL RANGO (0, 9) ES - BarrioB -  y hay - 6 habitantes" << endl;
+	alg7(gBarrio, 0, 9);
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		delete dD;
+	}
+}
+
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
 //	pruebaAlg1();
 	salidaPruebas << "FIN : ALGORITMO 1" << endl;
-
-	//TODO BORRAR @TEST: Carga de la estructura de datos para el resto de algoritmos que la requieran
-//	p.cargarBarrios();
-//	p.cargarVias();
-//	p.cargarDatosDemograficos();
 
 	salidaPruebas << "INICIO : ALGORITMO 2" << endl;
 //	pruebaAlg2();
@@ -846,7 +875,7 @@ void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "FIN : ALGORITMO 5" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 6" << endl;
-	pruebaAlg6();
+//	pruebaAlg6();
 	salidaPruebas << "FIN : ALGORITMO 6" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 7" << endl;

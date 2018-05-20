@@ -74,6 +74,21 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
+	/**
+	 *@brief
+	 * 		Calcula el número de habinates pertencientes al rango de edad dado hay en la vía de la que proviene.
+	 * 			Utilizado por el Algoritmo 7
+	 *
+	 * @param limInf
+	 * 		Límite inferior del rango de edad
+	 * @param limSup
+	 * 		Límite superior del rango de edad
+	 *
+	 * @pre:
+	 * @post: Devuelve el número de habitantes de la lista que encapsula el gestor que pertenecen al rango de edad
+	 * 			[limInf, limSup]
+	 * @complejidad: O(n)
+	 */
 	int alg7(int limInf, int limSup);
 
 	/**
