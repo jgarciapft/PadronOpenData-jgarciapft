@@ -948,7 +948,7 @@ void Pruebas::pruebaAlg11EDL() {
 	ListaPI<Via*> lVias;
 	DatosDemograficos* dD1 = new DatosDemograficos(1, "2001 (1)", "PoblacionA (ProvinciaA) (1);PaisA (1)", "NivelA (1)", 2,2, "NacionalidadA (1)");
 	Via* vAux1 = new Via("BarrioA", "ViaA", 0,"TipoA", 1);vAux1->setDatosDemograficos(dD1);lVias.insertar(vAux1);
-	DatosDemograficos* dD2 = new DatosDemograficos(1, "2009 (1)", "PoblacionB (ProvinciaB) (1);PaisB (2)", "NivelB (1)", 1,2, "NacionalidadB (1)");
+	DatosDemograficos* dD2 = new DatosDemograficos(2, "2009 (1)", "PoblacionB (ProvinciaB) (1);PaisB (2)", "NivelB (1)", 1,2, "NacionalidadB (1)");
 	Via* vAux2 = new Via("BarrioB", "ViaB", 0,"TipoB", 2);vAux2->setDatosDemograficos(dD2);lVias.insertar(vAux2);
 
 	///@TEST: 1. La vía 'ViaX' no existe
@@ -991,6 +991,32 @@ void Pruebas::pruebaAlg11EDNL() {
 	delete vIns3;
 	delete vIns4;
 	delete aVias;
+}
+
+void Pruebas::pruebaAlg12EDL() {
+	ListaPI<Via*> lVias;
+	DatosDemograficos* dD1 = new DatosDemograficos(1, "2001 (1)", "PoblacionA (ProvinciaB) (1);PaisA (1)", "NivelA (1)", 2,2, "NacionalidadA (1)");
+	Via* vAux1 = new Via("BarrioA", "ViaA", 0,"TipoA", 1);vAux1->setDatosDemograficos(dD1);lVias.insertar(vAux1);
+	DatosDemograficos* dD2 = new DatosDemograficos(1, "2009 (1)", "PoblacionB (ProvinciaB) (3);PaisB (2)", "NivelB (1)", 1,2, "NacionalidadB (1)");
+	Via* vAux2 = new Via("BarrioB", "ViaB", 0,"TipoB", 2);vAux2->setDatosDemograficos(dD2);lVias.insertar(vAux2);
+
+	///@TEST: Ninguna vía comienza por 'XX'
+	salidaPruebas << "COMPROBAR QUE SE INDIQUE QUE NINGUNA VÍA COMIENZA POR LA RAÍZ - XX -" << endl;
+	alg12_EDL(lVias, "XX", "ProvinciaB");
+
+	///@TEST: 2.1 La provincia 'ProvinciaX' no existe
+	salidaPruebas << "COMPROBAR QUE SE INDIQUE QUE NO EXISTE LA PROVINCIA - ProvinciaX -" << endl;
+	alg12_EDL(lVias, "Via", "ProvinciaX");
+
+	///@TEST: 2.2 La provincia 'ProvinciaB' existe
+	salidaPruebas << "COMPROBAR QUE SE MUESTRE : raiz 'Via'; 4 habitantes para la provincia - ProvinciaB" << endl;
+	alg12_EDL(lVias, "Via", "ProvinciaB");
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	delete vAux1;
+	delete vAux2;
+	delete dD1;
+	delete dD2;
 }
 
 void Pruebas::pruebaAlgoritmos() {
@@ -1043,7 +1069,7 @@ void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "FIN : ALGORITMO 11 EDNL" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 2 EDL" << endl;
-//	pruebaAlg12EDL();
+	pruebaAlg12EDL();
 	salidaPruebas << "FIN : ALGORITMO 12 EDL" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 2 EDNL" << endl;
@@ -1059,11 +1085,6 @@ void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas de
 	salidaPruebas << "EJECUTANDO # Sobrecarga de operadores" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
 //	pruebaSobrecargaOperadores();
-	//TODO Borarr
-	p.cargarBarrios();
-	p.cargarVias();
-	p.cargarDatosDemograficos();
-	p.alg12_EDNL("De Las Canterias", "Caceres");
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Métodos auxiliares" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;

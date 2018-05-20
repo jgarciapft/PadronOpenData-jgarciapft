@@ -283,7 +283,11 @@ private:
 
 	/**@PRUEBA: Validación del Algoritmo 12 verisón EDL
 	 *
-	 *
+	 * 1. Ninguna vía comienza por 'XX'					  ->   Se indica al usuaio por consola. Comprobación gráfica
+	 * 2. Alguna vía comienza por la raíz 'Via'
+	 * 		2.1 La provincia 'ProvinciaX' no existe		  ->   Se indica al usuaio por consola. Comprobación gráfica
+	 * 		2.2 La provincia 'ProvinciaB' existe	      ->   Se muestra : raíz 'Via'; 4 habitantes . Comprobación gráfica
+	 * 3. Deductivamente si el algoritmo vale para 1 vía  ->   Funciona para 'n' vías
 	 */
 	void pruebaAlg12EDL();
 

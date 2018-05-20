@@ -199,11 +199,21 @@ namespace pruebas {
 	/**@TEST: Implementación de la prueba del Algoritmo 11 EDNL
 	 *
 	 * @param aVias
-	 * 		Simula el ABB de vías auxiliar de la clase Padron
+	 * 		Simula el ABB auxiliar de vías de la clase Padron
 	 * @param nombreVia
 	 * 		Nombre de la vía a buscar
 	 */
 	static void alg11_EDNL(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, bool& enc);
+
+	/**
+	 * @param lVias
+	 * 		Simula la lista auxiliar de vías de la clase Padron
+	 * @param raiz
+	 * 		Subcadena por la que deben comenzar las vías
+	 * @param nombreProvincia
+	 * 		Nombre de la provincia a buscar
+	 */
+	static void alg12_EDL(ListaPI<Via*>& lVias, string raiz, string nombreProvincia);
 
 /********************************************************************************************************************************************************/
 
@@ -705,6 +715,42 @@ void alg11_EDNL(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, bool& en
 
 	if(!enc)
 		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
+}
+
+void alg12_EDL(ListaPI<Via*>& lVias, string raiz, string nombreProvincia) {
+	int nPersonas = 0;
+	Via* vAux;
+	bool coincidencia = false;
+	int cod;
+	ListaPI<int> lCoincidencias;
+
+	lVias.moverInicio();
+	while(!lVias.finLista()){
+		lVias.consultar(vAux);
+		lVias.avanzar();
+		if(vAux->getNombreVia().find(raiz) == 0){
+			lCoincidencias.moverInicio();
+			while(!lCoincidencias.finLista() && !coincidencia){
+				lCoincidencias.consultar(cod);
+				lCoincidencias.avanzar();
+				if(vAux->getCodVia() == cod)
+					coincidencia = true;
+			}
+			if(!coincidencia){
+				nPersonas += vAux->alg12(nombreProvincia);
+				lCoincidencias.insertar(vAux->getCodVia());
+			}
+			coincidencia = false;
+		}
+	}
+
+	if(nPersonas != 0){
+		cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
+				 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
+		cout << "---------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+	}else{
+		cout << "NO SE HA ENCONTRADO NINGUNA VÍA POR LA RÁIZ (" << raiz << ") O NINGÚN HABITANTE PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
+	}
 }
 
 }
