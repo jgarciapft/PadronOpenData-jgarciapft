@@ -312,7 +312,7 @@ public:
 	 * @pre: Jererquía de datos cargada
 	 * @post: Imprime por consola el número de personas nacidas en la provincia \param nombreProvincia para todas las vías de Cáceres que comiencen por
 	 * 		la subcadena \param raiz. Llama a calcular el número de personas por cada vía de Cáceres, funciona a modo de acumulador.
-	 * @complejidad: O(n)
+	 * @complejidad: O(n^2)
 	 */
 	void alg12_EDL(string raiz, string nombreProvincia);
 	/**
@@ -328,7 +328,7 @@ public:
 	 * @pre: Jererquía de datos cargada
 	 * @post: Imprime por consola el número de personas nacidas en la provincia \param nombreProvincia para todas las vías de Cáceres que comiencen por
 	 * 		la subcadena \param raiz. Llama a buscar el ABB cuyos nodos potencialmente comiencen por la raíz \param raiz
-	 * @complejidad: O(n*log n)
+	 * @complejidad: O(n^2*log n)
 	 */
 	void alg12_EDNL(string raiz, string nombreProvincia);
 

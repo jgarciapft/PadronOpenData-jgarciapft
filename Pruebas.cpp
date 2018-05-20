@@ -738,7 +738,7 @@ void Pruebas::pruebaAlg4() {
 	DatosDemograficos* dD;
 	
 	///@TEST: 1. No hay ningún dato para el intervalo (10-19)
-	salidaPruebas << "\nCOMPROBAR QUE NO SE REPRESENTE NADA EN EL INTERVALO (10, 19)" << endl; //TODO cambiar el flujo
+	salidaPruebas << "\nCOMPROBAR QUE NO SE REPRESENTE NADA EN EL INTERVALO (10, 19)" << endl;
 	alg4(lDatDem, cont);
 	if(cont[0] != 6 || cont[1] != 0 || cont[2] != 3)
 		salidaPruebas << "\tERROR : TEST #1 - Se han contado más habitantes de los que se deberían" << endl;
@@ -1059,6 +1059,11 @@ void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas de
 	salidaPruebas << "EJECUTANDO # Sobrecarga de operadores" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
 //	pruebaSobrecargaOperadores();
+	//TODO Borarr
+	p.cargarBarrios();
+	p.cargarVias();
+	p.cargarDatosDemograficos();
+	p.alg12_EDNL("De Las Canterias", "Caceres");
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Métodos auxiliares" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;

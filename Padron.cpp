@@ -468,13 +468,28 @@ void Padron::alg11_EDNL(string nombreVia) {
 void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 	int nPersonas = 0;													//Acumulador del núemro de personas nacidas en la provincia 'nombreProvincia' y que habiten en las vías que comiencen por 'raiz'
 	Via* vAux;															//Puntero auxiliar para consultar la lista de vías auxiliar
+	bool coincidencia = false;											//Bandera que verifica que no se haya procesado previamente la vía actual
+	int cod;															//Código de la vía actual
+	ListaPI<int> lCoincidencias;										//Lista de códigos de vías que ya han sido procesadas. Evita volver a procesar vías ya tratadas, sino se multiplicarían los resultados
 
 	lVias->moverInicio();
 	while(!lVias->finLista()){											//También comprueba si la lista está vacía inicialmente
 		lVias->consultar(vAux);
 		lVias->avanzar();
-		if(vAux->getNombreVia().find(raiz) == 0)						//Comprueba si la vía actual comienza por la raíz dada
-			nPersonas += vAux->alg12(nombreProvincia);					//Actualiza el acumulador de personas nacidas en la provincia dada
+		if(vAux->getNombreVia().find(raiz) == 0){						//Comprueba si la vía actual comienza por la raíz dada
+			lCoincidencias.moverInicio();
+			while(!lCoincidencias.finLista() && !coincidencia){			//Antes de tratar la vía se comprueba si ya ha sido procesada
+				lCoincidencias.consultar(cod);
+				lCoincidencias.avanzar();
+				if(vAux->getCodVia() == cod)
+					coincidencia = true;
+			}
+			if(!coincidencia){
+				nPersonas += vAux->alg12(nombreProvincia);				//Actualiza el acumulador de personas nacidas en la provincia dada
+				lCoincidencias.insertar(vAux->getCodVia());				//Añade el código de la vía a la lista de vías procesadas
+			}
+			coincidencia = false;										//Reinicia la bandera de coincidencias. Solo tiene efecto si hubo alguna coincidencia con alguna vía ya tratada
+		}
 	}
 
 	if(nPersonas != 0){													//Comprueba que se haya encontrado alguna vía que comience por la raíz dada o que exista algún habitante nacido en la provincia dada en todas las vías
@@ -491,6 +506,7 @@ void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 	Arbol<Via*, ComparadorPtrVia>* aAux;								//ABB auxiliar para almacenar el ABB cuyos datos presentan potencialmente la misma raíz
 	int nPersonas;														//Total de habitantes entre todas las vías que comiencen por la raíz 'raiz'
+	ListaPI<int>* lCoincidencias = new ListaPI<int>();					//Lista de códigos de vías que ya han sido procesadas. Evita volver a procesar vías ya tratadas, sino se multiplicarían los resultados
 
 	if(!aVias->vacio()){												//Comprueba que el árbol no esté vacío inicialmente
 		aAux = alg12(aVias, raiz);										//Procesa el subárbol que contiene la(s) vía(s) que comienzan por la ráiz dada
