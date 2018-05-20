@@ -132,6 +132,16 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg3();
+	/**
+	 * @brief
+	 * 		Muestra la población de Cáceres en décadas por intervalos y con una representación gráfica aproximada a un
+	 * 			histograma de frecuencias. Utilizado por el Algoritmo 4
+	 *
+	 * @pre: Jerarquía de datos cargada. El tiempo del sistema es posterior a al año 2016
+	 * @post: Imprime por consola el número de habitantes por interválos de décadas (configurable para cualquier otra amplitud
+	 * 			a través de \const RANGO_EDAD_ALG_4)
+	 * @complejidad: O(n^2)
+	 */
 	void alg4();
 	void alg5();
 	void alg6();

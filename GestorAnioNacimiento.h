@@ -60,6 +60,19 @@ public:
 	 */
 	~GestorAnioNacimiento();
 
+	/**
+	 * @brief
+	 * 		Calcula el número de habitantes por décadas de la población de Cáceres. Utilizado por el Algoritmo 4
+	 *
+	 * @param lAnioNac
+	 * 		Lista en la que almacenar cada rango de edad como una instacia de 'AnioNacimiento'
+	 *
+	 * @pre:
+	 * @post: Inserta/actualiza la lista de rangos de edades pasada por parámetro 'lAnioNac' dependiendo de si cada año
+	 * 			de nacimiento ya existía en la lista o es nuevo. Traduce con el tiempo del sistema los años de nacimiento a
+	 * 			edades acutales que toma del tiempo del sistema
+	 * @complejidad: O(n^2)
+	 */
 	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
 	int alg7(int limInf, int limSup);
 

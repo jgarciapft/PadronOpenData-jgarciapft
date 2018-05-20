@@ -118,8 +118,10 @@ namespace pruebas {
 	 *
 	 * @param lDatDem
 	 * 		Simula la lista de datos demográficos auxiliar de la clase Padron
+	 * @param cont[]
+	 * 		Vector de contadores de personas para cada rango de edad
 	 */
-	static void alg4(ListaPI<DatosDemograficos*>& lDatDem);
+	static void alg4(ListaPI<DatosDemograficos*>& lDatDem, int cont[]);
 
 /********************************************************************************************************************************************************/
 
@@ -383,7 +385,7 @@ void alg3(ListaPI<Via*>& lVias, int& cont) {
 	}
 }
 
-void alg4(ListaPI<DatosDemograficos*>& lDatDem) {
+void alg4(ListaPI<DatosDemograficos*>& lDatDem, int cont[]) {
 	ListaPI<AnioNacimiento*>* lAnioNac = new ListaPI<AnioNacimiento*>();
 	DatosDemograficos* dD;												
 	AnioNacimiento* anNacAux;											
@@ -409,6 +411,7 @@ void alg4(ListaPI<DatosDemograficos*>& lDatDem) {
 		lAnioNac->consultar(anNacAux);
 		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					
 			nPersonas = anNacAux->getNPersonas();
+			cont[i] += nPersonas;
 			lAnioNac->avanzar();										
 			if(anNacAux->getAnio() > mayorMarca) 			            
 				mayorMarca = (anNacAux->getAnio());

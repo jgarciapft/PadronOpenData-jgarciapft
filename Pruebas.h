@@ -207,7 +207,13 @@ private:
 	 *
 	 * @NOTA: Suponiendo correcta la representación gráfica de los resultados
 	 * 1. No hay ningún dato para el intervalo (10-19)						->  No debe representarse ese intervalo y 1 punto en el resto. Comprobación visual
+	 * 																				cont[0] = 6
+	 * 																				cont[1] = 0
+	 * 																				cont[2] = 3
 	 * 2. Hay datos para todos los intervalos (0-9), (10, 19) y (20, 29)	->  1 punto en cada intervalos. Comprobación visual
+	 * 																				cont[0] = 6
+	 * 																				cont[1] = 3
+	 * 																				cont[2] = 3
 	 */
 	void pruebaAlg4();
 

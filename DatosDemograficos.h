@@ -100,6 +100,17 @@ public:
 	int getCodVia() const;
 	int getNMujeres() const;
 	int getNHombres() const;
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 4
+	 *
+	 * @param lAnioNac
+	 * 		Lista en la que almacenar cada rango de edad como una instacia de 'AnioNacimiento'
+	 *
+	 * @pre:
+	 * @post: Llama a modificar la lista pasada por parámetro 'lAnioNac'
+	 * @complejidad: O(n^2)
+	 */
 	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
 	void alg5(ListaPI<Nacionalidad*>*& lNacion);
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
