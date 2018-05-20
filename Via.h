@@ -150,6 +150,21 @@ public:
 	 * @complejidad: O(n)
 	 */
 	void alg11(ofstream& ofs);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 12
+	 *
+	 * @param nombreProvincia
+	 * 		Nombre de la provincia a buscar
+	 *
+	 * @pre:
+	 * @post: Devuelve el número de habitantes nacidos en la provincia \param nombreProvincia para cada vía. También
+	 * 		comprueba que exista una instancia no nula de 'DatosDemograficos'
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 * 		Número de personas nacidas en \param nombreProvincia de cada vía
+	 */
 	int alg12(string nombreProvincia);
 
 	/**

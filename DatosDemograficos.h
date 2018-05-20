@@ -180,7 +180,33 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el algoritmo 11
+	 *
+	 * @param ofs
+	 * 		Flujo de salida de datos para volcar los resultados del algoritmo
+	 *
+	 * @pre:
+	 * @post: Llama a modificar la lista 'lLugNac' con la información sobre lugares de nacimeinto que encapsula el gestor
+	 * 		GestorLugarNacimiento
+	 * @complejidad: O(n^2)
+	 */
 	void alg11(ofstream& ofs);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 12
+	 *
+	 * @param nombreProvincia
+	 * 		Nombre de la provincia a buscar
+	 *
+	 * @pre:
+	 * @post: Devuelve el número de habitantes nacidos en la provincia \param nombreProvincia para cada vía. También
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 * 		Número de personas nacidas en \param nombreProvincia de cada vía
+	 */
 	int alg12(string nombreProvincia);
 
 	/**

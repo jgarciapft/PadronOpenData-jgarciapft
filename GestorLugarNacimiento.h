@@ -91,7 +91,35 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);
+	/**
+	 * @brief
+	 * 		Vuelca en el flujo de salida de datos toda la información de los lugares de nacimiento para cada vía.
+	 * 			Utilizado por el Algoritmo 11
+	 *
+	 * @param ofs
+	 * 		Flujo de salida de datos en el que volcar los resultados del algoritmo
+	 *
+	 * @pre:
+	 * @post: Vuelca al archivo 'LugaresNacimiento-'nombreVia'.txt' todos los lugares de nacimiento de la lista que
+	 * 		encapsula el gestor
+	 * @complejidad: O(n)
+	 */
 	void alg11(ofstream& ofs);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el algoritmo 12
+	 *
+	 * @param nombreProvincia
+	 * 		Nomvbre de la provincia a buscar
+	 *
+	 * @pre:
+	 * @post: Devuelve el número de habitantes nacidos en \param nombreProvincia para todos los lugares de nacimiento
+	 * 		de la lista que encapsula el gestor
+	 * @complejidad: O(n)
+	 *
+	 * @return
+	 * 		Número de habitantes nacidos en \param nombreProvincia de la vía asociada
+	 */
 	int alg12(string nombreProvincia);
 
 	/**
