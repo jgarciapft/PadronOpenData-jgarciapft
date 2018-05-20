@@ -736,7 +736,6 @@ void Pruebas::pruebaAlg4() {
 	///@TEST: 1. No hay ningún dato para el intervalo (10-19)
 	salidaPruebas << "\nCOMPROBAR QUE NO SE REPRESENTE NADA EN EL INTERVALO (10, 19)" << endl; //TODO cambiar el flujo
 	alg4(lDatDem, cont);
-
 	if(cont[0] != 6 || cont[1] != 0 || cont[2] != 3)
 		salidaPruebas << "\tERROR : TEST #1 - Se han contado más habitantes de los que se deberían" << endl;
 
@@ -746,9 +745,39 @@ void Pruebas::pruebaAlg4() {
 
 	salidaPruebas << "\nCOMPROBAR QUE SE REPRESENTE 1 PUNTO EN LOS INTERVALOS (0-9), (10, 19) y (20, 29)" << endl;
 	alg4(lDatDem, cont);
-
 	if(cont[0] != 6 || cont[1] != 3 || cont[2] != 3)
 		salidaPruebas << "\tERROR : TEST #2 - No se han calculado 3 personas para el intervalo (10, 19)\t| En su lugar -> " << cont[1] << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		delete dD;
+	}
+}
+
+void Pruebas::pruebaAlg5() {
+	ListaPI<DatosDemograficos*> lDatDem;
+	lDatDem.insertar(new DatosDemograficos(0, "", "", "", 0, 0, "NacionalidadA (1)"));
+	lDatDem.insertar(new DatosDemograficos(0, "", "", "", 0, 0, "NacionalidadA (1)"));
+	int cont[2]; for(int i=0; i<2; i++){ cont[i] = 0; }
+	DatosDemograficos* dD;
+
+	///@TEST: 1. Solo hay 1 nacionalidad
+	salidaPruebas << "COMPROBAR QUE SE MUESTRE LA NACIONALIDAD - \'NacionalidadA (2)\'" << endl;
+	alg5(lDatDem, cont);
+	if(cont[0] != 2)
+		salidaPruebas << "\tERROR : TEST #1 - No hay 2 habitantes para la nacionalidad \'NacionalidadA\'\t| En su lugar -> " << cont[0] << endl;
+
+	///@TEST: 2. Hay 2 nacionalidades
+	lDatDem.insertar(new DatosDemograficos(0, "", "", "", 0, 0, "NacionalidadA (1);NacionalidadB (2)"));
+	for(int i=0; i<2; i++){ cont[i] = 0; }
+
+	salidaPruebas << "COMPROBAR QUE SE MUESTREN LAS NACIONALIDADES - \'NacionalidadA (3)\' y \'NacionalidadB (2)\'" << endl;
+	alg5(lDatDem, cont);
+	if(cont[0] != 3 || cont[1] != 2)
+		salidaPruebas << "\tERROR : TEST #2 - Hay un número erróneo de habitantes para alguna nacionalidad" << endl;
 
 	///@NOTA: Liberación de los recursos reservados dinámicamente
 	lDatDem.moverInicio();
@@ -778,11 +807,11 @@ void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "FIN : ALGORITMO 3" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 4" << endl;
-	pruebaAlg4();
+//	pruebaAlg4();
 	salidaPruebas << "FIN : ALGORITMO 4" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 5" << endl;
-//	pruebaAlg5();
+	pruebaAlg5();
 	salidaPruebas << "FIN : ALGORITMO 5" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 6" << endl;

@@ -138,11 +138,21 @@ public:
 	 * 			histograma de frecuencias. Utilizado por el Algoritmo 4
 	 *
 	 * @pre: Jerarquía de datos cargada. El tiempo del sistema es posterior a al año 2016
-	 * @post: Imprime por consola el número de habitantes por interválos de décadas (configurable para cualquier otra amplitud
-	 * 			a través de \const RANGO_EDAD_ALG_4)
+	 * @post: Imprime por consola el número de habitantes por interválos de décadas almacenados en la lista 'lAnioNac'
+	 * 		(configurable para cualquier otra amplitud a través de \const RANGO_EDAD_ALG_4)
 	 * @complejidad: O(n^2)
 	 */
 	void alg4();
+	/**
+	 * @brief
+	 * 		Muestra una lista ordenada descendentemente por número de habitantes de nacionalidades para todos los habitantes
+	 * 			de Cáceres. Utilizado por el Algoiritmo 5
+	 *
+	 * @pre: Jerarquía de datos cargada
+	 * @post: Imprime por consola una lista ordenada descendentemente por número de habitantes 'lNacion' de nacionalidades
+	 * 			de todos los habitantes de Cáceres recogidos en el padrón.
+	 * @complejidad: O(n^2)
+	 */
 	void alg5();
 	void alg6();
 	void alg7(int limInf, int limSup);

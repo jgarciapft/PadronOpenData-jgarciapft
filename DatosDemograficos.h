@@ -112,6 +112,17 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg4(ListaPI<AnioNacimiento*>*& lAnioNac);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 5
+	 *
+	 * @param lNacion
+	 * 		Lista en la que almacenar cada nacionalidad como una instancia de 'Nacionalidad
+	 *
+	 * @pre:
+	 * @post: Llama a modificar la lista pasada por parámetro 'lNacion'
+	 * @complejidad: O(n^2)
+	 */
 	void alg5(ListaPI<Nacionalidad*>*& lNacion);
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
 	int alg7(int limInf, int limSup);

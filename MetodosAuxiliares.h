@@ -123,6 +123,15 @@ namespace pruebas {
 	 */
 	static void alg4(ListaPI<DatosDemograficos*>& lDatDem, int cont[]);
 
+	/**@TEST: Implementación de la prueba del Algoritmo 5
+	 *
+	 * @param lDatDem
+	 * 		Simula la lista de datos demográficos auxiliar de la clase Padron
+	 * @param cont[]
+	 * 		Vector de contadores de personas para cada nacionalidad
+	 */
+	static void alg5(ListaPI<DatosDemograficos*>& lDatDem, int cont[]);
+
 /********************************************************************************************************************************************************/
 
 void pruebaTrocearCadenaAnioNacimiento(string text) {
@@ -453,6 +462,37 @@ void alg4(ListaPI<DatosDemograficos*>& lDatDem, int cont[]) {
 		delete anNacAux;												
 	}
 	delete lAnioNac;													
+}
+
+void alg5(ListaPI<DatosDemograficos*>& lDatDem, int cont[]) {
+	ListaPI<Nacionalidad*>* lNacion = new ListaPI<Nacionalidad*>();
+ 	DatosDemograficos* dD;
+	Nacionalidad* nacionAux;
+	int i = 0;
+
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		dD->alg5(lNacion);
+	}
+
+	lNacion->moverInicio();
+	while(!lNacion->finLista()){
+		lNacion->consultar(nacionAux);
+		lNacion->avanzar();
+		cont[i] += nacionAux->getNPersonas();
+		cout << nacionAux->getNacionalidad() << " (" << nacionAux->getNPersonas() << ")" << endl;
+		i++;
+	}
+
+	lNacion->moverInicio();
+	while(!lNacion->finLista()){
+		lNacion->consultar(nacionAux);
+		lNacion->avanzar();
+		delete nacionAux;
+	}
+	delete lNacion;
 }
 
 }

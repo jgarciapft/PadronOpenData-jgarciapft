@@ -217,6 +217,15 @@ private:
 	 */
 	void pruebaAlg4();
 
+	/**@PRUEBA: Validación  del Algoritmo 5
+	 *
+	 * 1. Solo hay 1 nacionalidad									   ->  cont[0] = 2 y se muestra -> NacionalidadA (2). Comprobación gráfica
+	 * 2. Hay 2 nacionalidades										   ->  cont[0] = 3 y se muestra -> NacionalidadA(3); NacionaliadadB(2). Comprobación gráfica
+	 * 																	   cont[1] = 2
+	 * 3. Deductivamente si el algoritmo funciona para 1 nacionalidad  ->  Funciona para 'n' nacionalidades
+	 */
+	void pruebaAlg5();
+
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos
 	 */

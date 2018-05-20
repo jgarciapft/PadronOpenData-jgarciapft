@@ -28,6 +28,18 @@ private:
 	ListaPI<Estudios*>* lEstudios;
 
 private:
+	/**
+	 * @brief
+	 * 		Ordena una lista de estudios descendentemente por el número de personas.
+	 *
+	 * @param lEstud
+	 * 		Lista en la que almacenar cada nivel de estudios como una instacia de 'Estudios'
+	 *
+	 * @pre:
+	 * @post: Modifica la lista pasada por parámetro 'lEstud' para mantener un orden matemático
+	 * 			descendente	por el atributo 'nPersonas' de los objetos 'Estudios'
+	 * @complejidad: O(n)
+	 */
 	void ordenarLista(ListaPI<Estudios*>*& lEstud);
 
 public:

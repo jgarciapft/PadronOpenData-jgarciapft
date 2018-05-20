@@ -28,6 +28,18 @@ private:
 	ListaPI<Nacionalidad*>* lNacionalidad;
 
 private:
+	/**
+	 * @brief
+	 * 		Ordena una lista de nacionalidades descendentemente por el número de personas.
+	 *
+	 * @param lNacion
+	 * 		Lista en la que almacenar cada nacionalidad como una instacia de 'Nacionalidad'
+	 *
+	 * @pre:
+	 * @post: Modifica la lista pasada por parámetro 'lNacion' para mantener un orden matemático
+	 * 			descendente	por el atributo 'nPersonas' de los objetos 'Nacionalidad'
+	 * @complejidad: O(n)
+	 */
 	void ordenarLista(ListaPI<Nacionalidad*>*& lNacion);
 
 public:
@@ -63,6 +75,19 @@ public:
 	 */
 	~GestorNacionalidad();
 
+	/**
+	 * @brief
+	 * 		Elabora una lista de las distintas nacionalidades de toda la población de Cáceres. Utilizado por el Algoritmo 5
+	 *
+	 * @param lNacion
+	 * 		Lista en la que almacenar cada nacionalidad como una instacia de 'Nacionalidad'
+	 *
+	 * @pre:
+	 * @post: Inserta/actualiza la lista de nacionalidades pasada por parámetro 'lNacion' dependiendo de si cada nacionalidad
+	 * 			ya existía en la lista o es nuevo. Por cada modificación se mantiene el orden de la lista mediante el método
+	 * 			'GestorNacionalidad::ordenarLista'
+	 * @complejidad: O(n^2)
+	 */
 	void alg5(ListaPI<Nacionalidad*>*& lNacion);
 
 	/**
