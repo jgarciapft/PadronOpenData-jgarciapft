@@ -193,6 +193,14 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg8(string nombreBarrio);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 9
+	 *
+	 * @pre: Jerarquía de datos cargada
+	 * @post: Imprime por consola el barrio con mayor porcentaje de mujeres y el barrio con mayor porcentaje de hombres de Cáceres
+	 * @complejidad: O(n)
+	 */
 	void alg9();
 	void alg10(string nombreProvincia);
 	void alg11_EDL(string nombreVia);

@@ -119,6 +119,20 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg8(ListaPI<Estudios*>*& lEstud);
+	/**
+	 * @brief
+	 * 		Consigue el número de hombres y mujeres para la vía actual. Utilizado por el Algoritmo 9
+	 *
+	 * @param pHombres
+	 * 		Porcentaje de hombres del barrio actual
+	 * @param pMujeres
+	 * 		Porcentaje de mujeres del barrio actual
+	 *
+	 * @pre:
+	 * @post: Devuelve por referencia el número de hombres y mujeres de la vía actual. También comprueba que
+	 * 		exista una instancia no nula de 'DatosDemográficos'
+	 * @complejidad: O(1)
+	 */
 	void alg9(float& nHombres, float& nMujeres);
 	void alg11(ofstream& ofs);
 	int alg12(string nombreProvincia);

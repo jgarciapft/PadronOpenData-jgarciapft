@@ -94,6 +94,14 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg8();
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 9
+	 *
+	 * @pre:
+	 * @post: Llama a calcular el porcentaje de hombres y de mujeres del barrio actual
+	 * @complejidad: O(n)
+	 */
 	void alg9(float& pHombres, float& pMujeres);
 
 	/**

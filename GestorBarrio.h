@@ -124,6 +124,15 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg8(string nombreBarrio);
+	/**
+	 * @brief
+	 * 		Procesa qué barrio es el que tiene el mayor porcentaje de hombres y cuál de mujeres. Utilizado por el Algoritmo 9
+	 *
+	 * @pre:
+	 * @post: Imprime por consola el barrio con mayor porcentaje de hombres y el barrio con mayor porcentaje de mujeres de entre los de la lista que encapsula
+	 * 		Llama a	calcular esos porcentajes (funciona como un comparador de 'mejor hasta ahora')
+	 * @complejidad: O(n)
+	 */
 	void alg9();
 
 	/**

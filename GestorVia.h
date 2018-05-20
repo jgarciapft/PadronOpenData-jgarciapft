@@ -70,6 +70,21 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg8();
+	/**
+	 * @brief
+	 * 		Recopila la información sobre el número de hombres y mujeres de cada vía y calcula el ratio entre hombres
+	 * 			y mujeres. Utilizado por el Algoritmo 9
+	 *
+	 * @param pHombres
+	 * 		Porcentaje de hombres del barrio actual
+	 * @param pMujeres
+	 * 		Porcentaje de mujeres del barrio actual
+	 *
+	 * @pre:
+	 * @post: Devuelve por referencia los porcentajes de hombres y mujeres para cada vía de la lista de vías que encapsula el gestor
+	 * 		en 'tantos por 1'
+	 * @complejidad: O(n)
+	 */
 	void alg9(float& pHombres, float& pMujeres);
 
 	/**
