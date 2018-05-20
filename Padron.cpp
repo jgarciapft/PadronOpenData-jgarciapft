@@ -62,18 +62,31 @@ Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVia
 	return aAux;
 }
 
-int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia) {
+int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia, ListaPI<int>*& lCoincidencias) {
 	int nPersonas = 0;													//Acumulador del número total de habitantes que pertenecen a la provincia dada
+	int intAux;															//Temmporal para consultar la lista de coincidencias
+	bool coincidencia = false;											//Bandera para indicar si la vía actual (raíz del ABB) ha sido procesada
 
 	//RECORRIDO en IN-ORDEN. Recorre en el orden establecido el ABB con las vías que potencialmente comienzan por la raíz dada
 	if(aVias->hijoIzq() != NULL)
-		nPersonas += filtroInOrden(aVias->hijoIzq(), raiz, nombreProvincia);
+		nPersonas += filtroInOrden(aVias->hijoIzq(), raiz, nombreProvincia, lCoincidencias);
 
-	if(aVias->raiz()->getNombreVia().find(raiz) == 0)					//Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos menores que el actual pero mayores que el anterior al actual
-		nPersonas += aVias->raiz()->alg12(nombreProvincia);				//Acumula el número de habitantes de cada vía raíz que pertenecen a la provincia dada
+	if(aVias->raiz()->getNombreVia().find(raiz) == 0){					//Potencialmente el árbol completo comienza por la raíz dada pero como la inserción es imperfecta pueden haberse colado nodos menores que el actual pero mayores que el anterior al actual
+		lCoincidencias->moverInicio();
+		while(!lCoincidencias->finLista() && !coincidencia){			//Comprueba si la vía ya ha sido procesada
+			lCoincidencias->consultar(intAux);
+			lCoincidencias->avanzar();
+			if(aVias->raiz()->getCodVia() == intAux)					//Si los códigos de vía coinciden es que ya se ha consultado anteriormente la vía actual y no hay que procesarla
+				coincidencia = true;									//Actualiza la bandera de coincidencia
+		}
+		if(!coincidencia){
+			nPersonas += aVias->raiz()->alg12(nombreProvincia);			//Acumula el número de habitantes de cada vía raíz que pertenecen a la provincia dada
+			lCoincidencias->insertar(aVias->raiz()->getCodVia());		//Añade la vía actual a la lista de vías procesadas
+		}
+	}
 
 	if(aVias->hijoDer() != NULL)
-		nPersonas += filtroInOrden(aVias->hijoDer(), raiz, nombreProvincia);
+		nPersonas += filtroInOrden(aVias->hijoDer(), raiz, nombreProvincia, lCoincidencias);
 
 	return nPersonas;
 }
@@ -512,7 +525,7 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 		aAux = alg12(aVias, raiz);										//Procesa el subárbol que contiene la(s) vía(s) que comienzan por la ráiz dada
 
 		if(aAux != NULL){												//Comprueba que se haya encontrado alguna vía que comience por la raíz indicada
-			nPersonas = filtroInOrden(aAux, raiz, nombreProvincia);		//Calcula el número de habitantes para la provincia dada.
+			nPersonas = filtroInOrden(aAux, raiz, nombreProvincia, lCoincidencias);//Calcula el número de habitantes para la provincia dada.
 			if(nPersonas != 0){											//Comprueba si se ha encontrado algún habitante para la provincia dada
 				cout << "Nº de HABITANTES nacidos en la PROVINCIA - " << nombreProvincia << " - para la todas las VÍAS comenzando por la RAÍZ - \'"
 					 << raiz << "\' :\t" << nPersonas << " habitantes" << endl;
@@ -524,6 +537,8 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 			cout << "NO SE HA ENCONTRADO NINGUNA VÍA QUE COMIENCE POR LA RAÍZ (" << raiz << ")" << endl;
 		}
 	}
+
+	delete lCoincidencias;												//Libera la memoria asociada a la lista auxiliar de coincidencias
 }
 
 void Padron::mostrarEstructura() {

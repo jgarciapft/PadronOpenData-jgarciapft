@@ -87,7 +87,8 @@ private:
 	 * 		Subcadena por la que deben comenzar las vías
 	 * @param nombreProvincia
 	 * 		Nombre de la provincia a buscar
-	 *
+	 * @param lCoincidencias
+	 * 		Lista de códigos de vías ya procesadas
 	 *
 	 * @pre: aVias != NULL
 	 * @post: Ejecuta un recorrido IN ORDEN del ABB e invoca el algoritmo 12 sobre los nodos cuya raiz comience por la subcadena \param raiz
@@ -96,7 +97,7 @@ private:
 	 * @return
 	 * 		Número de habitantes nacidos en la provincia \param nombreProvincia
 	 */
-	int filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia);
+	int filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia, ListaPI<int>*& lCoincidencias);
 
 public:
 	/**
