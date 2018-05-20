@@ -57,6 +57,10 @@ void Pruebas::pruebaUtils() {
 
 	cadena = "España (115);Filipinas (1)";
 	pruebaTrocearCadenaNacionalidad(cadena);
+
+	///@TEST: 1. int_to_string(10)
+	if(int_to_string(10) != "10")
+		salidaPruebas << "\tERROR : Método \'int_to_string\' - El número 10 no se ha convertido a la cadena \'10\'\t| En su lugar -> " << int_to_string(10) << endl;
 }
 
 void Pruebas::pruebaSobrecargaOperadores() {

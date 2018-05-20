@@ -36,6 +36,8 @@ private:
 	/**\@PRUEBA: Utilidades de cadenas
 	 *
 	 *	Invoca las pruebas ya implementadas en el proyecto base de las utilidades de cadenas
+	 *
+	 *	1. int_to_string(10)   ->   10 (int)
 	 */
 	void pruebaUtils();
 
