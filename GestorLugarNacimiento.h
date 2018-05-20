@@ -75,6 +75,21 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
+	/**
+	 * @brief
+	 * 		Rellena/actualiza la lista de lugares de nacimiento que coincidan con la provincia dadacon cada set de datos demográficos.
+	 * 			Utilizado por el algoritmo 10
+	 *
+	 * @param lLugNac
+	 * 		Lista desordenada de objetos 'LugarNacimiento' con el resultado del algoritmo
+	 * @param nombreProvincia
+	 * 		Nomvbre de la provincia a buscar
+	 *
+	 * @pre:
+	 * @post: Inserta/actualiza la lista de nacionalidades pasada por parámetro 'lLugNac' dependiendo de si cada instancia que pertence a la
+	 * 			provincia \param nombreProvincia ya existía en la lista o es nueva. No se mantiene ningún orden
+	 * @complejidad: O(n^2)
+	 */
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);
 	void alg11(ofstream& ofs);
 	int alg12(string nombreProvincia);

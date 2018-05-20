@@ -162,6 +162,20 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg8(ListaPI<Estudios*>*& lEstud);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el algoritmo 10
+	 *
+	 * @param lLugNac
+	 * 		Lista desordenada de objetos 'LugarNacimiento' con el resultado del algoritmo
+	 * @param nombreProvincia
+	 * 		Nomvbre de la provincia a buscar
+	 *
+	 * @pre:
+	 * @post: Llama a modificar la lista 'lEstud' con la información sobre lugares de nacimeinto que encapsula el gestor
+	 * 		GestorLugarNacimiento
+	 * @complejidad: O(n^2)
+	 */
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);
 	void alg11(ofstream& ofs);
 	int alg12(string nombreProvincia);

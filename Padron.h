@@ -202,6 +202,17 @@ public:
 	 * @complejidad: O(n)
 	 */
 	void alg9();
+	/**
+	 * @brief
+	 * 		Vuelca en un fichero las poblaciones de nacimiento y número de habitantes para una provincia dada. Utilizado por el Algoritmo 10
+	 *
+	 * @param nombreProvincia
+	 * 		Nomvbre de la provincia a buscar
+	 *
+	 * @pre: Jerarquía de datos cargada
+	 * @post: Vuelca en el fichero 'Poblaciones-\param nombreProvincia' una lista desordenada de lugares de nacimiento (si existe la provincia)
+	 * @complejidad: O(n^2)
+	 */
 	void alg10(string nombreProvincia);
 	void alg11_EDL(string nombreVia);
 	void alg11_EDNL(string nombreVia);
