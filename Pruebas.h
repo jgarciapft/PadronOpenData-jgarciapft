@@ -306,11 +306,14 @@ private:
 	 */
 	void pruebaAlgoritmos();
 
+	/**
+	 * @NOTA: Ejecuta todas las preuebas del proyceto
+	 */
+	void ejecutarPruebas();
+
 public:
 	Pruebas();
 	~Pruebas();
-
-	void ejecutarPruebas();
 };
 
 }
