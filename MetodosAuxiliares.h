@@ -9,7 +9,7 @@ namespace pruebas {
 
 /******************************************************* CONSTANTES DE PRUEBAS *******************************************************/
 
-	const string RUTA_FIHCERO_PRUEBAS = "Pruebas.txt";					//Ruta relativa del fichero de volcado para la ejecución de las pruebas
+	const string RUTA_FIHCERO_PRUEBAS = "Pruebas.txt";									//Ruta relativa del fichero de volcado para la ejecución de las pruebas
 
 	///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: Set_1
 	const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 1
@@ -113,6 +113,13 @@ namespace pruebas {
 	 * 		Número de vías que pasan por más de 1 barrio en la lista 'lVias'
 	 */
 	static void alg3(ListaPI<Via*>& lVias, int& cont);
+
+	/**@TEST: Implementación de la prueba del Algoritmo 4
+	 *
+	 * @param lDatDem
+	 * 		Simula la lista de datos demográficos auxiliar de la clase Padron
+	 */
+	static void alg4(ListaPI<DatosDemograficos*>& lDatDem);
 
 /********************************************************************************************************************************************************/
 
@@ -374,6 +381,75 @@ void alg3(ListaPI<Via*>& lVias, int& cont) {
 		}
 		coincidencia = false;											
 	}
+}
+
+void alg4(ListaPI<DatosDemograficos*>& lDatDem) {
+	ListaPI<AnioNacimiento*>* lAnioNac = new ListaPI<AnioNacimiento*>();
+	DatosDemograficos* dD;												
+	AnioNacimiento* anNacAux;											
+	int nPersonas;														
+	int nPersPorDiv;													
+	int nDivisiones;													
+	int mayorMarca = 0;													
+	int modaNPersonas = 0;												
+	string carDivision = "·";											
+	string cadDivisiones;												
+	string cadSep;														
+	string cadMayorMarca;
+
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){								
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		dD->alg4(lAnioNac);
+	}
+
+	lAnioNac->moverInicio();
+	for(int i=0; !lAnioNac->finLista(); i++){							
+		lAnioNac->consultar(anNacAux);
+		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					
+			nPersonas = anNacAux->getNPersonas();
+			lAnioNac->avanzar();										
+			if(anNacAux->getAnio() > mayorMarca) 			            
+				mayorMarca = (anNacAux->getAnio());
+			if(anNacAux->getNPersonas() > modaNPersonas)				
+				modaNPersonas = anNacAux->getNPersonas();
+		}else{															
+			nPersonas = 0;
+		}
+		cout << i*RANGO_EDAD_ALG_4 << " a " << (i+1)*RANGO_EDAD_ALG_4 - 1 << " - " << nPersonas << " persona(s)" << endl;	//Muestra el resultado del intervalo i-ésimo con amplitud RANGO_EDAD_ALG_4
+	}
+	nPersPorDiv = modaNPersonas % 275;									
+	cadMayorMarca = int_to_string(mayorMarca);							
+
+	cout << "\nREPRESENTACIÓN GRÁFICA - APROXIMACIÓN A UN HISTOGRAMA DE FRECUENCIAS\t" << "· = " << nPersPorDiv << " personas (aprox.)" << endl << endl;
+	lAnioNac->moverInicio();
+	for(int i=0; !lAnioNac->finLista(); i++){							
+		lAnioNac->consultar(anNacAux);
+		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					
+			nDivisiones = anNacAux->getNPersonas() / nPersPorDiv;
+			lAnioNac->avanzar();										
+			if(nDivisiones == 0){ nDivisiones++; }						
+		}else{															
+			nDivisiones = 0;
+		}
+		for(int j=0; j<nDivisiones; j++){ cadDivisiones.append(carDivision); }												
+		for(int j=0; j<(cadMayorMarca.length() - int_to_string(i*RANGO_EDAD_ALG_4).length()); j++){ cadSep.append("  "); }	
+		if(int_to_string(i*RANGO_EDAD_ALG_4).length() != int_to_string(i*RANGO_EDAD_ALG_4 + RANGO_EDAD_ALG_4-1).length())	
+			cadSep.erase(cadSep.length()-1, 1);																				
+		cout << "(" << i*RANGO_EDAD_ALG_4 << " , " << (i+1)*RANGO_EDAD_ALG_4 - 1 << ")  " << cadSep << "|" << cadDivisiones << endl;
+
+		cadSep.clear();		
+		cadDivisiones.clear();
+	}
+
+	lAnioNac->moverInicio();
+	while(!lAnioNac->finLista()){										
+		lAnioNac->consultar(anNacAux);
+		lAnioNac->avanzar();
+		delete anNacAux;												
+	}
+	delete lAnioNac;													
 }
 
 }

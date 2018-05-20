@@ -63,7 +63,7 @@ public:
 	 * GETTERS
 	 */
 	string getNivEstudios() const;
-	int getNPersonas() const;3
+	int getNPersonas() const;
 	/**
 	 * SETTERS
 	 */

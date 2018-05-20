@@ -726,6 +726,31 @@ void Pruebas::pruebaAlg3() {
 	}
 }
 
+void Pruebas::pruebaAlg4() {
+	ListaPI<DatosDemograficos*> lDatDem;
+	lDatDem.insertar(new DatosDemograficos(0, "2017 (1); 2010 (2); 1998 (1)", "", "", 0, 0, ""));
+	lDatDem.insertar(new DatosDemograficos(1, "2016 (3); 1995 (2)", "", "", 0, 0, ""));
+	DatosDemograficos* dD;
+	
+	///@TEST: 1. No hay ningún dato para el intervalo (10-19)
+	salidaPruebas << "\nCOMPROBAR QUE NO SE REPRESENTE NADA EN EL INTERVALO (10, 19)" << endl; //TODO cambiar el flujo
+	alg4(lDatDem);
+
+	///@TEST: 2. Hay datos para todos los intervalos (0-9), (10, 19) y (20, 29)
+	lDatDem.insertar(new DatosDemograficos(2, "2005 (2); 2003 (1)", "", "", 0, 0, ""));
+
+	salidaPruebas << "\nCOMPROBAR QUE SE REPRESENTE 1 PUNTO EN LOS INTERVALOS (0-9), (10, 19) y (20, 29)" << endl;
+	alg4(lDatDem);
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		delete dD;
+	}
+}
+
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
 //	pruebaAlg1();

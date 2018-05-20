@@ -194,7 +194,7 @@ private:
 	 */
 	void pruebaAlg2();
 
-	/**@PRUEBA: Validación del Algoritmo 3.
+	/**@PRUEBA: Validación del Algoritmo 3
 	 *
 	 * 1. No existe ninguna vía que pasa por más de 1 barrio							->	cont = 0
 	 * 2. Existe 1 vía que pasa por 2 barrios											->	cont = 1
@@ -202,6 +202,14 @@ private:
 	 * 3. Existen 3 vías que pasan por más de 1 barrio									->	cont = 3
 	 */
 	void pruebaAlg3();
+
+	/**@PRUEBA: Validación del Algoritmo 4
+	 *
+	 * @NOTA: Suponiendo correcta la representación gráfica de los resultados
+	 * 1. No hay ningún dato para el intervalo (10-19)						->  No debe representarse ese intervalo y 1 punto en el resto. Comprobación visual
+	 * 2. Hay datos para todos los intervalos (0-9), (10, 19) y (20, 29)	->  1 punto en cada intervalos. Comprobación visual
+	 */
+	void pruebaAlg4();
 
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos
