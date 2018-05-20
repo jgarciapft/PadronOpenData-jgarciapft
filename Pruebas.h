@@ -239,9 +239,16 @@ private:
 	 *
 	 * 1. Se intenta búsqueda para el rango (19-10)		  ->   Se indica al usuario por consola que el formato no es válido. Comprobación visual
 	 * 2. No hay ningún habitante para el rango (10-19)   ->   Se indica al usuario por consola. Comprobación visual
-	 * 3. Hay habitantes para el rango (0-9)			  ->   Mayor barrio = BarrioB con 6 habitantes. Comprobación visual
+	 * 3. Hay habitantes para el rango (0-9)			  ->   Mayor barrio = BarrioB; con 6 habitantes. Comprobación visual
 	 */
 	void pruebaAlg7();
+
+	/**@PRUEBA: Validación del Algoritmo 8. Datos: \SET_DATOS SET_2
+	 *
+	 * 1. El barrio 'BarrioC' no existe	->	Se indica al usuario por consola. Comprobación gráfica en el fichero de resultado NivelEstudios-BarrioC
+	 * 2. El barrio 'BarrioB' existe	->	Se muestra : NivelB2(3) NivelB1(1). Comprobación gráfica en el fichero de resultado NivelEstudios-BarrioB
+	 */
+	 void pruebaAlg8();
 
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos

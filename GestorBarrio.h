@@ -111,6 +111,18 @@ public:
 	 * @complejidad: O(n)
 	 */
 	void alg7(int limInf, int limSup);
+	/**
+	 * @brief
+	 * 		Busca si existe el barrio \param nombreBarrio en la jerarquía de datos. Utilizado por el Algoritmo 8
+	 *
+	 * @param nombreBarrio
+	 * 		Nombre del bario a buscar
+	 *
+	 * @pre:
+	 * @post: Comprueba si el barrio está en la lista de barrios que encapsula el gestor. Si lo está llama a que se ejecute
+	 * 		la funcionalidad principal del Algoritmo 8
+	 * @complejidad: O(n^2)
+	 */
 	void alg8(string nombreBarrio);
 	void alg9();
 

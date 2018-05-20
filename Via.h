@@ -107,6 +107,17 @@ public:
 	 * @complejidad: O(n)
 	 */
 	int alg7(int limInf, int limSup);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 8
+	 *
+	 * @param lEstud
+	 * 		Lista ordenada de objetos 'Estudios' con el resultado del algoritmo
+	 *
+	 * @pre:
+	 * @post: Llama a modificar la lista de resultados. Comprueba si existe una instancia no nula de 'DatosDemograficos'
+	 * @complejidad: O(n^2)
+	 */
 	void alg8(ListaPI<Estudios*>*& lEstud);
 	void alg9(float& nHombres, float& nMujeres);
 	void alg11(ofstream& ofs);

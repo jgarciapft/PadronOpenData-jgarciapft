@@ -75,6 +75,20 @@ public:
 	 */
 	~GestorEstudios();
 
+	/**
+	 * @brief
+	 * 		Elabora una lista de los distintos niveles de estudio de toda la población de un barrio concreto.
+	 * 			Utilizado por el Algoritmo 8
+	 *
+	 * @param lEstud
+	 * 		Lista en la que almacenar cada nivel de estudio como una instacia de 'Estudios'
+	 *
+	 * @pre:
+	 * @post: Inserta/actualiza la lista de nacionalidades pasada por parámetro 'lEstud' dependiendo de si cada nivel de estudios
+	 * 			ya existía en la lista o es nueva.  Por cada modificación se mantiene el orden de la lista mediante el método
+	 * 			'GestorEstudios::ordenarLista'
+	 * @complejidad: O(n^2)
+	 */
 	void alg8(ListaPI<Estudios*>*& lEstud);
 
 	/**

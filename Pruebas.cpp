@@ -832,7 +832,7 @@ void Pruebas::pruebaAlg7() {
 	ruta = RUTA_PADRON_PRUEBA_ALG7;
 	cargarDatosDemograficos(gBarrio, cont, ruta, lDatDem);
 
-	///@TEST: 2. No hay ningún habitante para el rango (10-19)
+	///@TEST: 1. No hay ningún habitante para el rango (10-19)
 	salidaPruebas << "COMPROBAR QUE SE INDICA QUE EL FORMATO NO ES VÁLIDO (19, 10)" << endl;
 	alg7(gBarrio, 19, 10);
 
@@ -843,6 +843,36 @@ void Pruebas::pruebaAlg7() {
 	///@TEST: 3. Hay habitantes para el rango (0-9)
 	salidaPruebas << "COMPRUEBA QUE SE INDICA QUE EL BARRIO RESULTADO PARA EL RANGO (0, 9) ES - BarrioB -  y hay - 6 habitantes" << endl;
 	alg7(gBarrio, 0, 9);
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		delete dD;
+	}
+}
+
+void Pruebas::pruebaAlg8() {
+	GestorBarrio gBarrio;
+	ListaPI<DatosDemograficos*> lDatDem;
+	DatosDemograficos* dD;
+	string ruta = RUTA_BARRIO_PRUEBA_ALG7;
+	int cont = 0;
+
+	cargarBarrios(gBarrio, cont, ruta);
+	ruta = RUTA_VIA_PRUEBA_ALG7;
+	cargarVias(gBarrio, cont, ruta);
+	ruta = RUTA_PADRON_PRUEBA_ALG7;
+	cargarDatosDemograficos(gBarrio, cont, ruta, lDatDem);
+
+	///@TEST: 1.1. El barrio 'BarrioC' no existe
+	salidaPruebas << "COMPROBAR QUE SE INDICA QUE EL BARRIO - BarrioC - NO EXISTE EN EL FICHERO DE RESULTADO - NivelEstudios-BarrioC" << endl;
+	alg8(gBarrio, "BarrioC");
+
+	///@TEST: 2. El barrio 'BarrioB' existe
+	salidaPruebas << "COMPROBAR QUE EL RESULTADO EN EL FICHERO DE VOLCADO - NivelEstudios-BarrioB - ES : \'NivelB2(3)\' \'NivelB1(1)\'" << endl;
+	alg8(gBarrio, "BarrioB");
 
 	///@NOTA: Liberación de los recursos reservados dinámicamente
 	lDatDem.moverInicio();

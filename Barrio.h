@@ -84,6 +84,15 @@ public:
 	 * @complejidad: O(n)
 	 */
 	int alg7(int limInf, int limSup);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 8
+	 *
+	 * @pre:
+	 * @post: llama a que se ejecute
+	 * 		la funcionalidad principal del Algoritmo 8
+	 * @complejidad: O(n^2)
+	 */
 	void alg8();
 	void alg9(float& pHombres, float& pMujeres);
 

@@ -180,6 +180,18 @@ public:
 	 * @complejidad: O(n)
 	 */
 	void alg7(int limInf, int limSup);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 8
+	 *
+	 * @param nombreBarrio
+	 * 		Nombre del bario a buscar
+	 *
+	 * @pre: Jerarquía de datos cargada
+	 * @post: Vuelca en un archivo con ruta 'NivelDeEstudios-\param nombreBarrio.txt" una lista ordenada descendentemente las distintas
+	 * 			titulaciones que ostentan los habitantes de ese barrio
+	 * @complejidad: O(n^2)
+	 */
 	void alg8(string nombreBarrio);
 	void alg9();
 	void alg10(string nombreProvincia);

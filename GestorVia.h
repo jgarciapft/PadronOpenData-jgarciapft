@@ -60,6 +60,15 @@ public:
 	 * @complejidad: O(n)
 	 */
 	int alg7(int limInf, int limSup);
+	/**
+	 * @brief
+	 * 		Elabora una lista ordenada de niveles de estudio de los habitantes de todas las vías. Utilizado por el Algoritmo 8
+	 *
+	 * @pre:
+	 * @post: Confecciona una lista ordenada descendentemente por número de habitantes de todas las vías de la lista
+	 * 		que encapsula el gestor. También vuelca los resultados del algoritmo al fichero 'NivelDeEstudios-'nombreBarrio''
+	 * @complejidad: O(n^2)
+	 */
 	void alg8();
 	void alg9(float& pHombres, float& pMujeres);
 

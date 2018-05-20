@@ -157,6 +157,15 @@ namespace pruebas {
 	 */
 	static void alg7(GestorBarrio& gBarrio, int limInf, int limSup);
 
+	/**@TEST: Implementación de la prueba del Algoritmo 8
+	 *
+	 * @param gBarrio
+	 * 		Simula el gestor de barrios que encapsula la clase Padron
+	 * @param nombreBarrio
+	 * 		Nombre del barrio a buscar
+	 */
+	static void alg8(GestorBarrio& gBarrio, string nombreBarrio);
+
 /********************************************************************************************************************************************************/
 
 void pruebaTrocearCadenaAnioNacimiento(string text) {
@@ -556,6 +565,10 @@ void alg7(GestorBarrio& gBarrio, int limInf, int limSup) {
 		gBarrio.alg7(limInf, limSup);
 	else
 		cout << "ERROR : El límite inferior (" << limInf << ") debe ser inferior al límite superior (" << limSup << ")" << endl;
+}
+
+void alg8(GestorBarrio& gBarrio, string nombreBarrio) {								///@NOTA: Método invocativo
+	gBarrio.alg8(nombreBarrio);
 }
 
 }
