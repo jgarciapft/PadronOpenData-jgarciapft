@@ -914,45 +914,75 @@ void Pruebas::pruebaAlg9() {
 	}
 }
 
+void Pruebas::pruebaAlg10() {
+	GestorBarrio gBarrio;
+	ListaPI<DatosDemograficos*> lDatDem;
+	DatosDemograficos* dD;
+	string ruta = RUTA_BARRIO_PRUEBA_ALG9;
+	int cont = 0;
+
+	cargarBarrios(gBarrio, cont, ruta);
+	ruta = RUTA_VIA_PRUEBA_ALG9;
+	cargarVias(gBarrio, cont, ruta);
+	ruta = RUTA_PADRON_PRUEBA_ALG9;
+	cargarDatosDemograficos(gBarrio, cont, ruta, lDatDem);
+
+	///@TEST: 1. La provincia 'ProvinciaX' no existe
+	salidaPruebas << "COMPROBAR QUE SE INDICA QUE LA PROVINCIA - ProvinciaX - NO EXISTE" << endl;
+	alg10(lDatDem, "ProvinciaX");
+
+	///@TEST: 2. La provincia 'ProvinciaA' existe
+	salidaPruebas << "COMPROBAR QUE PARA LA PROVINCIA - ProvinciaA - MUESTRA: PoblacionA(1); PoblacionA1 (2)" << endl;
+	alg10(lDatDem, "ProvinciaA");
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		delete dD;
+	}
+}
+
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
-//	pruebaAlg1();
+	pruebaAlg1();
 	salidaPruebas << "FIN : ALGORITMO 1" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 2" << endl;
-//	pruebaAlg2();
+	pruebaAlg2();
 	salidaPruebas << "FIN : ALGORITMO 2" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 3" << endl;
-//	pruebaAlg3();
+	pruebaAlg3();
 	salidaPruebas << "FIN : ALGORITMO 3" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 4" << endl;
-//	pruebaAlg4();
+	pruebaAlg4();
 	salidaPruebas << "FIN : ALGORITMO 4" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 5" << endl;
-//	pruebaAlg5();
+	pruebaAlg5();
 	salidaPruebas << "FIN : ALGORITMO 5" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 6" << endl;
-//	pruebaAlg6();
+	pruebaAlg6();
 	salidaPruebas << "FIN : ALGORITMO 6" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 7" << endl;
-//	pruebaAlg7();
+	pruebaAlg7();
 	salidaPruebas << "FIN : ALGORITMO 7" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 8" << endl;
-//	pruebaAlg8();
+	pruebaAlg8();
 	salidaPruebas << "FIN : ALGORITMO 8" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 9" << endl;
-//	pruebaAlg9();
+	pruebaAlg9();
 	salidaPruebas << "FIN : ALGORITMO 9" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 10" << endl;
-//	pruebaAlg10();
+	pruebaAlg10();
 	salidaPruebas << "FIN : ALGORITMO 10" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 11 EDL" << endl;

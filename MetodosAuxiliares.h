@@ -11,17 +11,17 @@ namespace pruebas {
 
 	const string RUTA_FIHCERO_PRUEBAS = "Pruebas.txt";									//Ruta relativa del fichero de volcado para la ejecución de las pruebas
 
-	///@TEST: Pruebas del algoritmo 1 (Carga de datos)	\SET_DATOS: SET_1
+	///@TEST: Pruebas del algoritmo 1 (Carga de datos)		\SET_DATOS: SET_1
 	const string RUTA_BARRIO_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 1
 	const string RUTA_VIA_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Vias.csv";			//Ruta relativa del fichero de vías para el set de pruebas 1
 	const string RUTA_PADRON_PRUEBA_ALG1 = "SetDatos_Pruebas/SetDatos_1_Padron.csv";	//Ruta relativa del fichero de datos del padrón (Año 2016) para el set de pruebas 1
 
-	///@TEST: Pruebas del algoritmo 7 y 8				\SET_DATOS: SET_2
+	///@TEST: Pruebas de los algoritmos 7 y 8				\SET_DATOS: SET_2
 	const string RUTA_BARRIO_PRUEBA_ALG7 = "SetDatos_Pruebas/SetDatos_2_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 2
 	const string RUTA_VIA_PRUEBA_ALG7 = "SetDatos_Pruebas/SetDatos_2_Vias.csv";			//Ruta relativa del fichero de vías para el set de pruebas 2
 	const string RUTA_PADRON_PRUEBA_ALG7 = "SetDatos_Pruebas/SetDatos_2_Padron.csv";	//Ruta relativa del fichero de datos del padrón (Año 2016) para el set de pruebas 2
 
-	///@TEST: Pruebas del algoritmo 9)					\SET_DATOS: SET_2
+	///@TEST: Pruebas de los algoritmos 9, 10, 11 y 12		\SET_DATOS: SET_2
 	const string RUTA_BARRIO_PRUEBA_ALG9 = "SetDatos_Pruebas/SetDatos_3_Barrios.csv";	//Ruta relativa del fichero de barrios para el set de pruebas 3
 	const string RUTA_VIA_PRUEBA_ALG9 = "SetDatos_Pruebas/SetDatos_3_Vias.csv";			//Ruta relativa del fichero de vías para el set de pruebas 3
 	const string RUTA_PADRON_PRUEBA_ALG9 = "SetDatos_Pruebas/SetDatos_3_Padron.csv";	//Ruta relativa del fichero de datos del padrón (Año 2016) para el set de pruebas 3
@@ -177,6 +177,15 @@ namespace pruebas {
 	 * 		Simula el gestor de barrios que encapsula la clase Padron
 	 */
 	static void alg9(GestorBarrio& gBarrio);
+
+	/**@TEST: Implementación de la prueba del Algoritmo 10
+	 *
+	 * @param lDatDem
+	 * 		Simula la lista auxiliar de datos demográfico de la clase Padron
+	 * @param nombreProvincia
+	 * 		Nombre de la provincia a buscar
+	 */
+	static void alg10(ListaPI<DatosDemograficos*>& lDatDem, string nombreProvincia);
 
 /********************************************************************************************************************************************************/
 
@@ -585,6 +594,51 @@ void alg8(GestorBarrio& gBarrio, string nombreBarrio) {								///@NOTA: Método
 
 void alg9(GestorBarrio& gBarrio) {
 	gBarrio.alg9();
+}
+
+void alg10(ListaPI<DatosDemograficos*>& lDatDem, string nombreProvincia) {
+	ListaPI<LugarNacimiento*>* lLugNac = new ListaPI<LugarNacimiento*>();
+	ofstream ofs;
+	string ruta = "Poblaciones-";
+	string extension = ".txt";
+	DatosDemograficos* dD;
+	LugarNacimiento* lugNacAux;
+
+	lDatDem.moverInicio();
+	while (!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		dD->alg10(lLugNac, nombreProvincia);
+	}
+
+	ruta += nombreProvincia + extension;
+	ofs.open(ruta.c_str(), ios::app);
+	if(ofs.is_open()){
+		if(!lLugNac->estaVacia()){
+			ofs << "\n\nCenso de las poblaciones que pertenecen a la provincia - " << nombreProvincia << endl;
+			ofs << "-----------------------------------------------------------------------------------------------" << endl;
+			lLugNac->moverInicio();
+			while(!lLugNac->finLista()){
+				lLugNac->consultar(lugNacAux);
+				lLugNac->avanzar();
+				ofs << lugNacAux->getPoblacion() << " (" << lugNacAux->getNPersonas() << ")" << endl;
+			}
+		}else{
+			cout << "NO SE HA ENCONTRADO NINGUNA POBLACIÓN PARA LA PROVINCIA (" << nombreProvincia << ")" << endl;
+		}
+	}else{
+		cout << "ERROR AL CREAR EL FICHERO PARA VOLCAR LOS RESULTADOS" << endl;
+	}
+	ofs.close();
+
+	//Libera la memoria asociada a los nuevos datos creados
+	lLugNac->moverInicio();
+	while(!lLugNac->finLista()){
+		lLugNac->consultar(lugNacAux);
+		lLugNac->avanzar();
+		delete lugNacAux;
+	}
+	delete lLugNac;
 }
 
 }

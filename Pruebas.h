@@ -252,12 +252,20 @@ private:
 	 */
 	 void pruebaAlg8();
 
-	 /**@PRUEBA: Validación del Algoritm 9. Datos: \SET_DATOS SET_3
-	  *
-	  * 1. Hay barrios con hombres y mujeres   ->   Barrio con mayor porcentaje de hombres = Barrio B (75%). Comprobación gráfica
-	  * 											Bario con mayor porcentaje de mujeres = Barrio A (60%). Comprobación gráfica
-	  */
-		void pruebaAlg9();
+ 	/**@PRUEBA: Validación del Algoritmo 9. Datos: \SET_DATOS SET_3
+	 *
+	 * 1. Hay barrios con hombres y mujeres   ->   Barrio con mayor porcentaje de hombres = Barrio B (75%). Comprobación gráfica
+	 * 											   Bario con mayor porcentaje de mujeres = Barrio A (60%). Comprobación gráfica
+	 */
+	 void pruebaAlg9();
+
+	/**@PRUEBA: Validación del Algoritmo 10. Datos: \SET_DATOS SET_3
+	 *
+	 * 1. La provincia 'ProvinciaX' no existe	->	Se indica al usuario por consola. Comprobación gráfica
+	 * 2. La provincia 'ProvinciaA' existe		->	Poblaciones = PoblacionA (1); PoblacionA1 (2)
+	 * 													Comprobación gráfica en el fichero 'Poblaciones-ProvinciaA'
+	 */
+	void pruebaAlg10();
 
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos
