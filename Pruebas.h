@@ -226,6 +226,15 @@ private:
 	 */
 	void pruebaAlg5();
 
+	/**@PRUEBA: Validación  del Algoritmo 6
+	 *
+	 * 1. Solo hay 1 provincia									   	   ->  cont[0] = 2 y se muestra -> ProvinciaA (2). Comprobación gráfica
+	 * 2. Hay 2 provincias											   ->  cont[0] = 3 y se muestra -> ProvinciaA(3); ProvinciaB(2). Comprobación gráfica
+	 * 																	   cont[1] = 2
+	 * 3. Deductivamente si el algoritmo funciona para 1 provincia  ->  Funciona para 'n' provincias
+	 */
+	void pruebaAlg6();
+
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos
 	 */

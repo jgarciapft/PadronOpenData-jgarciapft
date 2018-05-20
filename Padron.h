@@ -149,11 +149,21 @@ public:
 	 * 			de Cáceres. Utilizado por el Algoiritmo 5
 	 *
 	 * @pre: Jerarquía de datos cargada
-	 * @post: Imprime por consola una lista ordenada descendentemente por número de habitantes 'lNacion' de nacionalidades
+	 * @post: Imprime por consola una lista ordenada descendentemente por número de habitantes, 'lNacion' de nacionalidades
 	 * 			de todos los habitantes de Cáceres recogidos en el padrón.
 	 * @complejidad: O(n^2)
 	 */
 	void alg5();
+	/**
+	 * @brief
+	 * 		Muestra una lista ordenada alfabéticamente descendente por provincia de nacimiento de todos los habitantes de
+	 * 			Cáceres. Utilizado por el Algoritmo 6
+	 *
+	 * @pre: Jerarquía de datos cargada
+	 * @post: Imprime por consola un la lista ordenada alfabéticamente descendente por el nombre de la provincia, 'lLugNac' de
+	 * 		lugares de nacimiento de todos los habitantes de Cáceres recogidos en el padrón.
+	 * @complejidad: O(n^2)
+	 */
 	void alg6();
 	void alg7(int limInf, int limSup);
 	void alg8(string nombreBarrio);

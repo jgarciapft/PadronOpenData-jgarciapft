@@ -61,6 +61,19 @@ public:
 	 */
 	~GestorLugarNacimiento();
 
+	/**
+	 * @brief
+	 * 		Elabora una lista de las distintas provincias de nacimiento de toda la población de Cáceres. Utilizado por el Algoritmo 6
+	 *
+	 * @param lLugNac
+	 * 		Lista en la que almacenar cada provincia como una instacia de 'LugarNacimiento'
+	 *
+	 * @pre:
+	 * @post: Inserta/actualiza la lista de nacionalidades pasada por parámetro 'lLugNac' dependiendo de si cada provincia
+	 * 			ya existía en la lista o es nueva. Por cada modificación se mantiene el orden de la lista mediante un bucle anidado
+	 * 			que busca el lugar de inserción/modificación en base a la sobrecarga de operadores de la clase 'LugarNacimiento'
+	 * @complejidad: O(n^2)
+	 */
 	void alg6(ListaPI<LugarNacimiento*>*& lLugNac);
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);
 	void alg11(ofstream& ofs);

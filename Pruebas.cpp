@@ -788,6 +788,37 @@ void Pruebas::pruebaAlg5() {
 	}
 }
 
+void Pruebas::pruebaAlg6() {
+	ListaPI<DatosDemograficos*> lDatDem;
+	lDatDem.insertar(new DatosDemograficos(0, "", "PoblacionA (ProvinciaA) (1)", "", 0, 0, ""));
+	lDatDem.insertar(new DatosDemograficos(0, "", "PoblacionA (ProvinciaA) (1)", "", 0, 0, ""));
+	int cont[2]; for(int i=0; i<2; i++){ cont[i] = 0; }
+	DatosDemograficos* dD;
+
+	///@TEST: 1. Solo hay 1 provincia
+	salidaPruebas << "COMPROBAR QUE SE MUESTRE LA PROVINCIA - \'ProvinciaA (2)\'" << endl;
+	alg6(lDatDem, cont);
+	if(cont[0] != 2)
+		salidaPruebas << "\tERROR : TEST #1 - No hay 2 habitantes para la provincia \'ProvinciaA\'\t| En su lugar -> " << cont[0] << endl;
+
+	///@TEST: 2. Hay 2 provincias
+	lDatDem.insertar(new DatosDemograficos(0, "", "PoblacionA (ProvinciaA) (1);PoblacionB (ProvinciaB) (2)", "", 0, 0, ""));
+	for(int i=0; i<2; i++){ cont[i] = 0; }
+
+	salidaPruebas << "COMPROBAR QUE SE MUESTREN LAS PROVINCIAS - \'ProvinciaA (3)\' y \'ProvinciaB (2)\'" << endl;
+	alg6(lDatDem, cont);
+	if(cont[0] != 3 || cont[1] != 2)
+		salidaPruebas << "\tERROR : TEST #2 - Hay un número erróneo de habitantes para alguna provincia" << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		delete dD;
+	}
+}
+
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
 //	pruebaAlg1();
@@ -811,11 +842,11 @@ void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "FIN : ALGORITMO 4" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 5" << endl;
-	pruebaAlg5();
+//	pruebaAlg5();
 	salidaPruebas << "FIN : ALGORITMO 5" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 6" << endl;
-//	pruebaAlg6();
+	pruebaAlg6();
 	salidaPruebas << "FIN : ALGORITMO 6" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 7" << endl;

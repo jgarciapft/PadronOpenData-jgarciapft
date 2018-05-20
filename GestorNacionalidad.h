@@ -84,7 +84,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Inserta/actualiza la lista de nacionalidades pasada por parámetro 'lNacion' dependiendo de si cada nacionalidad
-	 * 			ya existía en la lista o es nuevo. Por cada modificación se mantiene el orden de la lista mediante el método
+	 * 			ya existía en la lista o es nueva.  Por cada modificación se mantiene el orden de la lista mediante el método
 	 * 			'GestorNacionalidad::ordenarLista'
 	 * @complejidad: O(n^2)
 	 */

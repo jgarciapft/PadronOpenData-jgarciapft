@@ -43,19 +43,19 @@ GestorLugarNacimiento::~GestorLugarNacimiento() {								///@NOTA: Libera la mem
 
 
 
-void GestorLugarNacimiento::alg6(ListaPI<LugarNacimiento *> *&lLugNac) {
+void GestorLugarNacimiento::alg6(ListaPI<LugarNacimiento*>*& lLugNac) {
 	bool enc = false;															//Bandera para indicar cuando se ha encontrado la posición de la lista dónde debe insertarse/actualizarse el lugar de nacimiento
 	LugarNacimiento* lugNacAux1;												//Puntero auxiliar para consultar la lista de lugares de nacimiento que encapsula el gestor
 	LugarNacimiento* lugNacAux2;												//Puntero auxiliar para consultar la lista de lugares de nacimiento pasada por parámetro
 
 	if(!lLugarNacimiento->estaVacia()) {                                        //Comprueba si el gestor contiene algún lugar de nacimiento
 		lLugarNacimiento->moverInicio();
-		if (lLugNac->estaVacia()) {                                             //Maneja el caso inicial: Comprueba si la lista pasada por parámtro está vacía e inserta el primer elemento si procede
+		if(lLugNac->estaVacia()){                                             	//Maneja el caso inicial: Comprueba si la lista pasada por parámtro está vacía e inserta el primer elemento si procede
 			do {																//Comprueba que el primer LUGAR DE NACIMIENTO a insertar NO SEA EXTRANJERO y busca uno que sea nacional
 				lLugarNacimiento->consultar(lugNacAux1);
 				lLugarNacimiento->avanzar();
 			} while(lugNacAux1->getPoblacion() == POBLACION_TEXTO_RELLENO && !lLugarNacimiento->finLista());
-			if(!lLugarNacimiento->finLista()){									//Comprueba si la lista solo contenía nacionalidades extranjeras y no hay ninguna más que insertar
+			if(lugNacAux1->getPoblacion() != POBLACION_TEXTO_RELLENO){			//Comprueba si la lista solo contenía nacionalidades extranjeras y no hay ninguna más que insertar
 				lLugNac->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, lugNacAux1->getProvinciaPais(), lugNacAux1->getNPersonas()));
 			}
 		}
@@ -68,7 +68,7 @@ void GestorLugarNacimiento::alg6(ListaPI<LugarNacimiento *> *&lLugNac) {
 				lLugNac->moverInicio();
 				while (!lLugNac->finLista() && !enc) {							//Busca el lugar en el que insertar/actualizar la lista pasada por parámtetro (con el lugar de nacimiento actual de la lista que encapsula el gestor)
 					lLugNac->consultar(lugNacAux2);
-					if(*lugNacAux1 >= *lugNacAux2)                             //Comparación alfabética por la provincia/país
+					if(*lugNacAux1 >= *lugNacAux2)                              //Comparación alfabética por la provincia/país
 						enc = true;                                             //Actualiza la bandera que permite salir del bucle cuando se ha encontrado la posición del dato a procesar
 					else
 						lLugNac->avanzar();                               		//SOLO se avanza si no se encuentra un potencial hueco de inserción para insertar delante del dato consultado
