@@ -67,7 +67,7 @@ void UI::ejecutar() {
 		case 2:
 			if(datosCargados){					//Comprueba que los datos del padrón hayan sido cargados
 				cout << "Introduzca el nombre del BARRIO :" << endl;
-				cin >> nombreBarrio;
+				getline(cin, nombreBarrio);
 				t_start = Time::getTime();
 
 				p.alg2(nombreBarrio);
@@ -151,7 +151,7 @@ void UI::ejecutar() {
 		case 8:
 			if(datosCargados){
 				cout << "Introduzca el nombre del BARRIO :" << endl;
-				cin >> nombreBarrio;
+				getline(cin, nombreBarrio);
 				t_start = Time::getTime();
 
 				p.alg8(nombreBarrio);
@@ -179,7 +179,7 @@ void UI::ejecutar() {
 		case 10:
 			if(datosCargados){
 				cout << "Introduzca el nombre la PROVINCIA :" << endl;
-				cin >> nombreProvincia;
+				getline(cin, nombreProvincia);
 				t_start = Time::getTime();
 
 				p.alg10(nombreProvincia);
@@ -194,7 +194,7 @@ void UI::ejecutar() {
 		case 11:
 			if(datosCargados){
 				cout << "Introduzca el nombre de la VÍA :" << endl;
-				cin >> nombreVia;
+				getline(cin, nombreVia);
 				t_start = Time::getTime();
 
 				p.alg11_EDNL(nombreVia);
@@ -209,9 +209,9 @@ void UI::ejecutar() {
 		case 12:
 			if(datosCargados){
 				cout << "Introduzca la RÁIZ de la VÍA :" << endl;
-				cin >> raizVia;
+				getline(cin, raizVia);
 				cout << "Introduzca la PROVINCIA :" << endl;
-				cin >> nombreProvincia;
+				getline(cin, nombreProvincia);
 				t_start = Time::getTime();
 
 				p.alg12_EDNL(raizVia, nombreProvincia);
