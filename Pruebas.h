@@ -267,12 +267,25 @@ private:
 	 */
 	void pruebaAlg10();
 
-	/**@PRUEBA: Validación del Algoritmo 11 versión EDL. Datos \SET_DATOS SET_3
+	/**@PRUEBA: Validación del Algoritmo 11 versión EDL
 	 *
 	 * 1. La vía 'ViaX' no existe	->	Se indica al usuario por consola. Comprobación gráfica
 	 * 2. La vía 'ViaB' existe		->	Se muestra : PoblacionB, (ProvinciaB) (1); PaisB (2). Comprobación gráfica en el fichero 'LugaresNacimiento-ViaB.txt'
 	 */
 	void pruebaAlg11EDL();
+
+	/**@PRUEBA: Validación del Algoritmo 11 versión EDNL
+	 *
+	 * 1. La vía 'ViaX' no existe	->	enc = false y se indica al usuario por consola
+	 * 2. La vía 'ViaB' existe		->	enc = true;
+	 */
+	void pruebaAlg11EDNL();
+
+	/**@PRUEBA: Validación del Algoritmo 12 verisón EDL
+	 *
+	 *
+	 */
+	void pruebaAlg12EDL();
 
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos

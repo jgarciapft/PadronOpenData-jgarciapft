@@ -196,6 +196,15 @@ namespace pruebas {
 	 */
 	static void alg11_EDL(ListaPI<Via*>& lVias, string nombreVia);
 
+	/**@TEST: Implementación de la prueba del Algoritmo 11 EDNL
+	 *
+	 * @param aVias
+	 * 		Simula el ABB de vías auxiliar de la clase Padron
+	 * @param nombreVia
+	 * 		Nombre de la vía a buscar
+	 */
+	static void alg11_EDNL(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, bool& enc);
+
 /********************************************************************************************************************************************************/
 
 void pruebaTrocearCadenaAnioNacimiento(string text) {
@@ -676,6 +685,26 @@ void alg11_EDL(ListaPI<Via*>& lVias, string nombreVia) {
 		cout << "ERROR AL CREAR EL FICHERO PARA VOLCAR LOS RESULTADOS" << endl;
 	}
 	ofs.close();
+}
+
+void alg11_EDNL(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, bool& enc) {
+	ofstream ofs;
+	string ruta = "LugaresNacimiento-";
+	string extension = ".txt";
+
+	ruta += nombreVia + extension;
+	ofs.open(ruta.c_str(), ios::app);
+	if(ofs.is_open()){
+		if(!aVias->vacio()){
+			ofs << "\n\nLista de LUGARES de NACIMIENTO para la VIA - " << nombreVia << endl;
+			ofs << "-----------------------------------------------------------------------------------------------" << endl;
+			alg11(aVias, nombreVia, enc);
+		}
+	}
+	ofs.close();
+
+	if(!enc)
+		cout << "NO SE HA ENCONTRADO NINGUNA VÍA CON EL NOMBRE (" << nombreVia << ")" << endl;
 }
 
 }

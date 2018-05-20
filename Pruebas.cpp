@@ -966,6 +966,33 @@ void Pruebas::pruebaAlg11EDL() {
 	delete dD2;
 }
 
+void Pruebas::pruebaAlg11EDNL() {
+	Arbol<Via*, ComparadorPtrVia>* aVias = new Arbol<Via*, ComparadorPtrVia>();
+	Via* vIns1 = new Via("BarrioC", "ViaC", 0, "TipoC", 0); aVias->insertar(vIns1);
+	Via* vIns2 = new Via("BarrioB", "ViaB", 0, "TipoB", 0); aVias->insertar(vIns2);
+	Via* vIns3 =  new Via("BarrioD", "ViaD", 0, "TipoD", 0); aVias->insertar(vIns3);
+	Via* vIns4 = new Via("BarrioC2", "ViaC", 0, "TipoC", 0); aVias->insertar(vIns4);
+	string nombreVia = "ViaB";
+	bool enc = false;
+
+	///@TEST: 1. La vía 'ViaX' no existe
+	alg11_EDNL(aVias, "ViaX", enc);
+	if(enc != false)
+		cout << "\tERROR : TEST #1 - Se ha encontrado alguna vía con el nombre - ViaX" << endl;
+
+	///@TEST: 2. La vía 'ViaB' existe
+	alg11_EDNL(aVias, "ViaB", enc);
+	if(enc != true)
+		cout << "\tERROR : TEST #1 - No se ha encontrado ninguna vía con el nombre - ViaB" << endl;
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	delete vIns1;
+	delete vIns2;
+	delete vIns3;
+	delete vIns4;
+	delete aVias;
+}
+
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
 //	pruebaAlg1();
@@ -1008,7 +1035,7 @@ void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "FIN : ALGORITMO 10" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 11 EDL" << endl;
-	pruebaAlg11EDL();
+//	pruebaAlg11EDL();
 	salidaPruebas << "FIN : ALGORITMO 11 EDL" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 11 EDNL" << endl;
