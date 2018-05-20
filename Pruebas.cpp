@@ -1048,55 +1048,55 @@ void Pruebas::pruebaAlg12EDNL() {
 
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
-//	pruebaAlg1();
+	pruebaAlg1();
 	salidaPruebas << "FIN : ALGORITMO 1" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 2" << endl;
-//	pruebaAlg2();
+	pruebaAlg2();
 	salidaPruebas << "FIN : ALGORITMO 2" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 3" << endl;
-//	pruebaAlg3();
+	pruebaAlg3();
 	salidaPruebas << "FIN : ALGORITMO 3" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 4" << endl;
-//	pruebaAlg4();
+	pruebaAlg4();
 	salidaPruebas << "FIN : ALGORITMO 4" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 5" << endl;
-//	pruebaAlg5();
+	pruebaAlg5();
 	salidaPruebas << "FIN : ALGORITMO 5" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 6" << endl;
-//	pruebaAlg6();
+	pruebaAlg6();
 	salidaPruebas << "FIN : ALGORITMO 6" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 7" << endl;
-//	pruebaAlg7();
+	pruebaAlg7();
 	salidaPruebas << "FIN : ALGORITMO 7" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 8" << endl;
-//	pruebaAlg8();
+	pruebaAlg8();
 	salidaPruebas << "FIN : ALGORITMO 8" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 9" << endl;
-//	pruebaAlg9();
+	pruebaAlg9();
 	salidaPruebas << "FIN : ALGORITMO 9" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 10" << endl;
-//	pruebaAlg10();
+	pruebaAlg10();
 	salidaPruebas << "FIN : ALGORITMO 10" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 11 EDL" << endl;
-//	pruebaAlg11EDL();
+	pruebaAlg11EDL();
 	salidaPruebas << "FIN : ALGORITMO 11 EDL" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 11 EDNL" << endl;
-//	pruebaAlg11EDNL();
+	pruebaAlg11EDNL();
 	salidaPruebas << "FIN : ALGORITMO 11 EDNL" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 2 EDL" << endl;
-//	pruebaAlg12EDL();
+	pruebaAlg12EDL();
 	salidaPruebas << "FIN : ALGORITMO 12 EDL" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 2 EDNL" << endl;
@@ -1107,23 +1107,23 @@ void Pruebas::pruebaAlgoritmos() {
 void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas del proyecto
 	salidaPruebas << "EJECUTANDO # Utilidadades de cadena" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
-//	pruebaUtils();
+	pruebaUtils();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Sobrecarga de operadores" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
-//	pruebaSobrecargaOperadores();
+	pruebaSobrecargaOperadores();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Métodos auxiliares" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
-//	pruebaMetodosAuxiliares();
+	pruebaMetodosAuxiliares();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Interfaz de usuario (UI)" << endl;
 	salidaPruebas << "------------------------------------------------------------------------------------------------" << endl;
-//	pruebaUI();
+	pruebaUI();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Prueba de ejecución secuencial" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;
-//	pruebaEjecucionSecuencial();
+	pruebaEjecucionSecuencial();
 	salidaPruebas << endl << endl;
 	salidaPruebas << "EJECUTANDO # Prueba de los Algoritmos" << endl;
 	salidaPruebas << "-----------------------------------------------------------------------------------------------" << endl;

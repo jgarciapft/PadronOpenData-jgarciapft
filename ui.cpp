@@ -25,7 +25,7 @@ int main() {
 	pruebas::Pruebas* pruebasProyecto = new pruebas::Pruebas;
 	delete pruebasProyecto;
 
-//	UI ui;										//Instancia la clase principal que maneja la ejecución del programa
+	UI ui;										//Instancia la clase principal que maneja la ejecución del programa
 
 	return 0;
 }
