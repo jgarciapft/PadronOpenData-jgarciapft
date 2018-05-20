@@ -148,6 +148,9 @@ public:
 	 * @pre:
 	 * @post: Llama a calcular el número de habitantes pertencientes al rango de edad dado
 	 * @complejidad: O(n)
+	 *
+	 * @return
+	 * 		Número de habitantes pertencecientes al rango dado y a la vía correspondiente
 	 */
 	int alg7(int limInf, int limSup);
 	/**

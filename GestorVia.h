@@ -58,6 +58,9 @@ public:
 	 * @post: Calcula la suma de los habitantes de las vías de la lista que encapsula el gestor pertenecientes a un barrio,
 	 * 		pertencientes al rango de edad [limInf, limSup]
 	 * @complejidad: O(n)
+	 *
+	 * @return
+	 * 		Número de habitantes pertenecientes al rango de edad dado en la lista de vías que encapsula el gestor
 	 */
 	int alg7(int limInf, int limSup);
 	/**

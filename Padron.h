@@ -37,6 +37,24 @@ private:
 	ListaPI<DatosDemograficos*>* lDatDemograficos;
 
 private:
+	/**
+	 * @brief
+	 * 		Implementación privada del Algoritmo 11 en su versión EDNL
+	 *
+	 * @param aVias
+	 * 		ABB de vías en las que operar
+	 * @param nombreVia
+	 * 		Nombre de la vía a buscar
+	 * @param ofs
+	 * 		Flujo de salida de datos en el que volcar los resultados del algoritmo
+	 * @param enc
+	 * 		Bandera que indica la condición de salida del método (si se ha encontrado o no la vía \param nombreVia)
+	 *
+	 * @pre: aVias != NULL
+	 * @post: Vuelca en el flujo de salida de datos \param ofs los lugares de nacimiento de la vía \param nombreVia
+	 * 		(si la encuentra)
+	 * @complejidad: O(log n)
+	 */
 	void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstream& ofs, bool& enc);
 	Arbol<Via*, ComparadorPtrVia>* alg12(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz);
 	int filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia);
@@ -214,7 +232,32 @@ public:
 	 * @complejidad: O(n^2)
 	 */
 	void alg10(string nombreProvincia);
+	/**
+	 * @brief
+	 * 		Vuelca en un fichero un listado de lugares de nacimiento para la vía dada. Utilizado por el Algoritmo 11 en su versión EDL
+	 *
+	 * @param nombreVia
+	 * 		Nombre de la vía a buscar
+	 *
+	 * @pre: Jerarquía de datos cargada
+	 * @post: Abre el fichero 'LugaresNacimiento-\param nombreVia' en el que volcar un listado de lugares de nacimiento desordenada que pertencen a habitantes
+	 * 		en la vía \param nombreVia (si existe)
+	 * @complejidad: O(n)
+	 */
 	void alg11_EDL(string nombreVia);
+	/**
+	 * @brief
+	 * 		Vuelca en un fichero un listado de lugares de nacimiento para la vía dada. Utilizado por el Algoritmo 11 en su versión ENDL
+	 * 		Hace de interfaz pública desde la que invocar los métodos privados
+	 *
+	 * @param nombreVia
+	 * 		Nombre de la vía a buscar
+	 *
+	 * @pre: Jerarquía de datos cargada
+	 * @post: Abre el fichero de datos 'LugaresNacimiento-\param nombreVia' e invoca la interfaz privada del algoritmo en su versión EDNL
+	 * 			Método 'Padron::alg11'
+	 * @complejidad: O(n*log n)
+	 */
 	void alg11_EDNL(string nombreVia);
 	void alg12_EDL(string raiz, string nombreProvincia);
 	void alg12_EDNL(string raiz, string nombreProvincia);

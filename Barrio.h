@@ -82,6 +82,9 @@ public:
 	 * @post: Calcula el barrio con mayor número de habitantes para el rango [limInf, limSup] (si existe algún habitante en el
 	 * 		rango)
 	 * @complejidad: O(n)
+	 *
+	 * @return
+	 * 		Número de habitantes pertenecientes al rango de edad dado en el barrio actual
 	 */
 	int alg7(int limInf, int limSup);
 	/**

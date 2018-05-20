@@ -105,6 +105,9 @@ public:
 	 * @post: Llama a calcular el número de habitantes pertenecientes al rango de edad [limInf, limSup] en la vía actual.
 	 * 			También comprueba que haya una instancia no nula a 'DatosDemograficos'
 	 * @complejidad: O(n)
+	 *
+	 * @return
+	 * 		Número de habitantes pertencecientes al rango dado en la vía actual
 	 */
 	int alg7(int limInf, int limSup);
 	/**
@@ -134,6 +137,18 @@ public:
 	 * @complejidad: O(1)
 	 */
 	void alg9(float& nHombres, float& nMujeres);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 11 en su versión EDL
+	 *
+	 * @param ofs
+	 * 		Flujo de salida de datos en el que volcar los resultados del algoritmo
+	 *
+	 * @pre:
+	 * @post: Llama a volcar la información de los lugares de nacimiento que encapsula el gestor 'gLugNacimiento'.
+	 * 		También comprueba que exista una instancia a 'DatosDemograficos'
+	 * @complejidad: O(n)
+	 */
 	void alg11(ofstream& ofs);
 	int alg12(string nombreProvincia);
 

@@ -88,6 +88,10 @@ public:
 	 * @post: Devuelve el número de habitantes de la lista que encapsula el gestor que pertenecen al rango de edad
 	 * 			[limInf, limSup]
 	 * @complejidad: O(n)
+	 *
+	 * @return
+	 * 		Número de habitantes pertencecientes al rango dado entre la lista de años de nacimiento que encapsula
+	 * 			el gestor
 	 */
 	int alg7(int limInf, int limSup);
 

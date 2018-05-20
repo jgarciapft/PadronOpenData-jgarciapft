@@ -35,7 +35,7 @@ void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstr
 	Via* vRaiz = aVias->raiz();											//Puntero auxiliar para almacenar la raíz del ABB. Evita múltiples llamadas a consultar la raíz del ABB actual
 
 	//RECORRIDO en PRE-ORDEN. Solo se explora el ABB hasta que se encuentra la vía (raíz) buscada
-	if(vRaiz->getNombreVia() == nombreVia){								//Comprueba si la vía raíz es la buscada. Si se encuentra se comprueba si es el único tramo de vía y se ejecuta el algoritmo por cada tramo de la misma vía
+	if(vRaiz->getNombreVia() == nombreVia){								//Comprueba si la vía raíz es la buscada. Como cada tramo de vía contiene todos los datos de todos los tramos, no hace falta seguir buscando
 		enc = true;														//Actualiza la bandera
 		vRaiz->alg11(ofs);												//Ejecuta la funcionalidad del algoritmo 11
 	}else if(vRaiz->getNombreVia() < nombreVia){						//Si el nombre de la vía de la ráiz es alfabéticamente MENOR que la vía a buscar se sigue buscando por el subárbol derecho (vías mayores)
