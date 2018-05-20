@@ -152,7 +152,7 @@ private:
 	 */
 	void pruebaEjecucionSecuencial();
 
-	/**@PRUEBA	Validación de la carga de datos. Datos: \SET_DATOS SetDatos_1
+	/**@PRUEBA	Validación de la carga de datos. Datos: \SET_DATOS SET_1
 	 * 				-Un fichero con los BARRIOS. 			RUTA_BARRIO (\const RUTA_BARRIO_ALG_1)
 	 * 				-Un fichero con las VÍAS.				RUTA_VIA	(\const RUTA_VIA_ALG_1)
 	 * 				-Un fichero con los datos del PADRON.	RUTA_PADRON	(\const RUTA_PADRON_ALG_1)
@@ -163,8 +163,8 @@ private:
 	 * 			2. No existe el fichero RUTA_BARRIO								->	\return = false
 	 *
 	 * @ESTRUCTURA: Lista de vías auxiliar 'lVias' en la clase 'Padron'
-	 *  		1. Existe el fichero RUTA_VIA				->	\return = tru
-	 *  			1.1 Validación por conteo de objetos	->	cont = 5
+	 *  		1. Existe el fichero RUTA_VIA				->	\return = true
+	 *  			1.1 Validación por conteo de objetos	->	cont = 4
 	 *  		2. No existe el fichero RUTA_VIA			->	\return = false
 	 *
 	 * @ESTRUCTURA: ABB de vías auxiliar 'aVias' en la clase 'Padron'
@@ -259,13 +259,20 @@ private:
 	 */
 	 void pruebaAlg9();
 
-	/**@PRUEBA: Validación del Algoritmo 10. Datos: \SET_DATOS SET_3
+	/**@PRUEBA: Validación del Algoritmo 10
 	 *
 	 * 1. La provincia 'ProvinciaX' no existe	->	Se indica al usuario por consola. Comprobación gráfica
-	 * 2. La provincia 'ProvinciaA' existe		->	Poblaciones = PoblacionA (1); PoblacionA1 (2)
+	 * 2. La provincia 'ProvinciaA' existe		->	Se muesta:  PoblacionA (1); PoblacionA1 (2)
 	 * 													Comprobación gráfica en el fichero 'Poblaciones-ProvinciaA'
 	 */
 	void pruebaAlg10();
+
+	/**@PRUEBA: Validación del Algoritmo 11 versión EDL. Datos \SET_DATOS SET_3
+	 *
+	 * 1. La vía 'ViaX' no existe	->	Se indica al usuario por consola. Comprobación gráfica
+	 * 2. La vía 'ViaB' existe		->	Se muestra : PoblacionB, (ProvinciaB) (1); PaisB (2). Comprobación gráfica en el fichero 'LugaresNacimiento-ViaB.txt'
+	 */
+	void pruebaAlg11EDL();
 
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos

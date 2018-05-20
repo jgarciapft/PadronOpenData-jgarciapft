@@ -187,6 +187,15 @@ namespace pruebas {
 	 */
 	static void alg10(ListaPI<DatosDemograficos*>& lDatDem, string nombreProvincia);
 
+	/**@TEST: Implementación de la prueba del Algoritmo 11 EDL
+	 *
+	 * @param lVias
+	 * 		Simula lista auxiliar de vías de la clase Padron
+	 * @param nombreVia
+	 * 		Nombre de la vía a buscar
+	 */
+	static void alg11_EDL(ListaPI<Via*>& lVias, string nombreVia);
+
 /********************************************************************************************************************************************************/
 
 void pruebaTrocearCadenaAnioNacimiento(string text) {
@@ -430,8 +439,7 @@ void alg3(ListaPI<Via*>& lVias, int& cont) {
 				lVias.avanzar();
 				if(vAux1->getNombreVia() == vAux2->getNombreVia()){
 					if(primerRes){										
-						cont++;
-						lCoincidencias.insertar(vAux1->getNombreVia());	
+						lCoincidencias.insertar(vAux1->getNombreVia());
 						primerRes = false;								
 					}
 					cout << vAux2->getBarrioVia() << endl;
@@ -639,6 +647,35 @@ void alg10(ListaPI<DatosDemograficos*>& lDatDem, string nombreProvincia) {
 		delete lugNacAux;
 	}
 	delete lLugNac;
+}
+
+void alg11_EDL(ListaPI<Via*>& lVias, string nombreVia) {
+	ofstream ofs;
+	bool enc = false;
+	string ruta = "LugaresNacimiento-";
+	string extension = ".txt";
+	Via* vAux;
+
+	ruta += nombreVia + extension;
+	ofs.open(ruta.c_str(), ios::app);
+	if(ofs.is_open()){
+		ofs << "\n\nLista de LUGARES de NACIMIENTO para la VIA - " << nombreVia << endl;
+		ofs << "-----------------------------------------------------------------------------------------------" << endl;
+		lVias.moverInicio();
+		while(!lVias.finLista() && !enc){
+			lVias.consultar(vAux);
+			lVias.avanzar();
+			if(vAux->getNombreVia() == nombreVia){
+				vAux->alg11(ofs);
+				enc = true;
+			}
+		}
+		if(!enc)
+			cout << "NO SE HA ENCOTRADO LA VÍA (" << nombreVia << ")" << endl;
+	}else{
+		cout << "ERROR AL CREAR EL FICHERO PARA VOLCAR LOS RESULTADOS" << endl;
+	}
+	ofs.close();
 }
 
 }

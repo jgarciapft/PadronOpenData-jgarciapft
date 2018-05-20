@@ -416,6 +416,7 @@ void Padron::alg10(string nombreProvincia) {
 
 void Padron::alg11_EDL(string nombreVia) {
 	ofstream ofs;														//Flujo de salida para volcar los resultados del algoritmo a un fichero
+	bool enc = false;													//Bandera para salir del bucle al encontrar la vía
 	string ruta = "LugaresNacimiento-";									//Ruta del fichero en el que se almacenan los resultados del algoritmo
 	string extension = ".txt";											//Extensión del fichero donde se vuelcan los resultados del algoritmo
 	Via* vAux;															//Puntero auxiliar para consultar la lista de vías auxiliar
@@ -426,13 +427,17 @@ void Padron::alg11_EDL(string nombreVia) {
 		ofs << "\n\nLista de LUGARES de NACIMIENTO para la VIA - " << nombreVia << endl;
 		ofs << "-----------------------------------------------------------------------------------------------" << endl;
 		lVias->moverInicio();
-		while(!lVias->finLista()){										/*Recorre la lista de vías auxiliar secuencialmente de inicio a fin porque cada vía puede pasar por varios barrios (hay varios objetos 'Via' para una misma vía)
-																		 *	También comprueba que contenga alguna vía inicialmente */
+		while(!lVias->finLista() && !enc){								/*Recorre la lista de vías auxiliar secuencialmente hasta que encuentra un tramo de vía; cada tramo de vía contiene la información de
+ 																			todos los tramos*/
 			lVias->consultar(vAux);
 			lVias->avanzar();
-			if(vAux->getNombreVia() == nombreVia)						//Comprueba si el nombre de la vía actual coincide con el buscado
+			if(vAux->getNombreVia() == nombreVia){						//Comprueba si el nombre de la vía actual coincide con el buscado
 				vAux->alg11(ofs);										//Imprime todos los lugares de nacimiento asociados a la vía que ha ooincidio. El flujo se abre y se cierra en este método
+				enc = true;
+			}
 		}
+		if(!enc)
+			cout << "NO SE HA ENCOTRADO LA VÍA (" << nombreVia << ")" << endl;
 	}else{																//Si no se ha podido abrir el flujo se indica al usuario por consola
 		cout << "ERROR AL CREAR EL FICHERO PARA VOLCAR LOS RESULTADOS" << endl;
 	}

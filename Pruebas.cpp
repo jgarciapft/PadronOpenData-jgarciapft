@@ -598,7 +598,7 @@ void Pruebas::pruebaEstructuraLVias(GestorBarrio& gBarrio, int& cont, string rut
 		salidaPruebas << "\tERROR : Estructura \'lVias\' y \'aVias\' - TEST #1 - No se ha podido cargar el fichero de vías (" << ruta << ")" << endl;
 
 	///@TEST: 1.1 Validación por conteo de objetos
-	if(cont != 5)
+	if(cont != 4)
 		salidaPruebas << "\tERROR : Estructura \'lVias\' y \'aVias\' - TEST #1.1 - No se han cargado 5 vías\t| En su lugar -> " << cont << endl;
 
 	///@TEST: 2. No existe el fichero RUTA_VIA
@@ -932,7 +932,7 @@ void Pruebas::pruebaAlg10() {
 	alg10(lDatDem, "ProvinciaX");
 
 	///@TEST: 2. La provincia 'ProvinciaA' existe
-	salidaPruebas << "COMPROBAR QUE PARA LA PROVINCIA - ProvinciaA - MUESTRA: PoblacionA(1); PoblacionA1 (2)" << endl;
+	salidaPruebas << "COMPROBAR QUE EL RESULTADO DEL FICHERO DE VOLCADO - Poblaciones-ProvinciaA.txt - ES - PoblacionA(1); PoblacionA1 (2)" << endl;
 	alg10(lDatDem, "ProvinciaA");
 
 	///@NOTA: Liberación de los recursos reservados dinámicamente
@@ -944,49 +944,71 @@ void Pruebas::pruebaAlg10() {
 	}
 }
 
+void Pruebas::pruebaAlg11EDL() {
+	ListaPI<Via*> lVias;
+	DatosDemograficos* dD1 = new DatosDemograficos(1, "2001 (1)", "PoblacionA (ProvinciaA) (1);PaisA (1)", "NivelA (1)", 2,2, "NacionalidadA (1)");
+	Via* vAux1 = new Via("BarrioA", "ViaA", 0,"TipoA", 1);vAux1->setDatosDemograficos(dD1);lVias.insertar(vAux1);
+	DatosDemograficos* dD2 = new DatosDemograficos(1, "2009 (1)", "PoblacionB (ProvinciaB) (1);PaisB (2)", "NivelB (1)", 1,2, "NacionalidadB (1)");
+	Via* vAux2 = new Via("BarrioB", "ViaB", 0,"TipoB", 2);vAux2->setDatosDemograficos(dD2);lVias.insertar(vAux2);
+
+	///@TEST: 1. La vía 'ViaX' no existe
+	salidaPruebas << "COMPROBAR QUE SE INDICA QUE LA VÍA - ViaX - NO EXISTE" << endl;
+	alg11_EDL(lVias, "ViaX");
+
+	///@TEST: 2. La vía 'ViaB' existe
+	salidaPruebas << "COMPROBAR QUE EN EL FICHERO - LugaresNacimiento-ViaB.txt - SE MUESTRA : PoblacionB, (ProvinciaB) (1); PaisB (2)" << endl;
+	alg11_EDL(lVias, "ViaB");
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	delete vAux1;
+	delete vAux2;
+	delete dD1;
+	delete dD2;
+}
+
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
-	pruebaAlg1();
+//	pruebaAlg1();
 	salidaPruebas << "FIN : ALGORITMO 1" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 2" << endl;
-	pruebaAlg2();
+//	pruebaAlg2();
 	salidaPruebas << "FIN : ALGORITMO 2" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 3" << endl;
-	pruebaAlg3();
+//	pruebaAlg3();
 	salidaPruebas << "FIN : ALGORITMO 3" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 4" << endl;
-	pruebaAlg4();
+//	pruebaAlg4();
 	salidaPruebas << "FIN : ALGORITMO 4" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 5" << endl;
-	pruebaAlg5();
+//	pruebaAlg5();
 	salidaPruebas << "FIN : ALGORITMO 5" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 6" << endl;
-	pruebaAlg6();
+//	pruebaAlg6();
 	salidaPruebas << "FIN : ALGORITMO 6" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 7" << endl;
-	pruebaAlg7();
+//	pruebaAlg7();
 	salidaPruebas << "FIN : ALGORITMO 7" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 8" << endl;
-	pruebaAlg8();
+//	pruebaAlg8();
 	salidaPruebas << "FIN : ALGORITMO 8" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 9" << endl;
-	pruebaAlg9();
+//	pruebaAlg9();
 	salidaPruebas << "FIN : ALGORITMO 9" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 10" << endl;
-	pruebaAlg10();
+//	pruebaAlg10();
 	salidaPruebas << "FIN : ALGORITMO 10" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 11 EDL" << endl;
-//	pruebaAlg11EDL();
+	pruebaAlg11EDL();
 	salidaPruebas << "FIN : ALGORITMO 11 EDL" << endl;
 
 	salidaPruebas << "INICIO : ALGORITMO 11 EDNL" << endl;
