@@ -887,6 +887,33 @@ void Pruebas::pruebaAlg8() {
 	}
 }
 
+void Pruebas::pruebaAlg9() {
+	GestorBarrio gBarrio;
+	ListaPI<DatosDemograficos*> lDatDem;
+	DatosDemograficos* dD;
+	string ruta = RUTA_BARRIO_PRUEBA_ALG9;
+	int cont = 0;
+
+	cargarBarrios(gBarrio, cont, ruta);
+	ruta = RUTA_VIA_PRUEBA_ALG9;
+	cargarVias(gBarrio, cont, ruta);
+	ruta = RUTA_PADRON_PRUEBA_ALG9;
+	cargarDatosDemograficos(gBarrio, cont, ruta, lDatDem);
+
+	///@TEST: 1. Hay barrios con hombres y mujeres
+	salidaPruebas << "COMPROBAR QUE EL BARRIO CON MAYOR PORCENTAJE DE HOMBRES ES - BarrioB - CON 75%" << endl;
+	salidaPruebas << "COMPROBAR QUE EL BARRIO CON MAYOR PORCENTAJE DE MUJERES ES - BarrioA - CON 60%" << endl;
+	alg9(gBarrio);
+
+	///@NOTA: Liberación de los recursos reservados dinámicamente
+	lDatDem.moverInicio();
+	while(!lDatDem.finLista()){
+		lDatDem.consultar(dD);
+		lDatDem.avanzar();
+		delete dD;
+	}
+}
+
 void Pruebas::pruebaAlgoritmos() {
 	salidaPruebas << "INICIO : ALGORITMO 1" << endl;
 //	pruebaAlg1();

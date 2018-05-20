@@ -252,6 +252,13 @@ private:
 	 */
 	 void pruebaAlg8();
 
+	 /**@PRUEBA: Validación del Algoritm 9. Datos: \SET_DATOS SET_3
+	  *
+	  * 1. Hay barrios con hombres y mujeres   ->   Barrio con mayor porcentaje de hombres = Barrio B (75%). Comprobación gráfica
+	  * 											Bario con mayor porcentaje de mujeres = Barrio A (60%). Comprobación gráfica
+	  */
+		void pruebaAlg9();
+
 	/**
 	 * @NOTA: Método invocativo para llamar a todas las pruebas de todos los algoritmos
 	 */
