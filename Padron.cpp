@@ -35,7 +35,7 @@ void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstr
 	Via* vRaiz = aVias->raiz();											//Puntero auxiliar para almacenar la raíz del ABB. Evita múltiples llamadas a consultar la raíz del ABB actual
 
 	//RECORRIDO en PRE-ORDEN. Solo se explora el ABB hasta que se encuentra la vía (raíz) buscada
-	if(vRaiz->getNombreVia() == nombreVia){							//Comprueba si la vía raíz es la buscada. Como cada tramo de vía contiene todos los datos de todos los tramos, no hace falta seguir buscando
+	if(vRaiz->getNombreVia() == nombreVia){								//Comprueba si la vía raíz es la buscada. Como cada tramo de vía contiene todos los datos de todos los tramos, no hace falta seguir buscando
 		enc = true;														//Actualiza la bandera
 		vRaiz->alg11(ofs);												//Ejecuta la funcionalidad del algoritmo 11
 	}else if(vRaiz->getNombreVia() < nombreVia){						//Si el nombre de la vía de la ráiz es alfabéticamente MENOR que la vía a buscar se sigue buscando por el subárbol derecho (vías mayores)
@@ -47,12 +47,12 @@ void Padron::alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstr
 }
 
 Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz) {
-	Arbol<Via*, ComparadorPtrVia>* aAux = NULL;						//Puntero auxiliar con el ABB a devolver
+	Arbol<Via*, ComparadorPtrVia>* aAux = NULL;							//Puntero auxiliar con el ABB a devolver
 
 	//RECORRIDO en PRE-ORDEN. Explora la raíz de cada nodo en cada llamada para explorar el menor número de nodos que no van a cumplir los requisitos
 	if(aVias->raiz()->getNombreVia().find(raiz) == 0){					//Comprueba si se ha encontrado la ráiz que compartirán los subárboles precedentes a esta raíz
 		aAux = aVias;
-	}else if(aVias->raiz()->getNombreVia() < raiz){                   //Si la el nombre de la vía es alfabéticamente MENOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
+	}else if(aVias->raiz()->getNombreVia() < raiz){						//Si la el nombre de la vía es alfabéticamente MENOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
 		if (aVias->hijoDer() != NULL)
 			aAux = alg12(aVias->hijoDer(), raiz);
 	}else if(aVias->hijoIzq() != NULL){									//Sino el nombre de la vía es alfabéticamente MAYOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
@@ -80,7 +80,7 @@ int	Padron::filtroInOrden(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, str
 				coincidencia = true;									//Actualiza la bandera de coincidencia
 		}
 		if(!coincidencia){
-			nPersonas += aVias->raiz()->alg12(nombreProvincia);		//Acumula el número de habitantes de cada vía raíz que pertenecen a la provincia dada
+			nPersonas += aVias->raiz()->alg12(nombreProvincia);			//Acumula el número de habitantes de cada vía raíz que pertenecen a la provincia dada
 			lCoincidencias->insertar(aVias->raiz()->getCodVia());		//Añade la vía actual a la lista de vías procesadas
 		}
 	}
@@ -108,7 +108,7 @@ bool Padron::cargarBarrios() {
 			if(!fEnt.eof())												//Doble comprobación del FINAL DE FICHERO (EOF) para evitar leer una línea vacía adicional
 				gBarrio->insertar(new Barrio(campos[0], campos[1]));	//Inicializa e inserta el nuevo objeto 'Barrio' en la estructura de datos a partir de los campos leídos
 		}
-		gBarrio->insertar(new Barrio(DEF_BARRIO, DEF_PLACEHOLDER));	//Barrio que contiene las vías que no tienen ningún barrio asignado
+		gBarrio->insertar(new Barrio(DEF_BARRIO, DEF_PLACEHOLDER));		//Barrio que contiene las vías que no tienen ningún barrio asignado
 	}
 	fEnt.close();														//Cierra el flujo
 
@@ -148,7 +148,7 @@ bool Padron::cargarVias() {
 bool Padron::cargarDatosDemograficos() {
 	ifstream fEnt;														//Flujo de entrada del que leer los datos
 	bool rutaValida = false;											//Almacena el estado de la carga
-	string campos[N_CAMPOS_DATOS_DEMOGRAFICOS];						//Almacena los campos que definen cada objeto
+	string campos[N_CAMPOS_DATOS_DEMOGRAFICOS];							//Almacena los campos que definen cada objeto
 	DatosDemograficos* dD;												//Puntero auxiliar para almacenar el dato demográfico recién creado en la lista auxiliar y en su(s) vía(s) correspondiente(s)
 
 	fEnt.open(RUTA_PADRON.c_str());
@@ -156,7 +156,7 @@ bool Padron::cargarDatosDemograficos() {
 		rutaValida = true;												//Actualiza la bandera para indicar que se pudo cargar los datos demográficos
 		getline(fEnt, campos[0]); 										//Salta la cabecera
 		while(!fEnt.eof()){
-			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){		//Lee todos los campos menos el último(año del padron, no se usará)
+			for(int i=0; i<N_CAMPOS_DATOS_DEMOGRAFICOS-1; i++){			//Lee todos los campos menos el último(año del padron, no se usará)
 				getline(fEnt, campos[i], SEP);
 			}
 			getline(fEnt, campos[N_CAMPOS_DATOS_DEMOGRAFICOS-1]);		//Salta a la siguiente línea
@@ -164,7 +164,7 @@ bool Padron::cargarDatosDemograficos() {
 				dD = new DatosDemograficos(atoi(campos[0].c_str()), campos[1], campos[2], campos[3], atoi(campos[4].c_str()),
 							atoi(campos[5].c_str()), campos[6]);
 				lDatDemograficos->insertar(dD);							//Inserta el dato demográfico creado en la lista auxiliar de datos demográficos
-				gBarrio->insertarDatosDemograficos(dD);				//Inserta el dato demográfico creado en la estructura de datos
+				gBarrio->insertarDatosDemograficos(dD);					//Inserta el dato demográfico creado en la estructura de datos
 			}
 		}
 	}
@@ -190,7 +190,7 @@ void Padron::alg3() {
 		lVias->consultar(vAux1);
 		lVias->avanzar();
 		lCoincidencias.moverInicio();
-		while(!lCoincidencias.finLista() && !coincidencia){			//Antes de entrar al bucle interno se comprueba si la vía actual ya ha sido procesada
+		while(!lCoincidencias.finLista() && !coincidencia){				//Antes de entrar al bucle interno se comprueba si la vía actual ya ha sido procesada
 			lCoincidencias.consultar(nombreVia);
 			lCoincidencias.avanzar();
 			if(vAux1->getNombreVia() == nombreVia)
@@ -253,7 +253,7 @@ void Padron::alg4() {
 	lAnioNac->moverInicio();
 	for(int i=0; !lAnioNac->finLista(); i++){							//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar. También comprueba si hay algún dato inicialmente
 		lAnioNac->consultar(anNacAux);
-		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 				//Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
+		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					//Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
 			nPersonas = anNacAux->getNPersonas();
 			lAnioNac->avanzar();										//SOLO se avanza la lista si el intervalo actual coincide con el intervalo a mostrar. Sino espera más iteraciones a que coincidan
 			if(anNacAux->getAnio() > mayorMarca) 			            //Actualiza la mayor marca de clase
@@ -273,7 +273,7 @@ void Padron::alg4() {
 	lAnioNac->moverInicio();
 	for(int i=0; !lAnioNac->finLista(); i++){							//Recorre secuencialmente la lista de años de nacimiento de inicio a fin. Se utiliza el índice 'i' para calcular los límites del intervalo a mostrar
 		lAnioNac->consultar(anNacAux);
-		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 				//Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
+		if(i*RANGO_EDAD_ALG_4 == anNacAux->getAnio()){ 					//Comprueba si el intervalo del dato de la lista 'lAnioNac' coincide con el siguiente intervalo a mostrar
 			nDivisiones = anNacAux->getNPersonas() / nPersPorDiv;
 			lAnioNac->avanzar();										//SOLO se avanza la lista si el intervalo actual coincide con el intervalo a mostrar. Sino hay que esperar a que coincidan para seguir
 			if(nDivisiones == 0){ nDivisiones++; }						//Rectificación de intervalos muy pequeños en comparación con el resto para poder diferenciarlos de los vacíos
@@ -364,7 +364,7 @@ void Padron::alg6() {
 	delete lLugNac;														//Libera la lista
 }
 
-void Padron::alg7(int limInf, int limSup) {							///@NOTA: Método invocativo
+void Padron::alg7(int limInf, int limSup) {								///@NOTA: Método invocativo
 	if(limInf <= limSup)												//Comprueba que el rango sea válido. El límite inferior debe ser menor o igual que el límite superior y viceversa
 		gBarrio->alg7(limInf, limSup);
 	else
@@ -491,7 +491,7 @@ void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 		lVias->avanzar();
 		if(vAux->getNombreVia().find(raiz) == 0){						//Comprueba si la vía actual comienza por la raíz dada
 			lCoincidencias.moverInicio();
-			while(!lCoincidencias.finLista() && !coincidencia){		//Antes de tratar la vía se comprueba si ya ha sido procesada
+			while(!lCoincidencias.finLista() && !coincidencia){			//Antes de tratar la vía se comprueba si ya ha sido procesada
 				lCoincidencias.consultar(cod);
 				lCoincidencias.avanzar();
 				if(vAux->getCodVia() == cod)
@@ -499,7 +499,7 @@ void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 			}
 			if(!coincidencia){
 				nPersonas += vAux->alg12(nombreProvincia);				//Actualiza el acumulador de personas nacidas en la provincia dada
-				lCoincidencias.insertar(vAux->getCodVia());			//Añade el código de la vía a la lista de vías procesadas
+				lCoincidencias.insertar(vAux->getCodVia());				//Añade el código de la vía a la lista de vías procesadas
 			}
 			coincidencia = false;										//Reinicia la bandera de coincidencias. Solo tiene efecto si hubo alguna coincidencia con alguna vía ya tratada
 		}
