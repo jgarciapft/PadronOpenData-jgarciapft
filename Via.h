@@ -133,7 +133,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Devuelve por referencia el número de hombres y mujeres de la vía actual. También comprueba que
-	 * 		exista una instancia no nula de 'DatosDemográficos'
+	 * 			exista una instancia no nula de 'DatosDemográficos'
 	 * @complejidad: O(1)
 	 */
 	void alg9(float& nHombres, float& nMujeres);
@@ -146,7 +146,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Llama a volcar la información de los lugares de nacimiento que encapsula el gestor 'gLugNacimiento'.
-	 * 		También comprueba que exista una instancia a 'DatosDemograficos'
+	 * 			También comprueba que exista una instancia a 'DatosDemograficos'
 	 * @complejidad: O(n)
 	 */
 	void alg11(ofstream& ofs);
@@ -159,7 +159,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Devuelve el número de habitantes nacidos en la provincia \param nombreProvincia para cada vía. También
-	 * 		comprueba que exista una instancia no nula de 'DatosDemograficos'
+	 * 			comprueba que exista una instancia no nula de 'DatosDemograficos'
 	 * @complejidad: O(n)
 	 *
 	 * @return
@@ -206,16 +206,18 @@ public:
 	 * 			que el segundo, el resultado es positivo (1). Si por el contrario es MENOR, el resultado es negativo (-1).
 	 * 			Dos operandos son iguales si y solo si coinciden lexicográficamente los nombres de las vías y de los barrios a los
 	 * 			que pertenecen. Esto permite la inserción de varios tramos de vía que comparten nombre, pero no barrio.
+	 *
+	 * * @param v1
+	 * 		Primer operando
+	 * @param v2
+	 * 		Segundo operando
+	 *
 	 * @pre: v1 != NULL. v2 != NULL
 	 * @post: Resultado de la comparación del primer operando con el segundo, en ese orden
 	 * @complejidad: O(1)
 	 *
-	 * @param v1
-	 * 		Primer operando
-	 * @param v2
-	 * 		Segundo operando
 	 * @return
-	 * 		Resultado de la comparación
+	 * 		Resultado entero de la comparación
 	 */
 	int operator() (const Via* v1, const Via* v2){
 		int res;

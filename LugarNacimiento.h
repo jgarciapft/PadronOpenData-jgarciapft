@@ -3,7 +3,7 @@
  *
  * @brief
  * 		Clase que modela el concepto de 'lugar de nacimiento' y su comportamiento (operadores). Cada año de nacimiento
- * 		está definido por el año de nacimiento y el número de personas nacidas ese año
+ * 			está definido por el año de nacimiento y el número de personas nacidas ese año
  *
  * @atributo poblacion
  * 		Población de nacimiento

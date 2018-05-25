@@ -176,7 +176,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Llama a modificar la lista 'lEstud' con la información sobre lugares de nacimeinto que encapsula el gestor
-	 * 		GestorLugarNacimiento
+	 * 			GestorLugarNacimiento
 	 * @complejidad: O(n^2)
 	 */
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);
@@ -189,7 +189,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Llama a modificar la lista 'lLugNac' con la información sobre lugares de nacimeinto que encapsula el gestor
-	 * 		GestorLugarNacimiento
+	 * 			GestorLugarNacimiento
 	 * @complejidad: O(n^2)
 	 */
 	void alg11(ofstream& ofs);
@@ -215,7 +215,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Llama a mostrar los datos del padrón almacenados en cada gestor: 'gAnioNacimiento',
-	 * 		'gLugNacimiento', 'gEstudios', 'gNacionalidad' y muestra por consola el resto de atributos
+	 * 			'gLugNacimiento', 'gEstudios', 'gNacionalidad' y muestra por consola el resto de atributos
 	 * @complejidad: O(n)
 	 */
 	void mostrar();
