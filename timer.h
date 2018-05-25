@@ -3,7 +3,7 @@
  *
  * @brief
  * 		Sobrecarga del método 'clock_gettime' de la libería C estándar 'time.h'. Proporciona un método multiplataforma
- * 		preciso de calcular el tiempo transcurrido entre dos llamadas consecutivas a 'Timer::getTime'
+ * 			preciso de calcular el tiempo transcurrido entre dos llamadas consecutivas a 'Timer::getTime'
  */
 
 #ifndef TIMER_H_
