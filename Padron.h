@@ -114,7 +114,7 @@ public:
 	 * 		DESTRUCTOR. Libera la memoria reservada para toda la jerarquía de datos en cascada.
 	 * 			Los datos demográficos se liberan a partir de la lista 'lDatDemograficos'
 	 * 			Las raices de los nodos del ABB 'aVias' ya han sido liberadas, solo se liberan
-	 * 				los nodos del ABB 'aVias'
+	 * 			los nodos del ABB 'aVias'
 	 *
 	 * @pre:
 	 * @post:

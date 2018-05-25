@@ -385,7 +385,7 @@ void Pruebas::pruebaUI() {
 		 "\t 2. Solo se pueden cargar una vez los datos (Algoritmo 1)" << endl << endl <<
    		 "Una vez termine utilice la opción cero (0) para continuar con las pruebas" << endl;
 
-///	UI ui;																		//@TEST: Descomentar para probar. Las pruebas preliminares no arrojan ningún error
+///	UI ui;																		//@TEST: Descomentar para probar. Resulta intrusivo y  las pruebas preliminares no arrojan ningún error
 
 	salidaPruebas << "PRUEBA SUPERADA" << endl;
 }
@@ -1103,6 +1103,8 @@ void Pruebas::pruebaAlgoritmos() {
 	pruebaAlg12EDNL();
 	salidaPruebas << "FIN : ALGORITMO 12 EDNL" << endl;
 }
+
+
 
 void Pruebas::ejecutarPruebas() {									///@NOTA: Ejecuta todas las pruebas del proyecto
 	salidaPruebas << "EJECUTANDO # Utilidadades de cadena" << endl;
