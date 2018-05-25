@@ -1,10 +1,8 @@
-//============================================================================
-// Name        : Utils.h
-// Author      : Profesores de la asignatura EDI
-// Version     : Curso 17/18
-// Copyright   :
-// Description : Utilidades para trocear cadenas
-//============================================================================
+/**
+ * @brief
+ * 		Extensión del espacio de nombres estándar 'std' con las constantes que definen el comportamiento de todas las clases
+ * 			y algoritmos (excepto las pruebas) y métodos auxiliares de tratamiento de cadenas.
+ */
 
 #ifndef UTILS_H_
 #define UTILS_H_

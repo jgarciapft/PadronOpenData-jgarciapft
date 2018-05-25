@@ -1,10 +1,7 @@
-//============================================================================
-// Name        : Utils.cpp
-// Author      : profesores de la asignatura EDI
-// Version     : curso 17/18
-// Copyright   :
-// Description : utilidades para trocear cadenas
-//============================================================================
+/**
+ * @brief
+ * 		Implementación de las utilidades de cadenas
+ */
 
 #include "Utils.h"
 
