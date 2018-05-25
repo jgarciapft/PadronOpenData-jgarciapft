@@ -514,8 +514,6 @@ void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 	}
 }
 
-
-
 void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 	Arbol<Via*, ComparadorPtrVia>* aAux;								//ABB auxiliar para almacenar el ABB cuyos datos presentan potencialmente la misma raíz
 	int nPersonas;														//Total de habitantes entre todas las vías que comiencen por la raíz 'raiz'
@@ -540,6 +538,8 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 
 	delete lCoincidencias;												//Libera la memoria asociada a la lista auxiliar de coincidencias
 }
+
+
 
 void Padron::mostrarEstructura() {
 	Via* vAux;															//Puntero auxiliar para consultar las vías de la lista auxiliar de vías 'lVias'

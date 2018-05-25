@@ -15,7 +15,7 @@
  * 			No se garantiza el balanceado del árbol.
  * @atributo lDatDemograficos
  * 		Lista de datos demográficos auxiliar para almacenar todos los datos demográficos creados.
- * 		También se usa para liberar la memoria asociada. Como una vía puede estar compuesta de varios tramos,
+ * 			También se usa para liberar la memoria asociada. Como una vía puede estar compuesta de varios tramos,
  * 			y cada tramo es un objeto 'Via' en sí que apunta a los datos demográficos de todos los tramos,
  * 			ocurre que varios objetos apuntan a un mismo objeto, lo que puede ocasionar la doble liberación de punteros
  */
@@ -161,7 +161,7 @@ public:
 	 * @pre: Se puede abrir el flujo 'fEnt' y el fichero \const RUTA_PADRON contiene los campos necesarios para conformar objetos
 	 * 			'DatosDemograficos' en un formato correcto
 	 * @post: Se asignan las instancias de DatosDemograficos a los punteros de vías de toda la estructura de datos (incluidas
-	 * 		las estructuras auxiliares) según el código de vía
+	 * 			las estructuras auxiliares) según el código de vía
 	 * @complejidad: O(n)
 	 *
 	 * @return
@@ -197,7 +197,7 @@ public:
 	 *
 	 * @pre: Jerarquía de datos cargada. El tiempo del sistema es posterior a al año 2016
 	 * @post: Imprime por consola el número de habitantes por interválos de décadas almacenados en la lista 'lAnioNac'
-	 * 		(configurable para cualquier otra amplitud a través de \const RANGO_EDAD_ALG_4)
+	 * 			(configurable para cualquier otra amplitud a través de \const RANGO_EDAD_ALG_4)
 	 * @complejidad: O(n^2)
 	 */
 	void alg4();
@@ -219,7 +219,7 @@ public:
 	 *
 	 * @pre: Jerarquía de datos cargada
 	 * @post: Imprime por consola un la lista ordenada alfabéticamente descendente por el nombre de la provincia, 'lLugNac' de
-	 * 		lugares de nacimiento de todos los habitantes de Cáceres recogidos en el padrón.
+	 * 			lugares de nacimiento de todos los habitantes de Cáceres recogidos en el padrón.
 	 * @complejidad: O(n^2)
 	 */
 	void alg6();
@@ -234,7 +234,7 @@ public:
 	 *
 	 * @pre: Jerarquía de datos cargada
 	 * @post: Calcula el barrio con mayor número de habitantes para el rango [limInf, limSup] (si existe algún habitante en el
-	 * 		rango). Antes comprueba que el formato del intervalo sea válido
+	 * 			rango). Antes comprueba que el formato del intervalo sea válido
 	 * @complejidad: O(n)
 	 */
 	void alg7(int limInf, int limSup);
@@ -282,7 +282,7 @@ public:
 	 *
 	 * @pre: Jerarquía de datos cargada
 	 * @post: Abre el fichero 'LugaresNacimiento-\param nombreVia' en el que volcar un listado de lugares de nacimiento desordenada que pertencen a habitantes
-	 * 		en la vía \param nombreVia (si existe)
+	 * 			en la vía \param nombreVia (si existe)
 	 * @complejidad: O(n)
 	 */
 	void alg11_EDL(string nombreVia);
@@ -312,7 +312,7 @@ public:
 	 *
 	 * @pre: Jererquía de datos cargada
 	 * @post: Imprime por consola el número de personas nacidas en la provincia \param nombreProvincia para todas las vías de Cáceres que comiencen por
-	 * 		la subcadena \param raiz. Llama a calcular el número de personas por cada vía de Cáceres, funciona a modo de acumulador.
+	 * 			la subcadena \param raiz. Llama a calcular el número de personas por cada vía de Cáceres, funciona a modo de acumulador.
 	 * @complejidad: O(n^2)
 	 */
 	void alg12_EDL(string raiz, string nombreProvincia);
@@ -328,7 +328,7 @@ public:
 	 *
 	 * @pre: Jererquía de datos cargada
 	 * @post: Imprime por consola el número de personas nacidas en la provincia \param nombreProvincia para todas las vías de Cáceres que comiencen por
-	 * 		la subcadena \param raiz. Llama a buscar el ABB cuyos nodos potencialmente comiencen por la raíz \param raiz
+	 * 			la subcadena \param raiz. Llama a buscar el ABB cuyos nodos potencialmente comiencen por la raíz \param raiz
 	 * @complejidad: O(n^2*log n)
 	 */
 	void alg12_EDNL(string raiz, string nombreProvincia);

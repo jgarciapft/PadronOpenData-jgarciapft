@@ -233,7 +233,7 @@ namespace pruebas {
 	static void alg12_EDNL(Arbol<Via*, ComparadorPtrVia>* aVias, string raiz, string nombreProvincia);
 
 
-/********************************************************************************************************************************************************/
+/*************************************************************	IMPLEMENTACIÓN	***********************************************************************/
 
 void pruebaTrocearCadenaAnioNacimiento(string text) {
 
