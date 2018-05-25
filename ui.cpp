@@ -1,10 +1,6 @@
-//============================================================================
-// Name        : UI.cpp
-// Author      : Profesores de la asignatura EDI
-// Version     : Curso 17/18
-// Copyright   :
-// Description : Interfaz de usuario
-//============================================================================
+/**
+ * @CLASE: UI
+ */
 
 #include "ui.h"
 
