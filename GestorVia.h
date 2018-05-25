@@ -42,7 +42,34 @@ public:
 	 */
 	~GestorVia();
 
+	/**
+	 * @brief
+	 * 		Método para organizar la lista de vías que almacena el gestor en orden alfabéticamente descendente según
+	 * 			el comportamiento definido por la sobrecarga de los operadores de la clase 'Via'. Mantiene el orden de la
+	 * 			lista en base a que solo se modifica en la inserción de nuevos datos. Inserta cada nuevo dato en su
+	 * 			posición corrsepondiente de orden, no en cualquiera.
+	 *
+	 * @param v
+	 * 		Vía a insertar
+	 *
+	 * @pre:
+	 * @post: Inserta la vía \param v en el orden definido por el operador '>' de la clase 'Via'
+	 * @complejidad: O(n)
+	 */
 	void insertarViaOrden(Via* v);
+	/**
+	 * @brief
+	 * 		Método para buscar si el dato demográfico pasado por parámtro corresponde con alguna vía de la lista de vías
+	 * 			que encapsula el gestor
+	 *
+	 * @param dD
+	 * 		Dato demográfico a comprobar si corresponde con alguna vía
+	 *
+	 * @pre:
+	 * @post: Comprueba si el código de vía en \param dD coincide con el código de alguna vía de la lista de vías que
+	 * 			encapsula el gestor.
+	 * @complejidad: O(n)
+	 */
 	void insertarDatosDemograficos(DatosDemograficos* dD);
 	/**
 	 *@brief
@@ -56,7 +83,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Calcula la suma de los habitantes de las vías de la lista que encapsula el gestor pertenecientes a un barrio,
-	 * 		pertencientes al rango de edad [limInf, limSup]
+	 * 			pertencientes al rango de edad [limInf, limSup]
 	 * @complejidad: O(n)
 	 *
 	 * @return
@@ -69,7 +96,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Confecciona una lista ordenada descendentemente por número de habitantes de todas las vías de la lista
-	 * 		que encapsula el gestor. También vuelca los resultados del algoritmo al fichero 'NivelDeEstudios-'nombreBarrio''
+	 * 			que encapsula el gestor. También vuelca los resultados del algoritmo al fichero 'NivelDeEstudios-'nombreBarrio''
 	 * @complejidad: O(n^2)
 	 */
 	void alg8();
@@ -85,7 +112,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Devuelve por referencia los porcentajes de hombres y mujeres para cada vía de la lista de vías que encapsula el gestor
-	 * 		en 'tantos por 1'
+	 * 			en 'tantos por 1'
 	 * @complejidad: O(n)
 	 */
 	void alg9(float& pHombres, float& pMujeres);
