@@ -47,7 +47,7 @@ void UI::ejecutar() {
 				t_start = Time::getTime();
 				cout << "Cargando datos ... " << endl;
 				if(p.cargarBarrios() && p.cargarVias() && p.cargarDatosDemograficos()){	//Comprueba que se haya podido cargar la estructura de datos
-					datosCargados = true;			//Actualización de la bandera para indicar que los datos ya han sido cargados
+					datosCargados = true;		//Actualización de la bandera para indicar que los datos ya han sido cargados
 					cout << "Carga finalizada ... " << endl;
 				}else{
 					cout << "ERROR : No se pudieron cargar los ficheros de datos" << endl;
