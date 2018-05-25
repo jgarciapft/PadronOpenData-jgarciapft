@@ -52,7 +52,7 @@ private:
 	 *
 	 * @pre: aVias != NULL
 	 * @post: Vuelca en el flujo de salida de datos \param ofs los lugares de nacimiento de la vía \param nombreVia
-	 * 		(si la encuentra)
+	 * 			(si la encuentra)
 	 * @complejidad: O(log n)
 	 */
 	void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstream& ofs, bool& enc);
@@ -68,8 +68,8 @@ private:
 	 *
 	 * @pre: aVias != NULL
 	 * @post: Devuelve el ABB cuyos comienzan potencialmente por la subcadena \param raiz (si lo encuentra). Como la inserción
-	 * 		no se ha optimizado para estar balanceado pueden colarse nodos intermedios en el ABB resultado si son menores que el
-	 * 		nodo abuelo y mayores que el nodo padre
+	 * 			no se ha optimizado para estar balanceado pueden colarse nodos intermedios en el ABB resultado si son menores que el
+	 * 			nodo abuelo y mayores que el nodo padre
 	 * @complejidad: O(log n)
 	 *
 	 * @return
@@ -143,9 +143,9 @@ public:
 	 * 			y las carga en la jerarquía de datos, en la lista auxiliar de vías y en el ABB auxiliar de vías
 	 *
 	 * @pre: Se puede abrir el flujo 'fEnt' y el fichero \const RUTA_VIA contiene los campos necesarios para conformar objetos
-	 * 		'Via' en un formato correcto
+	 * 			'Via' en un formato correcto
 	 * @post: Se cargan en los gestores 'gVias' de los barrios del gestor 'gBarrios' las vías según el nombre del
-	 * 		del barrio al que pertenecen
+	 * 			del barrio al que pertenecen
 	 * @complejidad: O(n^2)
 	 *
 	 * @return

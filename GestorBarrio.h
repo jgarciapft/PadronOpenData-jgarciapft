@@ -8,7 +8,7 @@
  * @atributo lBarrios
  * 		Lista que encapsula el gestor. Almacena todos los datos leídos del fichero \const RUTA_BARRIO.
  * 		@orden: Ninguna ordenación particular. El estado final de la lista es el orden inverso al orden
- * 		de lectura del fichero de barrios
+ * 			de lectura del fichero de barrios
  */
 
 #ifndef GESTORBARRIO_H_
@@ -36,7 +36,7 @@ public:
 	/**
 	 * @brief
 	 * 		DESTRUCTOR. Libera la memoria reservada para la lista de barrios que encapsula y los barrios de la lista.
-	 * 		En cascada las vías asociadas a cada barrio.
+	 * 			En cascada las vías asociadas a cada barrio.
 	 *
 	 * @pre:
 	 * @post:
@@ -78,7 +78,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Propaga por todos los barrios de la lista de barrios que encapsula el gestor el dato demográfico 'dD' para que
-	 * 		comprueben si pertence a alguna de sus vías
+	 * 			comprueben si pertence a alguna de sus vías
 	 * @complejidad: O(n)
 	 */
 	void insertarDatosDemograficos(DatosDemograficos* dD);
@@ -92,7 +92,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Si el barrio existe en la lista de barrio que encapsula el gestor llama a mostrar las vías que le pertenecen
-	 * 		  Si no existe se indica al usuario por consola
+	 * 		  	Si no existe se indica al usuario por consola
 	 * @complejidad: O(n)
 	 */
 	void alg2(string nombreBarrio);
@@ -107,7 +107,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Calcula el barrio con mayor número de habitantes para el rango [limInf, limSup] (si existe algún habitante en el
-	 * 		rango)
+	 * 			rango)
 	 * @complejidad: O(n)
 	 */
 	void alg7(int limInf, int limSup);
@@ -120,7 +120,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Comprueba si el barrio está en la lista de barrios que encapsula el gestor. Si lo está llama a que se ejecute
-	 * 		la funcionalidad principal del Algoritmo 8
+	 * 			la funcionalidad principal del Algoritmo 8
 	 * @complejidad: O(n^2)
 	 */
 	void alg8(string nombreBarrio);
@@ -130,7 +130,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Imprime por consola el barrio con mayor porcentaje de hombres y el barrio con mayor porcentaje de mujeres de entre los de la lista que encapsula
-	 * 		Llama a	calcular esos porcentajes (funciona como un comparador de 'mejor hasta ahora')
+	 * 			Llama a	calcular esos porcentajes (funciona como un comparador de 'mejor hasta ahora')
 	 * @complejidad: O(n)
 	 */
 	void alg9();

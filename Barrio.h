@@ -67,7 +67,29 @@ public:
 	 */
 	string getNombreBarrio() const ;
 	string getNombreDistrito() const;
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 1 (carga de datos)
+	 *
+	 * @param v
+	 * 		Vía a insertar en orden en el gestor de vías 'gVias'
+	 *
+	 * @pre:
+	 * @post: Llama a insertar la vía \param v en el gestor de vías 'gVias'
+	 * @complejidad: O(n)
+	 */
 	void insertarVia(Via* v);
+	/**
+	 * @brief
+	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 1 (carga de datos)
+	 *
+	 * @param v
+	 * 		Dato demográfico a insertar en alguna (o ninguna) de las vías del gestor de vías 'gVias'
+	 *
+	 * @pre:
+	 * @post: Llama a comprobar si el dato demográfico \param dD correspone a alguna de las vías del gestor de vías 'gVias'
+	 * @complejidad: O(n)
+	 */
 	void insertarDatosDemograficos(DatosDemograficos* dD);
 	/**
 	 *@brief
@@ -80,7 +102,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Calcula el barrio con mayor número de habitantes para el rango [limInf, limSup] (si existe algún habitante en el
-	 * 		rango)
+	 * 			rango)
 	 * @complejidad: O(n)
 	 *
 	 * @return
@@ -92,8 +114,7 @@ public:
 	 * 		MÉTODO INVOCATIVO. Utilizado por el Algoritmo 8
 	 *
 	 * @pre:
-	 * @post: llama a que se ejecute
-	 * 		la funcionalidad principal del Algoritmo 8
+	 * @post: llama a que se ejecute la funcionalidad principal del Algoritmo 8
 	 * @complejidad: O(n^2)
 	 */
 	void alg8();
