@@ -558,7 +558,7 @@ void Padron::mostrarEstructura() {
 	}
 	cout << "***********************************************************************************************" << endl;
 
-	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIAR" << endl << endl;	///@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
+	cout << "LISTA DE DATOS DEMOGRÁFICOS AUXILIAR" << endl << endl;		///@TEST: Muestra la lista auxiliar de todos los datos demograficos auxiliares
 	cout << "***********************************************************************************************" << endl;
 	lDatDemograficos->moverInicio();
 	while(!lDatDemograficos->finLista()){								//Recorre la lista de inicio a fin. También comprueba si está vacía inicialmente

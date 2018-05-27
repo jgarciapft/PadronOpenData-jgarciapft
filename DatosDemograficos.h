@@ -8,7 +8,7 @@
  * 			a ellos
  *
  * @atributo codVia
- * 		Código númerico en el rango de [0, NUMERO DE VIAS]. Relaciona cada vía con un set de datos demográficos leídos del
+ * 		Código numérico en el rango de [0, NUMERO DE VIAS]. Relaciona cada vía con un set de datos demográficos leídos del
  * 			archivo del padrón. Cada código es único para cada vía y es compartido por todos los tramos de vías (objetos 'Via' también) que
  * 			pertenecen a distintos barrios con el mismo nombre de vía
  * @atributo gAnioNacimiento

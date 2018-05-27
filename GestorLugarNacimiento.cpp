@@ -10,7 +10,7 @@ GestorLugarNacimiento::GestorLugarNacimiento() {								///@NOTA: Reserva memori
 	lLugarNacimiento = new ListaPI<LugarNacimiento*>();
 }
 
-GestorLugarNacimiento::GestorLugarNacimiento(string lugaresNacimiento) {		///@Reserva memoria para la lista de lugares de nacimiento que encapsula y la inicializa con un set de datos
+GestorLugarNacimiento::GestorLugarNacimiento(string lugaresNacimiento) {		///@NOTA: Reserva memoria para la lista de lugares de nacimiento que encapsula y la inicializa con un set de datos
 	lLugarNacimiento = new ListaPI<LugarNacimiento*>();
 
 	vector<string> vText = splitStringToVector(lugaresNacimiento, DELIM);		//Delimita cada objeto 'Lugar de nacimiento' y lo almacena en un vector
