@@ -53,7 +53,7 @@ private:
 	 * @pre: aVias != NULL
 	 * @post: Vuelca en el flujo de salida de datos \param ofs los lugares de nacimiento de la vía \param nombreVia
 	 * 			(si la encuentra)
-	 * @complejidad: O(log n)
+	 * @complejidad: O(log2 n)
 	 */
 	void alg11(Arbol<Via*, ComparadorPtrVia>* aVias, string nombreVia, ofstream& ofs, bool& enc);
 	/**
@@ -70,7 +70,7 @@ private:
 	 * @post: Devuelve el ABB cuyos comienzan potencialmente por la subcadena \param raiz (si lo encuentra). Como la inserción
 	 * 			no se ha optimizado para estar balanceado pueden colarse nodos intermedios en el ABB resultado si son menores que el
 	 * 			nodo abuelo y mayores que el nodo padre
-	 * @complejidad: O(log n)
+	 * @complejidad: O(log2 n)
 	 *
 	 * @return
 	 * 		ABB cuyos nodos potencialmente comienzan por la raíz \param raiz
@@ -92,7 +92,7 @@ private:
 	 *
 	 * @pre: aVias != NULL
 	 * @post: Ejecuta un recorrido IN ORDEN del ABB e invoca el algoritmo 12 sobre los nodos cuya raiz comience por la subcadena \param raiz
-	 * @complejidad: O(n*log n)
+	 * @complejidad: O(n*log2 n)
 	 *
 	 * @return
 	 * 		Número de habitantes nacidos en la provincia \param nombreProvincia
@@ -297,7 +297,7 @@ public:
 	 * @pre: Jerarquía de datos cargada
 	 * @post: Abre el fichero de datos 'LugaresNacimiento-\param nombreVia' e invoca la interfaz privada del algoritmo en su versión EDNL
 	 * 			Método 'Padron::alg11'
-	 * @complejidad: O(log n)
+	 * @complejidad: O(log2 n)
 	 */
 	void alg11_EDNL(string nombreVia);
 	/**
@@ -329,7 +329,7 @@ public:
 	 * @pre: Jererquía de datos cargada
 	 * @post: Imprime por consola el número de personas nacidas en la provincia \param nombreProvincia para todas las vías de Cáceres que comiencen por
 	 * 			la subcadena \param raiz. Llama a buscar el ABB cuyos nodos potencialmente comiencen por la raíz \param raiz
-	 * @complejidad: O(n^2*log n)
+	 * @complejidad: O(n^2*log2 n)
 	 */
 	void alg12_EDNL(string raiz, string nombreProvincia);
 
