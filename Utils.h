@@ -1,10 +1,8 @@
-//============================================================================
-// Name        : Utils.h
-// Author      : Profesores de la asignatura EDI
-// Version     : Curso 17/18
-// Copyright   :
-// Description : Utilidades para trocear cadenas
-//============================================================================
+/**
+ * @brief
+ * 		Extensión del espacio de nombres estándar 'std' con las constantes que definen el comportamiento de todas las clases
+ * 			y algoritmos (excepto las pruebas) y métodos auxiliares de tratamiento de cadenas.
+ */
 
 #ifndef UTILS_H_
 #define UTILS_H_
@@ -35,22 +33,57 @@ const char TECLA_MENU = 'm';										//Tecla para volver al menú de la interfa
 
 /****************************************************** DEFINCIÓN DE CONSTANTES ******************************************************/
 
-/*
- * PRE: La cadena pasada por parámetros no debe estar vacía
- * POST: Divide la cadena Text en subcadenas en base al delimitador 'delim'. Las distintas subcadenas son proporcionadas en un vector
- * Ejemplo: "1958 (5); 1988 (3)" -> |1958 (5)| 1988 (3)|
- * COMPLEJIDAD: O(n)
+/**
+ * @brief
+ * 		Método auxiliar de cadenas para separar todos los campos que definen una entidad
+ *
+ * @param text
+ * 		Cadena a tratar
+ * @param delim
+ * 		Carácter delimitador de entidades
+ *
+ * @pre: La cadena pasada por parámetros no debe estar vacía
+ * @post: Divide la cadena Text en subcadenas en base al delimitador 'delim'. Las distintas subcadenas son proporcionadas en un vector
+ * 		Ejemplo: "1958 (5); 1988 (3)" -> |1958 (5)| 1988 (3)|
+ * @complejidad: O(n)
+ *
+ * @return
+ * 		Vector de cadenas que representan todos los campos de una entidad
  */
 vector<string> splitStringToVector(string text, char delim);
 
-/*
- * PRE:La cadena de caracteres pasada por parámetros no debe estar vacía. Text puede contener distintos valores entre par�ntesis.
- * POST: Divide la cadena 'text' en subcadenas. Elimina los caracteres '(' y ')' y devuelve cada valor en una casilla del vector.
- * Ejemplo: "1958 (5)" -> |1958|5|
- * COMPLEJIDAD: O(n)
+/**
+ * @brief
+ * 		Método auxiliar de cadenas para separar cada campo que define una entidad
+ *
+ * @param text
+ * 		Cadena a tratar con los campos de una sola entidad
+ *
+ * @pre:La cadena de caracteres pasada por parámetros no debe estar vacía. Text puede contener distintos valores entre paréntesis.
+ * @post: Divide la cadena 'text' en subcadenas. Elimina los caracteres '(' y ')' y devuelve cada valor en una casilla del vector.
+ * 		Ejemplo: "1958 (5)" -> |1958|5|
+ * @complejidad: O(n)
+ *
+ * @return
+ * 		Vector de cadenas que representa cada campo de una sola entidad
  */
 vector<string> splitString(string text);
 
+/**
+ * @brief
+ * 		Método auxiliar para convertir un número a cadena
+ *
+ * @param n
+ * 		Número a convertir
+ *
+ * @pre:
+ * @post: Devuelve una cadena con la conversión del número \param n a cadena. Utiliza un flujo de salida de cadenas para la
+ * 			conversión
+ * @complejidad: O(1)
+ *
+ * @return
+ * 		Cadena con la conversión
+ */
 std::string int_to_string(int n);
 
 #endif /* UTILS_H_ */

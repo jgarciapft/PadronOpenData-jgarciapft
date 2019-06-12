@@ -1,14 +1,9 @@
-//============================================================================
-// Name        : timer.cpp
-// Author      : profesores de la asignatura EDI
-// Version     : curso 16/17
-// Copyright   :
-// Description : time
-//============================================================================
+/**
+ * @CLASE: Timer
+ */
 
 #include "timer.h"
 #include <time.h>
-
 
 #ifdef __MACH__
 

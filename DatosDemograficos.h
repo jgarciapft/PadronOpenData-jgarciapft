@@ -8,7 +8,7 @@
  * 			a ellos
  *
  * @atributo codVia
- * 		Código númerico en el rango de [0, NUMERO DE VIAS]. Relaciona cada vía con un set de datos demográficos leídos del
+ * 		Código numérico en el rango de [0, NUMERO DE VIAS]. Relaciona cada vía con un set de datos demográficos leídos del
  * 			archivo del padrón. Cada código es único para cada vía y es compartido por todos los tramos de vías (objetos 'Via' también) que
  * 			pertenecen a distintos barrios con el mismo nombre de vía
  * @atributo gAnioNacimiento
@@ -176,7 +176,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Llama a modificar la lista 'lEstud' con la información sobre lugares de nacimeinto que encapsula el gestor
-	 * 		GestorLugarNacimiento
+	 * 			GestorLugarNacimiento
 	 * @complejidad: O(n^2)
 	 */
 	void alg10(ListaPI<LugarNacimiento*>*& lLugNac, string nombreProvincia);
@@ -189,7 +189,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Llama a modificar la lista 'lLugNac' con la información sobre lugares de nacimeinto que encapsula el gestor
-	 * 		GestorLugarNacimiento
+	 * 			GestorLugarNacimiento
 	 * @complejidad: O(n^2)
 	 */
 	void alg11(ofstream& ofs);
@@ -215,7 +215,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Llama a mostrar los datos del padrón almacenados en cada gestor: 'gAnioNacimiento',
-	 * 		'gLugNacimiento', 'gEstudios', 'gNacionalidad' y muestra por consola el resto de atributos
+	 * 			'gLugNacimiento', 'gEstudios', 'gNacionalidad' y muestra por consola el resto de atributos
 	 * @complejidad: O(n)
 	 */
 	void mostrar();

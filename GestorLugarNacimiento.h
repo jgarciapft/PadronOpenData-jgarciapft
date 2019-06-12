@@ -101,7 +101,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Vuelca al archivo 'LugaresNacimiento-'nombreVia'.txt' todos los lugares de nacimiento de la lista que
-	 * 		encapsula el gestor
+	 * 			encapsula el gestor
 	 * @complejidad: O(n)
 	 */
 	void alg11(ofstream& ofs);
@@ -114,7 +114,7 @@ public:
 	 *
 	 * @pre:
 	 * @post: Devuelve el número de habitantes nacidos en \param nombreProvincia para todos los lugares de nacimiento
-	 * 		de la lista que encapsula el gestor
+	 * 			de la lista que encapsula el gestor
 	 * @complejidad: O(n)
 	 *
 	 * @return

@@ -10,14 +10,14 @@ GestorLugarNacimiento::GestorLugarNacimiento() {								///@NOTA: Reserva memori
 	lLugarNacimiento = new ListaPI<LugarNacimiento*>();
 }
 
-GestorLugarNacimiento::GestorLugarNacimiento(string lugaresNacimiento) {		///@Reserva memoria para la lista de lugares de nacimiento que encapsula y la inicializa con un set de datos
+GestorLugarNacimiento::GestorLugarNacimiento(string lugaresNacimiento) {		///@NOTA: Reserva memoria para la lista de lugares de nacimiento que encapsula y la inicializa con un set de datos
 	lLugarNacimiento = new ListaPI<LugarNacimiento*>();
 
 	vector<string> vText = splitStringToVector(lugaresNacimiento, DELIM);		//Delimita cada objeto 'Lugar de nacimiento' y lo almacena en un vector
 	for(int i = 0; i < static_cast<int>(vText.size()); i++) {
 		vector<string> vString = splitString(vText[i]);							/*Delimita cada campo de cada objeto 'Lugar de nacimiento' y lo almacena en otro vector
-																					* Dependiendo de si el lugar de nacimiento es extranjero o nacional el último vector tendrá una longitud distinta porque para extranjeros no se almacena la población
-																					* Instancia un nuevo lugar de nacimiento y lo almacena en la lista dependiendo de estas condiciones*/
+																				 *	Dependiendo de si el lugar de nacimiento es extranjero o nacional el último vector tendrá una longitud distinta porque para extranjeros no se almacena la población
+																				 *	Instancia un nuevo lugar de nacimiento y lo almacena en la lista dependiendo de estas condiciones*/
 		if(vString.size()== 2){													//Comprueba si la nacionalidad es extranjera
 			//La población se rellna con un texto alternativo de relleno definido en una constante
 			lLugarNacimiento->insertar(new LugarNacimiento(POBLACION_TEXTO_RELLENO, vString[0], atoi(vString[1].c_str())));

@@ -2,16 +2,17 @@
  *	@CLASE: Pruebas
  *
  *	@brief
- *		Coordina la implementación de las pruebas del proyecto.
- *		Maneja el flujo de salida de volcado de las pruebas y la salida por consola visible al usuario
+ *		Coordina la implementación de las pruebas del proyecto. Maneja el flujo de salida de volcado de las pruebas
+ *			y redirige el flujo estándar (cout) al de las pruebas durante su ejecución. Después restaura la salida
+ *			estándar (cout) a la consola
  *
  *	@atributo p
- *		Instancia de la clase principal para incluir toda la implementación del proyecto
+ *		Instancia de la clase principal Padron para incluir toda la implementación del proyecto
  *	@atributo salidaPruebas
  *		Flujo de salida para el volcado de los resultados de las pruebas. La ruta del fichero está
  *			especificada en \const RUTA_FICEHRO_PRUEBAS
  *	@atributo bufferSalidaConsola
- *		Almacena el buffer de consola para restaurarlo al final de las pruebas
+ *		Almacena el buffer de consola para restaurarlo al final de la ejecución de las pruebas
  */
 
 #ifndef PRUEBAS_H_
@@ -114,7 +115,7 @@ private:
 	 *
 	 * @MÉTODO : Padron::alg12
 	 * 		1. Ninguna vía comienza por la raíz	'raiz'		   ->  ABB == NULL. Se indica al usuario por consola que no se ha encontrado
-	 * 		2. Existe 1 vía que comienza por la raíz 'raiz'    ->  Se devuelve el subárbol (ABB :Plaza->NULL
+	 * 		2. Existe 1 vía que comienza por la raíz 'raiz'    ->  Se devuelve el subárbol (ABB :Plaza->NULL )
 	 * 																								  ->Plaza)
 	 * 		3. Deductivamente si el algoritmo sirve para 1 vía ->  Sirve para 'n' vías
 	 *
@@ -312,7 +313,24 @@ private:
 	void ejecutarPruebas();
 
 public:
+	/**
+	 * @brief
+	 * 		CONSTRUCTOR POR DEFECTO.Informa al usuario del comienzo de las pruebas y redirige el flujo de salida estándar (cout) al flujo
+	 * 		de salida de volcado para la creación del informe de pruebas unificado en la ruta \const RUTA_PRUEBAS
+	 *
+	 * @pre:
+	 * @post: Instancia de Pruebas inicializada por defecto
+	 * @complejidad: O(n^2) (Complejidad máxima de los algoritmos del proyecto)
+	 */
 	Pruebas();
+	/**
+	 * @brief
+	 * 		DESTRUCTOR. Informa al usuario del fin de las pruebas, devuelve el flujo de salida estándar (cout) a la salida por consola, cierra
+	 * 		el flujo de salida de volcado para el informe unificado de pruebas y libera la memoria reservada por las pruebas.
+	 * @pre:
+	 * @post:
+	 * @complejidad: O(1)
+	 */
 	~Pruebas();
 };
 

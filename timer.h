@@ -1,10 +1,10 @@
-//============================================================================
-// Name        : timer.h
-// Author      : Profesores de la asignatura EDI
-// Version     : Curso 16/17
-// Copyright   :
-// Description : time
-//============================================================================
+/**
+ * @CLASE: Timer
+ *
+ * @brief
+ * 		Sobrecarga del método 'clock_gettime' de la libería C estándar 'time.h'. Proporciona un método multiplataforma
+ * 			preciso de calcular el tiempo transcurrido entre dos llamadas consecutivas a 'Timer::getTime'
+ */
 
 #ifndef TIMER_H_
 #define TIMER_H_
@@ -17,13 +17,15 @@ private:
 
 public:
 
-    /*
-     * Description: returns the abosolute time.
-     * Pre  = {}
-     * Post = {}
+    /**
+     * @brief
+     *  	Funciona en diferentes plataformas, incluido POSIX (Linux), Windows y Mac OSX
+     * @pre:
+     * @post:
+     * @complejidad: NO DEFINIDO
      *
-     * It works on different platforms, including POSIX (Linux),
-     *  Windows and Mac OSX.
+     * @return
+     * 		Devuelve el tiempo absoluto
      */
 	static double getTime ();
 };

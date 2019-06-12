@@ -52,7 +52,7 @@ Arbol<Via*, ComparadorPtrVia>* Padron::alg12(Arbol<Via*, ComparadorPtrVia>* aVia
 	//RECORRIDO en PRE-ORDEN. Explora la raíz de cada nodo en cada llamada para explorar el menor número de nodos que no van a cumplir los requisitos
 	if(aVias->raiz()->getNombreVia().find(raiz) == 0){					//Comprueba si se ha encontrado la ráiz que compartirán los subárboles precedentes a esta raíz
 		aAux = aVias;
-	}else if(aVias->raiz()->getNombreVia() < raiz){                     //Si la el nombre de la vía es alfabéticamente MENOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
+	}else if(aVias->raiz()->getNombreVia() < raiz){						//Si la el nombre de la vía es alfabéticamente MENOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
 		if (aVias->hijoDer() != NULL)
 			aAux = alg12(aVias->hijoDer(), raiz);
 	}else if(aVias->hijoIzq() != NULL){									//Sino el nombre de la vía es alfabéticamente MAYOR. La búsqueda debe continuar por el subárbol derecho mientras que exista
@@ -206,7 +206,7 @@ void Padron::alg3() {
 						cout << "-----------------------------------------------------------------------------------------------" << endl;
 						cout << "Barrios que atraviesa : " << endl << endl;
 						cout << vAux1->getBarrioVia() << endl;
-						lCoincidencias.insertar(vAux1->getNombreVia());	//Añade el nombre de la vía a la lista de vías procesadas
+						lCoincidencias.insertar(vAux1->getNombreVia());//Añade el nombre de la vía a la lista de vías procesadas
 						primerRes = false;								//Actualiza la bandera para evitar volver a añadir el nombre de la vía acutual a la lista de coincidencias
 					}
 					cout << vAux2->getBarrioVia() << endl;
@@ -514,8 +514,6 @@ void Padron::alg12_EDL(string raiz, string nombreProvincia) {
 	}
 }
 
-
-
 void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 	Arbol<Via*, ComparadorPtrVia>* aAux;								//ABB auxiliar para almacenar el ABB cuyos datos presentan potencialmente la misma raíz
 	int nPersonas;														//Total de habitantes entre todas las vías que comiencen por la raíz 'raiz'
@@ -540,6 +538,8 @@ void Padron::alg12_EDNL(string raiz, string nombreProvincia) {
 
 	delete lCoincidencias;												//Libera la memoria asociada a la lista auxiliar de coincidencias
 }
+
+
 
 void Padron::mostrarEstructura() {
 	Via* vAux;															//Puntero auxiliar para consultar las vías de la lista auxiliar de vías 'lVias'

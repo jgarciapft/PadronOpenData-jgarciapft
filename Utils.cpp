@@ -1,10 +1,7 @@
-//============================================================================
-// Name        : Utils.cpp
-// Author      : profesores de la asignatura EDI
-// Version     : curso 17/18
-// Copyright   :
-// Description : utilidades para trocear cadenas
-//============================================================================
+/**
+ * @brief
+ * 		Implementación de las utilidades de cadenas
+ */
 
 #include "Utils.h"
 
@@ -51,9 +48,9 @@ vector<string> splitString(string text) {
 }
 
 std::string int_to_string(int n) {
-	ostringstream sStream;
-	std::string str;
+	ostringstream sStream;				//Flujo de salida de cadenas
+	std::string str;					//Cadena con la conversión
 
-	sStream << n;
-	return  sStream.str();
+	sStream << n;						//Conversión de entero a cadena
+	return sStream.str();
 }
