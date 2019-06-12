@@ -2,6 +2,7 @@
  * @CLASE: GestorAnioNacimiento
  */
 
+#include <time.h>
 #include "GestorAnioNacimiento.h"
 
 namespace std {

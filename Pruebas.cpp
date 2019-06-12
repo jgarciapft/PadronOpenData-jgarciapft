@@ -2,6 +2,7 @@
  * @CLASE: Pruebas
  */
 
+#include <ctime>
 #include "Pruebas.h"
 
 namespace pruebas{
